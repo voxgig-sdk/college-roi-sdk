@@ -1,0 +1,22 @@
+# BasicTop50Flow
+
+main: kit: flow: BasicTop50Flow:
+{
+  entity: "top_50",
+  kind: "basic",
+  name: "BasicTop50Flow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "top_50_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTop50Flow"
+}

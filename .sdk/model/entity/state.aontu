@@ -1,0 +1,85 @@
+# Entity: state
+
+main: kit: entity: state: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "city"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "control"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "institution"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "npv_30yr_resident_usd"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "rank_in_state"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "state"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "state"
+                orig: "state"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/v1/rankings/best-value/{state}.json"
+          parts: [
+            "api"
+            "v1"
+            "rankings"
+            "best-value"
+            "{state}.json"
+          ]
+          select: {
+            exist: [
+              "state"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "best_value"
+      ]
+    ]
+  }
+
+
+
+}

@@ -1,0 +1,31 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      auth: false
+      contact: {
+        email: "press@le-teen.com"
+        name: "LE TEEN"
+        url: "https://le-teen.com/press"
+      }
+      description: "Static, read-only JSON: 30-year NPV for U.S. colleges (positive-NPV envelope), lifetime ROI for every bachelor's major category and subfield, and the standing rankings. No auth, no rate limit beyond CDN sanity. Free to use with attribution — cite LE TEEN, le-teen.com (and FREOPP/IPEDS/BEA as the upstream sources). Dataset DOI: https://doi.org/10.5281/zenodo.21351602. Methodology: https://le-teen.com/methodology."
+      license: {
+        identifier: "CC-BY-4.0"
+        name: "Creative Commons Attribution 4.0 International"
+      }
+      servers: [
+        {
+          url: "https://le-teen.com"
+        }
+      ]
+      summary: "Free, keyless, CORS-open JSON over the LE TEEN college-ROI data spine."
+      termsOfService: "https://le-teen.com/methodology"
+      title: "LE TEEN College ROI API"
+      version: "1.0.0"
+      website: "https://le-teen.com/api"
+    }
+  }
+}
+

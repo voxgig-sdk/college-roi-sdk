@@ -1,0 +1,50 @@
+{
+  "existing": {
+    "top_50": {
+      "TOP_5000": {
+        "institution": "s50",
+        "npv_nonresident_usd": "s51",
+        "npv_resident_usd": "s52",
+        "oos_penalty_30yr_npv_usd": "s53",
+        "rank": "s54",
+        "state": "s55",
+        "tuition_in_state_usd": "s56",
+        "tuition_out_of_state_usd": "s57"
+      },
+      "TOP_5001": {
+        "institution": "sa0",
+        "npv_nonresident_usd": "sa1",
+        "npv_resident_usd": "sa2",
+        "oos_penalty_30yr_npv_usd": "sa3",
+        "rank": "sa4",
+        "state": "sa5",
+        "tuition_in_state_usd": "sa6",
+        "tuition_out_of_state_usd": "sa7"
+      },
+      "TOP_5002": {
+        "institution": "sf0",
+        "npv_nonresident_usd": "sf1",
+        "npv_resident_usd": "sf2",
+        "oos_penalty_30yr_npv_usd": "sf3",
+        "rank": "sf4",
+        "state": "sf5",
+        "tuition_in_state_usd": "sf6",
+        "tuition_out_of_state_usd": "sf7"
+      }
+    }
+  },
+  "new": {
+    "top_50": {
+      "top_50_ref01": {
+        "institution": "s140",
+        "npv_nonresident_usd": "s141",
+        "npv_resident_usd": "s142",
+        "oos_penalty_30yr_npv_usd": "s143",
+        "rank": "s144",
+        "state": "s145",
+        "tuition_in_state_usd": "s146",
+        "tuition_out_of_state_usd": "s147"
+      }
+    }
+  }
+}

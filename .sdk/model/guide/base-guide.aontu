@@ -1,0 +1,71 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 10
+  metrics: count: path: 11
+  metrics: count: method: 11
+
+  entity: best_value: {
+    path: "/api/v1/rankings/best-value.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: college: {
+    path: "/api/v1/colleges.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: index: {
+    path: "/api/v1/index.json": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: major: {
+    path: "/api/v1/majors.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: openapi: {
+    path: "/api/v1/openapi.json": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: out_of_state_penalty: {
+    path: "/api/v1/rankings/out-of-state-penalty.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: slug: {
+    path: "/api/v1/colleges/{slug}.json": {
+      op: load: method: *GET
+    }
+    path: "/api/v1/majors/{slug}.json": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: state: {
+    path: "/api/v1/rankings/best-value/{state}.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: top_50: {
+    path: "/api/v1/rankings/out-of-state-penalty/top-50.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: worst_roi_major: {
+    path: "/api/v1/rankings/worst-roi-majors.json": {
+      op: list: method: *GET
+    }
+  }
+
+}

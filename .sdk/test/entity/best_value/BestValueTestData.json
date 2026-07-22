@@ -1,0 +1,34 @@
+{
+  "existing": {
+    "best_value": {
+      "BEST_VALUE00": {
+        "college": [],
+        "page_url": "s29",
+        "state": "s2a",
+        "state_name": "s2b"
+      },
+      "BEST_VALUE01": {
+        "college": [],
+        "page_url": "s51",
+        "state": "s52",
+        "state_name": "s53"
+      },
+      "BEST_VALUE02": {
+        "college": [],
+        "page_url": "s79",
+        "state": "s7a",
+        "state_name": "s7b"
+      }
+    }
+  },
+  "new": {
+    "best_value": {
+      "best_value_ref01": {
+        "college": [],
+        "page_url": "sa1",
+        "state": "sa2",
+        "state_name": "sa3"
+      }
+    }
+  }
+}

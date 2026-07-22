@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "state": {
+      "STATE00": {
+        "city": "s32",
+        "control": "s33",
+        "institution": "s34",
+        "npv_30yr_resident_usd": "s35",
+        "rank_in_state": "s36",
+        "state": "STATE01"
+      },
+      "STATE01": {
+        "city": "s64",
+        "control": "s65",
+        "institution": "s66",
+        "npv_30yr_resident_usd": "s67",
+        "rank_in_state": "s68",
+        "state": "STATE01"
+      },
+      "STATE02": {
+        "city": "s96",
+        "control": "s97",
+        "institution": "s98",
+        "npv_30yr_resident_usd": "s99",
+        "rank_in_state": "s9a",
+        "state": "STATE01"
+      }
+    }
+  },
+  "new": {
+    "state": {
+      "state_ref01": {
+        "city": "sc8",
+        "control": "sc9",
+        "institution": "sca",
+        "npv_30yr_resident_usd": "scb",
+        "rank_in_state": "scc"
+      }
+    }
+  }
+}

@@ -1,0 +1,301 @@
+# Entity: slug
+
+main: kit: entity: slug: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "ai_exposure"
+      req: false
+      type: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    {
+      name: "breakeven_age"
+      req: false
+      type: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    {
+      name: "cip_program_name"
+      req: false
+      type: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    {
+      name: "city"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "completion_adjusted_roi_usd"
+      req: false
+      type: [
+        "`$ONE`"
+        [
+          "`$NUMBER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    {
+      name: "control"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "dropout_roi_usd"
+      req: false
+      type: [
+        "`$ONE`"
+        [
+          "`$NUMBER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    {
+      name: "freopp_program_coverage"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "graduate"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "kind"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "mean_lifetime_roi_usd"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "median_breakeven_age"
+      req: false
+      type: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    {
+      name: "median_earnings_10yr_usd"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "median_lifetime_roi_usd"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "meta"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "name"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "npv_30yr_nonresident_usd"
+      req: false
+      type: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    {
+      name: "npv_30yr_resident_usd"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "p25_roi_usd"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "p75_roi_usd"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "parent"
+      req: false
+      type: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    {
+      name: "pct_never_breakeven"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "program"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "rank_by_worst_roi"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "slug"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "state"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "state_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "total_cost_of_attendance_nonresident_usd"
+      req: false
+      type: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    {
+      name: "total_cost_of_attendance_usd"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "unitid"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "url"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "slug"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "slug"
+                orig: "slug"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/v1/colleges/{slug}.json"
+          parts: [
+            "api"
+            "v1"
+            "colleges"
+            "{slug}.json"
+          ]
+          select: {
+            exist: [
+              "slug"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "slug"
+                orig: "slug"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/v1/majors/{slug}.json"
+          parts: [
+            "api"
+            "v1"
+            "majors"
+            "{slug}.json"
+          ]
+          select: {
+            exist: [
+              "slug"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "college"
+      ]
+      [
+        "major"
+      ]
+    ]
+  }
+
+
+
+}

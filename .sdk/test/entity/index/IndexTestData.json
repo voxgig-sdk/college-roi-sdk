@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "index": {
+      "INDEX00": {
+        "id": "INDEX00"
+      },
+      "INDEX01": {
+        "id": "INDEX01"
+      },
+      "INDEX02": {
+        "id": "INDEX02"
+      }
+    }
+  },
+  "new": {
+    "index": {
+      "index_ref01": {}
+    }
+  }
+}

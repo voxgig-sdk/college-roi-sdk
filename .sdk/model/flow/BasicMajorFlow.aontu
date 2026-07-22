@@ -1,0 +1,22 @@
+# BasicMajorFlow
+
+main: kit: flow: BasicMajorFlow:
+{
+  entity: "major",
+  kind: "basic",
+  name: "BasicMajorFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "major_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMajorFlow"
+}

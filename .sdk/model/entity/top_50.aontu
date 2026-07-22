@@ -1,0 +1,76 @@
+# Entity: top_50
+
+main: kit: entity: top_50: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "institution"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "npv_nonresident_usd"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "npv_resident_usd"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "oos_penalty_30yr_npv_usd"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "rank"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "state"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "tuition_in_state_usd"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "tuition_out_of_state_usd"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "top_50"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/v1/rankings/out-of-state-penalty/top-50.json"
+          parts: [
+            "api"
+            "v1"
+            "rankings"
+            "out-of-state-penalty"
+            "top-50.json"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

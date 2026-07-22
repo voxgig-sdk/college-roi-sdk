@@ -1,0 +1,160 @@
+# Entity: major
+
+main: kit: entity: major: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "ai_exposure"
+      req: false
+      type: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    {
+      name: "cip_program_name"
+      req: false
+      type: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    {
+      name: "completion_adjusted_roi_usd"
+      req: false
+      type: [
+        "`$ONE`"
+        [
+          "`$NUMBER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    {
+      name: "dropout_roi_usd"
+      req: false
+      type: [
+        "`$ONE`"
+        [
+          "`$NUMBER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    {
+      name: "graduate"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "kind"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "mean_lifetime_roi_usd"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "median_breakeven_age"
+      req: false
+      type: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    {
+      name: "median_lifetime_roi_usd"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "name"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "p25_roi_usd"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "p75_roi_usd"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "parent"
+      req: false
+      type: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    {
+      name: "pct_never_breakeven"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "program"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "rank_by_worst_roi"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "slug"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "url"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "major"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/v1/majors.json"
+          parts: [
+            "api"
+            "v1"
+            "majors.json"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

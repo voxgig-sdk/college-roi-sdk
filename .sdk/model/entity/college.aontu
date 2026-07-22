@@ -1,0 +1,127 @@
+# Entity: college
+
+main: kit: entity: college: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "breakeven_age"
+      req: false
+      type: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    {
+      name: "city"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "control"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "freopp_program_coverage"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "median_earnings_10yr_usd"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "npv_30yr_nonresident_usd"
+      req: false
+      type: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    {
+      name: "npv_30yr_resident_usd"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "slug"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "state"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "state_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "total_cost_of_attendance_nonresident_usd"
+      req: false
+      type: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    {
+      name: "total_cost_of_attendance_usd"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "unitid"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "url"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "college"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/v1/colleges.json"
+          parts: [
+            "api"
+            "v1"
+            "colleges.json"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,90 @@
+{
+  "existing": {
+    "major": {
+      "MAJOR00": {
+        "ai_exposure": "sb4",
+        "cip_program_name": "sb5",
+        "completion_adjusted_roi_usd": "sb6",
+        "dropout_roi_usd": "sb7",
+        "graduate": "sb8",
+        "kind": "sb9",
+        "mean_lifetime_roi_usd": 186,
+        "median_breakeven_age": "sbb",
+        "median_lifetime_roi_usd": 188,
+        "name": "sbd",
+        "p25_roi_usd": 190,
+        "p75_roi_usd": 191,
+        "parent": "sc0",
+        "pct_never_breakeven": 193,
+        "program": "sc2",
+        "rank_by_worst_roi": "sc3",
+        "slug": "sc4",
+        "url": "sc5"
+      },
+      "MAJOR01": {
+        "ai_exposure": "s168",
+        "cip_program_name": "s169",
+        "completion_adjusted_roi_usd": "s16a",
+        "dropout_roi_usd": "s16b",
+        "graduate": "s16c",
+        "kind": "s16d",
+        "mean_lifetime_roi_usd": 366,
+        "median_breakeven_age": "s16f",
+        "median_lifetime_roi_usd": 368,
+        "name": "s171",
+        "p25_roi_usd": 370,
+        "p75_roi_usd": 371,
+        "parent": "s174",
+        "pct_never_breakeven": 373,
+        "program": "s176",
+        "rank_by_worst_roi": "s177",
+        "slug": "s178",
+        "url": "s179"
+      },
+      "MAJOR02": {
+        "ai_exposure": "s21c",
+        "cip_program_name": "s21d",
+        "completion_adjusted_roi_usd": "s21e",
+        "dropout_roi_usd": "s21f",
+        "graduate": "s220",
+        "kind": "s221",
+        "mean_lifetime_roi_usd": 546,
+        "median_breakeven_age": "s223",
+        "median_lifetime_roi_usd": 548,
+        "name": "s225",
+        "p25_roi_usd": 550,
+        "p75_roi_usd": 551,
+        "parent": "s228",
+        "pct_never_breakeven": 553,
+        "program": "s22a",
+        "rank_by_worst_roi": "s22b",
+        "slug": "s22c",
+        "url": "s22d"
+      }
+    }
+  },
+  "new": {
+    "major": {
+      "major_ref01": {
+        "ai_exposure": "s2d0",
+        "cip_program_name": "s2d1",
+        "completion_adjusted_roi_usd": "s2d2",
+        "dropout_roi_usd": "s2d3",
+        "graduate": "s2d4",
+        "kind": "s2d5",
+        "mean_lifetime_roi_usd": 726,
+        "median_breakeven_age": "s2d7",
+        "median_lifetime_roi_usd": 728,
+        "name": "s2d9",
+        "p25_roi_usd": 730,
+        "p75_roi_usd": 731,
+        "parent": "s2dc",
+        "pct_never_breakeven": 733,
+        "program": "s2de",
+        "rank_by_worst_roi": "s2df",
+        "slug": "s2e0",
+        "url": "s2e1"
+      }
+    }
+  }
+}

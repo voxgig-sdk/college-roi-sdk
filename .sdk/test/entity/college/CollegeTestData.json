@@ -1,0 +1,78 @@
+{
+  "existing": {
+    "college": {
+      "COLLEGE00": {
+        "breakeven_age": "s96",
+        "city": "s97",
+        "control": "s98",
+        "freopp_program_coverage": "s99",
+        "median_earnings_10yr_usd": "s9a",
+        "name": "s9b",
+        "npv_30yr_nonresident_usd": "s9c",
+        "npv_30yr_resident_usd": "s9d",
+        "slug": "s9e",
+        "state": "s9f",
+        "state_name": "sa0",
+        "total_cost_of_attendance_nonresident_usd": "sa1",
+        "total_cost_of_attendance_usd": "sa2",
+        "unitid": "sa3",
+        "url": "sa4"
+      },
+      "COLLEGE01": {
+        "breakeven_age": "s12c",
+        "city": "s12d",
+        "control": "s12e",
+        "freopp_program_coverage": "s12f",
+        "median_earnings_10yr_usd": "s130",
+        "name": "s131",
+        "npv_30yr_nonresident_usd": "s132",
+        "npv_30yr_resident_usd": "s133",
+        "slug": "s134",
+        "state": "s135",
+        "state_name": "s136",
+        "total_cost_of_attendance_nonresident_usd": "s137",
+        "total_cost_of_attendance_usd": "s138",
+        "unitid": "s139",
+        "url": "s13a"
+      },
+      "COLLEGE02": {
+        "breakeven_age": "s1c2",
+        "city": "s1c3",
+        "control": "s1c4",
+        "freopp_program_coverage": "s1c5",
+        "median_earnings_10yr_usd": "s1c6",
+        "name": "s1c7",
+        "npv_30yr_nonresident_usd": "s1c8",
+        "npv_30yr_resident_usd": "s1c9",
+        "slug": "s1ca",
+        "state": "s1cb",
+        "state_name": "s1cc",
+        "total_cost_of_attendance_nonresident_usd": "s1cd",
+        "total_cost_of_attendance_usd": "s1ce",
+        "unitid": "s1cf",
+        "url": "s1d0"
+      }
+    }
+  },
+  "new": {
+    "college": {
+      "college_ref01": {
+        "breakeven_age": "s258",
+        "city": "s259",
+        "control": "s25a",
+        "freopp_program_coverage": "s25b",
+        "median_earnings_10yr_usd": "s25c",
+        "name": "s25d",
+        "npv_30yr_nonresident_usd": "s25e",
+        "npv_30yr_resident_usd": "s25f",
+        "slug": "s260",
+        "state": "s261",
+        "state_name": "s262",
+        "total_cost_of_attendance_nonresident_usd": "s263",
+        "total_cost_of_attendance_usd": "s264",
+        "unitid": "s265",
+        "url": "s266"
+      }
+    }
+  }
+}

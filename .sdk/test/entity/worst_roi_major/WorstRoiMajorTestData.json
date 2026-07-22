@@ -1,0 +1,54 @@
+{
+  "existing": {
+    "worst_roi_major": {
+      "WORST_ROI_MAJOR00": {
+        "graduate": "s5a",
+        "mean_lifetime_roi_usd": 91,
+        "median_breakeven_age": "s5c",
+        "median_lifetime_roi_usd": 93,
+        "name": "s5e",
+        "pct_never_breakeven": 95,
+        "rank": "s60",
+        "slug": "s61",
+        "url": "s62"
+      },
+      "WORST_ROI_MAJOR01": {
+        "graduate": "sb4",
+        "mean_lifetime_roi_usd": 181,
+        "median_breakeven_age": "sb6",
+        "median_lifetime_roi_usd": 183,
+        "name": "sb8",
+        "pct_never_breakeven": 185,
+        "rank": "sba",
+        "slug": "sbb",
+        "url": "sbc"
+      },
+      "WORST_ROI_MAJOR02": {
+        "graduate": "s10e",
+        "mean_lifetime_roi_usd": 271,
+        "median_breakeven_age": "s110",
+        "median_lifetime_roi_usd": 273,
+        "name": "s112",
+        "pct_never_breakeven": 275,
+        "rank": "s114",
+        "slug": "s115",
+        "url": "s116"
+      }
+    }
+  },
+  "new": {
+    "worst_roi_major": {
+      "worst_roi_major_ref01": {
+        "graduate": "s168",
+        "mean_lifetime_roi_usd": 361,
+        "median_breakeven_age": "s16a",
+        "median_lifetime_roi_usd": 363,
+        "name": "s16c",
+        "pct_never_breakeven": 365,
+        "rank": "s16e",
+        "slug": "s16f",
+        "url": "s170"
+      }
+    }
+  }
+}

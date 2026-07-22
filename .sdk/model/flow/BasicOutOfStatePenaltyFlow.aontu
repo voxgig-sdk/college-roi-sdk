@@ -1,0 +1,22 @@
+# BasicOutOfStatePenaltyFlow
+
+main: kit: flow: BasicOutOfStatePenaltyFlow:
+{
+  entity: "out_of_state_penalty",
+  kind: "basic",
+  name: "BasicOutOfStatePenaltyFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "out_of_state_penalty_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOutOfStatePenaltyFlow"
+}

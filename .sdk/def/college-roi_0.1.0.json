@@ -1,0 +1,926 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "LE TEEN College ROI API",
+    "version": "1.0.0",
+    "summary": "Free, keyless, CORS-open JSON over the LE TEEN college-ROI data spine.",
+    "description": "Static, read-only JSON: 30-year NPV for U.S. colleges (positive-NPV envelope), lifetime ROI for every bachelor's major category and subfield, and the standing rankings. No auth, no rate limit beyond CDN sanity. Free to use with attribution — cite LE TEEN, le-teen.com (and FREOPP/IPEDS/BEA as the upstream sources). Dataset DOI: https://doi.org/10.5281/zenodo.21351602. Methodology: https://le-teen.com/methodology.",
+    "termsOfService": "https://le-teen.com/methodology",
+    "contact": {
+      "name": "LE TEEN",
+      "url": "https://le-teen.com/press",
+      "email": "press@le-teen.com"
+    },
+    "license": {
+      "name": "Creative Commons Attribution 4.0 International",
+      "identifier": "CC-BY-4.0"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://le-teen.com"
+    }
+  ],
+  "externalDocs": {
+    "description": "API documentation",
+    "url": "https://le-teen.com/api"
+  },
+  "paths": {
+    "/api/v1/index.json": {
+      "get": {
+        "operationId": "getApiRoot",
+        "summary": "API root — name, version, license, DOI, endpoint list.",
+        "responses": {
+          "200": {
+            "description": "The API root document.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/majors.json": {
+      "get": {
+        "operationId": "listMajors",
+        "summary": "All 19 major categories + 115 CIP subfields, full lifetime-ROI stat set.",
+        "responses": {
+          "200": {
+            "description": "Every major with statistics and page links.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "categories": {
+                      "type": "integer"
+                    },
+                    "subfields": {
+                      "type": "integer"
+                    },
+                    "notes": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "majors": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Major"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/majors/{slug}.json": {
+      "get": {
+        "operationId": "getMajor",
+        "summary": "One major category or subfield.",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "description": "Major slug, e.g. philosophy-and-religious-studies or registered-nursing.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The major with its meta block.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "meta": {
+                          "$ref": "#/components/schemas/Meta"
+                        }
+                      }
+                    },
+                    {
+                      "$ref": "#/components/schemas/Major"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown slug (static file does not exist)."
+          }
+        }
+      }
+    },
+    "/api/v1/colleges.json": {
+      "get": {
+        "operationId": "listColleges",
+        "summary": "The 500 gated four-year colleges with 30-year NPV, cost, earnings, break-even age.",
+        "responses": {
+          "200": {
+            "description": "Every gated college.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "notes": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "colleges": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/College"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/colleges/{slug}.json": {
+      "get": {
+        "operationId": "getCollege",
+        "summary": "One gated college.",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "description": "College slug, e.g. university-of-michigan-ann-arbor.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The college with its meta block.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "meta": {
+                          "$ref": "#/components/schemas/Meta"
+                        }
+                      }
+                    },
+                    {
+                      "$ref": "#/components/schemas/College"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown slug — the school is outside the gate or not covered."
+          }
+        }
+      }
+    },
+    "/api/v1/rankings/out-of-state-penalty.json": {
+      "get": {
+        "operationId": "getOutOfStatePenaltyRanking",
+        "summary": "Public four-years ranked by the out-of-state tuition penalty, worst-first.",
+        "responses": {
+          "200": {
+            "description": "The full ranking. Every row NPV-positive both ways.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "page_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "rankings": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "rank": {
+                            "type": "integer"
+                          },
+                          "institution": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "oos_penalty_30yr_npv_usd": {
+                            "type": "integer"
+                          },
+                          "npv_resident_usd": {
+                            "type": "integer"
+                          },
+                          "npv_nonresident_usd": {
+                            "type": "integer"
+                          },
+                          "tuition_in_state_usd": {
+                            "type": "integer"
+                          },
+                          "tuition_out_of_state_usd": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rankings/out-of-state-penalty/top-50.json": {
+      "get": {
+        "operationId": "getOutOfStatePenaltyTop50",
+        "summary": "The 50 worst out-of-state tuition penalties — slim slice of the full ranking.",
+        "responses": {
+          "200": {
+            "description": "Top 50, worst-first. Same rows and order as the full ranking.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "page_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "rankings": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "rank": {
+                            "type": "integer"
+                          },
+                          "institution": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "oos_penalty_30yr_npv_usd": {
+                            "type": "integer"
+                          },
+                          "npv_resident_usd": {
+                            "type": "integer"
+                          },
+                          "npv_nonresident_usd": {
+                            "type": "integer"
+                          },
+                          "tuition_in_state_usd": {
+                            "type": "integer"
+                          },
+                          "tuition_out_of_state_usd": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rankings/worst-roi-majors.json": {
+      "get": {
+        "operationId": "getWorstRoiMajorsRanking",
+        "summary": "The 19 major categories ranked by lifetime ROI, worst-first — slim slice.",
+        "responses": {
+          "200": {
+            "description": "All 19 categories with median/mean ROI, never-break-even share, break-even age. Per-major detail at /api/v1/majors/{slug}.json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "page_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "rankings": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "rank": {
+                            "type": "integer"
+                          },
+                          "slug": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "median_lifetime_roi_usd": {
+                            "type": "number"
+                          },
+                          "mean_lifetime_roi_usd": {
+                            "type": "number"
+                          },
+                          "pct_never_breakeven": {
+                            "type": "number"
+                          },
+                          "median_breakeven_age": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ]
+                          },
+                          "graduates": {
+                            "type": "integer"
+                          },
+                          "url": {
+                            "type": "string",
+                            "format": "uri"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rankings/best-value.json": {
+      "get": {
+        "operationId": "getBestValueRanking",
+        "summary": "Each state’s best-value colleges at resident pricing, top 15 per state.",
+        "responses": {
+          "200": {
+            "description": "All 50 states + DC. NPV-positive rows only.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "page_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "states": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "state": {
+                            "type": "string"
+                          },
+                          "state_name": {
+                            "type": "string"
+                          },
+                          "page_url": {
+                            "type": "string",
+                            "format": "uri"
+                          },
+                          "colleges": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "rank_in_state": {
+                                  "type": "integer"
+                                },
+                                "institution": {
+                                  "type": "string"
+                                },
+                                "city": {
+                                  "type": "string"
+                                },
+                                "control": {
+                                  "type": "string"
+                                },
+                                "npv_30yr_resident_usd": {
+                                  "type": "integer"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/rankings/best-value/{state}.json": {
+      "get": {
+        "operationId": "getBestValueByState",
+        "summary": "One state’s best-value colleges at resident pricing — slim per-state slice.",
+        "parameters": [
+          {
+            "name": "state",
+            "in": "path",
+            "required": true,
+            "description": "Lowercase USPS 2-letter state code (50 states + DC).",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "al",
+                "ak",
+                "az",
+                "ar",
+                "ca",
+                "co",
+                "ct",
+                "de",
+                "dc",
+                "fl",
+                "ga",
+                "hi",
+                "id",
+                "il",
+                "in",
+                "ia",
+                "ks",
+                "ky",
+                "la",
+                "me",
+                "md",
+                "ma",
+                "mi",
+                "mn",
+                "ms",
+                "mo",
+                "mt",
+                "ne",
+                "nv",
+                "nh",
+                "nj",
+                "nm",
+                "ny",
+                "nc",
+                "nd",
+                "oh",
+                "ok",
+                "or",
+                "pa",
+                "ri",
+                "sc",
+                "sd",
+                "tn",
+                "tx",
+                "ut",
+                "vt",
+                "va",
+                "wa",
+                "wv",
+                "wi",
+                "wy"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Top 15 for the state, NPV-positive rows only.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "meta": {
+                      "$ref": "#/components/schemas/Meta"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "page_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "state_name": {
+                      "type": "string"
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "colleges": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "rank_in_state": {
+                            "type": "integer"
+                          },
+                          "institution": {
+                            "type": "string"
+                          },
+                          "city": {
+                            "type": "string"
+                          },
+                          "control": {
+                            "type": "string"
+                          },
+                          "npv_30yr_resident_usd": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not a USPS state code."
+          }
+        }
+      }
+    },
+    "/api/v1/openapi.json": {
+      "get": {
+        "operationId": "getOpenApiSpec",
+        "summary": "This document.",
+        "responses": {
+          "200": {
+            "description": "The OpenAPI 3.1 spec.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Meta": {
+        "type": "object",
+        "description": "Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.",
+        "required": [
+          "source",
+          "url",
+          "license",
+          "doi",
+          "data_vintage",
+          "generated"
+        ],
+        "properties": {
+          "source": {
+            "type": "string",
+            "const": "LE TEEN"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "license": {
+            "type": "string",
+            "const": "CC-BY-4.0"
+          },
+          "doi": {
+            "type": "string",
+            "format": "uri"
+          },
+          "data_vintage": {
+            "type": "string"
+          },
+          "generated": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      },
+      "AiExposure": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "description": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for. NOT displacement. Category rows only; null for subfields and dropped categories.",
+        "properties": {
+          "score_0_to_1": {
+            "type": "number"
+          },
+          "band": {
+            "type": "string",
+            "enum": [
+              "High",
+              "Elevated",
+              "Lower"
+            ]
+          },
+          "acs_coverage": {
+            "type": "number"
+          },
+          "top_occupations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "soc": {
+                  "type": "string",
+                  "description": "SOC occupation code."
+                },
+                "title": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "number",
+                  "description": "AI applicability, 0–1."
+                },
+                "share": {
+                  "type": "number",
+                  "description": "Share of the field’s graduates working here, 0–1."
+                }
+              }
+            }
+          }
+        }
+      },
+      "Major": {
+        "type": "object",
+        "description": "One major category or CIP subfield with its full lifetime-ROI stat set (FREOPP 2021, cohort-weighted). Field averages may be negative — no institution is named.",
+        "required": [
+          "slug",
+          "kind",
+          "name",
+          "rank_by_worst_roi",
+          "url"
+        ],
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "category",
+              "subfield"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "cip_program_name": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "CIP program-family name — subfields only."
+          },
+          "parent": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "Parent category — subfields only.",
+            "properties": {
+              "slug": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "rank_by_worst_roi": {
+            "type": "integer",
+            "description": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields)."
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The human-readable page for this major."
+          },
+          "mean_lifetime_roi_usd": {
+            "type": "number"
+          },
+          "median_lifetime_roi_usd": {
+            "type": "number"
+          },
+          "p25_roi_usd": {
+            "type": "number"
+          },
+          "p75_roi_usd": {
+            "type": "number"
+          },
+          "pct_never_breakeven": {
+            "type": "number",
+            "description": "Share of graduates who never break even, percent."
+          },
+          "median_breakeven_age": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "completion_adjusted_roi_usd": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "dropout_roi_usd": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "graduates": {
+            "type": "integer"
+          },
+          "programs": {
+            "type": "integer"
+          },
+          "ai_exposure": {
+            "$ref": "#/components/schemas/AiExposure"
+          }
+        }
+      },
+      "College": {
+        "type": "object",
+        "description": "One gated four-year institution (IPEDS 2023 · FREOPP 2021 · BEA 2023). Gates: real FREOPP earnings, >= 3 reported programs, hand-verified exclusions, positive 30-year NPV at resident pricing — no school outside the gate appears, and no named school carries a negative number.",
+        "required": [
+          "slug",
+          "unitid",
+          "name",
+          "city",
+          "state",
+          "control",
+          "npv_30yr_resident_usd",
+          "url"
+        ],
+        "properties": {
+          "slug": {
+            "type": "string"
+          },
+          "unitid": {
+            "type": "integer",
+            "description": "IPEDS UnitID — the universal join key."
+          },
+          "name": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "state": {
+            "type": "string",
+            "description": "USPS 2-letter state code."
+          },
+          "state_name": {
+            "type": "string"
+          },
+          "control": {
+            "type": "string",
+            "enum": [
+              "public",
+              "private-nonprofit",
+              "private-forprofit"
+            ]
+          },
+          "npv_30yr_resident_usd": {
+            "type": "integer",
+            "description": "30-year projected net value at resident pricing. Positive by gate."
+          },
+          "npv_30yr_nonresident_usd": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design."
+          },
+          "total_cost_of_attendance_usd": {
+            "type": "integer"
+          },
+          "total_cost_of_attendance_nonresident_usd": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "median_earnings_10yr_usd": {
+            "type": "integer",
+            "description": "FREOPP cohort-weighted earnings ten years after entry."
+          },
+          "breakeven_age": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "freopp_program_coverage": {
+            "type": "integer",
+            "description": "FREOPP-reported programs rolled into the earnings figure."
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The human-readable page for this school."
+          }
+        }
+      }
+    }
+  }
+}
