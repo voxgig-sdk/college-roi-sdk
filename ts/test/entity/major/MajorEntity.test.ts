@@ -26,8 +26,8 @@ import {
 describe('MajorEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COLLEGEROI_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COLLEGEROI_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COLLEGE_ROI_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COLLEGE_ROI_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = CollegeRoiSDK.test()
@@ -63,7 +63,7 @@ describe('MajorEntity', async () => {
     const major_ref01_ent = client.Major()
     const major_ref01_match: any = {}
 
-    const major_ref01_list = await major_ref01_ent.list(major_ref01_match)
+    const major_ref01_list = (await major_ref01_ent.list(major_ref01_match)).map((e: any) => e.data())
 
 
   })

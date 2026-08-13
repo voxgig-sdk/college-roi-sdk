@@ -37,7 +37,7 @@ class MajorEntity extends CollegeRoiEntityBase<Major> {
 
 
 
-  async list(this: any, reqmatch?: MajorListMatch, ctrl?: Control): Promise<Major[]> {
+  async list(this: any, reqmatch?: MajorListMatch, ctrl?: Control): Promise<MajorEntity[]> {
 
     const utility = this._utility
 

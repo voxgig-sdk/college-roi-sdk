@@ -15,7 +15,7 @@ declare(strict_types=1);
 /** BestValue entity data model. */
 class BestValue
 {
-    public ?array $college = null;
+    public ?array $colleges = null;
     public ?string $page_url = null;
     public ?string $state = null;
     public ?string $state_name = null;
@@ -24,7 +24,7 @@ class BestValue
 /** Request payload for BestValue#list. */
 class BestValueListMatch
 {
-    public ?array $college = null;
+    public ?array $colleges = null;
     public ?string $page_url = null;
     public ?string $state = null;
     public ?string $state_name = null;
@@ -87,7 +87,7 @@ class Major
     public mixed $cip_program_name = null;
     public mixed $completion_adjusted_roi_usd = null;
     public mixed $dropout_roi_usd = null;
-    public ?int $graduate = null;
+    public ?int $graduates = null;
     public string $kind;
     public ?float $mean_lifetime_roi_usd = null;
     public mixed $median_breakeven_age = null;
@@ -97,7 +97,7 @@ class Major
     public ?float $p75_roi_usd = null;
     public mixed $parent = null;
     public ?float $pct_never_breakeven = null;
-    public ?int $program = null;
+    public ?int $programs = null;
     public int $rank_by_worst_roi;
     public string $slug;
     public string $url;
@@ -110,7 +110,7 @@ class MajorListMatch
     public mixed $cip_program_name = null;
     public mixed $completion_adjusted_roi_usd = null;
     public mixed $dropout_roi_usd = null;
-    public ?int $graduate = null;
+    public ?int $graduates = null;
     public ?string $kind = null;
     public ?float $mean_lifetime_roi_usd = null;
     public mixed $median_breakeven_age = null;
@@ -120,7 +120,7 @@ class MajorListMatch
     public ?float $p75_roi_usd = null;
     public mixed $parent = null;
     public ?float $pct_never_breakeven = null;
-    public ?int $program = null;
+    public ?int $programs = null;
     public ?int $rank_by_worst_roi = null;
     public ?string $slug = null;
     public ?string $url = null;
@@ -173,7 +173,7 @@ class Slug
     public string $control;
     public mixed $dropout_roi_usd = null;
     public ?int $freopp_program_coverage = null;
-    public ?int $graduate = null;
+    public ?int $graduates = null;
     public string $kind;
     public ?float $mean_lifetime_roi_usd = null;
     public mixed $median_breakeven_age = null;
@@ -187,7 +187,7 @@ class Slug
     public ?float $p75_roi_usd = null;
     public mixed $parent = null;
     public ?float $pct_never_breakeven = null;
-    public ?int $program = null;
+    public ?int $programs = null;
     public int $rank_by_worst_roi;
     public string $slug;
     public string $state;
@@ -249,7 +249,7 @@ class Top50ListMatch
 /** WorstRoiMajor entity data model. */
 class WorstRoiMajor
 {
-    public ?int $graduate = null;
+    public ?int $graduates = null;
     public ?float $mean_lifetime_roi_usd = null;
     public mixed $median_breakeven_age = null;
     public ?float $median_lifetime_roi_usd = null;
@@ -263,7 +263,7 @@ class WorstRoiMajor
 /** Request payload for WorstRoiMajor#list. */
 class WorstRoiMajorListMatch
 {
-    public ?int $graduate = null;
+    public ?int $graduates = null;
     public ?float $mean_lifetime_roi_usd = null;
     public mixed $median_breakeven_age = null;
     public ?float $median_lifetime_roi_usd = null;

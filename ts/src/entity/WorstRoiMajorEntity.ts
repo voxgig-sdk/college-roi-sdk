@@ -37,7 +37,7 @@ class WorstRoiMajorEntity extends CollegeRoiEntityBase<WorstRoiMajor> {
 
 
 
-  async list(this: any, reqmatch?: WorstRoiMajorListMatch, ctrl?: Control): Promise<WorstRoiMajor[]> {
+  async list(this: any, reqmatch?: WorstRoiMajorListMatch, ctrl?: Control): Promise<WorstRoiMajorEntity[]> {
 
     const utility = this._utility
 

@@ -37,7 +37,7 @@ class CollegeEntity extends CollegeRoiEntityBase<College> {
 
 
 
-  async list(this: any, reqmatch?: CollegeListMatch, ctrl?: Control): Promise<College[]> {
+  async list(this: any, reqmatch?: CollegeListMatch, ctrl?: Control): Promise<CollegeEntity[]> {
 
     const utility = this._utility
 

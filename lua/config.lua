@@ -35,7 +35,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "college",
+            ["name"] = "colleges",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
@@ -71,6 +71,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/rankings/best-value.json",
                 ["parts"] = {
@@ -229,6 +230,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/colleges.json",
                 ["parts"] = {
@@ -262,6 +264,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/index.json",
                 ["parts"] = {
@@ -340,7 +343,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "graduate",
+            ["name"] = "graduates",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 4,
@@ -422,7 +425,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "program",
+            ["name"] = "programs",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 14,
@@ -458,6 +461,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/majors.json",
                 ["parts"] = {
@@ -491,6 +495,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/openapi.json",
                 ["parts"] = {
@@ -581,6 +586,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/rankings/out-of-state-penalty.json",
                 ["parts"] = {
@@ -694,7 +700,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "graduate",
+            ["name"] = "graduates",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 8,
@@ -810,7 +816,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "program",
+            ["name"] = "programs",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 22,
@@ -899,6 +905,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/colleges/{slug}.json",
                 ["parts"] = {
@@ -933,6 +940,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/majors/{slug}.json",
                 ["parts"] = {
@@ -1026,6 +1034,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/rankings/best-value/{state}.json",
                 ["parts"] = {
@@ -1126,6 +1135,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/rankings/out-of-state-penalty/top-50.json",
                 ["parts"] = {
@@ -1154,7 +1164,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "graduate",
+            ["name"] = "graduates",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
@@ -1231,6 +1241,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/rankings/worst-roi-majors.json",
                 ["parts"] = {

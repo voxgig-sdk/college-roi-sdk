@@ -50,7 +50,7 @@ main: kit: entity: major: {
       ]
     }
     {
-      name: "graduate"
+      name: "graduates"
       req: false
       type: "`$INTEGER`"
     }
@@ -112,7 +112,7 @@ main: kit: entity: major: {
       type: "`$NUMBER`"
     }
     {
-      name: "program"
+      name: "programs"
       req: false
       type: "`$INTEGER`"
     }

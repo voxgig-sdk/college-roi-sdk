@@ -26,8 +26,8 @@ import {
 describe('OutOfStatePenaltyEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COLLEGEROI_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COLLEGEROI_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COLLEGE_ROI_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COLLEGE_ROI_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = CollegeRoiSDK.test()
@@ -63,7 +63,7 @@ describe('OutOfStatePenaltyEntity', async () => {
     const out_of_state_penalty_ref01_ent = client.OutOfStatePenalty()
     const out_of_state_penalty_ref01_match: any = {}
 
-    const out_of_state_penalty_ref01_list = await out_of_state_penalty_ref01_ent.list(out_of_state_penalty_ref01_match)
+    const out_of_state_penalty_ref01_list = (await out_of_state_penalty_ref01_ent.list(out_of_state_penalty_ref01_match)).map((e: any) => e.data())
 
 
   })

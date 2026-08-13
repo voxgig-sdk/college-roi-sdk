@@ -26,8 +26,8 @@ import {
 describe('WorstRoiMajorEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COLLEGEROI_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COLLEGEROI_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COLLEGE_ROI_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COLLEGE_ROI_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = CollegeRoiSDK.test()
@@ -63,7 +63,7 @@ describe('WorstRoiMajorEntity', async () => {
     const worst_roi_major_ref01_ent = client.WorstRoiMajor()
     const worst_roi_major_ref01_match: any = {}
 
-    const worst_roi_major_ref01_list = await worst_roi_major_ref01_ent.list(worst_roi_major_ref01_match)
+    const worst_roi_major_ref01_list = (await worst_roi_major_ref01_ent.list(worst_roi_major_ref01_match)).map((e: any) => e.data())
 
 
   })

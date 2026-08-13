@@ -35,7 +35,9 @@ const client = new CollegeRoiSDK()
 
 ### 2. List bestvalue records
 
-`list()` resolves to an array of BestValue objects — iterate it directly:
+`list()` resolves to an array of BestValue ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const bestvalues = await client.BestValue().list()
@@ -68,8 +70,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const bestvalues = await client.BestValue().list()
-  console.log(bestvalues)
+  const top50s = await client.Top50().list()
+  console.log(top50s)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -135,9 +137,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = CollegeRoiSDK.test()
 
-const bestvalue = await client.BestValue().list()
-// bestvalue is a bare entity populated with mock response data
-console.log(bestvalue)
+const top50 = await client.Top50().list()
+// top50 is the entity, populated with mock response data
+// — call top50.data() for the record itself
+console.log(top50)
 ```
 
 You can also use the instance method:
@@ -152,7 +155,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.BestValue()
+const entity = client.Top50()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -311,7 +314,7 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `college` |  |
+| `colleges` |  |
 | `page_url` |  |
 | `state` |  |
 | `state_name` |  |
@@ -361,7 +364,7 @@ API path: `/api/v1/index.json`
 | `cip_program_name` |  |
 | `completion_adjusted_roi_usd` |  |
 | `dropout_roi_usd` |  |
-| `graduate` |  |
+| `graduates` |  |
 | `kind` |  |
 | `mean_lifetime_roi_usd` |  |
 | `median_breakeven_age` |  |
@@ -371,7 +374,7 @@ API path: `/api/v1/index.json`
 | `p75_roi_usd` |  |
 | `parent` |  |
 | `pct_never_breakeven` |  |
-| `program` |  |
+| `programs` |  |
 | `rank_by_worst_roi` |  |
 | `slug` |  |
 | `url` |  |
@@ -418,7 +421,7 @@ API path: `/api/v1/rankings/out-of-state-penalty.json`
 | `control` |  |
 | `dropout_roi_usd` |  |
 | `freopp_program_coverage` |  |
-| `graduate` |  |
+| `graduates` |  |
 | `kind` |  |
 | `mean_lifetime_roi_usd` |  |
 | `median_breakeven_age` |  |
@@ -432,7 +435,7 @@ API path: `/api/v1/rankings/out-of-state-penalty.json`
 | `p75_roi_usd` |  |
 | `parent` |  |
 | `pct_never_breakeven` |  |
-| `program` |  |
+| `programs` |  |
 | `rank_by_worst_roi` |  |
 | `slug` |  |
 | `state` |  |
@@ -481,7 +484,7 @@ API path: `/api/v1/rankings/out-of-state-penalty/top-50.json`
 
 | Field | Description |
 | --- | --- |
-| `graduate` |  |
+| `graduates` |  |
 | `mean_lifetime_roi_usd` |  |
 | `median_breakeven_age` |  |
 | `median_lifetime_roi_usd` |  |
@@ -514,7 +517,7 @@ Create an instance: `const best_value = client.BestValue()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `college` | `any[]` |  |
+| `colleges` | `any[]` |  |
 | `page_url` | `string` |  |
 | `state` | `string` |  |
 | `state_name` | `string` |  |
@@ -540,18 +543,18 @@ Create an instance: `const college = client.College()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `breakeven_age` | `any` |  |
+| `breakeven_age` | `number | null` |  |
 | `city` | `string` |  |
 | `control` | `string` |  |
 | `freopp_program_coverage` | `number` |  |
 | `median_earnings_10yr_usd` | `number` |  |
 | `name` | `string` |  |
-| `npv_30yr_nonresident_usd` | `any` |  |
+| `npv_30yr_nonresident_usd` | `number | null` |  |
 | `npv_30yr_resident_usd` | `number` |  |
 | `slug` | `string` |  |
 | `state` | `string` |  |
 | `state_name` | `string` |  |
-| `total_cost_of_attendance_nonresident_usd` | `any` |  |
+| `total_cost_of_attendance_nonresident_usd` | `number | null` |  |
 | `total_cost_of_attendance_usd` | `number` |  |
 | `unitid` | `number` |  |
 | `url` | `string` |  |
@@ -594,21 +597,21 @@ Create an instance: `const major = client.Major()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ai_exposure` | `any` |  |
-| `cip_program_name` | `any` |  |
-| `completion_adjusted_roi_usd` | `any` |  |
-| `dropout_roi_usd` | `any` |  |
-| `graduate` | `number` |  |
+| `ai_exposure` | `Record<string, any> | null` |  |
+| `cip_program_name` | `string | null` |  |
+| `completion_adjusted_roi_usd` | `number | null` |  |
+| `dropout_roi_usd` | `number | null` |  |
+| `graduates` | `number` |  |
 | `kind` | `string` |  |
 | `mean_lifetime_roi_usd` | `number` |  |
-| `median_breakeven_age` | `any` |  |
+| `median_breakeven_age` | `number | null` |  |
 | `median_lifetime_roi_usd` | `number` |  |
 | `name` | `string` |  |
 | `p25_roi_usd` | `number` |  |
 | `p75_roi_usd` | `number` |  |
-| `parent` | `any` |  |
+| `parent` | `Record<string, any> | null` |  |
 | `pct_never_breakeven` | `number` |  |
-| `program` | `number` |  |
+| `programs` | `number` |  |
 | `rank_by_worst_roi` | `number` |  |
 | `slug` | `string` |  |
 | `url` | `string` |  |
@@ -681,34 +684,34 @@ Create an instance: `const slug = client.Slug()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ai_exposure` | `any` |  |
-| `breakeven_age` | `any` |  |
-| `cip_program_name` | `any` |  |
+| `ai_exposure` | `Record<string, any> | null` |  |
+| `breakeven_age` | `number | null` |  |
+| `cip_program_name` | `string | null` |  |
 | `city` | `string` |  |
-| `completion_adjusted_roi_usd` | `any` |  |
+| `completion_adjusted_roi_usd` | `number | null` |  |
 | `control` | `string` |  |
-| `dropout_roi_usd` | `any` |  |
+| `dropout_roi_usd` | `number | null` |  |
 | `freopp_program_coverage` | `number` |  |
-| `graduate` | `number` |  |
+| `graduates` | `number` |  |
 | `kind` | `string` |  |
 | `mean_lifetime_roi_usd` | `number` |  |
-| `median_breakeven_age` | `any` |  |
+| `median_breakeven_age` | `number | null` |  |
 | `median_earnings_10yr_usd` | `number` |  |
 | `median_lifetime_roi_usd` | `number` |  |
 | `meta` | `Record<string, any>` |  |
 | `name` | `string` |  |
-| `npv_30yr_nonresident_usd` | `any` |  |
+| `npv_30yr_nonresident_usd` | `number | null` |  |
 | `npv_30yr_resident_usd` | `number` |  |
 | `p25_roi_usd` | `number` |  |
 | `p75_roi_usd` | `number` |  |
-| `parent` | `any` |  |
+| `parent` | `Record<string, any> | null` |  |
 | `pct_never_breakeven` | `number` |  |
-| `program` | `number` |  |
+| `programs` | `number` |  |
 | `rank_by_worst_roi` | `number` |  |
 | `slug` | `string` |  |
 | `state` | `string` |  |
 | `state_name` | `string` |  |
-| `total_cost_of_attendance_nonresident_usd` | `any` |  |
+| `total_cost_of_attendance_nonresident_usd` | `number | null` |  |
 | `total_cost_of_attendance_usd` | `number` |  |
 | `unitid` | `number` |  |
 | `url` | `string` |  |
@@ -743,7 +746,7 @@ Create an instance: `const state = client.State()`
 #### Example: List
 
 ```ts
-const states = await client.State().list()
+const states = await client.State().list({ state: "example" })
 ```
 
 
@@ -791,9 +794,9 @@ Create an instance: `const worst_roi_major = client.WorstRoiMajor()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `graduate` | `number` |  |
+| `graduates` | `number` |  |
 | `mean_lifetime_roi_usd` | `number` |  |
-| `median_breakeven_age` | `any` |  |
+| `median_breakeven_age` | `number | null` |  |
 | `median_lifetime_roi_usd` | `number` |  |
 | `name` | `string` |  |
 | `pct_never_breakeven` | `number` |  |
@@ -877,11 +880,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const bestvalue = client.BestValue()
-await bestvalue.list()
+const top50 = client.Top50()
+await top50.list()
 
-// bestvalue.data() now returns the bestvalue data from the last `list`
-// bestvalue.match() returns the last match criteria
+// top50.data() now returns the top50 data from the last `list`
+// top50.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

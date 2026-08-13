@@ -23,8 +23,8 @@ module CollegeRoiTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("COLLEGEROI_TEST_LIVE")
-    override = getenv("COLLEGEROI_TEST_OVERRIDE")
+    live = getenv("COLLEGE_ROI_TEST_LIVE")
+    override = getenv("COLLEGE_ROI_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module CollegeRoiTestRunner
       end
     end
 
-    explain = getenv("COLLEGEROI_TEST_EXPLAIN")
-    m["COLLEGEROI_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("COLLEGE_ROI_TEST_EXPLAIN")
+    m["COLLEGE_ROI_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from collegeroi_sdk.utility.voxgig_struct import voxgig_struct as vs
 from collegeroi_sdk import CollegeRoiSDK
-from core import helpers
+from collegeroi_sdk.core import helpers
 from test import runner
 
 
@@ -58,11 +58,11 @@ def _worst_roi_major_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "COLLEGEROI_TEST_WORST_ROI_MAJOR_ENTID": {},
-        "COLLEGEROI_TEST_LIVE": "FALSE",
+        "COLLEGE_ROI_TEST_WORST_ROI_MAJOR_ENTID": {},
+        "COLLEGE_ROI_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("COLLEGEROI_TEST_LIVE") == "TRUE"
+    live = env.get("COLLEGE_ROI_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

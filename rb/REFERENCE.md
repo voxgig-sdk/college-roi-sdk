@@ -129,7 +129,7 @@ best_value = client.BestValue
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `college` | `Array` | No |  |
+| `colleges` | `Array` | No |  |
 | `page_url` | `String` | No |  |
 | `state` | `String` | No |  |
 | `state_name` | `String` | No |  |
@@ -300,7 +300,7 @@ major = client.Major
 | `cip_program_name` | `Object` | No |  |
 | `completion_adjusted_roi_usd` | `Object` | No |  |
 | `dropout_roi_usd` | `Object` | No |  |
-| `graduate` | `Integer` | No |  |
+| `graduates` | `Integer` | No |  |
 | `kind` | `String` | Yes |  |
 | `mean_lifetime_roi_usd` | `Float` | No |  |
 | `median_breakeven_age` | `Object` | No |  |
@@ -310,7 +310,7 @@ major = client.Major
 | `p75_roi_usd` | `Float` | No |  |
 | `parent` | `Object` | No |  |
 | `pct_never_breakeven` | `Float` | No |  |
-| `program` | `Integer` | No |  |
+| `programs` | `Integer` | No |  |
 | `rank_by_worst_roi` | `Integer` | Yes |  |
 | `slug` | `String` | Yes |  |
 | `url` | `String` | Yes |  |
@@ -478,7 +478,7 @@ slug = client.Slug
 | `control` | `String` | Yes |  |
 | `dropout_roi_usd` | `Object` | No |  |
 | `freopp_program_coverage` | `Integer` | No |  |
-| `graduate` | `Integer` | No |  |
+| `graduates` | `Integer` | No |  |
 | `kind` | `String` | Yes |  |
 | `mean_lifetime_roi_usd` | `Float` | No |  |
 | `median_breakeven_age` | `Object` | No |  |
@@ -492,7 +492,7 @@ slug = client.Slug
 | `p75_roi_usd` | `Float` | No |  |
 | `parent` | `Object` | No |  |
 | `pct_never_breakeven` | `Float` | No |  |
-| `program` | `Integer` | No |  |
+| `programs` | `Integer` | No |  |
 | `rank_by_worst_roi` | `Integer` | Yes |  |
 | `slug` | `String` | Yes |  |
 | `state` | `String` | Yes |  |
@@ -667,7 +667,7 @@ worst_roi_major = client.WorstRoiMajor
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `graduate` | `Integer` | No |  |
+| `graduates` | `Integer` | No |  |
 | `mean_lifetime_roi_usd` | `Float` | No |  |
 | `median_breakeven_age` | `Object` | No |  |
 | `median_lifetime_roi_usd` | `Float` | No |  |

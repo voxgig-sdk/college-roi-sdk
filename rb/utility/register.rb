@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ CollegeRoiUtility.registrar = ->(u) {
   u.prepare_params = CollegeRoiUtilities::PrepareParams
   u.prepare_path = CollegeRoiUtilities::PreparePath
   u.prepare_query = CollegeRoiUtilities::PrepareQuery
+  u.graphql_body = CollegeRoiUtilities::GraphqlBody
+  u.graphql_errors = CollegeRoiUtilities::GraphqlErrors
   u.result_basic = CollegeRoiUtilities::ResultBasic
   u.result_body = CollegeRoiUtilities::ResultBody
   u.result_headers = CollegeRoiUtilities::ResultHeaders

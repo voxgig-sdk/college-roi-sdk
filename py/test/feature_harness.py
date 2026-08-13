@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import CollegeRoiControl
-from core.error import CollegeRoiError
-from core.result import CollegeRoiResult
-from core.spec import CollegeRoiSpec
+from collegeroi_sdk.config import make_config
+from collegeroi_sdk.features import _make_feature
+from collegeroi_sdk.core.control import CollegeRoiControl
+from collegeroi_sdk.core.error import CollegeRoiError
+from collegeroi_sdk.core.result import CollegeRoiResult
+from collegeroi_sdk.core.spec import CollegeRoiSpec
 
 
 # True when this SDK was generated with the named feature.

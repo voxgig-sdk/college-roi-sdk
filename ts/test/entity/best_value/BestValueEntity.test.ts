@@ -26,8 +26,8 @@ import {
 describe('BestValueEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COLLEGEROI_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COLLEGEROI_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COLLEGE_ROI_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COLLEGE_ROI_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = CollegeRoiSDK.test()
@@ -63,7 +63,7 @@ describe('BestValueEntity', async () => {
     const best_value_ref01_ent = client.BestValue()
     const best_value_ref01_match: any = {}
 
-    const best_value_ref01_list = await best_value_ref01_ent.list(best_value_ref01_match)
+    const best_value_ref01_list = (await best_value_ref01_ent.list(best_value_ref01_match)).map((e: any) => e.data())
 
 
   })

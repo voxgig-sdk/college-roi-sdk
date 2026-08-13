@@ -6,50 +6,50 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface BestValue {
-  college?: any[]
+  colleges?: any[]
   page_url?: string
   state?: string
   state_name?: string
 }
 
 export interface BestValueListMatch {
-  college?: any[]
+  colleges?: any[]
   page_url?: string
   state?: string
   state_name?: string
 }
 
 export interface College {
-  breakeven_age?: any
+  breakeven_age?: number | null
   city: string
   control: string
   freopp_program_coverage?: number
   median_earnings_10yr_usd?: number
   name: string
-  npv_30yr_nonresident_usd?: any
+  npv_30yr_nonresident_usd?: number | null
   npv_30yr_resident_usd: number
   slug: string
   state: string
   state_name?: string
-  total_cost_of_attendance_nonresident_usd?: any
+  total_cost_of_attendance_nonresident_usd?: number | null
   total_cost_of_attendance_usd?: number
   unitid: number
   url: string
 }
 
 export interface CollegeListMatch {
-  breakeven_age?: any
+  breakeven_age?: number | null
   city?: string
   control?: string
   freopp_program_coverage?: number
   median_earnings_10yr_usd?: number
   name?: string
-  npv_30yr_nonresident_usd?: any
+  npv_30yr_nonresident_usd?: number | null
   npv_30yr_resident_usd?: number
   slug?: string
   state?: string
   state_name?: string
-  total_cost_of_attendance_nonresident_usd?: any
+  total_cost_of_attendance_nonresident_usd?: number | null
   total_cost_of_attendance_usd?: number
   unitid?: number
   url?: string
@@ -62,42 +62,42 @@ export interface IndexLoadMatch {
 }
 
 export interface Major {
-  ai_exposure?: any
-  cip_program_name?: any
-  completion_adjusted_roi_usd?: any
-  dropout_roi_usd?: any
-  graduate?: number
+  ai_exposure?: Record<string, any> | null
+  cip_program_name?: string | null
+  completion_adjusted_roi_usd?: number | null
+  dropout_roi_usd?: number | null
+  graduates?: number
   kind: string
   mean_lifetime_roi_usd?: number
-  median_breakeven_age?: any
+  median_breakeven_age?: number | null
   median_lifetime_roi_usd?: number
   name: string
   p25_roi_usd?: number
   p75_roi_usd?: number
-  parent?: any
+  parent?: Record<string, any> | null
   pct_never_breakeven?: number
-  program?: number
+  programs?: number
   rank_by_worst_roi: number
   slug: string
   url: string
 }
 
 export interface MajorListMatch {
-  ai_exposure?: any
-  cip_program_name?: any
-  completion_adjusted_roi_usd?: any
-  dropout_roi_usd?: any
-  graduate?: number
+  ai_exposure?: Record<string, any> | null
+  cip_program_name?: string | null
+  completion_adjusted_roi_usd?: number | null
+  dropout_roi_usd?: number | null
+  graduates?: number
   kind?: string
   mean_lifetime_roi_usd?: number
-  median_breakeven_age?: any
+  median_breakeven_age?: number | null
   median_lifetime_roi_usd?: number
   name?: string
   p25_roi_usd?: number
   p75_roi_usd?: number
-  parent?: any
+  parent?: Record<string, any> | null
   pct_never_breakeven?: number
-  program?: number
+  programs?: number
   rank_by_worst_roi?: number
   slug?: string
   url?: string
@@ -132,34 +132,34 @@ export interface OutOfStatePenaltyListMatch {
 }
 
 export interface Slug {
-  ai_exposure?: any
-  breakeven_age?: any
-  cip_program_name?: any
+  ai_exposure?: Record<string, any> | null
+  breakeven_age?: number | null
+  cip_program_name?: string | null
   city: string
-  completion_adjusted_roi_usd?: any
+  completion_adjusted_roi_usd?: number | null
   control: string
-  dropout_roi_usd?: any
+  dropout_roi_usd?: number | null
   freopp_program_coverage?: number
-  graduate?: number
+  graduates?: number
   kind: string
   mean_lifetime_roi_usd?: number
-  median_breakeven_age?: any
+  median_breakeven_age?: number | null
   median_earnings_10yr_usd?: number
   median_lifetime_roi_usd?: number
   meta: Record<string, any>
   name: string
-  npv_30yr_nonresident_usd?: any
+  npv_30yr_nonresident_usd?: number | null
   npv_30yr_resident_usd: number
   p25_roi_usd?: number
   p75_roi_usd?: number
-  parent?: any
+  parent?: Record<string, any> | null
   pct_never_breakeven?: number
-  program?: number
+  programs?: number
   rank_by_worst_roi: number
   slug: string
   state: string
   state_name?: string
-  total_cost_of_attendance_nonresident_usd?: any
+  total_cost_of_attendance_nonresident_usd?: number | null
   total_cost_of_attendance_usd?: number
   unitid: number
   url: string
@@ -204,9 +204,9 @@ export interface Top50ListMatch {
 }
 
 export interface WorstRoiMajor {
-  graduate?: number
+  graduates?: number
   mean_lifetime_roi_usd?: number
-  median_breakeven_age?: any
+  median_breakeven_age?: number | null
   median_lifetime_roi_usd?: number
   name?: string
   pct_never_breakeven?: number
@@ -216,9 +216,9 @@ export interface WorstRoiMajor {
 }
 
 export interface WorstRoiMajorListMatch {
-  graduate?: number
+  graduates?: number
   mean_lifetime_roi_usd?: number
-  median_breakeven_age?: any
+  median_breakeven_age?: number | null
   median_lifetime_roi_usd?: number
   name?: string
   pct_never_breakeven?: number

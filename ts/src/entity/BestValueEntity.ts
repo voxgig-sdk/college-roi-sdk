@@ -37,7 +37,7 @@ class BestValueEntity extends CollegeRoiEntityBase<BestValue> {
 
 
 
-  async list(this: any, reqmatch?: BestValueListMatch, ctrl?: Control): Promise<BestValue[]> {
+  async list(this: any, reqmatch?: BestValueListMatch, ctrl?: Control): Promise<BestValueEntity[]> {
 
     const utility = this._utility
 

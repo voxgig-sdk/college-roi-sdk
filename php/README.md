@@ -38,7 +38,7 @@ try {
     // list() returns an array of BestValue records — iterate directly.
     $bestvalues = $client->BestValue()->list();
     foreach ($bestvalues as $item) {
-        echo $item["college"] . "\n";
+        echo $item["colleges"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -51,7 +51,7 @@ Slug is nested under slug, so provide the `slug`.
 
 ```php
 try {
-    // load() returns the bare Slug record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Slug record (throws on error).
     $slug = $client->Slug()->load(["slug" => "example_slug"]);
     print_r($slug);
 } catch (\Throwable $err) {
@@ -67,7 +67,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $bestvalues = $client->BestValue()->list();
+    $top50s = $client->Top50()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -139,9 +139,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = CollegeRoiSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$bestvalue = $client->BestValue()->list();
-print_r($bestvalue);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$top50 = $client->Top50()->list();
+print_r($top50);
 ```
 
 ### Use a custom fetch function
@@ -248,7 +249,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -270,7 +271,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `college` |  |
+| `colleges` |  |
 | `page_url` |  |
 | `state` |  |
 | `state_name` |  |
@@ -320,7 +321,7 @@ API path: `/api/v1/index.json`
 | `cip_program_name` |  |
 | `completion_adjusted_roi_usd` |  |
 | `dropout_roi_usd` |  |
-| `graduate` |  |
+| `graduates` |  |
 | `kind` |  |
 | `mean_lifetime_roi_usd` |  |
 | `median_breakeven_age` |  |
@@ -330,7 +331,7 @@ API path: `/api/v1/index.json`
 | `p75_roi_usd` |  |
 | `parent` |  |
 | `pct_never_breakeven` |  |
-| `program` |  |
+| `programs` |  |
 | `rank_by_worst_roi` |  |
 | `slug` |  |
 | `url` |  |
@@ -377,7 +378,7 @@ API path: `/api/v1/rankings/out-of-state-penalty.json`
 | `control` |  |
 | `dropout_roi_usd` |  |
 | `freopp_program_coverage` |  |
-| `graduate` |  |
+| `graduates` |  |
 | `kind` |  |
 | `mean_lifetime_roi_usd` |  |
 | `median_breakeven_age` |  |
@@ -391,7 +392,7 @@ API path: `/api/v1/rankings/out-of-state-penalty.json`
 | `p75_roi_usd` |  |
 | `parent` |  |
 | `pct_never_breakeven` |  |
-| `program` |  |
+| `programs` |  |
 | `rank_by_worst_roi` |  |
 | `slug` |  |
 | `state` |  |
@@ -440,7 +441,7 @@ API path: `/api/v1/rankings/out-of-state-penalty/top-50.json`
 
 | Field | Description |
 | --- | --- |
-| `graduate` |  |
+| `graduates` |  |
 | `mean_lifetime_roi_usd` |  |
 | `median_breakeven_age` |  |
 | `median_lifetime_roi_usd` |  |
@@ -473,7 +474,7 @@ Create an instance: `$best_value = $client->BestValue();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `college` | `array` |  |
+| `colleges` | `array` |  |
 | `page_url` | `string` |  |
 | `state` | `string` |  |
 | `state_name` | `string` |  |
@@ -537,7 +538,7 @@ Create an instance: `$index = $client->Index();`
 #### Example: Load
 
 ```php
-// load() returns the bare Index record (throws on error).
+// load() returns the ENTITY — call data_get() for the Index record (throws on error).
 $index = $client->Index()->load();
 ```
 
@@ -560,7 +561,7 @@ Create an instance: `$major = $client->Major();`
 | `cip_program_name` | `mixed` |  |
 | `completion_adjusted_roi_usd` | `mixed` |  |
 | `dropout_roi_usd` | `mixed` |  |
-| `graduate` | `int` |  |
+| `graduates` | `int` |  |
 | `kind` | `string` |  |
 | `mean_lifetime_roi_usd` | `float` |  |
 | `median_breakeven_age` | `mixed` |  |
@@ -570,7 +571,7 @@ Create an instance: `$major = $client->Major();`
 | `p75_roi_usd` | `float` |  |
 | `parent` | `mixed` |  |
 | `pct_never_breakeven` | `float` |  |
-| `program` | `int` |  |
+| `programs` | `int` |  |
 | `rank_by_worst_roi` | `int` |  |
 | `slug` | `string` |  |
 | `url` | `string` |  |
@@ -596,7 +597,7 @@ Create an instance: `$openapi = $client->Openapi();`
 #### Example: Load
 
 ```php
-// load() returns the bare Openapi record (throws on error).
+// load() returns the ENTITY — call data_get() for the Openapi record (throws on error).
 $openapi = $client->Openapi()->load();
 ```
 
@@ -654,7 +655,7 @@ Create an instance: `$slug = $client->Slug();`
 | `control` | `string` |  |
 | `dropout_roi_usd` | `mixed` |  |
 | `freopp_program_coverage` | `int` |  |
-| `graduate` | `int` |  |
+| `graduates` | `int` |  |
 | `kind` | `string` |  |
 | `mean_lifetime_roi_usd` | `float` |  |
 | `median_breakeven_age` | `mixed` |  |
@@ -668,7 +669,7 @@ Create an instance: `$slug = $client->Slug();`
 | `p75_roi_usd` | `float` |  |
 | `parent` | `mixed` |  |
 | `pct_never_breakeven` | `float` |  |
-| `program` | `int` |  |
+| `programs` | `int` |  |
 | `rank_by_worst_roi` | `int` |  |
 | `slug` | `string` |  |
 | `state` | `string` |  |
@@ -681,7 +682,7 @@ Create an instance: `$slug = $client->Slug();`
 #### Example: Load
 
 ```php
-// load() returns the bare Slug record (throws on error).
+// load() returns the ENTITY — call data_get() for the Slug record (throws on error).
 $slug = $client->Slug()->load(["slug" => "slug"]);
 ```
 
@@ -759,7 +760,7 @@ Create an instance: `$worst_roi_major = $client->WorstRoiMajor();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `graduate` | `int` |  |
+| `graduates` | `int` |  |
 | `mean_lifetime_roi_usd` | `float` |  |
 | `median_breakeven_age` | `mixed` |  |
 | `median_lifetime_roi_usd` | `float` |  |
@@ -853,11 +854,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$bestvalue = $client->BestValue();
-$bestvalue->list();
+$top50 = $client->Top50();
+$top50->list();
 
-// $bestvalue->data_get() now returns the bestvalue data from the last list
-// $bestvalue->match_get() returns the last match criteria
+// $top50->data_get() now returns the top50 data from the last list
+// $top50->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

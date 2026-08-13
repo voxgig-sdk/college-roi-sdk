@@ -26,8 +26,8 @@ import {
 describe('OpenapiEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COLLEGEROI_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COLLEGEROI_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COLLEGE_ROI_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COLLEGE_ROI_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = CollegeRoiSDK.test()
@@ -62,7 +62,7 @@ describe('OpenapiEntity', async () => {
     // LOAD
     const openapi_ref01_ent = client.Openapi()
     const openapi_ref01_match_dt0: any = {}
-    const openapi_ref01_data_dt0 = await openapi_ref01_ent.load(openapi_ref01_match_dt0)
+    const openapi_ref01_data_dt0 = (await openapi_ref01_ent.load(openapi_ref01_match_dt0)).data()
     assert(null != openapi_ref01_data_dt0)
 
 

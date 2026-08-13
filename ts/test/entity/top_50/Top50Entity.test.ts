@@ -26,8 +26,8 @@ import {
 describe('Top50Entity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COLLEGEROI_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COLLEGEROI_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COLLEGE_ROI_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COLLEGE_ROI_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = CollegeRoiSDK.test()
@@ -48,7 +48,7 @@ describe('Top50Entity', async () => {
     // fixture (entity TestData.json). Those don't exist on the live API.
     // Skip live runs unless the user provided a real ENTID env override.
     if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set COLLEGE_ROI_TEST_TOP____ENTID JSON to run live')
+      t.skip('live entity test uses synthetic IDs from fixture — set COLLEGE_ROI_TEST_TOP_50_ENTID JSON to run live')
       return
     }
     const client = setup.client
@@ -63,7 +63,7 @@ describe('Top50Entity', async () => {
     const top_50_ref01_ent = client.Top50()
     const top_50_ref01_match: any = {}
 
-    const top_50_ref01_list = await top_50_ref01_ent.list(top_50_ref01_match)
+    const top_50_ref01_list = (await top_50_ref01_ent.list(top_50_ref01_match)).map((e: any) => e.data())
 
 
   })
@@ -106,16 +106,16 @@ function basicSetup(extra?: any) {
   // basic flow consumes synthetic IDs from the fixture file; without an
   // override those synthetic IDs reach the live API and 4xx. Surface this
   // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['COLLEGE_ROI_TEST_TOP____ENTID']
+  const idmapEnvVal = process.env['COLLEGE_ROI_TEST_TOP_50_ENTID']
   const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
 
   const env = envOverride({
-    'COLLEGE_ROI_TEST_TOP____ENTID': idmap,
+    'COLLEGE_ROI_TEST_TOP_50_ENTID': idmap,
     'COLLEGE_ROI_TEST_LIVE': 'FALSE',
     'COLLEGE_ROI_TEST_EXPLAIN': 'FALSE',
   })
 
-  idmap = env['COLLEGE_ROI_TEST_TOP____ENTID']
+  idmap = env['COLLEGE_ROI_TEST_TOP_50_ENTID']
 
   const live = 'TRUE' === env.COLLEGE_ROI_TEST_LIVE
 

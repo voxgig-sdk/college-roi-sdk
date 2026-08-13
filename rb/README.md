@@ -37,7 +37,7 @@ begin
   # list returns an Array of BestValue records — iterate directly.
   bestvalues = client.BestValue.list
   bestvalues.each do |item|
-    puts "#{item["college"]}"
+    puts "#{item["colleges"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -50,7 +50,7 @@ Slug is nested under slug, so provide the `slug`.
 
 ```ruby
 begin
-  # load returns the bare Slug record (raises on error).
+  # load returns the ENTITY — call data_get for the Slug record (raises on error).
   slug = client.Slug.load({ "slug" => "example_slug" })
   puts slug
 rescue => err
@@ -65,7 +65,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  bestvalues = client.BestValue.list()
+  top50s = client.Top50.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -133,9 +133,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = CollegeRoiSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-bestvalue = client.BestValue.list()
-puts bestvalue
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+top50 = client.Top50.list()
+puts top50
 ```
 
 ### Use a custom fetch function
@@ -260,7 +261,7 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `college` |  |
+| `colleges` |  |
 | `page_url` |  |
 | `state` |  |
 | `state_name` |  |
@@ -310,7 +311,7 @@ API path: `/api/v1/index.json`
 | `cip_program_name` |  |
 | `completion_adjusted_roi_usd` |  |
 | `dropout_roi_usd` |  |
-| `graduate` |  |
+| `graduates` |  |
 | `kind` |  |
 | `mean_lifetime_roi_usd` |  |
 | `median_breakeven_age` |  |
@@ -320,7 +321,7 @@ API path: `/api/v1/index.json`
 | `p75_roi_usd` |  |
 | `parent` |  |
 | `pct_never_breakeven` |  |
-| `program` |  |
+| `programs` |  |
 | `rank_by_worst_roi` |  |
 | `slug` |  |
 | `url` |  |
@@ -367,7 +368,7 @@ API path: `/api/v1/rankings/out-of-state-penalty.json`
 | `control` |  |
 | `dropout_roi_usd` |  |
 | `freopp_program_coverage` |  |
-| `graduate` |  |
+| `graduates` |  |
 | `kind` |  |
 | `mean_lifetime_roi_usd` |  |
 | `median_breakeven_age` |  |
@@ -381,7 +382,7 @@ API path: `/api/v1/rankings/out-of-state-penalty.json`
 | `p75_roi_usd` |  |
 | `parent` |  |
 | `pct_never_breakeven` |  |
-| `program` |  |
+| `programs` |  |
 | `rank_by_worst_roi` |  |
 | `slug` |  |
 | `state` |  |
@@ -430,7 +431,7 @@ API path: `/api/v1/rankings/out-of-state-penalty/top-50.json`
 
 | Field | Description |
 | --- | --- |
-| `graduate` |  |
+| `graduates` |  |
 | `mean_lifetime_roi_usd` |  |
 | `median_breakeven_age` |  |
 | `median_lifetime_roi_usd` |  |
@@ -463,7 +464,7 @@ Create an instance: `best_value = client.BestValue`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `college` | `Array` |  |
+| `colleges` | `Array` |  |
 | `page_url` | `String` |  |
 | `state` | `String` |  |
 | `state_name` | `String` |  |
@@ -527,7 +528,7 @@ Create an instance: `index = client.Index`
 #### Example: Load
 
 ```ruby
-# load returns the bare Index record (raises on error).
+# load returns the ENTITY — call data_get for the Index record (raises on error).
 index = client.Index.load()
 ```
 
@@ -550,7 +551,7 @@ Create an instance: `major = client.Major`
 | `cip_program_name` | `Object` |  |
 | `completion_adjusted_roi_usd` | `Object` |  |
 | `dropout_roi_usd` | `Object` |  |
-| `graduate` | `Integer` |  |
+| `graduates` | `Integer` |  |
 | `kind` | `String` |  |
 | `mean_lifetime_roi_usd` | `Float` |  |
 | `median_breakeven_age` | `Object` |  |
@@ -560,7 +561,7 @@ Create an instance: `major = client.Major`
 | `p75_roi_usd` | `Float` |  |
 | `parent` | `Object` |  |
 | `pct_never_breakeven` | `Float` |  |
-| `program` | `Integer` |  |
+| `programs` | `Integer` |  |
 | `rank_by_worst_roi` | `Integer` |  |
 | `slug` | `String` |  |
 | `url` | `String` |  |
@@ -586,7 +587,7 @@ Create an instance: `openapi = client.Openapi`
 #### Example: Load
 
 ```ruby
-# load returns the bare Openapi record (raises on error).
+# load returns the ENTITY — call data_get for the Openapi record (raises on error).
 openapi = client.Openapi.load()
 ```
 
@@ -644,7 +645,7 @@ Create an instance: `slug = client.Slug`
 | `control` | `String` |  |
 | `dropout_roi_usd` | `Object` |  |
 | `freopp_program_coverage` | `Integer` |  |
-| `graduate` | `Integer` |  |
+| `graduates` | `Integer` |  |
 | `kind` | `String` |  |
 | `mean_lifetime_roi_usd` | `Float` |  |
 | `median_breakeven_age` | `Object` |  |
@@ -658,7 +659,7 @@ Create an instance: `slug = client.Slug`
 | `p75_roi_usd` | `Float` |  |
 | `parent` | `Object` |  |
 | `pct_never_breakeven` | `Float` |  |
-| `program` | `Integer` |  |
+| `programs` | `Integer` |  |
 | `rank_by_worst_roi` | `Integer` |  |
 | `slug` | `String` |  |
 | `state` | `String` |  |
@@ -671,7 +672,7 @@ Create an instance: `slug = client.Slug`
 #### Example: Load
 
 ```ruby
-# load returns the bare Slug record (raises on error).
+# load returns the ENTITY — call data_get for the Slug record (raises on error).
 slug = client.Slug.load({ "slug" => "slug" })
 ```
 
@@ -749,7 +750,7 @@ Create an instance: `worst_roi_major = client.WorstRoiMajor`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `graduate` | `Integer` |  |
+| `graduates` | `Integer` |  |
 | `mean_lifetime_roi_usd` | `Float` |  |
 | `median_breakeven_age` | `Object` |  |
 | `median_lifetime_roi_usd` | `Float` |  |
@@ -843,11 +844,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-bestvalue = client.BestValue
-bestvalue.list()
+top50 = client.Top50
+top50.list()
 
-# bestvalue.data_get now returns the bestvalue data from the last list
-# bestvalue.match_get returns the last match criteria
+# top50.data_get now returns the top50 data from the last list
+# top50.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

@@ -2,7 +2,7 @@
   "existing": {
     "worst_roi_major": {
       "WORST_ROI_MAJOR00": {
-        "graduate": "s5a",
+        "graduates": "s5a",
         "mean_lifetime_roi_usd": 91,
         "median_breakeven_age": "s5c",
         "median_lifetime_roi_usd": 93,
@@ -13,7 +13,7 @@
         "url": "s62"
       },
       "WORST_ROI_MAJOR01": {
-        "graduate": "sb4",
+        "graduates": "sb4",
         "mean_lifetime_roi_usd": 181,
         "median_breakeven_age": "sb6",
         "median_lifetime_roi_usd": 183,
@@ -24,7 +24,7 @@
         "url": "sbc"
       },
       "WORST_ROI_MAJOR02": {
-        "graduate": "s10e",
+        "graduates": "s10e",
         "mean_lifetime_roi_usd": 271,
         "median_breakeven_age": "s110",
         "median_lifetime_roi_usd": 273,
@@ -39,7 +39,7 @@
   "new": {
     "worst_roi_major": {
       "worst_roi_major_ref01": {
-        "graduate": "s168",
+        "graduates": "s168",
         "mean_lifetime_roi_usd": 361,
         "median_breakeven_age": "s16a",
         "median_lifetime_roi_usd": 363,

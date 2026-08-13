@@ -68,12 +68,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-bestvalues, err := client.BestValue(nil).List(nil, nil)
+top50s, err := client.Top50(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = bestvalues
+_ = top50s
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -137,13 +137,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-bestValue, err := client.BestValue(nil).List(
+top50, err := client.Top50(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(bestValue) // the returned mock data
+fmt.Println(top50) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -271,7 +271,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"college"` |  |
+| `"colleges"` |  |
 | `"page_url"` |  |
 | `"state"` |  |
 | `"state_name"` |  |
@@ -321,7 +321,7 @@ API path: `/api/v1/index.json`
 | `"cip_program_name"` |  |
 | `"completion_adjusted_roi_usd"` |  |
 | `"dropout_roi_usd"` |  |
-| `"graduate"` |  |
+| `"graduates"` |  |
 | `"kind"` |  |
 | `"mean_lifetime_roi_usd"` |  |
 | `"median_breakeven_age"` |  |
@@ -331,7 +331,7 @@ API path: `/api/v1/index.json`
 | `"p75_roi_usd"` |  |
 | `"parent"` |  |
 | `"pct_never_breakeven"` |  |
-| `"program"` |  |
+| `"programs"` |  |
 | `"rank_by_worst_roi"` |  |
 | `"slug"` |  |
 | `"url"` |  |
@@ -378,7 +378,7 @@ API path: `/api/v1/rankings/out-of-state-penalty.json`
 | `"control"` |  |
 | `"dropout_roi_usd"` |  |
 | `"freopp_program_coverage"` |  |
-| `"graduate"` |  |
+| `"graduates"` |  |
 | `"kind"` |  |
 | `"mean_lifetime_roi_usd"` |  |
 | `"median_breakeven_age"` |  |
@@ -392,7 +392,7 @@ API path: `/api/v1/rankings/out-of-state-penalty.json`
 | `"p75_roi_usd"` |  |
 | `"parent"` |  |
 | `"pct_never_breakeven"` |  |
-| `"program"` |  |
+| `"programs"` |  |
 | `"rank_by_worst_roi"` |  |
 | `"slug"` |  |
 | `"state"` |  |
@@ -441,7 +441,7 @@ API path: `/api/v1/rankings/out-of-state-penalty/top-50.json`
 
 | Field | Description |
 | --- | --- |
-| `"graduate"` |  |
+| `"graduates"` |  |
 | `"mean_lifetime_roi_usd"` |  |
 | `"median_breakeven_age"` |  |
 | `"median_lifetime_roi_usd"` |  |
@@ -474,7 +474,7 @@ Create an instance: `bestValue := client.BestValue(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `college` | `[]any` |  |
+| `colleges` | `[]any` |  |
 | `page_url` | `string` |  |
 | `state` | `string` |  |
 | `state_name` | `string` |  |
@@ -570,7 +570,7 @@ Create an instance: `major := client.Major(nil)`
 | `cip_program_name` | `any` |  |
 | `completion_adjusted_roi_usd` | `any` |  |
 | `dropout_roi_usd` | `any` |  |
-| `graduate` | `int` |  |
+| `graduates` | `int` |  |
 | `kind` | `string` |  |
 | `mean_lifetime_roi_usd` | `float64` |  |
 | `median_breakeven_age` | `any` |  |
@@ -580,7 +580,7 @@ Create an instance: `major := client.Major(nil)`
 | `p75_roi_usd` | `float64` |  |
 | `parent` | `any` |  |
 | `pct_never_breakeven` | `float64` |  |
-| `program` | `int` |  |
+| `programs` | `int` |  |
 | `rank_by_worst_roi` | `int` |  |
 | `slug` | `string` |  |
 | `url` | `string` |  |
@@ -673,7 +673,7 @@ Create an instance: `slug := client.Slug(nil)`
 | `control` | `string` |  |
 | `dropout_roi_usd` | `any` |  |
 | `freopp_program_coverage` | `int` |  |
-| `graduate` | `int` |  |
+| `graduates` | `int` |  |
 | `kind` | `string` |  |
 | `mean_lifetime_roi_usd` | `float64` |  |
 | `median_breakeven_age` | `any` |  |
@@ -687,7 +687,7 @@ Create an instance: `slug := client.Slug(nil)`
 | `p75_roi_usd` | `float64` |  |
 | `parent` | `any` |  |
 | `pct_never_breakeven` | `float64` |  |
-| `program` | `int` |  |
+| `programs` | `int` |  |
 | `rank_by_worst_roi` | `int` |  |
 | `slug` | `string` |  |
 | `state` | `string` |  |
@@ -787,7 +787,7 @@ Create an instance: `worstRoiMajor := client.WorstRoiMajor(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `graduate` | `int` |  |
+| `graduates` | `int` |  |
 | `mean_lifetime_roi_usd` | `float64` |  |
 | `median_breakeven_age` | `any` |  |
 | `median_lifetime_roi_usd` | `float64` |  |
@@ -881,11 +881,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-bestvalue := client.BestValue(nil)
-bestvalue.List(nil, nil)
+top50 := client.Top50(nil)
+top50.List(nil, nil)
 
-// bestvalue.Data() now returns the bestvalue data from the last list
-// bestvalue.Match() returns the last match criteria
+// top50.Data() now returns the top50 data from the last list
+// top50.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

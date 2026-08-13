@@ -7,47 +7,47 @@
 -- edit by hand.
 
 ---@class BestValue
----@field college? table
+---@field colleges? table
 ---@field page_url? string
 ---@field state? string
 ---@field state_name? string
 
 ---@class BestValueListMatch
----@field college? table
+---@field colleges? table
 ---@field page_url? string
 ---@field state? string
 ---@field state_name? string
 
 ---@class College
----@field breakeven_age? any
+---@field breakeven_age? number|nil
 ---@field city string
 ---@field control string
 ---@field freopp_program_coverage? number
 ---@field median_earnings_10yr_usd? number
 ---@field name string
----@field npv_30yr_nonresident_usd? any
+---@field npv_30yr_nonresident_usd? number|nil
 ---@field npv_30yr_resident_usd number
 ---@field slug string
 ---@field state string
 ---@field state_name? string
----@field total_cost_of_attendance_nonresident_usd? any
+---@field total_cost_of_attendance_nonresident_usd? number|nil
 ---@field total_cost_of_attendance_usd? number
 ---@field unitid number
 ---@field url string
 
 ---@class CollegeListMatch
----@field breakeven_age? any
+---@field breakeven_age? number|nil
 ---@field city? string
 ---@field control? string
 ---@field freopp_program_coverage? number
 ---@field median_earnings_10yr_usd? number
 ---@field name? string
----@field npv_30yr_nonresident_usd? any
+---@field npv_30yr_nonresident_usd? number|nil
 ---@field npv_30yr_resident_usd? number
 ---@field slug? string
 ---@field state? string
 ---@field state_name? string
----@field total_cost_of_attendance_nonresident_usd? any
+---@field total_cost_of_attendance_nonresident_usd? number|nil
 ---@field total_cost_of_attendance_usd? number
 ---@field unitid? number
 ---@field url? string
@@ -57,41 +57,41 @@
 ---@class IndexLoadMatch
 
 ---@class Major
----@field ai_exposure? any
----@field cip_program_name? any
----@field completion_adjusted_roi_usd? any
----@field dropout_roi_usd? any
----@field graduate? number
+---@field ai_exposure? table|nil
+---@field cip_program_name? string|nil
+---@field completion_adjusted_roi_usd? number|nil
+---@field dropout_roi_usd? number|nil
+---@field graduates? number
 ---@field kind string
 ---@field mean_lifetime_roi_usd? number
----@field median_breakeven_age? any
+---@field median_breakeven_age? number|nil
 ---@field median_lifetime_roi_usd? number
 ---@field name string
 ---@field p25_roi_usd? number
 ---@field p75_roi_usd? number
----@field parent? any
+---@field parent? table|nil
 ---@field pct_never_breakeven? number
----@field program? number
+---@field programs? number
 ---@field rank_by_worst_roi number
 ---@field slug string
 ---@field url string
 
 ---@class MajorListMatch
----@field ai_exposure? any
----@field cip_program_name? any
----@field completion_adjusted_roi_usd? any
----@field dropout_roi_usd? any
----@field graduate? number
+---@field ai_exposure? table|nil
+---@field cip_program_name? string|nil
+---@field completion_adjusted_roi_usd? number|nil
+---@field dropout_roi_usd? number|nil
+---@field graduates? number
 ---@field kind? string
 ---@field mean_lifetime_roi_usd? number
----@field median_breakeven_age? any
+---@field median_breakeven_age? number|nil
 ---@field median_lifetime_roi_usd? number
 ---@field name? string
 ---@field p25_roi_usd? number
 ---@field p75_roi_usd? number
----@field parent? any
+---@field parent? table|nil
 ---@field pct_never_breakeven? number
----@field program? number
+---@field programs? number
 ---@field rank_by_worst_roi? number
 ---@field slug? string
 ---@field url? string
@@ -121,34 +121,34 @@
 ---@field tuition_out_of_state_usd? number
 
 ---@class Slug
----@field ai_exposure? any
----@field breakeven_age? any
----@field cip_program_name? any
+---@field ai_exposure? table|nil
+---@field breakeven_age? number|nil
+---@field cip_program_name? string|nil
 ---@field city string
----@field completion_adjusted_roi_usd? any
+---@field completion_adjusted_roi_usd? number|nil
 ---@field control string
----@field dropout_roi_usd? any
+---@field dropout_roi_usd? number|nil
 ---@field freopp_program_coverage? number
----@field graduate? number
+---@field graduates? number
 ---@field kind string
 ---@field mean_lifetime_roi_usd? number
----@field median_breakeven_age? any
+---@field median_breakeven_age? number|nil
 ---@field median_earnings_10yr_usd? number
 ---@field median_lifetime_roi_usd? number
 ---@field meta table
 ---@field name string
----@field npv_30yr_nonresident_usd? any
+---@field npv_30yr_nonresident_usd? number|nil
 ---@field npv_30yr_resident_usd number
 ---@field p25_roi_usd? number
 ---@field p75_roi_usd? number
----@field parent? any
+---@field parent? table|nil
 ---@field pct_never_breakeven? number
----@field program? number
+---@field programs? number
 ---@field rank_by_worst_roi number
 ---@field slug string
 ---@field state string
 ---@field state_name? string
----@field total_cost_of_attendance_nonresident_usd? any
+---@field total_cost_of_attendance_nonresident_usd? number|nil
 ---@field total_cost_of_attendance_usd? number
 ---@field unitid number
 ---@field url string
@@ -187,9 +187,9 @@
 ---@field tuition_out_of_state_usd? number
 
 ---@class WorstRoiMajor
----@field graduate? number
+---@field graduates? number
 ---@field mean_lifetime_roi_usd? number
----@field median_breakeven_age? any
+---@field median_breakeven_age? number|nil
 ---@field median_lifetime_roi_usd? number
 ---@field name? string
 ---@field pct_never_breakeven? number
@@ -198,9 +198,9 @@
 ---@field url? string
 
 ---@class WorstRoiMajorListMatch
----@field graduate? number
+---@field graduates? number
 ---@field mean_lifetime_roi_usd? number
----@field median_breakeven_age? any
+---@field median_breakeven_age? number|nil
 ---@field median_lifetime_roi_usd? number
 ---@field name? string
 ---@field pct_never_breakeven? number

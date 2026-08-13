@@ -128,7 +128,7 @@ $best_value = $client->BestValue();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `college` | `array` | No |  |
+| `colleges` | `array` | No |  |
 | `page_url` | `string` | No |  |
 | `state` | `string` | No |  |
 | `state_name` | `string` | No |  |
@@ -299,7 +299,7 @@ $major = $client->Major();
 | `cip_program_name` | `mixed` | No |  |
 | `completion_adjusted_roi_usd` | `mixed` | No |  |
 | `dropout_roi_usd` | `mixed` | No |  |
-| `graduate` | `int` | No |  |
+| `graduates` | `int` | No |  |
 | `kind` | `string` | Yes |  |
 | `mean_lifetime_roi_usd` | `float` | No |  |
 | `median_breakeven_age` | `mixed` | No |  |
@@ -309,7 +309,7 @@ $major = $client->Major();
 | `p75_roi_usd` | `float` | No |  |
 | `parent` | `mixed` | No |  |
 | `pct_never_breakeven` | `float` | No |  |
-| `program` | `int` | No |  |
+| `programs` | `int` | No |  |
 | `rank_by_worst_roi` | `int` | Yes |  |
 | `slug` | `string` | Yes |  |
 | `url` | `string` | Yes |  |
@@ -477,7 +477,7 @@ $slug = $client->Slug();
 | `control` | `string` | Yes |  |
 | `dropout_roi_usd` | `mixed` | No |  |
 | `freopp_program_coverage` | `int` | No |  |
-| `graduate` | `int` | No |  |
+| `graduates` | `int` | No |  |
 | `kind` | `string` | Yes |  |
 | `mean_lifetime_roi_usd` | `float` | No |  |
 | `median_breakeven_age` | `mixed` | No |  |
@@ -491,7 +491,7 @@ $slug = $client->Slug();
 | `p75_roi_usd` | `float` | No |  |
 | `parent` | `mixed` | No |  |
 | `pct_never_breakeven` | `float` | No |  |
-| `program` | `int` | No |  |
+| `programs` | `int` | No |  |
 | `rank_by_worst_roi` | `int` | Yes |  |
 | `slug` | `string` | Yes |  |
 | `state` | `string` | Yes |  |
@@ -666,7 +666,7 @@ $worst_roi_major = $client->WorstRoiMajor();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `graduate` | `int` | No |  |
+| `graduates` | `int` | No |  |
 | `mean_lifetime_roi_usd` | `float` | No |  |
 | `median_breakeven_age` | `mixed` | No |  |
 | `median_lifetime_roi_usd` | `float` | No |  |

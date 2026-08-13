@@ -43,8 +43,8 @@ class CollegeRoiTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('COLLEGEROI_TEST_LIVE');
-        $override = self::getenv('COLLEGEROI_TEST_OVERRIDE');
+        $live = self::getenv('COLLEGE_ROI_TEST_LIVE');
+        $override = self::getenv('COLLEGE_ROI_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class CollegeRoiTestRunner
             }
         }
 
-        $explain = self::getenv('COLLEGEROI_TEST_EXPLAIN');
+        $explain = self::getenv('COLLEGE_ROI_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['COLLEGEROI_TEST_EXPLAIN'] = $explain;
+            $m['COLLEGE_ROI_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

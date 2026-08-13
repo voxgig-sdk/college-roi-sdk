@@ -10,7 +10,7 @@
 
 # BestValue entity data model.
 #
-# @!attribute [rw] college
+# @!attribute [rw] colleges
 #   @return [Array, nil]
 #
 # @!attribute [rw] page_url
@@ -22,7 +22,7 @@
 # @!attribute [rw] state_name
 #   @return [String, nil]
 BestValue = Struct.new(
-  :college,
+  :colleges,
   :page_url,
   :state,
   :state_name,
@@ -31,7 +31,7 @@ BestValue = Struct.new(
 
 # Request payload for BestValue#list.
 #
-# @!attribute [rw] college
+# @!attribute [rw] colleges
 #   @return [Array, nil]
 #
 # @!attribute [rw] page_url
@@ -43,7 +43,7 @@ BestValue = Struct.new(
 # @!attribute [rw] state_name
 #   @return [String, nil]
 BestValueListMatch = Struct.new(
-  :college,
+  :colleges,
   :page_url,
   :state,
   :state_name,
@@ -202,7 +202,7 @@ end
 # @!attribute [rw] dropout_roi_usd
 #   @return [Object, nil]
 #
-# @!attribute [rw] graduate
+# @!attribute [rw] graduates
 #   @return [Integer, nil]
 #
 # @!attribute [rw] kind
@@ -232,7 +232,7 @@ end
 # @!attribute [rw] pct_never_breakeven
 #   @return [Float, nil]
 #
-# @!attribute [rw] program
+# @!attribute [rw] programs
 #   @return [Integer, nil]
 #
 # @!attribute [rw] rank_by_worst_roi
@@ -248,7 +248,7 @@ Major = Struct.new(
   :cip_program_name,
   :completion_adjusted_roi_usd,
   :dropout_roi_usd,
-  :graduate,
+  :graduates,
   :kind,
   :mean_lifetime_roi_usd,
   :median_breakeven_age,
@@ -258,7 +258,7 @@ Major = Struct.new(
   :p75_roi_usd,
   :parent,
   :pct_never_breakeven,
-  :program,
+  :programs,
   :rank_by_worst_roi,
   :slug,
   :url,
@@ -279,7 +279,7 @@ Major = Struct.new(
 # @!attribute [rw] dropout_roi_usd
 #   @return [Object, nil]
 #
-# @!attribute [rw] graduate
+# @!attribute [rw] graduates
 #   @return [Integer, nil]
 #
 # @!attribute [rw] kind
@@ -309,7 +309,7 @@ Major = Struct.new(
 # @!attribute [rw] pct_never_breakeven
 #   @return [Float, nil]
 #
-# @!attribute [rw] program
+# @!attribute [rw] programs
 #   @return [Integer, nil]
 #
 # @!attribute [rw] rank_by_worst_roi
@@ -325,7 +325,7 @@ MajorListMatch = Struct.new(
   :cip_program_name,
   :completion_adjusted_roi_usd,
   :dropout_roi_usd,
-  :graduate,
+  :graduates,
   :kind,
   :mean_lifetime_roi_usd,
   :median_breakeven_age,
@@ -335,7 +335,7 @@ MajorListMatch = Struct.new(
   :p75_roi_usd,
   :parent,
   :pct_never_breakeven,
-  :program,
+  :programs,
   :rank_by_worst_roi,
   :slug,
   :url,
@@ -450,7 +450,7 @@ OutOfStatePenaltyListMatch = Struct.new(
 # @!attribute [rw] freopp_program_coverage
 #   @return [Integer, nil]
 #
-# @!attribute [rw] graduate
+# @!attribute [rw] graduates
 #   @return [Integer, nil]
 #
 # @!attribute [rw] kind
@@ -492,7 +492,7 @@ OutOfStatePenaltyListMatch = Struct.new(
 # @!attribute [rw] pct_never_breakeven
 #   @return [Float, nil]
 #
-# @!attribute [rw] program
+# @!attribute [rw] programs
 #   @return [Integer, nil]
 #
 # @!attribute [rw] rank_by_worst_roi
@@ -527,7 +527,7 @@ Slug = Struct.new(
   :control,
   :dropout_roi_usd,
   :freopp_program_coverage,
-  :graduate,
+  :graduates,
   :kind,
   :mean_lifetime_roi_usd,
   :median_breakeven_age,
@@ -541,7 +541,7 @@ Slug = Struct.new(
   :p75_roi_usd,
   :parent,
   :pct_never_breakeven,
-  :program,
+  :programs,
   :rank_by_worst_roi,
   :slug,
   :state,
@@ -672,7 +672,7 @@ Top50ListMatch = Struct.new(
 
 # WorstRoiMajor entity data model.
 #
-# @!attribute [rw] graduate
+# @!attribute [rw] graduates
 #   @return [Integer, nil]
 #
 # @!attribute [rw] mean_lifetime_roi_usd
@@ -699,7 +699,7 @@ Top50ListMatch = Struct.new(
 # @!attribute [rw] url
 #   @return [String, nil]
 WorstRoiMajor = Struct.new(
-  :graduate,
+  :graduates,
   :mean_lifetime_roi_usd,
   :median_breakeven_age,
   :median_lifetime_roi_usd,
@@ -713,7 +713,7 @@ WorstRoiMajor = Struct.new(
 
 # Request payload for WorstRoiMajor#list.
 #
-# @!attribute [rw] graduate
+# @!attribute [rw] graduates
 #   @return [Integer, nil]
 #
 # @!attribute [rw] mean_lifetime_roi_usd
@@ -740,7 +740,7 @@ WorstRoiMajor = Struct.new(
 # @!attribute [rw] url
 #   @return [String, nil]
 WorstRoiMajorListMatch = Struct.new(
-  :graduate,
+  :graduates,
   :mean_lifetime_roi_usd,
   :median_breakeven_age,
   :median_lifetime_roi_usd,

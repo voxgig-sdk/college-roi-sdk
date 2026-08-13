@@ -6,11 +6,15 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/college-roi-sdk/go/core"
+)
 
 // BestValue is the typed data model for the best_value entity.
 type BestValue struct {
-	College *[]any `json:"college,omitempty"`
+	Colleges *[]any `json:"colleges,omitempty"`
 	PageUrl *string `json:"page_url,omitempty"`
 	State *string `json:"state,omitempty"`
 	StateName *string `json:"state_name,omitempty"`
@@ -18,7 +22,7 @@ type BestValue struct {
 
 // BestValueListMatch is the typed request payload for BestValue.ListTyped.
 type BestValueListMatch struct {
-	College *[]any `json:"college,omitempty"`
+	Colleges *[]any `json:"colleges,omitempty"`
 	PageUrl *string `json:"page_url,omitempty"`
 	State *string `json:"state,omitempty"`
 	StateName *string `json:"state_name,omitempty"`
@@ -76,7 +80,7 @@ type Major struct {
 	CipProgramName *any `json:"cip_program_name,omitempty"`
 	CompletionAdjustedRoiUsd *any `json:"completion_adjusted_roi_usd,omitempty"`
 	DropoutRoiUsd *any `json:"dropout_roi_usd,omitempty"`
-	Graduate *int `json:"graduate,omitempty"`
+	Graduates *int `json:"graduates,omitempty"`
 	Kind string `json:"kind"`
 	MeanLifetimeRoiUsd *float64 `json:"mean_lifetime_roi_usd,omitempty"`
 	MedianBreakevenAge *any `json:"median_breakeven_age,omitempty"`
@@ -86,7 +90,7 @@ type Major struct {
 	P75RoiUsd *float64 `json:"p75_roi_usd,omitempty"`
 	Parent *any `json:"parent,omitempty"`
 	PctNeverBreakeven *float64 `json:"pct_never_breakeven,omitempty"`
-	Program *int `json:"program,omitempty"`
+	Programs *int `json:"programs,omitempty"`
 	RankByWorstRoi int `json:"rank_by_worst_roi"`
 	Slug string `json:"slug"`
 	Url string `json:"url"`
@@ -98,7 +102,7 @@ type MajorListMatch struct {
 	CipProgramName *any `json:"cip_program_name,omitempty"`
 	CompletionAdjustedRoiUsd *any `json:"completion_adjusted_roi_usd,omitempty"`
 	DropoutRoiUsd *any `json:"dropout_roi_usd,omitempty"`
-	Graduate *int `json:"graduate,omitempty"`
+	Graduates *int `json:"graduates,omitempty"`
 	Kind *string `json:"kind,omitempty"`
 	MeanLifetimeRoiUsd *float64 `json:"mean_lifetime_roi_usd,omitempty"`
 	MedianBreakevenAge *any `json:"median_breakeven_age,omitempty"`
@@ -108,7 +112,7 @@ type MajorListMatch struct {
 	P75RoiUsd *float64 `json:"p75_roi_usd,omitempty"`
 	Parent *any `json:"parent,omitempty"`
 	PctNeverBreakeven *float64 `json:"pct_never_breakeven,omitempty"`
-	Program *int `json:"program,omitempty"`
+	Programs *int `json:"programs,omitempty"`
 	RankByWorstRoi *int `json:"rank_by_worst_roi,omitempty"`
 	Slug *string `json:"slug,omitempty"`
 	Url *string `json:"url,omitempty"`
@@ -156,7 +160,7 @@ type Slug struct {
 	Control string `json:"control"`
 	DropoutRoiUsd *any `json:"dropout_roi_usd,omitempty"`
 	FreoppProgramCoverage *int `json:"freopp_program_coverage,omitempty"`
-	Graduate *int `json:"graduate,omitempty"`
+	Graduates *int `json:"graduates,omitempty"`
 	Kind string `json:"kind"`
 	MeanLifetimeRoiUsd *float64 `json:"mean_lifetime_roi_usd,omitempty"`
 	MedianBreakevenAge *any `json:"median_breakeven_age,omitempty"`
@@ -170,7 +174,7 @@ type Slug struct {
 	P75RoiUsd *float64 `json:"p75_roi_usd,omitempty"`
 	Parent *any `json:"parent,omitempty"`
 	PctNeverBreakeven *float64 `json:"pct_never_breakeven,omitempty"`
-	Program *int `json:"program,omitempty"`
+	Programs *int `json:"programs,omitempty"`
 	RankByWorstRoi int `json:"rank_by_worst_roi"`
 	Slug string `json:"slug"`
 	State string `json:"state"`
@@ -226,7 +230,7 @@ type Top50ListMatch struct {
 
 // WorstRoiMajor is the typed data model for the worst_roi_major entity.
 type WorstRoiMajor struct {
-	Graduate *int `json:"graduate,omitempty"`
+	Graduates *int `json:"graduates,omitempty"`
 	MeanLifetimeRoiUsd *float64 `json:"mean_lifetime_roi_usd,omitempty"`
 	MedianBreakevenAge *any `json:"median_breakeven_age,omitempty"`
 	MedianLifetimeRoiUsd *float64 `json:"median_lifetime_roi_usd,omitempty"`
@@ -239,7 +243,7 @@ type WorstRoiMajor struct {
 
 // WorstRoiMajorListMatch is the typed request payload for WorstRoiMajor.ListTyped.
 type WorstRoiMajorListMatch struct {
-	Graduate *int `json:"graduate,omitempty"`
+	Graduates *int `json:"graduates,omitempty"`
 	MeanLifetimeRoiUsd *float64 `json:"mean_lifetime_roi_usd,omitempty"`
 	MedianBreakevenAge *any `json:"median_breakeven_age,omitempty"`
 	MedianLifetimeRoiUsd *float64 `json:"median_lifetime_roi_usd,omitempty"`
@@ -262,12 +266,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -279,12 +297,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

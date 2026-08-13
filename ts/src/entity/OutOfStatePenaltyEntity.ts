@@ -37,7 +37,7 @@ class OutOfStatePenaltyEntity extends CollegeRoiEntityBase<OutOfStatePenalty> {
 
 
 
-  async list(this: any, reqmatch?: OutOfStatePenaltyListMatch, ctrl?: Control): Promise<OutOfStatePenalty[]> {
+  async list(this: any, reqmatch?: OutOfStatePenaltyListMatch, ctrl?: Control): Promise<OutOfStatePenaltyEntity[]> {
 
     const utility = this._utility
 

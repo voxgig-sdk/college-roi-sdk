@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ CollegeRoiUtility::setRegistrar(function (CollegeRoiUtility $u): void {
     $u->prepare_params = [CollegeRoiPrepareParams::class, 'call'];
     $u->prepare_path = [CollegeRoiPreparePath::class, 'call'];
     $u->prepare_query = [CollegeRoiPrepareQuery::class, 'call'];
+    $u->graphql_body = [CollegeRoiGraphql::class, 'body'];
+    $u->graphql_errors = [CollegeRoiGraphql::class, 'errors'];
     $u->result_basic = [CollegeRoiResultBasic::class, 'call'];
     $u->result_body = [CollegeRoiResultBody::class, 'call'];
     $u->result_headers = [CollegeRoiResultHeaders::class, 'call'];

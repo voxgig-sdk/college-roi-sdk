@@ -64,7 +64,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local bestvalues, err = client:BestValue():list()
+local top50s, err = client:Top50():list()
 if err then error(err) end
 ```
 
@@ -122,7 +122,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:BestValue():list()
+local result, err = client:Top50():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -239,9 +239,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local best_value, err = client:BestValue():load()
+    local index, err = client:Index():load()
     if err then error(err) end
-    -- best_value is the loaded record
+    -- index is the loaded record
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -252,7 +252,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `college` |  |
+| `colleges` |  |
 | `page_url` |  |
 | `state` |  |
 | `state_name` |  |
@@ -302,7 +302,7 @@ API path: `/api/v1/index.json`
 | `cip_program_name` |  |
 | `completion_adjusted_roi_usd` |  |
 | `dropout_roi_usd` |  |
-| `graduate` |  |
+| `graduates` |  |
 | `kind` |  |
 | `mean_lifetime_roi_usd` |  |
 | `median_breakeven_age` |  |
@@ -312,7 +312,7 @@ API path: `/api/v1/index.json`
 | `p75_roi_usd` |  |
 | `parent` |  |
 | `pct_never_breakeven` |  |
-| `program` |  |
+| `programs` |  |
 | `rank_by_worst_roi` |  |
 | `slug` |  |
 | `url` |  |
@@ -359,7 +359,7 @@ API path: `/api/v1/rankings/out-of-state-penalty.json`
 | `control` |  |
 | `dropout_roi_usd` |  |
 | `freopp_program_coverage` |  |
-| `graduate` |  |
+| `graduates` |  |
 | `kind` |  |
 | `mean_lifetime_roi_usd` |  |
 | `median_breakeven_age` |  |
@@ -373,7 +373,7 @@ API path: `/api/v1/rankings/out-of-state-penalty.json`
 | `p75_roi_usd` |  |
 | `parent` |  |
 | `pct_never_breakeven` |  |
-| `program` |  |
+| `programs` |  |
 | `rank_by_worst_roi` |  |
 | `slug` |  |
 | `state` |  |
@@ -422,7 +422,7 @@ API path: `/api/v1/rankings/out-of-state-penalty/top-50.json`
 
 | Field | Description |
 | --- | --- |
-| `graduate` |  |
+| `graduates` |  |
 | `mean_lifetime_roi_usd` |  |
 | `median_breakeven_age` |  |
 | `median_lifetime_roi_usd` |  |
@@ -455,7 +455,7 @@ Create an instance: `local best_value = client:BestValue(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `college` | `table` |  |
+| `colleges` | `table` |  |
 | `page_url` | `string` |  |
 | `state` | `string` |  |
 | `state_name` | `string` |  |
@@ -481,18 +481,18 @@ Create an instance: `local college = client:College(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `breakeven_age` | `any` |  |
+| `breakeven_age` | `number|nil` |  |
 | `city` | `string` |  |
 | `control` | `string` |  |
 | `freopp_program_coverage` | `number` |  |
 | `median_earnings_10yr_usd` | `number` |  |
 | `name` | `string` |  |
-| `npv_30yr_nonresident_usd` | `any` |  |
+| `npv_30yr_nonresident_usd` | `number|nil` |  |
 | `npv_30yr_resident_usd` | `number` |  |
 | `slug` | `string` |  |
 | `state` | `string` |  |
 | `state_name` | `string` |  |
-| `total_cost_of_attendance_nonresident_usd` | `any` |  |
+| `total_cost_of_attendance_nonresident_usd` | `number|nil` |  |
 | `total_cost_of_attendance_usd` | `number` |  |
 | `unitid` | `number` |  |
 | `url` | `string` |  |
@@ -535,21 +535,21 @@ Create an instance: `local major = client:Major(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ai_exposure` | `any` |  |
-| `cip_program_name` | `any` |  |
-| `completion_adjusted_roi_usd` | `any` |  |
-| `dropout_roi_usd` | `any` |  |
-| `graduate` | `number` |  |
+| `ai_exposure` | `table|nil` |  |
+| `cip_program_name` | `string|nil` |  |
+| `completion_adjusted_roi_usd` | `number|nil` |  |
+| `dropout_roi_usd` | `number|nil` |  |
+| `graduates` | `number` |  |
 | `kind` | `string` |  |
 | `mean_lifetime_roi_usd` | `number` |  |
-| `median_breakeven_age` | `any` |  |
+| `median_breakeven_age` | `number|nil` |  |
 | `median_lifetime_roi_usd` | `number` |  |
 | `name` | `string` |  |
 | `p25_roi_usd` | `number` |  |
 | `p75_roi_usd` | `number` |  |
-| `parent` | `any` |  |
+| `parent` | `table|nil` |  |
 | `pct_never_breakeven` | `number` |  |
-| `program` | `number` |  |
+| `programs` | `number` |  |
 | `rank_by_worst_roi` | `number` |  |
 | `slug` | `string` |  |
 | `url` | `string` |  |
@@ -622,34 +622,34 @@ Create an instance: `local slug = client:Slug(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ai_exposure` | `any` |  |
-| `breakeven_age` | `any` |  |
-| `cip_program_name` | `any` |  |
+| `ai_exposure` | `table|nil` |  |
+| `breakeven_age` | `number|nil` |  |
+| `cip_program_name` | `string|nil` |  |
 | `city` | `string` |  |
-| `completion_adjusted_roi_usd` | `any` |  |
+| `completion_adjusted_roi_usd` | `number|nil` |  |
 | `control` | `string` |  |
-| `dropout_roi_usd` | `any` |  |
+| `dropout_roi_usd` | `number|nil` |  |
 | `freopp_program_coverage` | `number` |  |
-| `graduate` | `number` |  |
+| `graduates` | `number` |  |
 | `kind` | `string` |  |
 | `mean_lifetime_roi_usd` | `number` |  |
-| `median_breakeven_age` | `any` |  |
+| `median_breakeven_age` | `number|nil` |  |
 | `median_earnings_10yr_usd` | `number` |  |
 | `median_lifetime_roi_usd` | `number` |  |
 | `meta` | `table` |  |
 | `name` | `string` |  |
-| `npv_30yr_nonresident_usd` | `any` |  |
+| `npv_30yr_nonresident_usd` | `number|nil` |  |
 | `npv_30yr_resident_usd` | `number` |  |
 | `p25_roi_usd` | `number` |  |
 | `p75_roi_usd` | `number` |  |
-| `parent` | `any` |  |
+| `parent` | `table|nil` |  |
 | `pct_never_breakeven` | `number` |  |
-| `program` | `number` |  |
+| `programs` | `number` |  |
 | `rank_by_worst_roi` | `number` |  |
 | `slug` | `string` |  |
 | `state` | `string` |  |
 | `state_name` | `string` |  |
-| `total_cost_of_attendance_nonresident_usd` | `any` |  |
+| `total_cost_of_attendance_nonresident_usd` | `number|nil` |  |
 | `total_cost_of_attendance_usd` | `number` |  |
 | `unitid` | `number` |  |
 | `url` | `string` |  |
@@ -732,9 +732,9 @@ Create an instance: `local worst_roi_major = client:WorstRoiMajor(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `graduate` | `number` |  |
+| `graduates` | `number` |  |
 | `mean_lifetime_roi_usd` | `number` |  |
-| `median_breakeven_age` | `any` |  |
+| `median_breakeven_age` | `number|nil` |  |
 | `median_lifetime_roi_usd` | `number` |  |
 | `name` | `string` |  |
 | `pct_never_breakeven` | `number` |  |
@@ -825,11 +825,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local bestvalue = client:BestValue()
-bestvalue:list()
+local top50 = client:Top50()
+top50:list()
 
--- bestvalue:data_get() now returns the bestvalue data from the last list
--- bestvalue:match_get() returns the last match criteria
+-- top50:data_get() now returns the top50 data from the last list
+-- top50:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

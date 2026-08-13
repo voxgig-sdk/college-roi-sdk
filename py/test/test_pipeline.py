@@ -16,11 +16,11 @@
 import pytest
 
 from collegeroi_sdk import CollegeRoiSDK
-from core.error import CollegeRoiError
-from core.result import CollegeRoiResult
-from core.response import CollegeRoiResponse
-from core.spec import CollegeRoiSpec
-from feature.base_feature import CollegeRoiBaseFeature
+from collegeroi_sdk.core.error import CollegeRoiError
+from collegeroi_sdk.core.result import CollegeRoiResult
+from collegeroi_sdk.core.response import CollegeRoiResponse
+from collegeroi_sdk.core.spec import CollegeRoiSpec
+from collegeroi_sdk.feature.base_feature import CollegeRoiBaseFeature
 
 
 def _client():

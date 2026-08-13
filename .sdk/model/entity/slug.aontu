@@ -76,7 +76,7 @@ main: kit: entity: slug: {
       type: "`$INTEGER`"
     }
     {
-      name: "graduate"
+      name: "graduates"
       req: false
       type: "`$INTEGER`"
     }
@@ -164,7 +164,7 @@ main: kit: entity: slug: {
       type: "`$NUMBER`"
     }
     {
-      name: "program"
+      name: "programs"
       req: false
       type: "`$INTEGER`"
     }

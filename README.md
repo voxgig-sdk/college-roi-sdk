@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = CollegeRoiSDK.test()
-const bestvalues = await client.BestValue().list()
-// bestvalues is an array of bare BestValue records populated with mock data
-console.log(bestvalues)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = CollegeRoiSDK.test({
+  entity: {
+    top_50: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const top50s = await client.Top50().list()
+// top50s is an array of Top50 entities, populated with mock data
+// — call top50s[0].data() for the record itself
+console.log(top50s)
 ```
 
 ### Python
 
 ```python
 client = CollegeRoiSDK.test()
-bestvalues = client.BestValue().list()
-print(bestvalues)
+top50s = client.Top50().list()
+print(top50s)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(bestvalues)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = CollegeRoiSDK::test([
-    "entity" => ["bestvalue" => ["test01" => []]],
+    "entity" => ["top50" => ["test01" => []]],
 ]);
-$bestvalues = $client->BestValue()->list();
+$top50s = $client->Top50()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.BestValue(nil).List(
+result, err := client.Top50(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.BestValue(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = CollegeRoiSDK.test({
-  "entity" => { "bestvalue" => { "test01" => {} } },
+  "entity" => { "top50" => { "test01" => {} } },
 })
-bestvalues = client.BestValue.list()
+top50s = client.Top50.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:BestValue():list()
+local results, err = client:Top50():list()
 ```
 
 ## Packages
@@ -110,7 +119,7 @@ import { CollegeRoiSDK } from '@voxgig-sdk/college-roi'
 
 const client = new CollegeRoiSDK()
 
-// List all bestvalues (returns BestValue[])
+// List all bestvalues (returns BestValueEntity[] — .data() for the record)
 const bestvalues = await client.BestValue().list()
 for (const bestvalue of bestvalues) {
   console.log(bestvalue)
@@ -367,6 +376,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://le-teen.com/press](https://le-teen.com/press)
 

@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# CollegeRoi SDK exists test
 
 import pytest
 from collegeroi_sdk import CollegeRoiSDK

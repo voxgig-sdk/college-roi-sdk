@@ -123,7 +123,7 @@ best_value = client.BestValue()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `college` | `list` | No |  |
+| `colleges` | `list` | No |  |
 | `page_url` | `str` | No |  |
 | `state` | `str` | No |  |
 | `state_name` | `str` | No |  |
@@ -179,18 +179,18 @@ college = client.College()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `breakeven_age` | `Any` | No |  |
+| `breakeven_age` | `int | None` | No |  |
 | `city` | `str` | Yes |  |
 | `control` | `str` | Yes |  |
 | `freopp_program_coverage` | `int` | No |  |
 | `median_earnings_10yr_usd` | `int` | No |  |
 | `name` | `str` | Yes |  |
-| `npv_30yr_nonresident_usd` | `Any` | No |  |
+| `npv_30yr_nonresident_usd` | `int | None` | No |  |
 | `npv_30yr_resident_usd` | `int` | Yes |  |
 | `slug` | `str` | Yes |  |
 | `state` | `str` | Yes |  |
 | `state_name` | `str` | No |  |
-| `total_cost_of_attendance_nonresident_usd` | `Any` | No |  |
+| `total_cost_of_attendance_nonresident_usd` | `int | None` | No |  |
 | `total_cost_of_attendance_usd` | `int` | No |  |
 | `unitid` | `int` | Yes |  |
 | `url` | `str` | Yes |  |
@@ -291,21 +291,21 @@ major = client.Major()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ai_exposure` | `Any` | No |  |
-| `cip_program_name` | `Any` | No |  |
-| `completion_adjusted_roi_usd` | `Any` | No |  |
-| `dropout_roi_usd` | `Any` | No |  |
-| `graduate` | `int` | No |  |
+| `ai_exposure` | `dict | None` | No |  |
+| `cip_program_name` | `str | None` | No |  |
+| `completion_adjusted_roi_usd` | `float | None` | No |  |
+| `dropout_roi_usd` | `float | None` | No |  |
+| `graduates` | `int` | No |  |
 | `kind` | `str` | Yes |  |
 | `mean_lifetime_roi_usd` | `float` | No |  |
-| `median_breakeven_age` | `Any` | No |  |
+| `median_breakeven_age` | `int | None` | No |  |
 | `median_lifetime_roi_usd` | `float` | No |  |
 | `name` | `str` | Yes |  |
 | `p25_roi_usd` | `float` | No |  |
 | `p75_roi_usd` | `float` | No |  |
-| `parent` | `Any` | No |  |
+| `parent` | `dict | None` | No |  |
 | `pct_never_breakeven` | `float` | No |  |
-| `program` | `int` | No |  |
+| `programs` | `int` | No |  |
 | `rank_by_worst_roi` | `int` | Yes |  |
 | `slug` | `str` | Yes |  |
 | `url` | `str` | Yes |  |
@@ -466,34 +466,34 @@ slug = client.Slug()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ai_exposure` | `Any` | No |  |
-| `breakeven_age` | `Any` | No |  |
-| `cip_program_name` | `Any` | No |  |
+| `ai_exposure` | `dict | None` | No |  |
+| `breakeven_age` | `int | None` | No |  |
+| `cip_program_name` | `str | None` | No |  |
 | `city` | `str` | Yes |  |
-| `completion_adjusted_roi_usd` | `Any` | No |  |
+| `completion_adjusted_roi_usd` | `float | None` | No |  |
 | `control` | `str` | Yes |  |
-| `dropout_roi_usd` | `Any` | No |  |
+| `dropout_roi_usd` | `float | None` | No |  |
 | `freopp_program_coverage` | `int` | No |  |
-| `graduate` | `int` | No |  |
+| `graduates` | `int` | No |  |
 | `kind` | `str` | Yes |  |
 | `mean_lifetime_roi_usd` | `float` | No |  |
-| `median_breakeven_age` | `Any` | No |  |
+| `median_breakeven_age` | `int | None` | No |  |
 | `median_earnings_10yr_usd` | `int` | No |  |
 | `median_lifetime_roi_usd` | `float` | No |  |
 | `meta` | `dict` | Yes |  |
 | `name` | `str` | Yes |  |
-| `npv_30yr_nonresident_usd` | `Any` | No |  |
+| `npv_30yr_nonresident_usd` | `int | None` | No |  |
 | `npv_30yr_resident_usd` | `int` | Yes |  |
 | `p25_roi_usd` | `float` | No |  |
 | `p75_roi_usd` | `float` | No |  |
-| `parent` | `Any` | No |  |
+| `parent` | `dict | None` | No |  |
 | `pct_never_breakeven` | `float` | No |  |
-| `program` | `int` | No |  |
+| `programs` | `int` | No |  |
 | `rank_by_worst_roi` | `int` | Yes |  |
 | `slug` | `str` | Yes |  |
 | `state` | `str` | Yes |  |
 | `state_name` | `str` | No |  |
-| `total_cost_of_attendance_nonresident_usd` | `Any` | No |  |
+| `total_cost_of_attendance_nonresident_usd` | `int | None` | No |  |
 | `total_cost_of_attendance_usd` | `int` | No |  |
 | `unitid` | `int` | Yes |  |
 | `url` | `str` | Yes |  |
@@ -560,7 +560,7 @@ state = client.State()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.State().list()
+results = client.State().list({"state": "example"})
 for state in results:
     print(state)
 ```
@@ -664,9 +664,9 @@ worst_roi_major = client.WorstRoiMajor()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `graduate` | `int` | No |  |
+| `graduates` | `int` | No |  |
 | `mean_lifetime_roi_usd` | `float` | No |  |
-| `median_breakeven_age` | `Any` | No |  |
+| `median_breakeven_age` | `int | None` | No |  |
 | `median_lifetime_roi_usd` | `float` | No |  |
 | `name` | `str` | No |  |
 | `pct_never_breakeven` | `float` | No |  |

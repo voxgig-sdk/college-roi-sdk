@@ -60,11 +60,11 @@ def out_of_state_penalty_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "COLLEGEROI_TEST_OUT_OF_STATE_PENALTY_ENTID" => {},
-    "COLLEGEROI_TEST_LIVE" => "FALSE",
+    "COLLEGE_ROI_TEST_OUT_OF_STATE_PENALTY_ENTID" => {},
+    "COLLEGE_ROI_TEST_LIVE" => "FALSE",
   })
 
-  live = env["COLLEGEROI_TEST_LIVE"] == "TRUE"
+  live = env["COLLEGE_ROI_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

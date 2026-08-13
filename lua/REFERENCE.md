@@ -126,7 +126,7 @@ local best_value = client:BestValue(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `college` | `table` | No |  |
+| `colleges` | `table` | No |  |
 | `page_url` | `string` | No |  |
 | `state` | `string` | No |  |
 | `state_name` | `string` | No |  |
@@ -181,18 +181,18 @@ local college = client:College(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `breakeven_age` | `any` | No |  |
+| `breakeven_age` | `number|nil` | No |  |
 | `city` | `string` | Yes |  |
 | `control` | `string` | Yes |  |
 | `freopp_program_coverage` | `number` | No |  |
 | `median_earnings_10yr_usd` | `number` | No |  |
 | `name` | `string` | Yes |  |
-| `npv_30yr_nonresident_usd` | `any` | No |  |
+| `npv_30yr_nonresident_usd` | `number|nil` | No |  |
 | `npv_30yr_resident_usd` | `number` | Yes |  |
 | `slug` | `string` | Yes |  |
 | `state` | `string` | Yes |  |
 | `state_name` | `string` | No |  |
-| `total_cost_of_attendance_nonresident_usd` | `any` | No |  |
+| `total_cost_of_attendance_nonresident_usd` | `number|nil` | No |  |
 | `total_cost_of_attendance_usd` | `number` | No |  |
 | `unitid` | `number` | Yes |  |
 | `url` | `string` | Yes |  |
@@ -293,21 +293,21 @@ local major = client:Major(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ai_exposure` | `any` | No |  |
-| `cip_program_name` | `any` | No |  |
-| `completion_adjusted_roi_usd` | `any` | No |  |
-| `dropout_roi_usd` | `any` | No |  |
-| `graduate` | `number` | No |  |
+| `ai_exposure` | `table|nil` | No |  |
+| `cip_program_name` | `string|nil` | No |  |
+| `completion_adjusted_roi_usd` | `number|nil` | No |  |
+| `dropout_roi_usd` | `number|nil` | No |  |
+| `graduates` | `number` | No |  |
 | `kind` | `string` | Yes |  |
 | `mean_lifetime_roi_usd` | `number` | No |  |
-| `median_breakeven_age` | `any` | No |  |
+| `median_breakeven_age` | `number|nil` | No |  |
 | `median_lifetime_roi_usd` | `number` | No |  |
 | `name` | `string` | Yes |  |
 | `p25_roi_usd` | `number` | No |  |
 | `p75_roi_usd` | `number` | No |  |
-| `parent` | `any` | No |  |
+| `parent` | `table|nil` | No |  |
 | `pct_never_breakeven` | `number` | No |  |
-| `program` | `number` | No |  |
+| `programs` | `number` | No |  |
 | `rank_by_worst_roi` | `number` | Yes |  |
 | `slug` | `string` | Yes |  |
 | `url` | `string` | Yes |  |
@@ -467,34 +467,34 @@ local slug = client:Slug(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ai_exposure` | `any` | No |  |
-| `breakeven_age` | `any` | No |  |
-| `cip_program_name` | `any` | No |  |
+| `ai_exposure` | `table|nil` | No |  |
+| `breakeven_age` | `number|nil` | No |  |
+| `cip_program_name` | `string|nil` | No |  |
 | `city` | `string` | Yes |  |
-| `completion_adjusted_roi_usd` | `any` | No |  |
+| `completion_adjusted_roi_usd` | `number|nil` | No |  |
 | `control` | `string` | Yes |  |
-| `dropout_roi_usd` | `any` | No |  |
+| `dropout_roi_usd` | `number|nil` | No |  |
 | `freopp_program_coverage` | `number` | No |  |
-| `graduate` | `number` | No |  |
+| `graduates` | `number` | No |  |
 | `kind` | `string` | Yes |  |
 | `mean_lifetime_roi_usd` | `number` | No |  |
-| `median_breakeven_age` | `any` | No |  |
+| `median_breakeven_age` | `number|nil` | No |  |
 | `median_earnings_10yr_usd` | `number` | No |  |
 | `median_lifetime_roi_usd` | `number` | No |  |
 | `meta` | `table` | Yes |  |
 | `name` | `string` | Yes |  |
-| `npv_30yr_nonresident_usd` | `any` | No |  |
+| `npv_30yr_nonresident_usd` | `number|nil` | No |  |
 | `npv_30yr_resident_usd` | `number` | Yes |  |
 | `p25_roi_usd` | `number` | No |  |
 | `p75_roi_usd` | `number` | No |  |
-| `parent` | `any` | No |  |
+| `parent` | `table|nil` | No |  |
 | `pct_never_breakeven` | `number` | No |  |
-| `program` | `number` | No |  |
+| `programs` | `number` | No |  |
 | `rank_by_worst_roi` | `number` | Yes |  |
 | `slug` | `string` | Yes |  |
 | `state` | `string` | Yes |  |
 | `state_name` | `string` | No |  |
-| `total_cost_of_attendance_nonresident_usd` | `any` | No |  |
+| `total_cost_of_attendance_nonresident_usd` | `number|nil` | No |  |
 | `total_cost_of_attendance_usd` | `number` | No |  |
 | `unitid` | `number` | Yes |  |
 | `url` | `string` | Yes |  |
@@ -664,9 +664,9 @@ local worst_roi_major = client:WorstRoiMajor(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `graduate` | `number` | No |  |
+| `graduates` | `number` | No |  |
 | `mean_lifetime_roi_usd` | `number` | No |  |
-| `median_breakeven_age` | `any` | No |  |
+| `median_breakeven_age` | `number|nil` | No |  |
 | `median_lifetime_roi_usd` | `number` | No |  |
 | `name` | `string` | No |  |
 | `pct_never_breakeven` | `number` | No |  |

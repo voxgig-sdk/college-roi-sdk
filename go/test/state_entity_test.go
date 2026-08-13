@@ -92,7 +92,7 @@ func TestStateEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set COLLEGEROI_TEST_STATE_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set COLLEGE_ROI_TEST_STATE_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -162,21 +162,21 @@ func stateBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("COLLEGEROI_TEST_STATE_ENTID")
+	entidEnvRaw := os.Getenv("COLLEGE_ROI_TEST_STATE_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"COLLEGEROI_TEST_STATE_ENTID": idmap,
-		"COLLEGEROI_TEST_LIVE":      "FALSE",
-		"COLLEGEROI_TEST_EXPLAIN":   "FALSE",
+		"COLLEGE_ROI_TEST_STATE_ENTID": idmap,
+		"COLLEGE_ROI_TEST_LIVE":      "FALSE",
+		"COLLEGE_ROI_TEST_EXPLAIN":   "FALSE",
 	})
 
-	idmapResolved := core.ToMapAny(env["COLLEGEROI_TEST_STATE_ENTID"])
+	idmapResolved := core.ToMapAny(env["COLLEGE_ROI_TEST_STATE_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["COLLEGEROI_TEST_LIVE"] == "TRUE" {
+	if env["COLLEGE_ROI_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
 			},
@@ -185,13 +185,13 @@ func stateBasicSetup(extra map[string]any) *entityTestSetup {
 		client = sdk.NewCollegeRoiSDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["COLLEGEROI_TEST_LIVE"] == "TRUE"
+	live := env["COLLEGE_ROI_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["COLLEGEROI_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["COLLEGE_ROI_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

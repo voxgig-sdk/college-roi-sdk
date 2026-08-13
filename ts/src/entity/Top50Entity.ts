@@ -37,7 +37,7 @@ class Top50Entity extends CollegeRoiEntityBase<Top50> {
 
 
 
-  async list(this: any, reqmatch?: Top50ListMatch, ctrl?: Control): Promise<Top50[]> {
+  async list(this: any, reqmatch?: Top50ListMatch, ctrl?: Control): Promise<Top50Entity[]> {
 
     const utility = this._utility
 

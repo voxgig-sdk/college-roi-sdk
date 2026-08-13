@@ -65,11 +65,11 @@ function openapi_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "COLLEGEROI_TEST_OPENAPI_ENTID" => [],
-        "COLLEGEROI_TEST_LIVE" => "FALSE",
+        "COLLEGE_ROI_TEST_OPENAPI_ENTID" => [],
+        "COLLEGE_ROI_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["COLLEGEROI_TEST_LIVE"] === "TRUE";
+    $live = $env["COLLEGE_ROI_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

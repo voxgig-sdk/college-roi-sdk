@@ -66,11 +66,11 @@ function top_50_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "COLLEGEROI_TEST_TOP____ENTID" => [],
-        "COLLEGEROI_TEST_LIVE" => "FALSE",
+        "COLLEGE_ROI_TEST_TOP_50_ENTID" => [],
+        "COLLEGE_ROI_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["COLLEGEROI_TEST_LIVE"] === "TRUE";
+    $live = $env["COLLEGE_ROI_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

@@ -26,8 +26,8 @@ import {
 describe('StateEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COLLEGEROI_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COLLEGEROI_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COLLEGE_ROI_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COLLEGE_ROI_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = CollegeRoiSDK.test()
@@ -64,7 +64,7 @@ describe('StateEntity', async () => {
     const state_ref01_match: any = {}
     state_ref01_match['state'] = setup.idmap['state01']
 
-    const state_ref01_list = await state_ref01_ent.list(state_ref01_match)
+    const state_ref01_list = (await state_ref01_ent.list(state_ref01_match)).map((e: any) => e.data())
 
 
   })

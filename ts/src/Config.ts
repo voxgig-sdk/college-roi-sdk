@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'CollegeRoi',
   }
 
 
@@ -83,7 +83,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "college",
+          "name": "colleges",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 0
@@ -119,6 +119,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/rankings/best-value.json",
               "parts": [
@@ -277,6 +278,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/colleges.json",
               "parts": [
@@ -310,6 +312,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/index.json",
               "parts": [
@@ -388,7 +391,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "graduate",
+          "name": "graduates",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 4
@@ -470,7 +473,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "program",
+          "name": "programs",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 14
@@ -506,6 +509,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/majors.json",
               "parts": [
@@ -539,6 +543,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/openapi.json",
               "parts": [
@@ -629,6 +634,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/rankings/out-of-state-penalty.json",
               "parts": [
@@ -742,7 +748,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "graduate",
+          "name": "graduates",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 8
@@ -858,7 +864,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "program",
+          "name": "programs",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 22
@@ -947,6 +953,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/colleges/{slug}.json",
               "parts": [
@@ -981,6 +988,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/majors/{slug}.json",
               "parts": [
@@ -1074,6 +1082,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/rankings/best-value/{state}.json",
               "parts": [
@@ -1174,6 +1183,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/rankings/out-of-state-penalty/top-50.json",
               "parts": [
@@ -1202,7 +1212,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "graduate",
+          "name": "graduates",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 0
@@ -1279,6 +1289,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/v1/rankings/worst-roi-majors.json",
               "parts": [

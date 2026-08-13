@@ -134,7 +134,7 @@ fmt.Println(bestValue.GetName()) // "best_value"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `college` | `[]any` | No |  |
+| `colleges` | `[]any` | No |  |
 | `page_url` | `string` | No |  |
 | `state` | `string` | No |  |
 | `state_name` | `string` | No |  |
@@ -302,7 +302,7 @@ fmt.Println(major.GetName()) // "major"
 | `cip_program_name` | `any` | No |  |
 | `completion_adjusted_roi_usd` | `any` | No |  |
 | `dropout_roi_usd` | `any` | No |  |
-| `graduate` | `int` | No |  |
+| `graduates` | `int` | No |  |
 | `kind` | `string` | Yes |  |
 | `mean_lifetime_roi_usd` | `float64` | No |  |
 | `median_breakeven_age` | `any` | No |  |
@@ -312,7 +312,7 @@ fmt.Println(major.GetName()) // "major"
 | `p75_roi_usd` | `float64` | No |  |
 | `parent` | `any` | No |  |
 | `pct_never_breakeven` | `float64` | No |  |
-| `program` | `int` | No |  |
+| `programs` | `int` | No |  |
 | `rank_by_worst_roi` | `int` | Yes |  |
 | `slug` | `string` | Yes |  |
 | `url` | `string` | Yes |  |
@@ -477,7 +477,7 @@ fmt.Println(slug.GetName()) // "slug"
 | `control` | `string` | Yes |  |
 | `dropout_roi_usd` | `any` | No |  |
 | `freopp_program_coverage` | `int` | No |  |
-| `graduate` | `int` | No |  |
+| `graduates` | `int` | No |  |
 | `kind` | `string` | Yes |  |
 | `mean_lifetime_roi_usd` | `float64` | No |  |
 | `median_breakeven_age` | `any` | No |  |
@@ -491,7 +491,7 @@ fmt.Println(slug.GetName()) // "slug"
 | `p75_roi_usd` | `float64` | No |  |
 | `parent` | `any` | No |  |
 | `pct_never_breakeven` | `float64` | No |  |
-| `program` | `int` | No |  |
+| `programs` | `int` | No |  |
 | `rank_by_worst_roi` | `int` | Yes |  |
 | `slug` | `string` | Yes |  |
 | `state` | `string` | Yes |  |
@@ -663,7 +663,7 @@ fmt.Println(worstRoiMajor.GetName()) // "worst_roi_major"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `graduate` | `int` | No |  |
+| `graduates` | `int` | No |  |
 | `mean_lifetime_roi_usd` | `float64` | No |  |
 | `median_breakeven_age` | `any` | No |  |
 | `median_lifetime_roi_usd` | `float64` | No |  |

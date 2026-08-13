@@ -41,7 +41,7 @@ class CollegeRoiConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'college',
+              'name' => 'colleges',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 0,
@@ -77,6 +77,7 @@ class CollegeRoiConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/rankings/best-value.json',
                   'parts' => [
@@ -235,6 +236,7 @@ class CollegeRoiConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/colleges.json',
                   'parts' => [
@@ -268,6 +270,7 @@ class CollegeRoiConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/index.json',
                   'parts' => [
@@ -346,7 +349,7 @@ class CollegeRoiConfig
             ],
             [
               'active' => true,
-              'name' => 'graduate',
+              'name' => 'graduates',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 4,
@@ -428,7 +431,7 @@ class CollegeRoiConfig
             ],
             [
               'active' => true,
-              'name' => 'program',
+              'name' => 'programs',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 14,
@@ -464,6 +467,7 @@ class CollegeRoiConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/majors.json',
                   'parts' => [
@@ -497,6 +501,7 @@ class CollegeRoiConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/openapi.json',
                   'parts' => [
@@ -587,6 +592,7 @@ class CollegeRoiConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/rankings/out-of-state-penalty.json',
                   'parts' => [
@@ -700,7 +706,7 @@ class CollegeRoiConfig
             ],
             [
               'active' => true,
-              'name' => 'graduate',
+              'name' => 'graduates',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 8,
@@ -816,7 +822,7 @@ class CollegeRoiConfig
             ],
             [
               'active' => true,
-              'name' => 'program',
+              'name' => 'programs',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 22,
@@ -905,6 +911,7 @@ class CollegeRoiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/colleges/{slug}.json',
                   'parts' => [
@@ -939,6 +946,7 @@ class CollegeRoiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/majors/{slug}.json',
                   'parts' => [
@@ -1032,6 +1040,7 @@ class CollegeRoiConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/rankings/best-value/{state}.json',
                   'parts' => [
@@ -1132,6 +1141,7 @@ class CollegeRoiConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/rankings/out-of-state-penalty/top-50.json',
                   'parts' => [
@@ -1160,7 +1170,7 @@ class CollegeRoiConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'graduate',
+              'name' => 'graduates',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 0,
@@ -1237,6 +1247,7 @@ class CollegeRoiConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/v1/rankings/worst-roi-majors.json',
                   'parts' => [

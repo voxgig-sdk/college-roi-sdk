@@ -61,11 +61,11 @@ function major_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["COLLEGEROI_TEST_MAJOR_ENTID"] = {},
-    ["COLLEGEROI_TEST_LIVE"] = "FALSE",
+    ["COLLEGE_ROI_TEST_MAJOR_ENTID"] = {},
+    ["COLLEGE_ROI_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["COLLEGEROI_TEST_LIVE"] == "TRUE"
+  local live = env["COLLEGE_ROI_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

@@ -6,7 +6,7 @@ main: kit: entity: worst_roi_major: {
 
   fields: [
     {
-      name: "graduate"
+      name: "graduates"
       req: false
       type: "`$INTEGER`"
     }
