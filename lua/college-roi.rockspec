@@ -23,6 +23,7 @@ build = {
   modules = {
     ["college-roi_sdk"] = "college-roi_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

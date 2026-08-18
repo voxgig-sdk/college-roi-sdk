@@ -40,7 +40,7 @@ class CollegeRoiSDK
         $utility = new CollegeRoiUtility();
         $this->_utility = $utility;
 
-        $config = CollegeRoiConfig::make_config();
+        $config = CollegeRoiConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

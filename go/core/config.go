@@ -1,5 +1,12 @@
 package core
 
+import (
+	"sync"
+)
+
+// MakeConfig builds a fresh, fully materialised config map. Every call
+// rebuilds the whole structure, so prefer SharedConfig unless you need a
+// private copy you intend to mutate.
 func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
@@ -34,32 +41,20 @@ func MakeConfig() map[string]any {
 			"best_value": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "colleges",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "page_url",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 1,
 					},
 					map[string]any{
-						"active": true,
 						"name": "state",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 2,
 					},
 					map[string]any{
-						"active": true,
 						"name": "state_name",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 3,
 					},
 				},
 				"name": "best_value",
@@ -69,7 +64,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
@@ -85,7 +79,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -97,9 +90,7 @@ func MakeConfig() map[string]any {
 			"college": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "breakeven_age",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -107,47 +98,32 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "city",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 1,
 					},
 					map[string]any{
-						"active": true,
 						"name": "control",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 2,
 					},
 					map[string]any{
-						"active": true,
 						"name": "freopp_program_coverage",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 3,
 					},
 					map[string]any{
-						"active": true,
 						"name": "median_earnings_10yr_usd",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 4,
 					},
 					map[string]any{
-						"active": true,
 						"name": "name",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 5,
 					},
 					map[string]any{
-						"active": true,
 						"name": "npv_30yr_nonresident_usd",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -155,40 +131,28 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 6,
 					},
 					map[string]any{
-						"active": true,
 						"name": "npv_30yr_resident_usd",
 						"req": true,
 						"type": "`$INTEGER`",
-						"index$": 7,
 					},
 					map[string]any{
-						"active": true,
 						"name": "slug",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 8,
 					},
 					map[string]any{
-						"active": true,
 						"name": "state",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 9,
 					},
 					map[string]any{
-						"active": true,
 						"name": "state_name",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 10,
 					},
 					map[string]any{
-						"active": true,
 						"name": "total_cost_of_attendance_nonresident_usd",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -196,28 +160,20 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 11,
 					},
 					map[string]any{
-						"active": true,
 						"name": "total_cost_of_attendance_usd",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 12,
 					},
 					map[string]any{
-						"active": true,
 						"name": "unitid",
 						"req": true,
 						"type": "`$INTEGER`",
-						"index$": 13,
 					},
 					map[string]any{
-						"active": true,
 						"name": "url",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 14,
 					},
 				},
 				"name": "college",
@@ -227,7 +183,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
@@ -242,7 +197,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -260,7 +214,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
@@ -275,7 +228,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -287,9 +239,7 @@ func MakeConfig() map[string]any {
 			"major": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "ai_exposure",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -297,12 +247,9 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "cip_program_name",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -310,12 +257,9 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 1,
 					},
 					map[string]any{
-						"active": true,
 						"name": "completion_adjusted_roi_usd",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -323,12 +267,9 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 2,
 					},
 					map[string]any{
-						"active": true,
 						"name": "dropout_roi_usd",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -336,33 +277,22 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 3,
 					},
 					map[string]any{
-						"active": true,
 						"name": "graduates",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 4,
 					},
 					map[string]any{
-						"active": true,
 						"name": "kind",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 5,
 					},
 					map[string]any{
-						"active": true,
 						"name": "mean_lifetime_roi_usd",
-						"req": false,
 						"type": "`$NUMBER`",
-						"index$": 6,
 					},
 					map[string]any{
-						"active": true,
 						"name": "median_breakeven_age",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -370,40 +300,26 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 7,
 					},
 					map[string]any{
-						"active": true,
 						"name": "median_lifetime_roi_usd",
-						"req": false,
 						"type": "`$NUMBER`",
-						"index$": 8,
 					},
 					map[string]any{
-						"active": true,
 						"name": "name",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 9,
 					},
 					map[string]any{
-						"active": true,
 						"name": "p25_roi_usd",
-						"req": false,
 						"type": "`$NUMBER`",
-						"index$": 10,
 					},
 					map[string]any{
-						"active": true,
 						"name": "p75_roi_usd",
-						"req": false,
 						"type": "`$NUMBER`",
-						"index$": 11,
 					},
 					map[string]any{
-						"active": true,
 						"name": "parent",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -411,42 +327,29 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 12,
 					},
 					map[string]any{
-						"active": true,
 						"name": "pct_never_breakeven",
-						"req": false,
 						"type": "`$NUMBER`",
-						"index$": 13,
 					},
 					map[string]any{
-						"active": true,
 						"name": "programs",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 14,
 					},
 					map[string]any{
-						"active": true,
 						"name": "rank_by_worst_roi",
 						"req": true,
 						"type": "`$INTEGER`",
-						"index$": 15,
 					},
 					map[string]any{
-						"active": true,
 						"name": "slug",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 16,
 					},
 					map[string]any{
-						"active": true,
 						"name": "url",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 17,
 					},
 				},
 				"name": "major",
@@ -456,7 +359,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
@@ -471,7 +373,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -489,7 +390,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
@@ -504,7 +404,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -516,60 +415,36 @@ func MakeConfig() map[string]any {
 			"out_of_state_penalty": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "institution",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "npv_nonresident_usd",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 1,
 					},
 					map[string]any{
-						"active": true,
 						"name": "npv_resident_usd",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 2,
 					},
 					map[string]any{
-						"active": true,
 						"name": "oos_penalty_30yr_npv_usd",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 3,
 					},
 					map[string]any{
-						"active": true,
 						"name": "rank",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 4,
 					},
 					map[string]any{
-						"active": true,
 						"name": "state",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 5,
 					},
 					map[string]any{
-						"active": true,
 						"name": "tuition_in_state_usd",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 6,
 					},
 					map[string]any{
-						"active": true,
 						"name": "tuition_out_of_state_usd",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 7,
 					},
 				},
 				"name": "out_of_state_penalty",
@@ -579,7 +454,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
@@ -595,7 +469,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -607,9 +480,7 @@ func MakeConfig() map[string]any {
 			"slug": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "ai_exposure",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -617,12 +488,9 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "breakeven_age",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -630,12 +498,9 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 1,
 					},
 					map[string]any{
-						"active": true,
 						"name": "cip_program_name",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -643,19 +508,14 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 2,
 					},
 					map[string]any{
-						"active": true,
 						"name": "city",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 3,
 					},
 					map[string]any{
-						"active": true,
 						"name": "completion_adjusted_roi_usd",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -663,19 +523,14 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 4,
 					},
 					map[string]any{
-						"active": true,
 						"name": "control",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 5,
 					},
 					map[string]any{
-						"active": true,
 						"name": "dropout_roi_usd",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -683,40 +538,26 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 6,
 					},
 					map[string]any{
-						"active": true,
 						"name": "freopp_program_coverage",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 7,
 					},
 					map[string]any{
-						"active": true,
 						"name": "graduates",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 8,
 					},
 					map[string]any{
-						"active": true,
 						"name": "kind",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 9,
 					},
 					map[string]any{
-						"active": true,
 						"name": "mean_lifetime_roi_usd",
-						"req": false,
 						"type": "`$NUMBER`",
-						"index$": 10,
 					},
 					map[string]any{
-						"active": true,
 						"name": "median_breakeven_age",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -724,40 +565,27 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 11,
 					},
 					map[string]any{
-						"active": true,
 						"name": "median_earnings_10yr_usd",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 12,
 					},
 					map[string]any{
-						"active": true,
 						"name": "median_lifetime_roi_usd",
-						"req": false,
 						"type": "`$NUMBER`",
-						"index$": 13,
 					},
 					map[string]any{
-						"active": true,
 						"name": "meta",
 						"req": true,
 						"type": "`$OBJECT`",
-						"index$": 14,
 					},
 					map[string]any{
-						"active": true,
 						"name": "name",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 15,
 					},
 					map[string]any{
-						"active": true,
 						"name": "npv_30yr_nonresident_usd",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -765,33 +593,22 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 16,
 					},
 					map[string]any{
-						"active": true,
 						"name": "npv_30yr_resident_usd",
 						"req": true,
 						"type": "`$INTEGER`",
-						"index$": 17,
 					},
 					map[string]any{
-						"active": true,
 						"name": "p25_roi_usd",
-						"req": false,
 						"type": "`$NUMBER`",
-						"index$": 18,
 					},
 					map[string]any{
-						"active": true,
 						"name": "p75_roi_usd",
-						"req": false,
 						"type": "`$NUMBER`",
-						"index$": 19,
 					},
 					map[string]any{
-						"active": true,
 						"name": "parent",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -799,54 +616,36 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 20,
 					},
 					map[string]any{
-						"active": true,
 						"name": "pct_never_breakeven",
-						"req": false,
 						"type": "`$NUMBER`",
-						"index$": 21,
 					},
 					map[string]any{
-						"active": true,
 						"name": "programs",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 22,
 					},
 					map[string]any{
-						"active": true,
 						"name": "rank_by_worst_roi",
 						"req": true,
 						"type": "`$INTEGER`",
-						"index$": 23,
 					},
 					map[string]any{
-						"active": true,
 						"name": "slug",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 24,
 					},
 					map[string]any{
-						"active": true,
 						"name": "state",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 25,
 					},
 					map[string]any{
-						"active": true,
 						"name": "state_name",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 26,
 					},
 					map[string]any{
-						"active": true,
 						"name": "total_cost_of_attendance_nonresident_usd",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -854,28 +653,20 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 27,
 					},
 					map[string]any{
-						"active": true,
 						"name": "total_cost_of_attendance_usd",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 28,
 					},
 					map[string]any{
-						"active": true,
 						"name": "unitid",
 						"req": true,
 						"type": "`$INTEGER`",
-						"index$": 29,
 					},
 					map[string]any{
-						"active": true,
 						"name": "url",
 						"req": true,
 						"type": "`$STRING`",
-						"index$": 30,
 					},
 				},
 				"name": "slug",
@@ -885,17 +676,14 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"active": true,
 											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 								},
@@ -917,20 +705,16 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"active": true,
 											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 								},
@@ -952,7 +736,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 1,
 							},
 						},
 					},
@@ -971,39 +754,24 @@ func MakeConfig() map[string]any {
 			"state": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "city",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "control",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 1,
 					},
 					map[string]any{
-						"active": true,
 						"name": "institution",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 2,
 					},
 					map[string]any{
-						"active": true,
 						"name": "npv_30yr_resident_usd",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 3,
 					},
 					map[string]any{
-						"active": true,
 						"name": "rank_in_state",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 4,
 					},
 				},
 				"name": "state",
@@ -1013,17 +781,14 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"active": true,
 											"kind": "param",
 											"name": "state",
 											"orig": "state",
 											"reqd": true,
 											"type": "`$STRING`",
-											"index$": 0,
 										},
 									},
 								},
@@ -1046,7 +811,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -1062,60 +826,36 @@ func MakeConfig() map[string]any {
 			"top_50": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "institution",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "npv_nonresident_usd",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 1,
 					},
 					map[string]any{
-						"active": true,
 						"name": "npv_resident_usd",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 2,
 					},
 					map[string]any{
-						"active": true,
 						"name": "oos_penalty_30yr_npv_usd",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 3,
 					},
 					map[string]any{
-						"active": true,
 						"name": "rank",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 4,
 					},
 					map[string]any{
-						"active": true,
 						"name": "state",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 5,
 					},
 					map[string]any{
-						"active": true,
 						"name": "tuition_in_state_usd",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 6,
 					},
 					map[string]any{
-						"active": true,
 						"name": "tuition_out_of_state_usd",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 7,
 					},
 				},
 				"name": "top_50",
@@ -1125,7 +865,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
@@ -1142,7 +881,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -1154,23 +892,15 @@ func MakeConfig() map[string]any {
 			"worst_roi_major": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "graduates",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "mean_lifetime_roi_usd",
-						"req": false,
 						"type": "`$NUMBER`",
-						"index$": 1,
 					},
 					map[string]any{
-						"active": true,
 						"name": "median_breakeven_age",
-						"req": false,
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -1178,49 +908,30 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
-						"index$": 2,
 					},
 					map[string]any{
-						"active": true,
 						"name": "median_lifetime_roi_usd",
-						"req": false,
 						"type": "`$NUMBER`",
-						"index$": 3,
 					},
 					map[string]any{
-						"active": true,
 						"name": "name",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 4,
 					},
 					map[string]any{
-						"active": true,
 						"name": "pct_never_breakeven",
-						"req": false,
 						"type": "`$NUMBER`",
-						"index$": 5,
 					},
 					map[string]any{
-						"active": true,
 						"name": "rank",
-						"req": false,
 						"type": "`$INTEGER`",
-						"index$": 6,
 					},
 					map[string]any{
-						"active": true,
 						"name": "slug",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 7,
 					},
 					map[string]any{
-						"active": true,
 						"name": "url",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 8,
 					},
 				},
 				"name": "worst_roi_major",
@@ -1230,7 +941,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
@@ -1246,7 +956,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -1257,6 +966,24 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+var (
+	sharedConfigOnce sync.Once
+	sharedConfigVal  map[string]any
+)
+
+// SharedConfig returns the process-wide config, built once on first use.
+// The SDK reads the config on every request and never writes to it, so one
+// instance is shared by every client rather than rebuilt per client.
+//
+// The returned map is shared: treat it as read-only. Callers that need to
+// mutate should use MakeConfig, which always returns a fresh copy.
+func SharedConfig() map[string]any {
+	sharedConfigOnce.Do(func() {
+		sharedConfigVal = MakeConfig()
+	})
+	return sharedConfigVal
 }
 
 func makeFeature(name string) Feature {

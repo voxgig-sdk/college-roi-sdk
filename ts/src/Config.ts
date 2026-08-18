@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://le-teen.com',
+    base: "https://le-teen.com",
 
     headers: {
       "content-type": "application/json"
@@ -82,32 +82,20 @@ class Config {
     "best_value": {
       "fields": [
         {
-          "active": true,
           "name": "colleges",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 0
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "page_url",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "state",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "state_name",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         }
       ],
       "name": "best_value",
@@ -117,7 +105,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -132,11 +119,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {
@@ -146,127 +131,90 @@ class Config {
     "college": {
       "fields": [
         {
-          "active": true,
           "name": "breakeven_age",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$INTEGER`",
               "`$NULL`"
             ]
-          ],
-          "index$": 0
+          ]
         },
         {
-          "active": true,
           "name": "city",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "control",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "freopp_program_coverage",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "median_earnings_10yr_usd",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 4
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "name",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "npv_30yr_nonresident_usd",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$INTEGER`",
               "`$NULL`"
             ]
-          ],
-          "index$": 6
+          ]
         },
         {
-          "active": true,
           "name": "npv_30yr_resident_usd",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "slug",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "state",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "state_name",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 10
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "total_cost_of_attendance_nonresident_usd",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$INTEGER`",
               "`$NULL`"
             ]
-          ],
-          "index$": 11
+          ]
         },
         {
-          "active": true,
           "name": "total_cost_of_attendance_usd",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 12
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "unitid",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 13
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "url",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 14
+          "type": "`$STRING`"
         }
       ],
       "name": "college",
@@ -276,7 +224,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -290,11 +237,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {
@@ -310,7 +255,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -324,11 +268,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -338,166 +280,117 @@ class Config {
     "major": {
       "fields": [
         {
-          "active": true,
           "name": "ai_exposure",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$OBJECT`",
               "`$NULL`"
             ]
-          ],
-          "index$": 0
+          ]
         },
         {
-          "active": true,
           "name": "cip_program_name",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$STRING`",
               "`$NULL`"
             ]
-          ],
-          "index$": 1
+          ]
         },
         {
-          "active": true,
           "name": "completion_adjusted_roi_usd",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$NUMBER`",
               "`$NULL`"
             ]
-          ],
-          "index$": 2
+          ]
         },
         {
-          "active": true,
           "name": "dropout_roi_usd",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$NUMBER`",
               "`$NULL`"
             ]
-          ],
-          "index$": 3
+          ]
         },
         {
-          "active": true,
           "name": "graduates",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 4
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "kind",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "mean_lifetime_roi_usd",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 6
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "median_breakeven_age",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$INTEGER`",
               "`$NULL`"
             ]
-          ],
-          "index$": 7
+          ]
         },
         {
-          "active": true,
           "name": "median_lifetime_roi_usd",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 8
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "name",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "p25_roi_usd",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 10
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "p75_roi_usd",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 11
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "parent",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$OBJECT`",
               "`$NULL`"
             ]
-          ],
-          "index$": 12
+          ]
         },
         {
-          "active": true,
           "name": "pct_never_breakeven",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 13
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "programs",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 14
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "rank_by_worst_roi",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 15
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "slug",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 16
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "url",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 17
+          "type": "`$STRING`"
         }
       ],
       "name": "major",
@@ -507,7 +400,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -521,11 +413,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {
@@ -541,7 +431,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -555,11 +444,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -569,60 +456,36 @@ class Config {
     "out_of_state_penalty": {
       "fields": [
         {
-          "active": true,
           "name": "institution",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "npv_nonresident_usd",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "npv_resident_usd",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 2
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "oos_penalty_30yr_npv_usd",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "rank",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 4
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "state",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tuition_in_state_usd",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 6
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "tuition_out_of_state_usd",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "type": "`$INTEGER`"
         }
       ],
       "name": "out_of_state_penalty",
@@ -632,7 +495,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -647,11 +509,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {
@@ -661,275 +521,193 @@ class Config {
     "slug": {
       "fields": [
         {
-          "active": true,
           "name": "ai_exposure",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$OBJECT`",
               "`$NULL`"
             ]
-          ],
-          "index$": 0
+          ]
         },
         {
-          "active": true,
           "name": "breakeven_age",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$INTEGER`",
               "`$NULL`"
             ]
-          ],
-          "index$": 1
+          ]
         },
         {
-          "active": true,
           "name": "cip_program_name",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$STRING`",
               "`$NULL`"
             ]
-          ],
-          "index$": 2
+          ]
         },
         {
-          "active": true,
           "name": "city",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "completion_adjusted_roi_usd",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$NUMBER`",
               "`$NULL`"
             ]
-          ],
-          "index$": 4
+          ]
         },
         {
-          "active": true,
           "name": "control",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "dropout_roi_usd",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$NUMBER`",
               "`$NULL`"
             ]
-          ],
-          "index$": 6
+          ]
         },
         {
-          "active": true,
           "name": "freopp_program_coverage",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "graduates",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 8
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "kind",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "mean_lifetime_roi_usd",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 10
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "median_breakeven_age",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$INTEGER`",
               "`$NULL`"
             ]
-          ],
-          "index$": 11
+          ]
         },
         {
-          "active": true,
           "name": "median_earnings_10yr_usd",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 12
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "median_lifetime_roi_usd",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 13
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "meta",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 14
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "name",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 15
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "npv_30yr_nonresident_usd",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$INTEGER`",
               "`$NULL`"
             ]
-          ],
-          "index$": 16
+          ]
         },
         {
-          "active": true,
           "name": "npv_30yr_resident_usd",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 17
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "p25_roi_usd",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 18
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "p75_roi_usd",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 19
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "parent",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$OBJECT`",
               "`$NULL`"
             ]
-          ],
-          "index$": 20
+          ]
         },
         {
-          "active": true,
           "name": "pct_never_breakeven",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 21
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "programs",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 22
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "rank_by_worst_roi",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 23
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "slug",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 24
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "state",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 25
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "state_name",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 26
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "total_cost_of_attendance_nonresident_usd",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$INTEGER`",
               "`$NULL`"
             ]
-          ],
-          "index$": 27
+          ]
         },
         {
-          "active": true,
           "name": "total_cost_of_attendance_usd",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 28
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "unitid",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 29
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "url",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 30
+          "type": "`$STRING`"
         }
       ],
       "name": "slug",
@@ -939,17 +717,14 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "slug",
                     "orig": "slug",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -970,21 +745,17 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             },
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "slug",
                     "orig": "slug",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1005,11 +776,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 1
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -1026,39 +795,24 @@ class Config {
     "state": {
       "fields": [
         {
-          "active": true,
           "name": "city",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "control",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "institution",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "npv_30yr_resident_usd",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "rank_in_state",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 4
+          "type": "`$INTEGER`"
         }
       ],
       "name": "state",
@@ -1068,17 +822,14 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "kind": "param",
                     "name": "state",
                     "orig": "state",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -1100,11 +851,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {
@@ -1118,60 +867,36 @@ class Config {
     "top_50": {
       "fields": [
         {
-          "active": true,
           "name": "institution",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "npv_nonresident_usd",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "npv_resident_usd",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 2
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "oos_penalty_30yr_npv_usd",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "rank",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 4
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "state",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tuition_in_state_usd",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 6
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "tuition_out_of_state_usd",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "type": "`$INTEGER`"
         }
       ],
       "name": "top_50",
@@ -1181,7 +906,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -1197,11 +921,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {
@@ -1211,73 +933,46 @@ class Config {
     "worst_roi_major": {
       "fields": [
         {
-          "active": true,
           "name": "graduates",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 0
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "mean_lifetime_roi_usd",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 1
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "median_breakeven_age",
-          "req": false,
           "type": [
             "`$ONE`",
             [
               "`$INTEGER`",
               "`$NULL`"
             ]
-          ],
-          "index$": 2
+          ]
         },
         {
-          "active": true,
           "name": "median_lifetime_roi_usd",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 3
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "name",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "pct_never_breakeven",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 5
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "rank",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 6
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "slug",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "url",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         }
       ],
       "name": "worst_roi_major",
@@ -1287,7 +982,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -1302,11 +996,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {

@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from collegeroi_sdk.config import make_config
+from collegeroi_sdk.config import shared_config
 from collegeroi_sdk.features import _make_feature
 from collegeroi_sdk.core.control import CollegeRoiControl
 from collegeroi_sdk.core.error import CollegeRoiError
@@ -24,7 +24,7 @@ from collegeroi_sdk.core.spec import CollegeRoiSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

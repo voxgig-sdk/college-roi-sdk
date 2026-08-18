@@ -28,7 +28,7 @@ class CollegeRoiSDK
     utility = CollegeRoiUtility.new
     @_utility = utility
 
-    config = CollegeRoiConfig.make_config
+    config = CollegeRoiConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

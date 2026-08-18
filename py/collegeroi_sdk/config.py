@@ -1,7 +1,30 @@
 # CollegeRoi SDK configuration
 
 
+_shared_config = None
+
+
+def shared_config():
+    """Return the process-wide config, built once on first use.
+
+    The SDK reads the config on every request and never writes to it, so one
+    instance is shared by every client rather than rebuilt per client.
+
+    The returned dict is shared: treat it as read-only. Callers that need to
+    mutate should use make_config, which always returns a fresh copy.
+    """
+    global _shared_config
+    if _shared_config is None:
+        _shared_config = make_config()
+    return _shared_config
+
+
 def make_config():
+    """Build a fresh, fully materialised config dict.
+
+    Every call rebuilds the whole structure, so prefer shared_config unless
+    you need a private copy you intend to mutate.
+    """
     return {
         "main": {
             "name": "CollegeRoi",
@@ -35,32 +58,20 @@ def make_config():
       "best_value": {
         "fields": [
           {
-            "active": True,
             "name": "colleges",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "page_url",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "state",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "state_name",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 3,
           },
         ],
         "name": "best_value",
@@ -70,7 +81,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -86,10 +96,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {
@@ -99,9 +107,7 @@ def make_config():
       "college": {
         "fields": [
           {
-            "active": True,
             "name": "breakeven_age",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -109,47 +115,32 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "city",
             "req": True,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "control",
             "req": True,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "freopp_program_coverage",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "median_earnings_10yr_usd",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "name",
             "req": True,
             "type": "`$STRING`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "npv_30yr_nonresident_usd",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -157,40 +148,28 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "npv_30yr_resident_usd",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "slug",
             "req": True,
             "type": "`$STRING`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "state",
             "req": True,
             "type": "`$STRING`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "state_name",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "total_cost_of_attendance_nonresident_usd",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -198,28 +177,20 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "total_cost_of_attendance_usd",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "unitid",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "url",
             "req": True,
             "type": "`$STRING`",
-            "index$": 14,
           },
         ],
         "name": "college",
@@ -229,7 +200,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -244,10 +214,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {
@@ -263,7 +231,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -278,10 +245,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -291,9 +256,7 @@ def make_config():
       "major": {
         "fields": [
           {
-            "active": True,
             "name": "ai_exposure",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -301,12 +264,9 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "cip_program_name",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -314,12 +274,9 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "completion_adjusted_roi_usd",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -327,12 +284,9 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "dropout_roi_usd",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -340,33 +294,22 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "graduates",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "kind",
             "req": True,
             "type": "`$STRING`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "mean_lifetime_roi_usd",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "median_breakeven_age",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -374,40 +317,26 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "median_lifetime_roi_usd",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "name",
             "req": True,
             "type": "`$STRING`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "p25_roi_usd",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "p75_roi_usd",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "parent",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -415,42 +344,29 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "pct_never_breakeven",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "programs",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 14,
           },
           {
-            "active": True,
             "name": "rank_by_worst_roi",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 15,
           },
           {
-            "active": True,
             "name": "slug",
             "req": True,
             "type": "`$STRING`",
-            "index$": 16,
           },
           {
-            "active": True,
             "name": "url",
             "req": True,
             "type": "`$STRING`",
-            "index$": 17,
           },
         ],
         "name": "major",
@@ -460,7 +376,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -475,10 +390,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {
@@ -494,7 +407,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -509,10 +421,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -522,60 +432,36 @@ def make_config():
       "out_of_state_penalty": {
         "fields": [
           {
-            "active": True,
             "name": "institution",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "npv_nonresident_usd",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "npv_resident_usd",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "oos_penalty_30yr_npv_usd",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "rank",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "state",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "tuition_in_state_usd",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "tuition_out_of_state_usd",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 7,
           },
         ],
         "name": "out_of_state_penalty",
@@ -585,7 +471,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -601,10 +486,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {
@@ -614,9 +497,7 @@ def make_config():
       "slug": {
         "fields": [
           {
-            "active": True,
             "name": "ai_exposure",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -624,12 +505,9 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "breakeven_age",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -637,12 +515,9 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "cip_program_name",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -650,19 +525,14 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "city",
             "req": True,
             "type": "`$STRING`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "completion_adjusted_roi_usd",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -670,19 +540,14 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "control",
             "req": True,
             "type": "`$STRING`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "dropout_roi_usd",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -690,40 +555,26 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "freopp_program_coverage",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "graduates",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "kind",
             "req": True,
             "type": "`$STRING`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "mean_lifetime_roi_usd",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "median_breakeven_age",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -731,40 +582,27 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "median_earnings_10yr_usd",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "median_lifetime_roi_usd",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "meta",
             "req": True,
             "type": "`$OBJECT`",
-            "index$": 14,
           },
           {
-            "active": True,
             "name": "name",
             "req": True,
             "type": "`$STRING`",
-            "index$": 15,
           },
           {
-            "active": True,
             "name": "npv_30yr_nonresident_usd",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -772,33 +610,22 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 16,
           },
           {
-            "active": True,
             "name": "npv_30yr_resident_usd",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 17,
           },
           {
-            "active": True,
             "name": "p25_roi_usd",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 18,
           },
           {
-            "active": True,
             "name": "p75_roi_usd",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 19,
           },
           {
-            "active": True,
             "name": "parent",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -806,54 +633,36 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 20,
           },
           {
-            "active": True,
             "name": "pct_never_breakeven",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 21,
           },
           {
-            "active": True,
             "name": "programs",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 22,
           },
           {
-            "active": True,
             "name": "rank_by_worst_roi",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 23,
           },
           {
-            "active": True,
             "name": "slug",
             "req": True,
             "type": "`$STRING`",
-            "index$": 24,
           },
           {
-            "active": True,
             "name": "state",
             "req": True,
             "type": "`$STRING`",
-            "index$": 25,
           },
           {
-            "active": True,
             "name": "state_name",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 26,
           },
           {
-            "active": True,
             "name": "total_cost_of_attendance_nonresident_usd",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -861,28 +670,20 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 27,
           },
           {
-            "active": True,
             "name": "total_cost_of_attendance_usd",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 28,
           },
           {
-            "active": True,
             "name": "unitid",
             "req": True,
             "type": "`$INTEGER`",
-            "index$": 29,
           },
           {
-            "active": True,
             "name": "url",
             "req": True,
             "type": "`$STRING`",
-            "index$": 30,
           },
         ],
         "name": "slug",
@@ -892,17 +693,14 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "slug",
                       "orig": "slug",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -924,20 +722,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "slug",
                       "orig": "slug",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -959,10 +753,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -979,39 +771,24 @@ def make_config():
       "state": {
         "fields": [
           {
-            "active": True,
             "name": "city",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "control",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "institution",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "npv_30yr_resident_usd",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "rank_in_state",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 4,
           },
         ],
         "name": "state",
@@ -1021,17 +798,14 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "state",
                       "orig": "state",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -1054,10 +828,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {
@@ -1071,60 +843,36 @@ def make_config():
       "top_50": {
         "fields": [
           {
-            "active": True,
             "name": "institution",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "npv_nonresident_usd",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "npv_resident_usd",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "oos_penalty_30yr_npv_usd",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "rank",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "state",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "tuition_in_state_usd",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "tuition_out_of_state_usd",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 7,
           },
         ],
         "name": "top_50",
@@ -1134,7 +882,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -1151,10 +898,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {
@@ -1164,23 +909,15 @@ def make_config():
       "worst_roi_major": {
         "fields": [
           {
-            "active": True,
             "name": "graduates",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "mean_lifetime_roi_usd",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "median_breakeven_age",
-            "req": False,
             "type": [
               "`$ONE`",
               [
@@ -1188,49 +925,30 @@ def make_config():
                 "`$NULL`",
               ],
             ],
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "median_lifetime_roi_usd",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "name",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "pct_never_breakeven",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "rank",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "slug",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "url",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 8,
           },
         ],
         "name": "worst_roi_major",
@@ -1240,7 +958,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -1256,10 +973,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {
