@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'CollegeRoi',
+        slug: "college-roi",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -152,10 +163,12 @@ class Config {
         },
         {
           "name": "freopp_program_coverage",
+          "short": "FREOPP-reported programs rolled into the earnings figure.",
           "type": "`$INTEGER`"
         },
         {
           "name": "median_earnings_10yr_usd",
+          "short": "FREOPP cohort-weighted earnings ten years after entry.",
           "type": "`$INTEGER`"
         },
         {
@@ -165,6 +178,7 @@ class Config {
         },
         {
           "name": "npv_30yr_nonresident_usd",
+          "short": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
           "type": [
             "`$ONE`",
             [
@@ -176,6 +190,7 @@ class Config {
         {
           "name": "npv_30yr_resident_usd",
           "req": true,
+          "short": "30-year projected net value at resident pricing.",
           "type": "`$INTEGER`"
         },
         {
@@ -186,6 +201,7 @@ class Config {
         {
           "name": "state",
           "req": true,
+          "short": "USPS 2-letter state code.",
           "type": "`$STRING`"
         },
         {
@@ -209,11 +225,13 @@ class Config {
         {
           "name": "unitid",
           "req": true,
+          "short": "IPEDS UnitID — the universal join key.",
           "type": "`$INTEGER`"
         },
         {
           "name": "url",
           "req": true,
+          "short": "The human-readable page for this school.",
           "type": "`$STRING`"
         }
       ],
@@ -281,6 +299,7 @@ class Config {
       "fields": [
         {
           "name": "ai_exposure",
+          "short": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
           "type": [
             "`$ONE`",
             [
@@ -291,6 +310,7 @@ class Config {
         },
         {
           "name": "cip_program_name",
+          "short": "CIP program-family name — subfields only.",
           "type": [
             "`$ONE`",
             [
@@ -361,6 +381,7 @@ class Config {
         },
         {
           "name": "parent",
+          "short": "Parent category — subfields only.",
           "type": [
             "`$ONE`",
             [
@@ -371,6 +392,7 @@ class Config {
         },
         {
           "name": "pct_never_breakeven",
+          "short": "Share of graduates who never break even, percent.",
           "type": "`$NUMBER`"
         },
         {
@@ -380,6 +402,7 @@ class Config {
         {
           "name": "rank_by_worst_roi",
           "req": true,
+          "short": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
           "type": "`$INTEGER`"
         },
         {
@@ -390,6 +413,7 @@ class Config {
         {
           "name": "url",
           "req": true,
+          "short": "The human-readable page for this major.",
           "type": "`$STRING`"
         }
       ],
@@ -522,6 +546,7 @@ class Config {
       "fields": [
         {
           "name": "ai_exposure",
+          "short": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
           "type": [
             "`$ONE`",
             [
@@ -542,6 +567,7 @@ class Config {
         },
         {
           "name": "cip_program_name",
+          "short": "CIP program-family name — subfields only.",
           "type": [
             "`$ONE`",
             [
@@ -582,6 +608,7 @@ class Config {
         },
         {
           "name": "freopp_program_coverage",
+          "short": "FREOPP-reported programs rolled into the earnings figure.",
           "type": "`$INTEGER`"
         },
         {
@@ -609,6 +636,7 @@ class Config {
         },
         {
           "name": "median_earnings_10yr_usd",
+          "short": "FREOPP cohort-weighted earnings ten years after entry.",
           "type": "`$INTEGER`"
         },
         {
@@ -618,6 +646,7 @@ class Config {
         {
           "name": "meta",
           "req": true,
+          "short": "Provenance block carried by every payload.",
           "type": "`$OBJECT`"
         },
         {
@@ -627,6 +656,7 @@ class Config {
         },
         {
           "name": "npv_30yr_nonresident_usd",
+          "short": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
           "type": [
             "`$ONE`",
             [
@@ -638,6 +668,7 @@ class Config {
         {
           "name": "npv_30yr_resident_usd",
           "req": true,
+          "short": "30-year projected net value at resident pricing.",
           "type": "`$INTEGER`"
         },
         {
@@ -650,6 +681,7 @@ class Config {
         },
         {
           "name": "parent",
+          "short": "Parent category — subfields only.",
           "type": [
             "`$ONE`",
             [
@@ -660,6 +692,7 @@ class Config {
         },
         {
           "name": "pct_never_breakeven",
+          "short": "Share of graduates who never break even, percent.",
           "type": "`$NUMBER`"
         },
         {
@@ -669,6 +702,7 @@ class Config {
         {
           "name": "rank_by_worst_roi",
           "req": true,
+          "short": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
           "type": "`$INTEGER`"
         },
         {
@@ -679,6 +713,7 @@ class Config {
         {
           "name": "state",
           "req": true,
+          "short": "USPS 2-letter state code.",
           "type": "`$STRING`"
         },
         {
@@ -702,11 +737,13 @@ class Config {
         {
           "name": "unitid",
           "req": true,
+          "short": "IPEDS UnitID — the universal join key.",
           "type": "`$INTEGER`"
         },
         {
           "name": "url",
           "req": true,
+          "short": "The human-readable page for this school.",
           "type": "`$STRING`"
         }
       ],

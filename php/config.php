@@ -33,6 +33,9 @@ class CollegeRoiConfig
         return [
             "main" => [
                 "name" => "CollegeRoi",
+                "slug" => "college-roi",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -133,10 +136,12 @@ class CollegeRoiConfig
             ],
             [
               'name' => 'freopp_program_coverage',
+              'short' => 'FREOPP-reported programs rolled into the earnings figure.',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'median_earnings_10yr_usd',
+              'short' => 'FREOPP cohort-weighted earnings ten years after entry.',
               'type' => '`$INTEGER`',
             ],
             [
@@ -146,6 +151,7 @@ class CollegeRoiConfig
             ],
             [
               'name' => 'npv_30yr_nonresident_usd',
+              'short' => 'Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.',
               'type' => [
                 '`$ONE`',
                 [
@@ -157,6 +163,7 @@ class CollegeRoiConfig
             [
               'name' => 'npv_30yr_resident_usd',
               'req' => true,
+              'short' => '30-year projected net value at resident pricing.',
               'type' => '`$INTEGER`',
             ],
             [
@@ -167,6 +174,7 @@ class CollegeRoiConfig
             [
               'name' => 'state',
               'req' => true,
+              'short' => 'USPS 2-letter state code.',
               'type' => '`$STRING`',
             ],
             [
@@ -190,11 +198,13 @@ class CollegeRoiConfig
             [
               'name' => 'unitid',
               'req' => true,
+              'short' => 'IPEDS UnitID — the universal join key.',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'url',
               'req' => true,
+              'short' => 'The human-readable page for this school.',
               'type' => '`$STRING`',
             ],
           ],
@@ -262,6 +272,7 @@ class CollegeRoiConfig
           'fields' => [
             [
               'name' => 'ai_exposure',
+              'short' => 'le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.',
               'type' => [
                 '`$ONE`',
                 [
@@ -272,6 +283,7 @@ class CollegeRoiConfig
             ],
             [
               'name' => 'cip_program_name',
+              'short' => 'CIP program-family name — subfields only.',
               'type' => [
                 '`$ONE`',
                 [
@@ -342,6 +354,7 @@ class CollegeRoiConfig
             ],
             [
               'name' => 'parent',
+              'short' => 'Parent category — subfields only.',
               'type' => [
                 '`$ONE`',
                 [
@@ -352,6 +365,7 @@ class CollegeRoiConfig
             ],
             [
               'name' => 'pct_never_breakeven',
+              'short' => 'Share of graduates who never break even, percent.',
               'type' => '`$NUMBER`',
             ],
             [
@@ -361,6 +375,7 @@ class CollegeRoiConfig
             [
               'name' => 'rank_by_worst_roi',
               'req' => true,
+              'short' => 'Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).',
               'type' => '`$INTEGER`',
             ],
             [
@@ -371,6 +386,7 @@ class CollegeRoiConfig
             [
               'name' => 'url',
               'req' => true,
+              'short' => 'The human-readable page for this major.',
               'type' => '`$STRING`',
             ],
           ],
@@ -503,6 +519,7 @@ class CollegeRoiConfig
           'fields' => [
             [
               'name' => 'ai_exposure',
+              'short' => 'le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.',
               'type' => [
                 '`$ONE`',
                 [
@@ -523,6 +540,7 @@ class CollegeRoiConfig
             ],
             [
               'name' => 'cip_program_name',
+              'short' => 'CIP program-family name — subfields only.',
               'type' => [
                 '`$ONE`',
                 [
@@ -563,6 +581,7 @@ class CollegeRoiConfig
             ],
             [
               'name' => 'freopp_program_coverage',
+              'short' => 'FREOPP-reported programs rolled into the earnings figure.',
               'type' => '`$INTEGER`',
             ],
             [
@@ -590,6 +609,7 @@ class CollegeRoiConfig
             ],
             [
               'name' => 'median_earnings_10yr_usd',
+              'short' => 'FREOPP cohort-weighted earnings ten years after entry.',
               'type' => '`$INTEGER`',
             ],
             [
@@ -599,6 +619,7 @@ class CollegeRoiConfig
             [
               'name' => 'meta',
               'req' => true,
+              'short' => 'Provenance block carried by every payload.',
               'type' => '`$OBJECT`',
             ],
             [
@@ -608,6 +629,7 @@ class CollegeRoiConfig
             ],
             [
               'name' => 'npv_30yr_nonresident_usd',
+              'short' => 'Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.',
               'type' => [
                 '`$ONE`',
                 [
@@ -619,6 +641,7 @@ class CollegeRoiConfig
             [
               'name' => 'npv_30yr_resident_usd',
               'req' => true,
+              'short' => '30-year projected net value at resident pricing.',
               'type' => '`$INTEGER`',
             ],
             [
@@ -631,6 +654,7 @@ class CollegeRoiConfig
             ],
             [
               'name' => 'parent',
+              'short' => 'Parent category — subfields only.',
               'type' => [
                 '`$ONE`',
                 [
@@ -641,6 +665,7 @@ class CollegeRoiConfig
             ],
             [
               'name' => 'pct_never_breakeven',
+              'short' => 'Share of graduates who never break even, percent.',
               'type' => '`$NUMBER`',
             ],
             [
@@ -650,6 +675,7 @@ class CollegeRoiConfig
             [
               'name' => 'rank_by_worst_roi',
               'req' => true,
+              'short' => 'Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).',
               'type' => '`$INTEGER`',
             ],
             [
@@ -660,6 +686,7 @@ class CollegeRoiConfig
             [
               'name' => 'state',
               'req' => true,
+              'short' => 'USPS 2-letter state code.',
               'type' => '`$STRING`',
             ],
             [
@@ -683,11 +710,13 @@ class CollegeRoiConfig
             [
               'name' => 'unitid',
               'req' => true,
+              'short' => 'IPEDS UnitID — the universal join key.',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'url',
               'req' => true,
+              'short' => 'The human-readable page for this school.',
               'type' => '`$STRING`',
             ],
           ],

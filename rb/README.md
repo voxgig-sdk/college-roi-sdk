@@ -277,18 +277,18 @@ API path: `/api/v1/rankings/best-value.json`
 | `breakeven_age` |  |
 | `city` |  |
 | `control` |  |
-| `freopp_program_coverage` |  |
-| `median_earnings_10yr_usd` |  |
+| `freopp_program_coverage` | FREOPP-reported programs rolled into the earnings figure. |
+| `median_earnings_10yr_usd` | FREOPP cohort-weighted earnings ten years after entry. |
 | `name` |  |
-| `npv_30yr_nonresident_usd` |  |
-| `npv_30yr_resident_usd` |  |
+| `npv_30yr_nonresident_usd` | Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design. |
+| `npv_30yr_resident_usd` | 30-year projected net value at resident pricing. |
 | `slug` |  |
-| `state` |  |
+| `state` | USPS 2-letter state code. |
 | `state_name` |  |
 | `total_cost_of_attendance_nonresident_usd` |  |
 | `total_cost_of_attendance_usd` |  |
-| `unitid` |  |
-| `url` |  |
+| `unitid` | IPEDS UnitID — the universal join key. |
+| `url` | The human-readable page for this school. |
 
 Operations: List.
 
@@ -307,8 +307,8 @@ API path: `/api/v1/index.json`
 
 | Field | Description |
 | --- | --- |
-| `ai_exposure` |  |
-| `cip_program_name` |  |
+| `ai_exposure` | le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for. |
+| `cip_program_name` | CIP program-family name — subfields only. |
 | `completion_adjusted_roi_usd` |  |
 | `dropout_roi_usd` |  |
 | `graduates` |  |
@@ -319,12 +319,12 @@ API path: `/api/v1/index.json`
 | `name` |  |
 | `p25_roi_usd` |  |
 | `p75_roi_usd` |  |
-| `parent` |  |
-| `pct_never_breakeven` |  |
+| `parent` | Parent category — subfields only. |
+| `pct_never_breakeven` | Share of graduates who never break even, percent. |
 | `programs` |  |
-| `rank_by_worst_roi` |  |
+| `rank_by_worst_roi` | Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields). |
 | `slug` |  |
-| `url` |  |
+| `url` | The human-readable page for this major. |
 
 Operations: List.
 
@@ -360,37 +360,37 @@ API path: `/api/v1/rankings/out-of-state-penalty.json`
 
 | Field | Description |
 | --- | --- |
-| `ai_exposure` |  |
+| `ai_exposure` | le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for. |
 | `breakeven_age` |  |
-| `cip_program_name` |  |
+| `cip_program_name` | CIP program-family name — subfields only. |
 | `city` |  |
 | `completion_adjusted_roi_usd` |  |
 | `control` |  |
 | `dropout_roi_usd` |  |
-| `freopp_program_coverage` |  |
+| `freopp_program_coverage` | FREOPP-reported programs rolled into the earnings figure. |
 | `graduates` |  |
 | `kind` |  |
 | `mean_lifetime_roi_usd` |  |
 | `median_breakeven_age` |  |
-| `median_earnings_10yr_usd` |  |
+| `median_earnings_10yr_usd` | FREOPP cohort-weighted earnings ten years after entry. |
 | `median_lifetime_roi_usd` |  |
-| `meta` |  |
+| `meta` | Provenance block carried by every payload. |
 | `name` |  |
-| `npv_30yr_nonresident_usd` |  |
-| `npv_30yr_resident_usd` |  |
+| `npv_30yr_nonresident_usd` | Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design. |
+| `npv_30yr_resident_usd` | 30-year projected net value at resident pricing. |
 | `p25_roi_usd` |  |
 | `p75_roi_usd` |  |
-| `parent` |  |
-| `pct_never_breakeven` |  |
+| `parent` | Parent category — subfields only. |
+| `pct_never_breakeven` | Share of graduates who never break even, percent. |
 | `programs` |  |
-| `rank_by_worst_roi` |  |
+| `rank_by_worst_roi` | Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields). |
 | `slug` |  |
-| `state` |  |
+| `state` | USPS 2-letter state code. |
 | `state_name` |  |
 | `total_cost_of_attendance_nonresident_usd` |  |
 | `total_cost_of_attendance_usd` |  |
-| `unitid` |  |
-| `url` |  |
+| `unitid` | IPEDS UnitID — the universal join key. |
+| `url` | The human-readable page for this school. |
 
 Operations: Load.
 
@@ -494,18 +494,18 @@ Create an instance: `college = client.College`
 | `breakeven_age` | `Object` |  |
 | `city` | `String` |  |
 | `control` | `String` |  |
-| `freopp_program_coverage` | `Integer` |  |
-| `median_earnings_10yr_usd` | `Integer` |  |
+| `freopp_program_coverage` | `Integer` | FREOPP-reported programs rolled into the earnings figure. |
+| `median_earnings_10yr_usd` | `Integer` | FREOPP cohort-weighted earnings ten years after entry. |
 | `name` | `String` |  |
-| `npv_30yr_nonresident_usd` | `Object` |  |
-| `npv_30yr_resident_usd` | `Integer` |  |
+| `npv_30yr_nonresident_usd` | `Object` | Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design. |
+| `npv_30yr_resident_usd` | `Integer` | 30-year projected net value at resident pricing. |
 | `slug` | `String` |  |
-| `state` | `String` |  |
+| `state` | `String` | USPS 2-letter state code. |
 | `state_name` | `String` |  |
 | `total_cost_of_attendance_nonresident_usd` | `Object` |  |
 | `total_cost_of_attendance_usd` | `Integer` |  |
-| `unitid` | `Integer` |  |
-| `url` | `String` |  |
+| `unitid` | `Integer` | IPEDS UnitID — the universal join key. |
+| `url` | `String` | The human-readable page for this school. |
 
 #### Example: List
 
@@ -547,8 +547,8 @@ Create an instance: `major = client.Major`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ai_exposure` | `Object` |  |
-| `cip_program_name` | `Object` |  |
+| `ai_exposure` | `Object` | le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for. |
+| `cip_program_name` | `Object` | CIP program-family name — subfields only. |
 | `completion_adjusted_roi_usd` | `Object` |  |
 | `dropout_roi_usd` | `Object` |  |
 | `graduates` | `Integer` |  |
@@ -559,12 +559,12 @@ Create an instance: `major = client.Major`
 | `name` | `String` |  |
 | `p25_roi_usd` | `Float` |  |
 | `p75_roi_usd` | `Float` |  |
-| `parent` | `Object` |  |
-| `pct_never_breakeven` | `Float` |  |
+| `parent` | `Object` | Parent category — subfields only. |
+| `pct_never_breakeven` | `Float` | Share of graduates who never break even, percent. |
 | `programs` | `Integer` |  |
-| `rank_by_worst_roi` | `Integer` |  |
+| `rank_by_worst_roi` | `Integer` | Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields). |
 | `slug` | `String` |  |
-| `url` | `String` |  |
+| `url` | `String` | The human-readable page for this major. |
 
 #### Example: List
 
@@ -637,37 +637,37 @@ Create an instance: `slug = client.Slug`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ai_exposure` | `Object` |  |
+| `ai_exposure` | `Object` | le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for. |
 | `breakeven_age` | `Object` |  |
-| `cip_program_name` | `Object` |  |
+| `cip_program_name` | `Object` | CIP program-family name — subfields only. |
 | `city` | `String` |  |
 | `completion_adjusted_roi_usd` | `Object` |  |
 | `control` | `String` |  |
 | `dropout_roi_usd` | `Object` |  |
-| `freopp_program_coverage` | `Integer` |  |
+| `freopp_program_coverage` | `Integer` | FREOPP-reported programs rolled into the earnings figure. |
 | `graduates` | `Integer` |  |
 | `kind` | `String` |  |
 | `mean_lifetime_roi_usd` | `Float` |  |
 | `median_breakeven_age` | `Object` |  |
-| `median_earnings_10yr_usd` | `Integer` |  |
+| `median_earnings_10yr_usd` | `Integer` | FREOPP cohort-weighted earnings ten years after entry. |
 | `median_lifetime_roi_usd` | `Float` |  |
-| `meta` | `Hash` |  |
+| `meta` | `Hash` | Provenance block carried by every payload. |
 | `name` | `String` |  |
-| `npv_30yr_nonresident_usd` | `Object` |  |
-| `npv_30yr_resident_usd` | `Integer` |  |
+| `npv_30yr_nonresident_usd` | `Object` | Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design. |
+| `npv_30yr_resident_usd` | `Integer` | 30-year projected net value at resident pricing. |
 | `p25_roi_usd` | `Float` |  |
 | `p75_roi_usd` | `Float` |  |
-| `parent` | `Object` |  |
-| `pct_never_breakeven` | `Float` |  |
+| `parent` | `Object` | Parent category — subfields only. |
+| `pct_never_breakeven` | `Float` | Share of graduates who never break even, percent. |
 | `programs` | `Integer` |  |
-| `rank_by_worst_roi` | `Integer` |  |
+| `rank_by_worst_roi` | `Integer` | Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields). |
 | `slug` | `String` |  |
-| `state` | `String` |  |
+| `state` | `String` | USPS 2-letter state code. |
 | `state_name` | `String` |  |
 | `total_cost_of_attendance_nonresident_usd` | `Object` |  |
 | `total_cost_of_attendance_usd` | `Integer` |  |
-| `unitid` | `Integer` |  |
-| `url` | `String` |  |
+| `unitid` | `Integer` | IPEDS UnitID — the universal join key. |
+| `url` | `String` | The human-readable page for this school. |
 
 #### Example: Load
 

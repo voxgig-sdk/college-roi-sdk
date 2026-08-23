@@ -8,6 +8,7 @@ main: kit: entity: major: {
     {
       name: "ai_exposure"
       req: false
+      short: "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for."
       type: [
         "`$ONE`"
         [
@@ -19,6 +20,7 @@ main: kit: entity: major: {
     {
       name: "cip_program_name"
       req: false
+      short: "CIP program-family name — subfields only."
       type: [
         "`$ONE`"
         [
@@ -98,6 +100,7 @@ main: kit: entity: major: {
     {
       name: "parent"
       req: false
+      short: "Parent category — subfields only."
       type: [
         "`$ONE`"
         [
@@ -109,6 +112,7 @@ main: kit: entity: major: {
     {
       name: "pct_never_breakeven"
       req: false
+      short: "Share of graduates who never break even, percent."
       type: "`$NUMBER`"
     }
     {
@@ -119,6 +123,7 @@ main: kit: entity: major: {
     {
       name: "rank_by_worst_roi"
       req: true
+      short: "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields)."
       type: "`$INTEGER`"
     }
     {
@@ -129,6 +134,7 @@ main: kit: entity: major: {
     {
       name: "url"
       req: true
+      short: "The human-readable page for this major."
       type: "`$STRING`"
     }
   ]

@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "CollegeRoi",
+			"slug": "college-roi",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -111,10 +114,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "freopp_program_coverage",
+						"short": "FREOPP-reported programs rolled into the earnings figure.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "median_earnings_10yr_usd",
+						"short": "FREOPP cohort-weighted earnings ten years after entry.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -124,6 +129,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "npv_30yr_nonresident_usd",
+						"short": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -135,6 +141,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "npv_30yr_resident_usd",
 						"req": true,
+						"short": "30-year projected net value at resident pricing.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -145,6 +152,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "state",
 						"req": true,
+						"short": "USPS 2-letter state code.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -168,11 +176,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "unitid",
 						"req": true,
+						"short": "IPEDS UnitID — the universal join key.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "url",
 						"req": true,
+						"short": "The human-readable page for this school.",
 						"type": "`$STRING`",
 					},
 				},
@@ -240,6 +250,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "ai_exposure",
+						"short": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -250,6 +261,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "cip_program_name",
+						"short": "CIP program-family name — subfields only.",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -320,6 +332,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "parent",
+						"short": "Parent category — subfields only.",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -330,6 +343,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "pct_never_breakeven",
+						"short": "Share of graduates who never break even, percent.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
@@ -339,6 +353,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "rank_by_worst_roi",
 						"req": true,
+						"short": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -349,6 +364,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "url",
 						"req": true,
+						"short": "The human-readable page for this major.",
 						"type": "`$STRING`",
 					},
 				},
@@ -481,6 +497,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "ai_exposure",
+						"short": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -501,6 +518,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "cip_program_name",
+						"short": "CIP program-family name — subfields only.",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -541,6 +559,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "freopp_program_coverage",
+						"short": "FREOPP-reported programs rolled into the earnings figure.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -568,6 +587,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "median_earnings_10yr_usd",
+						"short": "FREOPP cohort-weighted earnings ten years after entry.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -577,6 +597,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "meta",
 						"req": true,
+						"short": "Provenance block carried by every payload.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
@@ -586,6 +607,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "npv_30yr_nonresident_usd",
+						"short": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -597,6 +619,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "npv_30yr_resident_usd",
 						"req": true,
+						"short": "30-year projected net value at resident pricing.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -609,6 +632,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "parent",
+						"short": "Parent category — subfields only.",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -619,6 +643,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "pct_never_breakeven",
+						"short": "Share of graduates who never break even, percent.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
@@ -628,6 +653,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "rank_by_worst_roi",
 						"req": true,
+						"short": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -638,6 +664,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "state",
 						"req": true,
+						"short": "USPS 2-letter state code.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -661,11 +688,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "unitid",
 						"req": true,
+						"short": "IPEDS UnitID — the universal join key.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "url",
 						"req": true,
+						"short": "The human-readable page for this school.",
 						"type": "`$STRING`",
 					},
 				},

@@ -29,11 +29,13 @@ main: kit: entity: college: {
     {
       name: "freopp_program_coverage"
       req: false
+      short: "FREOPP-reported programs rolled into the earnings figure."
       type: "`$INTEGER`"
     }
     {
       name: "median_earnings_10yr_usd"
       req: false
+      short: "FREOPP cohort-weighted earnings ten years after entry."
       type: "`$INTEGER`"
     }
     {
@@ -44,6 +46,7 @@ main: kit: entity: college: {
     {
       name: "npv_30yr_nonresident_usd"
       req: false
+      short: "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design."
       type: [
         "`$ONE`"
         [
@@ -55,6 +58,7 @@ main: kit: entity: college: {
     {
       name: "npv_30yr_resident_usd"
       req: true
+      short: "30-year projected net value at resident pricing."
       type: "`$INTEGER`"
     }
     {
@@ -65,6 +69,7 @@ main: kit: entity: college: {
     {
       name: "state"
       req: true
+      short: "USPS 2-letter state code."
       type: "`$STRING`"
     }
     {
@@ -91,11 +96,13 @@ main: kit: entity: college: {
     {
       name: "unitid"
       req: true
+      short: "IPEDS UnitID — the universal join key."
       type: "`$INTEGER`"
     }
     {
       name: "url"
       req: true
+      short: "The human-readable page for this school."
       type: "`$STRING`"
     }
   ]

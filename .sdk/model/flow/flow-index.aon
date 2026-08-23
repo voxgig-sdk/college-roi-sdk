@@ -1,0 +1,12 @@
+# Flows
+
+@"BasicBestValueFlow.aon"
+@"BasicCollegeFlow.aon"
+@"BasicIndexFlow.aon"
+@"BasicMajorFlow.aon"
+@"BasicOpenapiFlow.aon"
+@"BasicOutOfStatePenaltyFlow.aon"
+@"BasicSlugFlow.aon"
+@"BasicStateFlow.aon"
+@"BasicTop50Flow.aon"
+@"BasicWorstRoiMajorFlow.aon"

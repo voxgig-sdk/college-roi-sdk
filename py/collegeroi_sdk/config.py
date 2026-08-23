@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "CollegeRoi",
+            "slug": "college-roi",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -128,10 +131,12 @@ def make_config():
           },
           {
             "name": "freopp_program_coverage",
+            "short": "FREOPP-reported programs rolled into the earnings figure.",
             "type": "`$INTEGER`",
           },
           {
             "name": "median_earnings_10yr_usd",
+            "short": "FREOPP cohort-weighted earnings ten years after entry.",
             "type": "`$INTEGER`",
           },
           {
@@ -141,6 +146,7 @@ def make_config():
           },
           {
             "name": "npv_30yr_nonresident_usd",
+            "short": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
             "type": [
               "`$ONE`",
               [
@@ -152,6 +158,7 @@ def make_config():
           {
             "name": "npv_30yr_resident_usd",
             "req": True,
+            "short": "30-year projected net value at resident pricing.",
             "type": "`$INTEGER`",
           },
           {
@@ -162,6 +169,7 @@ def make_config():
           {
             "name": "state",
             "req": True,
+            "short": "USPS 2-letter state code.",
             "type": "`$STRING`",
           },
           {
@@ -185,11 +193,13 @@ def make_config():
           {
             "name": "unitid",
             "req": True,
+            "short": "IPEDS UnitID — the universal join key.",
             "type": "`$INTEGER`",
           },
           {
             "name": "url",
             "req": True,
+            "short": "The human-readable page for this school.",
             "type": "`$STRING`",
           },
         ],
@@ -257,6 +267,7 @@ def make_config():
         "fields": [
           {
             "name": "ai_exposure",
+            "short": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
             "type": [
               "`$ONE`",
               [
@@ -267,6 +278,7 @@ def make_config():
           },
           {
             "name": "cip_program_name",
+            "short": "CIP program-family name — subfields only.",
             "type": [
               "`$ONE`",
               [
@@ -337,6 +349,7 @@ def make_config():
           },
           {
             "name": "parent",
+            "short": "Parent category — subfields only.",
             "type": [
               "`$ONE`",
               [
@@ -347,6 +360,7 @@ def make_config():
           },
           {
             "name": "pct_never_breakeven",
+            "short": "Share of graduates who never break even, percent.",
             "type": "`$NUMBER`",
           },
           {
@@ -356,6 +370,7 @@ def make_config():
           {
             "name": "rank_by_worst_roi",
             "req": True,
+            "short": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
             "type": "`$INTEGER`",
           },
           {
@@ -366,6 +381,7 @@ def make_config():
           {
             "name": "url",
             "req": True,
+            "short": "The human-readable page for this major.",
             "type": "`$STRING`",
           },
         ],
@@ -498,6 +514,7 @@ def make_config():
         "fields": [
           {
             "name": "ai_exposure",
+            "short": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
             "type": [
               "`$ONE`",
               [
@@ -518,6 +535,7 @@ def make_config():
           },
           {
             "name": "cip_program_name",
+            "short": "CIP program-family name — subfields only.",
             "type": [
               "`$ONE`",
               [
@@ -558,6 +576,7 @@ def make_config():
           },
           {
             "name": "freopp_program_coverage",
+            "short": "FREOPP-reported programs rolled into the earnings figure.",
             "type": "`$INTEGER`",
           },
           {
@@ -585,6 +604,7 @@ def make_config():
           },
           {
             "name": "median_earnings_10yr_usd",
+            "short": "FREOPP cohort-weighted earnings ten years after entry.",
             "type": "`$INTEGER`",
           },
           {
@@ -594,6 +614,7 @@ def make_config():
           {
             "name": "meta",
             "req": True,
+            "short": "Provenance block carried by every payload.",
             "type": "`$OBJECT`",
           },
           {
@@ -603,6 +624,7 @@ def make_config():
           },
           {
             "name": "npv_30yr_nonresident_usd",
+            "short": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
             "type": [
               "`$ONE`",
               [
@@ -614,6 +636,7 @@ def make_config():
           {
             "name": "npv_30yr_resident_usd",
             "req": True,
+            "short": "30-year projected net value at resident pricing.",
             "type": "`$INTEGER`",
           },
           {
@@ -626,6 +649,7 @@ def make_config():
           },
           {
             "name": "parent",
+            "short": "Parent category — subfields only.",
             "type": [
               "`$ONE`",
               [
@@ -636,6 +660,7 @@ def make_config():
           },
           {
             "name": "pct_never_breakeven",
+            "short": "Share of graduates who never break even, percent.",
             "type": "`$NUMBER`",
           },
           {
@@ -645,6 +670,7 @@ def make_config():
           {
             "name": "rank_by_worst_roi",
             "req": True,
+            "short": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
             "type": "`$INTEGER`",
           },
           {
@@ -655,6 +681,7 @@ def make_config():
           {
             "name": "state",
             "req": True,
+            "short": "USPS 2-letter state code.",
             "type": "`$STRING`",
           },
           {
@@ -678,11 +705,13 @@ def make_config():
           {
             "name": "unitid",
             "req": True,
+            "short": "IPEDS UnitID — the universal join key.",
             "type": "`$INTEGER`",
           },
           {
             "name": "url",
             "req": True,
+            "short": "The human-readable page for this school.",
             "type": "`$STRING`",
           },
         ],

@@ -122,12 +122,14 @@
               "active": true,
               "name": "freopp_program_coverage",
               "req": false,
+              "short": "FREOPP-reported programs rolled into the earnings figure.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "median_earnings_10yr_usd",
               "req": false,
+              "short": "FREOPP cohort-weighted earnings ten years after entry.",
               "type": "`$INTEGER`"
             },
             {
@@ -140,6 +142,7 @@
               "active": true,
               "name": "npv_30yr_nonresident_usd",
               "req": false,
+              "short": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
               "type": [
                 "`$ONE`",
                 [
@@ -152,6 +155,7 @@
               "active": true,
               "name": "npv_30yr_resident_usd",
               "req": true,
+              "short": "30-year projected net value at resident pricing.",
               "type": "`$INTEGER`"
             },
             {
@@ -164,6 +168,7 @@
               "active": true,
               "name": "state",
               "req": true,
+              "short": "USPS 2-letter state code.",
               "type": "`$STRING`"
             },
             {
@@ -194,12 +199,14 @@
               "active": true,
               "name": "unitid",
               "req": true,
+              "short": "IPEDS UnitID — the universal join key.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "url",
               "req": true,
+              "short": "The human-readable page for this school.",
               "type": "`$STRING`"
             }
           ],
@@ -279,6 +286,7 @@
               "active": true,
               "name": "ai_exposure",
               "req": false,
+              "short": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
               "type": [
                 "`$ONE`",
                 [
@@ -291,6 +299,7 @@
               "active": true,
               "name": "cip_program_name",
               "req": false,
+              "short": "CIP program-family name — subfields only.",
               "type": [
                 "`$ONE`",
                 [
@@ -381,6 +390,7 @@
               "active": true,
               "name": "parent",
               "req": false,
+              "short": "Parent category — subfields only.",
               "type": [
                 "`$ONE`",
                 [
@@ -393,6 +403,7 @@
               "active": true,
               "name": "pct_never_breakeven",
               "req": false,
+              "short": "Share of graduates who never break even, percent.",
               "type": "`$NUMBER`"
             },
             {
@@ -405,6 +416,7 @@
               "active": true,
               "name": "rank_by_worst_roi",
               "req": true,
+              "short": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
               "type": "`$INTEGER`"
             },
             {
@@ -417,6 +429,7 @@
               "active": true,
               "name": "url",
               "req": true,
+              "short": "The human-readable page for this major.",
               "type": "`$STRING`"
             }
           ],
@@ -582,6 +595,7 @@
               "active": true,
               "name": "ai_exposure",
               "req": false,
+              "short": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
               "type": [
                 "`$ONE`",
                 [
@@ -606,6 +620,7 @@
               "active": true,
               "name": "cip_program_name",
               "req": false,
+              "short": "CIP program-family name — subfields only.",
               "type": [
                 "`$ONE`",
                 [
@@ -654,6 +669,7 @@
               "active": true,
               "name": "freopp_program_coverage",
               "req": false,
+              "short": "FREOPP-reported programs rolled into the earnings figure.",
               "type": "`$INTEGER`"
             },
             {
@@ -690,6 +706,7 @@
               "active": true,
               "name": "median_earnings_10yr_usd",
               "req": false,
+              "short": "FREOPP cohort-weighted earnings ten years after entry.",
               "type": "`$INTEGER`"
             },
             {
@@ -702,6 +719,7 @@
               "active": true,
               "name": "meta",
               "req": true,
+              "short": "Provenance block carried by every payload.",
               "type": "`$OBJECT`"
             },
             {
@@ -714,6 +732,7 @@
               "active": true,
               "name": "npv_30yr_nonresident_usd",
               "req": false,
+              "short": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
               "type": [
                 "`$ONE`",
                 [
@@ -726,6 +745,7 @@
               "active": true,
               "name": "npv_30yr_resident_usd",
               "req": true,
+              "short": "30-year projected net value at resident pricing.",
               "type": "`$INTEGER`"
             },
             {
@@ -744,6 +764,7 @@
               "active": true,
               "name": "parent",
               "req": false,
+              "short": "Parent category — subfields only.",
               "type": [
                 "`$ONE`",
                 [
@@ -756,6 +777,7 @@
               "active": true,
               "name": "pct_never_breakeven",
               "req": false,
+              "short": "Share of graduates who never break even, percent.",
               "type": "`$NUMBER`"
             },
             {
@@ -768,6 +790,7 @@
               "active": true,
               "name": "rank_by_worst_roi",
               "req": true,
+              "short": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
               "type": "`$INTEGER`"
             },
             {
@@ -780,6 +803,7 @@
               "active": true,
               "name": "state",
               "req": true,
+              "short": "USPS 2-letter state code.",
               "type": "`$STRING`"
             },
             {
@@ -810,12 +834,14 @@
               "active": true,
               "name": "unitid",
               "req": true,
+              "short": "IPEDS UnitID — the universal join key.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "url",
               "req": true,
+              "short": "The human-readable page for this school.",
               "type": "`$STRING`"
             }
           ],

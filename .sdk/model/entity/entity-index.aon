@@ -1,0 +1,12 @@
+# Entity Models
+
+@"best_value.aon"
+@"college.aon"
+@"index.aon"
+@"major.aon"
+@"openapi.aon"
+@"out_of_state_penalty.aon"
+@"slug.aon"
+@"state.aon"
+@"top_50.aon"
+@"worst_roi_major.aon"
