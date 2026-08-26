@@ -28,6 +28,7 @@ module CollegeRoiConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {

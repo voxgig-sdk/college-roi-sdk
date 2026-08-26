@@ -44,7 +44,8 @@ class Top50Entity extends CollegeRoiEntityBase<Top50> {
     const {
       makeContext,
       done,
-      error,
+      // The registry name is `makeError`; `error` is the local alias.
+      makeError: error,
       featureHook,
       makePoint,
       makeRequest,
