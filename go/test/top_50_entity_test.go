@@ -98,7 +98,7 @@ func TestTop50Entity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		top50Ref01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.top_50", setup.data)))
+		top50Ref01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.top_50")))
 		var top50Ref01Data map[string]any
 		if len(top50Ref01DataRaw) > 0 {
 			top50Ref01Data = core.ToMapAny(top50Ref01DataRaw[0][1])
@@ -147,7 +147,7 @@ func top_50BasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"top_5001", "top_5002", "top_5003"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -175,10 +175,22 @@ func top_50BasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["COLLEGE_ROI_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewCollegeRoiSDK(core.ToMapAny(mergedOpts))
 	}

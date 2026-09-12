@@ -44,20 +44,6 @@ rescue => err
 end
 ```
 
-### 3. Load a slug
-
-Slug is nested under slug, so provide the `slug`.
-
-```ruby
-begin
-  # load returns the ENTITY — call data_get for the Slug record (raises on error).
-  slug = client.Slug.load({ "slug" => "example_slug" })
-  puts slug
-rescue => err
-  warn "load failed: #{err}"
-end
-```
-
 
 ## Error handling
 

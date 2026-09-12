@@ -132,6 +132,7 @@ main: kit: entity: major: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "url"
       req: true
       short: "The human-readable page for this major."
@@ -147,10 +148,16 @@ main: kit: entity: major: {
         {
           method: "GET"
           orig: "/api/v1/majors.json"
-          parts: [
-            "api"
-            "v1"
-            "majors.json"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "majors.json"
+            }
           ]
           transform: {
             req: "`reqdata`"

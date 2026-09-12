@@ -1,6 +1,14 @@
 # CollegeRoi SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -66,6 +74,7 @@ def make_config():
             "type": "`$ARRAY`",
           },
           {
+            "format": "uri",
             "name": "page_url",
             "type": "`$STRING`",
           },
@@ -89,17 +98,31 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/rankings/best-value.json",
-                "parts": [
-                  "api",
-                  "v1",
-                  "rankings",
-                  "best-value.json",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "rankings",
+                  },
+                  {
+                    "lit": "best-value.json",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "rankings",
+                  "best-value.json",
+                ],
               },
             ],
           },
@@ -198,6 +221,7 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "uri",
             "name": "url",
             "req": True,
             "short": "The human-readable page for this school.",
@@ -215,16 +239,27 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/colleges.json",
-                "parts": [
-                  "api",
-                  "v1",
-                  "colleges.json",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "colleges.json",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "colleges.json",
+                ],
               },
             ],
           },
@@ -246,16 +281,27 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/index.json",
-                "parts": [
-                  "api",
-                  "v1",
-                  "index.json",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "index.json",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "index.json",
+                ],
               },
             ],
           },
@@ -380,6 +426,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "url",
             "req": True,
             "short": "The human-readable page for this major.",
@@ -397,16 +444,27 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/majors.json",
-                "parts": [
-                  "api",
-                  "v1",
-                  "majors.json",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "majors.json",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "majors.json",
+                ],
               },
             ],
           },
@@ -428,16 +486,27 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/openapi.json",
-                "parts": [
-                  "api",
-                  "v1",
-                  "openapi.json",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "openapi.json",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "openapi.json",
+                ],
               },
             ],
           },
@@ -492,17 +561,31 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/rankings/out-of-state-penalty.json",
-                "parts": [
-                  "api",
-                  "v1",
-                  "rankings",
-                  "out-of-state-penalty.json",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "rankings",
+                  },
+                  {
+                    "lit": "out-of-state-penalty.json",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "rankings",
+                  "out-of-state-penalty.json",
+                ],
               },
             ],
           },
@@ -710,6 +793,7 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "uri",
             "name": "url",
             "req": True,
             "short": "The human-readable page for this school.",
@@ -737,11 +821,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/colleges/{slug}.json",
-                "parts": [
-                  "api",
-                  "v1",
-                  "colleges",
-                  "{slug}.json",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "colleges",
+                  },
+                  {
+                    "lit": "{slug}.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -752,6 +844,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "colleges",
+                  "{slug}.json",
+                ],
               },
               {
                 "args": {
@@ -768,11 +866,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/majors/{slug}.json",
-                "parts": [
-                  "api",
-                  "v1",
-                  "majors",
-                  "{slug}.json",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "majors",
+                  },
+                  {
+                    "lit": "{slug}.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -783,19 +889,18 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "majors",
+                  "{slug}.json",
+                ],
               },
             ],
           },
         },
         "relations": {
-          "ancestors": [
-            [
-              "college",
-            ],
-            [
-              "major",
-            ],
-          ],
+          "ancestors": [],
         },
       },
       "state": {
@@ -842,12 +947,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/rankings/best-value/{state}.json",
-                "parts": [
-                  "api",
-                  "v1",
-                  "rankings",
-                  "best-value",
-                  "{state}.json",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "rankings",
+                  },
+                  {
+                    "lit": "best-value",
+                  },
+                  {
+                    "lit": "{state}.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -858,16 +973,19 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "rankings",
+                  "best-value",
+                  "{state}.json",
+                ],
               },
             ],
           },
         },
         "relations": {
-          "ancestors": [
-            [
-              "best_value",
-            ],
-          ],
+          "ancestors": [],
         },
       },
       "top_50": {
@@ -916,6 +1034,28 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/rankings/out-of-state-penalty/top-50.json",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "rankings",
+                  },
+                  {
+                    "lit": "out-of-state-penalty",
+                  },
+                  {
+                    "lit": "top-50.json",
+                  },
+                ],
+                "select": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
                 "parts": [
                   "api",
                   "v1",
@@ -923,11 +1063,6 @@ def make_config():
                   "out-of-state-penalty",
                   "top-50.json",
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
               },
             ],
           },
@@ -977,6 +1112,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "url",
             "type": "`$STRING`",
           },
@@ -992,17 +1128,31 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/v1/rankings/worst-roi-majors.json",
-                "parts": [
-                  "api",
-                  "v1",
-                  "rankings",
-                  "worst-roi-majors.json",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "rankings",
+                  },
+                  {
+                    "lit": "worst-roi-majors.json",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "v1",
+                  "rankings",
+                  "worst-roi-majors.json",
+                ],
               },
             ],
           },

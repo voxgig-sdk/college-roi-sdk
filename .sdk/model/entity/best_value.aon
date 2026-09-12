@@ -11,6 +11,7 @@ main: kit: entity: best_value: {
       type: "`$ARRAY`"
     }
     {
+      format: "uri"
       name: "page_url"
       req: false
       type: "`$STRING`"
@@ -35,11 +36,19 @@ main: kit: entity: best_value: {
         {
           method: "GET"
           orig: "/api/v1/rankings/best-value.json"
-          parts: [
-            "api"
-            "v1"
-            "rankings"
-            "best-value.json"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "rankings"
+            }
+            {
+              lit: "best-value.json"
+            }
           ]
           transform: {
             req: "`reqdata`"

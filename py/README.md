@@ -50,19 +50,6 @@ except Exception as err:
     print(f"list failed: {err}")
 ```
 
-### 3. Load a slug
-
-Slug is nested under slug, so provide the `slug`.
-`load()` returns the ENTITY — call data_get() for the record — and raises on error.
-
-```python
-try:
-    slug = client.Slug().load({"slug": "example_slug"})
-    print(slug)
-except Exception as err:
-    print(f"load failed: {err}")
-```
-
 
 ## Error handling
 

@@ -12,10 +12,16 @@ main: kit: entity: index: {
         {
           method: "GET"
           orig: "/api/v1/index.json"
-          parts: [
-            "api"
-            "v1"
-            "index.json"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "index.json"
+            }
           ]
           transform: {
             req: "`reqdata`"

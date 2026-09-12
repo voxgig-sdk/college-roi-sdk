@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -98,6 +109,7 @@ class Config {
           "type": "`$ARRAY`"
         },
         {
+          "format": "uri",
           "name": "page_url",
           "type": "`$STRING`"
         },
@@ -121,17 +133,31 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/rankings/best-value.json",
-              "parts": [
-                "api",
-                "v1",
-                "rankings",
-                "best-value.json"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "rankings"
+                },
+                {
+                  "lit": "best-value.json"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "rankings",
+                "best-value.json"
+              ]
             }
           ]
         }
@@ -230,6 +256,7 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "uri",
           "name": "url",
           "req": true,
           "short": "The human-readable page for this school.",
@@ -247,16 +274,27 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/colleges.json",
-              "parts": [
-                "api",
-                "v1",
-                "colleges.json"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "colleges.json"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "colleges.json"
+              ]
             }
           ]
         }
@@ -278,16 +316,27 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/index.json",
-              "parts": [
-                "api",
-                "v1",
-                "index.json"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "index.json"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "index.json"
+              ]
             }
           ]
         }
@@ -412,6 +461,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "url",
           "req": true,
           "short": "The human-readable page for this major.",
@@ -429,16 +479,27 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/majors.json",
-              "parts": [
-                "api",
-                "v1",
-                "majors.json"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "majors.json"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "majors.json"
+              ]
             }
           ]
         }
@@ -460,16 +521,27 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/openapi.json",
-              "parts": [
-                "api",
-                "v1",
-                "openapi.json"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "openapi.json"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "openapi.json"
+              ]
             }
           ]
         }
@@ -524,17 +596,31 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/rankings/out-of-state-penalty.json",
-              "parts": [
-                "api",
-                "v1",
-                "rankings",
-                "out-of-state-penalty.json"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "rankings"
+                },
+                {
+                  "lit": "out-of-state-penalty.json"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "rankings",
+                "out-of-state-penalty.json"
+              ]
             }
           ]
         }
@@ -742,6 +828,7 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "uri",
           "name": "url",
           "req": true,
           "short": "The human-readable page for this school.",
@@ -769,11 +856,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/colleges/{slug}.json",
-              "parts": [
-                "api",
-                "v1",
-                "colleges",
-                "{slug}.json"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "colleges"
+                },
+                {
+                  "lit": "{slug}.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -783,7 +878,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "colleges",
+                "{slug}.json"
+              ]
             },
             {
               "args": {
@@ -800,11 +901,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/majors/{slug}.json",
-              "parts": [
-                "api",
-                "v1",
-                "majors",
-                "{slug}.json"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "majors"
+                },
+                {
+                  "lit": "{slug}.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -814,20 +923,19 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "majors",
+                "{slug}.json"
+              ]
             }
           ]
         }
       },
       "relations": {
-        "ancestors": [
-          [
-            "college"
-          ],
-          [
-            "major"
-          ]
-        ]
+        "ancestors": []
       }
     },
     "state": {
@@ -874,12 +982,22 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/rankings/best-value/{state}.json",
-              "parts": [
-                "api",
-                "v1",
-                "rankings",
-                "best-value",
-                "{state}.json"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "rankings"
+                },
+                {
+                  "lit": "best-value"
+                },
+                {
+                  "lit": "{state}.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -889,17 +1007,20 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "rankings",
+                "best-value",
+                "{state}.json"
+              ]
             }
           ]
         }
       },
       "relations": {
-        "ancestors": [
-          [
-            "best_value"
-          ]
-        ]
+        "ancestors": []
       }
     },
     "top_50": {
@@ -948,18 +1069,35 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/rankings/out-of-state-penalty/top-50.json",
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "rankings"
+                },
+                {
+                  "lit": "out-of-state-penalty"
+                },
+                {
+                  "lit": "top-50.json"
+                }
+              ],
+              "select": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
               "parts": [
                 "api",
                 "v1",
                 "rankings",
                 "out-of-state-penalty",
                 "top-50.json"
-              ],
-              "select": {},
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              }
+              ]
             }
           ]
         }
@@ -1009,6 +1147,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "url",
           "type": "`$STRING`"
         }
@@ -1024,17 +1163,31 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/v1/rankings/worst-roi-majors.json",
-              "parts": [
-                "api",
-                "v1",
-                "rankings",
-                "worst-roi-majors.json"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "rankings"
+                },
+                {
+                  "lit": "worst-roi-majors.json"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "v1",
+                "rankings",
+                "worst-roi-majors.json"
+              ]
             }
           ]
         }
@@ -1050,6 +1203,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

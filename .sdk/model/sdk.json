@@ -40,6 +40,7 @@
             },
             {
               "active": true,
+              "format": "uri",
               "name": "page_url",
               "req": false,
               "type": "`$STRING`"
@@ -69,11 +70,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/rankings/best-value.json",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "rankings",
-                    "best-value.json"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "rankings"
+                    },
+                    {
+                      "lit": "best-value.json"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -204,6 +213,7 @@
             },
             {
               "active": true,
+              "format": "uri",
               "name": "url",
               "req": true,
               "short": "The human-readable page for this school.",
@@ -222,10 +232,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/colleges.json",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "colleges.json"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "colleges.json"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -258,10 +274,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/index.json",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "index.json"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "index.json"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -427,6 +449,7 @@
             },
             {
               "active": true,
+              "format": "uri",
               "name": "url",
               "req": true,
               "short": "The human-readable page for this major.",
@@ -445,10 +468,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/majors.json",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "majors.json"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "majors.json"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -481,10 +510,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/openapi.json",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "openapi.json"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "openapi.json"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -566,11 +601,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/rankings/out-of-state-penalty.json",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "rankings",
-                    "out-of-state-penalty.json"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "rankings"
+                    },
+                    {
+                      "lit": "out-of-state-penalty.json"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -839,6 +882,7 @@
             },
             {
               "active": true,
+              "format": "uri",
               "name": "url",
               "req": true,
               "short": "The human-readable page for this school.",
@@ -868,11 +912,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/colleges/{slug}.json",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "colleges",
-                    "{slug}.json"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "colleges"
+                    },
+                    {
+                      "lit": "{slug}.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -901,11 +953,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/majors/{slug}.json",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "majors",
-                    "{slug}.json"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "majors"
+                    },
+                    {
+                      "lit": "{slug}.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -921,14 +981,7 @@
             }
           },
           "relations": {
-            "ancestors": [
-              [
-                "college"
-              ],
-              [
-                "major"
-              ]
-            ]
+            "ancestors": []
           }
         },
         "state": {
@@ -991,12 +1044,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/rankings/best-value/{state}.json",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "rankings",
-                    "best-value",
-                    "{state}.json"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "rankings"
+                    },
+                    {
+                      "lit": "best-value"
+                    },
+                    {
+                      "lit": "{state}.json"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1012,11 +1075,7 @@
             }
           },
           "relations": {
-            "ancestors": [
-              [
-                "best_value"
-              ]
-            ]
+            "ancestors": []
           }
         },
         "top_50": {
@@ -1086,12 +1145,22 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/rankings/out-of-state-penalty/top-50.json",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "rankings",
-                    "out-of-state-penalty",
-                    "top-50.json"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "rankings"
+                    },
+                    {
+                      "lit": "out-of-state-penalty"
+                    },
+                    {
+                      "lit": "top-50.json"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1168,6 +1237,7 @@
             },
             {
               "active": true,
+              "format": "uri",
               "name": "url",
               "req": false,
               "type": "`$STRING`"
@@ -1185,11 +1255,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/rankings/worst-roi-majors.json",
-                  "parts": [
-                    "api",
-                    "v1",
-                    "rankings",
-                    "worst-roi-majors.json"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "rankings"
+                    },
+                    {
+                      "lit": "worst-roi-majors.json"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -1269,8 +1347,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -1644,6 +1725,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1669,6 +1753,10 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -1720,6 +1808,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1744,6 +1833,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -1795,6 +1885,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1819,6 +1910,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -1859,6 +1951,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1884,6 +1979,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -1918,6 +2016,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1943,6 +2044,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -1983,6 +2087,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2008,6 +2115,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -2053,6 +2163,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2078,6 +2191,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -2095,11 +2211,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -2128,6 +2239,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2152,6 +2266,14 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },

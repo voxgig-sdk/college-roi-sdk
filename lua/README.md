@@ -47,16 +47,6 @@ for _, item in ipairs(bestvalues) do
 end
 ```
 
-### 3. Load a slug
-
-Slug is nested under slug, so provide the `slug`.
-
-```lua
-local slug, err = client:Slug():load({ slug = "example_slug" })
-if err then error(err) end
-print(slug)
-```
-
 
 ## Error handling
 

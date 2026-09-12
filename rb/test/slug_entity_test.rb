@@ -62,7 +62,7 @@ def slug_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["slug01", "slug02", "slug03", "college01", "college02", "college03", "major01", "major02", "major03"],
+    ["slug01", "slug02", "slug03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",
@@ -91,6 +91,9 @@ def slug_basic_setup(extra)
 
   if env["COLLEGE_ROI_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
       },
       extra || {},

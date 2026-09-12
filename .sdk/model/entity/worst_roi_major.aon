@@ -52,6 +52,7 @@ main: kit: entity: worst_roi_major: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "url"
       req: false
       type: "`$STRING`"
@@ -66,11 +67,19 @@ main: kit: entity: worst_roi_major: {
         {
           method: "GET"
           orig: "/api/v1/rankings/worst-roi-majors.json"
-          parts: [
-            "api"
-            "v1"
-            "rankings"
-            "worst-roi-majors.json"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "rankings"
+            }
+            {
+              lit: "worst-roi-majors.json"
+            }
           ]
           transform: {
             req: "`reqdata`"

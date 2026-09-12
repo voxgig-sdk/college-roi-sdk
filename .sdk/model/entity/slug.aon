@@ -222,6 +222,7 @@ main: kit: entity: slug: {
       type: "`$INTEGER`"
     }
     {
+      format: "uri"
       name: "url"
       req: true
       short: "The human-readable page for this school."
@@ -248,11 +249,19 @@ main: kit: entity: slug: {
           }
           method: "GET"
           orig: "/api/v1/colleges/{slug}.json"
-          parts: [
-            "api"
-            "v1"
-            "colleges"
-            "{slug}.json"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "colleges"
+            }
+            {
+              lit: "{slug}.json"
+            }
           ]
           select: {
             exist: [
@@ -278,11 +287,19 @@ main: kit: entity: slug: {
           }
           method: "GET"
           orig: "/api/v1/majors/{slug}.json"
-          parts: [
-            "api"
-            "v1"
-            "majors"
-            "{slug}.json"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "majors"
+            }
+            {
+              lit: "{slug}.json"
+            }
           ]
           select: {
             exist: [
@@ -296,17 +313,6 @@ main: kit: entity: slug: {
         }
       ]
     }
-  }
-
-  relations: {
-    ancestors: [
-      [
-        "college"
-      ]
-      [
-        "major"
-      ]
-    ]
   }
 
 

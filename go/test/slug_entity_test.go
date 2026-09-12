@@ -50,7 +50,7 @@ func TestSlugEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		slugRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.slug", setup.data)))
+		slugRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.slug")))
 		var slugRef01Data map[string]any
 		if len(slugRef01DataRaw) > 0 {
 			slugRef01Data = core.ToMapAny(slugRef01DataRaw[0][1])
@@ -97,8 +97,8 @@ func slugBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
-		[]any{"slug01", "slug02", "slug03", "college01", "college02", "college03", "major01", "major02", "major03"},
+	idmap, _ := vs.Transform(
+		[]any{"slug01", "slug02", "slug03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",
@@ -125,10 +125,22 @@ func slugBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["COLLEGE_ROI_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewCollegeRoiSDK(core.ToMapAny(mergedOpts))
 	}

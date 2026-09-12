@@ -12,10 +12,16 @@ main: kit: entity: openapi: {
         {
           method: "GET"
           orig: "/api/v1/openapi.json"
-          parts: [
-            "api"
-            "v1"
-            "openapi.json"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "openapi.json"
+            }
           ]
           transform: {
             req: "`reqdata`"

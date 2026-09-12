@@ -49,6 +49,7 @@ func MakeConfig() map[string]any {
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "page_url",
 						"type": "`$STRING`",
 					},
@@ -72,16 +73,30 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/rankings/best-value.json",
-								"parts": []any{
-									"api",
-									"v1",
-									"rankings",
-									"best-value.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "rankings",
+									},
+									map[string]any{
+										"lit": "best-value.json",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"v1",
+									"rankings",
+									"best-value.json",
 								},
 							},
 						},
@@ -181,6 +196,7 @@ func MakeConfig() map[string]any {
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "url",
 						"req": true,
 						"short": "The human-readable page for this school.",
@@ -198,15 +214,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/colleges.json",
-								"parts": []any{
-									"api",
-									"v1",
-									"colleges.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "colleges.json",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"v1",
+									"colleges.json",
 								},
 							},
 						},
@@ -229,15 +256,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/index.json",
-								"parts": []any{
-									"api",
-									"v1",
-									"index.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "index.json",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"v1",
+									"index.json",
 								},
 							},
 						},
@@ -363,6 +401,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "url",
 						"req": true,
 						"short": "The human-readable page for this major.",
@@ -380,15 +419,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/majors.json",
-								"parts": []any{
-									"api",
-									"v1",
-									"majors.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "majors.json",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"v1",
+									"majors.json",
 								},
 							},
 						},
@@ -411,15 +461,26 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/openapi.json",
-								"parts": []any{
-									"api",
-									"v1",
-									"openapi.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "openapi.json",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"v1",
+									"openapi.json",
 								},
 							},
 						},
@@ -475,16 +536,30 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/rankings/out-of-state-penalty.json",
-								"parts": []any{
-									"api",
-									"v1",
-									"rankings",
-									"out-of-state-penalty.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "rankings",
+									},
+									map[string]any{
+										"lit": "out-of-state-penalty.json",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"v1",
+									"rankings",
+									"out-of-state-penalty.json",
 								},
 							},
 						},
@@ -693,6 +768,7 @@ func MakeConfig() map[string]any {
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "url",
 						"req": true,
 						"short": "The human-readable page for this school.",
@@ -720,11 +796,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/colleges/{slug}.json",
-								"parts": []any{
-									"api",
-									"v1",
-									"colleges",
-									"{slug}.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "colleges",
+									},
+									map[string]any{
+										"lit": "{slug}.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -734,6 +818,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"v1",
+									"colleges",
+									"{slug}.json",
 								},
 							},
 							map[string]any{
@@ -751,11 +841,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/majors/{slug}.json",
-								"parts": []any{
-									"api",
-									"v1",
-									"majors",
-									"{slug}.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "majors",
+									},
+									map[string]any{
+										"lit": "{slug}.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -766,19 +864,18 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"api",
+									"v1",
+									"majors",
+									"{slug}.json",
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"college",
-						},
-						[]any{
-							"major",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"state": map[string]any{
@@ -825,12 +922,22 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/rankings/best-value/{state}.json",
-								"parts": []any{
-									"api",
-									"v1",
-									"rankings",
-									"best-value",
-									"{state}.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "rankings",
+									},
+									map[string]any{
+										"lit": "best-value",
+									},
+									map[string]any{
+										"lit": "{state}.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -841,16 +948,19 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"api",
+									"v1",
+									"rankings",
+									"best-value",
+									"{state}.json",
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"best_value",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"top_50": map[string]any{
@@ -899,17 +1009,34 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/rankings/out-of-state-penalty/top-50.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "rankings",
+									},
+									map[string]any{
+										"lit": "out-of-state-penalty",
+									},
+									map[string]any{
+										"lit": "top-50.json",
+									},
+								},
+								"select": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"parts": []any{
 									"api",
 									"v1",
 									"rankings",
 									"out-of-state-penalty",
 									"top-50.json",
-								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
 								},
 							},
 						},
@@ -960,6 +1087,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "url",
 						"type": "`$STRING`",
 					},
@@ -975,16 +1103,30 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/rankings/worst-roi-majors.json",
-								"parts": []any{
-									"api",
-									"v1",
-									"rankings",
-									"worst-roi-majors.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "rankings",
+									},
+									map[string]any{
+										"lit": "worst-roi-majors.json",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"api",
+									"v1",
+									"rankings",
+									"worst-roi-majors.json",
 								},
 							},
 						},
@@ -996,6 +1138,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

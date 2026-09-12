@@ -128,12 +128,6 @@ const bestvalues = await client.BestValue().list()
 for (const bestvalue of bestvalues) {
   console.log(bestvalue)
 }
-
-// Load a specific slug (returns a Slug)
-const slug = await client.Slug().load({
-  slug: 'example_slug',
-})
-console.log(slug)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -229,15 +223,6 @@ if err != nil {
     panic(err)
 }
 fmt.Println(bestValues)
-
-// Load a specific slug
-slug, err := client.Slug(nil).Load(
-    map[string]any{"slug": "example_slug"}, nil,
-)
-if err != nil {
-    panic(err)
-}
-fmt.Println(slug)
 ```
 
 ### Ruby
@@ -374,7 +359,7 @@ customizable without forking any upstream tool:
 
 - **The model** (`.sdk/model/`) declares everything this project owns:
   package names, versions, active features, per-target settings. It is
-  written in [aontu](https://github.com/aontu-lang/aontu), a JSON-based
+  written in [aontu](https://aontu.dev), a JSON-based
   specification language designed for building ontologies: easy to edit
   by hand, and files unify rather than override, so small declarations
   compose into one model. Regeneration re-reads it every time.

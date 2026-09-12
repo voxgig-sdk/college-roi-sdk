@@ -107,7 +107,7 @@ def _state_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["state01", "state02", "state03", "best_value01", "best_value02", "best_value03"],
+        ["state01", "state02", "state03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",
@@ -136,6 +136,10 @@ def _state_basic_setup(extra):
 
     if env.get("COLLEGE_ROI_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
+            # FIRST, so the generated fields below win: sdk-test-control.json's
+            # test.client.options adds to the live client, it does not
+            # redirect it.
+            runner.live_client_options(),
             {
             },
             extra or {},

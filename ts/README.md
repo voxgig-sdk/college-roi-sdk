@@ -47,22 +47,6 @@ for (const bestvalue of bestvalues) {
 }
 ```
 
-### 3. Load a slug
-
-Slug is nested under slug, so provide the `slug`.
-`load()` returns the entity directly and throws on failure:
-
-```ts
-try {
-  const slug = await client.Slug().load({
-    slug: 'example_slug',
-  })
-  console.log(slug)
-} catch (err) {
-  console.error('load failed:', err)
-}
-```
-
 
 ## Error handling
 

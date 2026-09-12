@@ -51,12 +51,22 @@ main: kit: entity: state: {
           }
           method: "GET"
           orig: "/api/v1/rankings/best-value/{state}.json"
-          parts: [
-            "api"
-            "v1"
-            "rankings"
-            "best-value"
-            "{state}.json"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "rankings"
+            }
+            {
+              lit: "best-value"
+            }
+            {
+              lit: "{state}.json"
+            }
           ]
           select: {
             exist: [
@@ -70,14 +80,6 @@ main: kit: entity: state: {
         }
       ]
     }
-  }
-
-  relations: {
-    ancestors: [
-      [
-        "best_value"
-      ]
-    ]
   }
 
 
