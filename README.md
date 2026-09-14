@@ -105,7 +105,7 @@ local results, err = client:Top50():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/college-roi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/college-roi-sdk/releases) |
+| TypeScript | `@voxgig-sdk/college-roi-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/college-roi-sdk/releases) |
 | Python | `voxgig-sdk-college-roi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/college-roi-sdk/releases) |
 | PHP | `voxgig-sdk/college-roi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/college-roi-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/college-roi-sdk/go` | `go get github.com/voxgig-sdk/college-roi-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Top50():list()
 ### TypeScript
 
 ```ts
-import { CollegeRoiSDK } from '@voxgig-sdk/college-roi'
+import { CollegeRoiSDK } from '@voxgig-sdk/college-roi-sdk'
 
 const client = new CollegeRoiSDK()
 

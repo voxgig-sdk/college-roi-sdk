@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { CollegeRoiSDK } from '@voxgig-sdk/college-roi'
+import { CollegeRoiSDK } from '@voxgig-sdk/college-roi-sdk'
 
 const client = new CollegeRoiSDK()
 ```
@@ -877,7 +877,7 @@ college-roi/
 Import the SDK from the package root:
 
 ```ts
-import { CollegeRoiSDK } from '@voxgig-sdk/college-roi'
+import { CollegeRoiSDK } from '@voxgig-sdk/college-roi-sdk'
 ```
 
 ### Entity state
