@@ -9,29 +9,29 @@
         "completion_adjusted_roi_usd": "s13a",
         "control": "s13b",
         "dropout_roi_usd": "s13c",
-        "freopp_program_coverage": "s13d",
-        "graduates": "s13e",
+        "freopp_program_coverage": 317,
+        "graduates": 318,
         "kind": "s13f",
         "mean_lifetime_roi_usd": 320,
         "median_breakeven_age": "s141",
-        "median_earnings_10yr_usd": "s142",
+        "median_earnings_10yr_usd": 322,
         "median_lifetime_roi_usd": 323,
         "meta": {},
         "name": "s145",
         "npv_30yr_nonresident_usd": "s146",
-        "npv_30yr_resident_usd": "s147",
+        "npv_30yr_resident_usd": 327,
         "p25_roi_usd": 328,
         "p75_roi_usd": 329,
         "parent": "s14a",
         "pct_never_breakeven": 331,
-        "programs": "s14c",
-        "rank_by_worst_roi": "s14d",
+        "programs": 332,
+        "rank_by_worst_roi": 333,
         "slug": "s14e",
         "state": "s14f",
         "state_name": "s150",
         "total_cost_of_attendance_nonresident_usd": "s151",
-        "total_cost_of_attendance_usd": "s152",
-        "unitid": "s153",
+        "total_cost_of_attendance_usd": 338,
+        "unitid": 339,
         "url": "s154",
         "id": "SLUG00"
       },
@@ -43,29 +43,29 @@
         "completion_adjusted_roi_usd": "s270",
         "control": "s271",
         "dropout_roi_usd": "s272",
-        "freopp_program_coverage": "s273",
-        "graduates": "s274",
+        "freopp_program_coverage": 627,
+        "graduates": 628,
         "kind": "s275",
         "mean_lifetime_roi_usd": 630,
         "median_breakeven_age": "s277",
-        "median_earnings_10yr_usd": "s278",
+        "median_earnings_10yr_usd": 632,
         "median_lifetime_roi_usd": 633,
         "meta": {},
         "name": "s27b",
         "npv_30yr_nonresident_usd": "s27c",
-        "npv_30yr_resident_usd": "s27d",
+        "npv_30yr_resident_usd": 637,
         "p25_roi_usd": 638,
         "p75_roi_usd": 639,
         "parent": "s280",
         "pct_never_breakeven": 641,
-        "programs": "s282",
-        "rank_by_worst_roi": "s283",
+        "programs": 642,
+        "rank_by_worst_roi": 643,
         "slug": "s284",
         "state": "s285",
         "state_name": "s286",
         "total_cost_of_attendance_nonresident_usd": "s287",
-        "total_cost_of_attendance_usd": "s288",
-        "unitid": "s289",
+        "total_cost_of_attendance_usd": 648,
+        "unitid": 649,
         "url": "s28a",
         "id": "SLUG01"
       },
@@ -77,29 +77,29 @@
         "completion_adjusted_roi_usd": "s3a6",
         "control": "s3a7",
         "dropout_roi_usd": "s3a8",
-        "freopp_program_coverage": "s3a9",
-        "graduates": "s3aa",
+        "freopp_program_coverage": 937,
+        "graduates": 938,
         "kind": "s3ab",
         "mean_lifetime_roi_usd": 940,
         "median_breakeven_age": "s3ad",
-        "median_earnings_10yr_usd": "s3ae",
+        "median_earnings_10yr_usd": 942,
         "median_lifetime_roi_usd": 943,
         "meta": {},
         "name": "s3b1",
         "npv_30yr_nonresident_usd": "s3b2",
-        "npv_30yr_resident_usd": "s3b3",
+        "npv_30yr_resident_usd": 947,
         "p25_roi_usd": 948,
         "p75_roi_usd": 949,
         "parent": "s3b6",
         "pct_never_breakeven": 951,
-        "programs": "s3b8",
-        "rank_by_worst_roi": "s3b9",
+        "programs": 952,
+        "rank_by_worst_roi": 953,
         "slug": "s3ba",
         "state": "s3bb",
         "state_name": "s3bc",
         "total_cost_of_attendance_nonresident_usd": "s3bd",
-        "total_cost_of_attendance_usd": "s3be",
-        "unitid": "s3bf",
+        "total_cost_of_attendance_usd": 958,
+        "unitid": 959,
         "url": "s3c0",
         "id": "SLUG02"
       }
@@ -115,30 +115,412 @@
         "completion_adjusted_roi_usd": "s4dc",
         "control": "s4dd",
         "dropout_roi_usd": "s4de",
-        "freopp_program_coverage": "s4df",
-        "graduates": "s4e0",
+        "freopp_program_coverage": 1247,
+        "graduates": 1248,
         "kind": "s4e1",
         "mean_lifetime_roi_usd": 1250,
         "median_breakeven_age": "s4e3",
-        "median_earnings_10yr_usd": "s4e4",
+        "median_earnings_10yr_usd": 1252,
         "median_lifetime_roi_usd": 1253,
         "meta": {},
         "name": "s4e7",
         "npv_30yr_nonresident_usd": "s4e8",
-        "npv_30yr_resident_usd": "s4e9",
+        "npv_30yr_resident_usd": 1257,
         "p25_roi_usd": 1258,
         "p75_roi_usd": 1259,
         "parent": "s4ec",
         "pct_never_breakeven": 1261,
-        "programs": "s4ee",
-        "rank_by_worst_roi": "s4ef",
+        "programs": 1262,
+        "rank_by_worst_roi": 1263,
         "slug": "s4f0",
         "state": "s4f1",
         "state_name": "s4f2",
         "total_cost_of_attendance_nonresident_usd": "s4f3",
-        "total_cost_of_attendance_usd": "s4f4",
-        "unitid": "s4f5",
+        "total_cost_of_attendance_usd": 1268,
+        "unitid": 1269,
         "url": "s4f6"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/colleges/{slug}.json": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCollege",
+        "parameters": [
+          {
+            "description": "College slug, e.g. university-of-michigan-ann-arbor.",
+            "in": "path",
+            "name": "slug",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "meta": {
+                          "description": "Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.",
+                          "properties": {
+                            "data_vintage": {
+                              "type": "string"
+                            },
+                            "doi": {
+                              "format": "uri",
+                              "type": "string"
+                            },
+                            "generated": {
+                              "format": "date",
+                              "type": "string"
+                            },
+                            "license": {
+                              "const": "CC-BY-4.0",
+                              "type": "string"
+                            },
+                            "source": {
+                              "const": "LE TEEN",
+                              "type": "string"
+                            },
+                            "url": {
+                              "format": "uri",
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "source",
+                            "url",
+                            "license",
+                            "doi",
+                            "data_vintage",
+                            "generated"
+                          ],
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    {
+                      "description": "One gated four-year institution (IPEDS 2023 · FREOPP 2021 · BEA 2023). Gates: real FREOPP earnings, >= 3 reported programs, hand-verified exclusions, positive 30-year NPV at resident pricing — no school outside the gate appears, and no named school carries a negative number.",
+                      "properties": {
+                        "breakeven_age": {
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
+                        "city": {
+                          "type": "string"
+                        },
+                        "control": {
+                          "enum": [
+                            "public",
+                            "private-nonprofit",
+                            "private-forprofit"
+                          ],
+                          "type": "string"
+                        },
+                        "freopp_program_coverage": {
+                          "description": "FREOPP-reported programs rolled into the earnings figure.",
+                          "type": "integer"
+                        },
+                        "median_earnings_10yr_usd": {
+                          "description": "FREOPP cohort-weighted earnings ten years after entry.",
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "npv_30yr_nonresident_usd": {
+                          "description": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
+                        "npv_30yr_resident_usd": {
+                          "description": "30-year projected net value at resident pricing. Positive by gate.",
+                          "type": "integer"
+                        },
+                        "slug": {
+                          "type": "string"
+                        },
+                        "state": {
+                          "description": "USPS 2-letter state code.",
+                          "type": "string"
+                        },
+                        "state_name": {
+                          "type": "string"
+                        },
+                        "total_cost_of_attendance_nonresident_usd": {
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
+                        "total_cost_of_attendance_usd": {
+                          "type": "integer"
+                        },
+                        "unitid": {
+                          "description": "IPEDS UnitID — the universal join key.",
+                          "type": "integer"
+                        },
+                        "url": {
+                          "description": "The human-readable page for this school.",
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "slug",
+                        "unitid",
+                        "name",
+                        "city",
+                        "state",
+                        "control",
+                        "npv_30yr_resident_usd",
+                        "url"
+                      ],
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "The college with its meta block."
+          },
+          "404": {
+            "description": "Unknown slug — the school is outside the gate or not covered."
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/v1/majors/{slug}.json": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getMajor",
+        "parameters": [
+          {
+            "description": "Major slug, e.g. philosophy-and-religious-studies or registered-nursing.",
+            "in": "path",
+            "name": "slug",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "meta": {
+                          "description": "Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.",
+                          "properties": {
+                            "data_vintage": {
+                              "type": "string"
+                            },
+                            "doi": {
+                              "format": "uri",
+                              "type": "string"
+                            },
+                            "generated": {
+                              "format": "date",
+                              "type": "string"
+                            },
+                            "license": {
+                              "const": "CC-BY-4.0",
+                              "type": "string"
+                            },
+                            "source": {
+                              "const": "LE TEEN",
+                              "type": "string"
+                            },
+                            "url": {
+                              "format": "uri",
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "source",
+                            "url",
+                            "license",
+                            "doi",
+                            "data_vintage",
+                            "generated"
+                          ],
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    {
+                      "description": "One major category or CIP subfield with its full lifetime-ROI stat set (FREOPP 2021, cohort-weighted). Field averages may be negative — no institution is named.",
+                      "properties": {
+                        "ai_exposure": {
+                          "description": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for. NOT displacement. Category rows only; null for subfields and dropped categories.",
+                          "properties": {
+                            "acs_coverage": {
+                              "type": "number"
+                            },
+                            "band": {
+                              "enum": [
+                                "High",
+                                "Elevated",
+                                "Lower"
+                              ],
+                              "type": "string"
+                            },
+                            "score_0_to_1": {
+                              "type": "number"
+                            },
+                            "top_occupations": {
+                              "items": {
+                                "properties": {
+                                  "score": {
+                                    "description": "AI applicability, 0–1.",
+                                    "type": "number"
+                                  },
+                                  "share": {
+                                    "description": "Share of the field’s graduates working here, 0–1.",
+                                    "type": "number"
+                                  },
+                                  "soc": {
+                                    "description": "SOC occupation code.",
+                                    "type": "string"
+                                  },
+                                  "title": {
+                                    "type": "string"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "type": "array"
+                            }
+                          },
+                          "type": [
+                            "object",
+                            "null"
+                          ]
+                        },
+                        "cip_program_name": {
+                          "description": "CIP program-family name — subfields only.",
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "completion_adjusted_roi_usd": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "dropout_roi_usd": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "graduates": {
+                          "type": "integer"
+                        },
+                        "kind": {
+                          "enum": [
+                            "category",
+                            "subfield"
+                          ],
+                          "type": "string"
+                        },
+                        "mean_lifetime_roi_usd": {
+                          "type": "number"
+                        },
+                        "median_breakeven_age": {
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
+                        "median_lifetime_roi_usd": {
+                          "type": "number"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "p25_roi_usd": {
+                          "type": "number"
+                        },
+                        "p75_roi_usd": {
+                          "type": "number"
+                        },
+                        "parent": {
+                          "description": "Parent category — subfields only.",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "slug": {
+                              "type": "string"
+                            }
+                          },
+                          "type": [
+                            "object",
+                            "null"
+                          ]
+                        },
+                        "pct_never_breakeven": {
+                          "description": "Share of graduates who never break even, percent.",
+                          "type": "number"
+                        },
+                        "programs": {
+                          "type": "integer"
+                        },
+                        "rank_by_worst_roi": {
+                          "description": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
+                          "type": "integer"
+                        },
+                        "slug": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "description": "The human-readable page for this major.",
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "slug",
+                        "kind",
+                        "name",
+                        "rank_by_worst_roi",
+                        "url"
+                      ],
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "The major with its meta block."
+          },
+          "404": {
+            "description": "Unknown slug (static file does not exist)."
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

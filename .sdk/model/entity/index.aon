@@ -10,6 +10,12 @@ main: kit: entity: index: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /api/v1/index.json"
+            json: "{\"operationId\":\"getApiRoot\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"The API root document.\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/v1/index.json"
           segments: [

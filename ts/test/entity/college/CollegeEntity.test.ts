@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { CollegeRoiSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('CollegeEntity', async () => {
 
     const live = 'TRUE' === process.env.COLLEGE_ROI_TEST_LIVE
     for (const op of ['list']) {
-      if (maybeSkipControl(t, 'entityOp', 'college.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'college.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set COLLEGE_ROI_TEST_COLLEGE_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"breakeven_age","req":false,"type":["`$ONE`",["`$INTEGER`","`$NULL`"]],"index$":0},{"active":true,"name":"city","req":true,"type":"`$STRING`","index$":1},{"active":true,"name":"control","req":true,"type":"`$STRING`","index$":2},{"active":true,"name":"freopp_program_coverage","req":false,"short":"FREOPP-reported programs rolled into the earnings figure.","type":"`$INTEGER`","index$":3},{"active":true,"name":"median_earnings_10yr_usd","req":false,"short":"FREOPP cohort-weighted earnings ten years after entry.","type":"`$INTEGER`","index$":4},{"active":true,"name":"name","req":true,"type":"`$STRING`","index$":5},{"active":true,"name":"npv_30yr_nonresident_usd","req":false,"short":"Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.","type":["`$ONE`",["`$INTEGER`","`$NULL`"]],"index$":6},{"active":true,"name":"npv_30yr_resident_usd","req":true,"short":"30-year projected net value at resident pricing.","type":"`$INTEGER`","index$":7},{"active":true,"name":"slug","req":true,"type":"`$STRING`","index$":8},{"active":true,"name":"state","req":true,"short":"USPS 2-letter state code.","type":"`$STRING`","index$":9},{"active":true,"name":"state_name","req":false,"type":"`$STRING`","index$":10},{"active":true,"name":"total_cost_of_attendance_nonresident_usd","req":false,"type":["`$ONE`",["`$INTEGER`","`$NULL`"]],"index$":11},{"active":true,"name":"total_cost_of_attendance_usd","req":false,"type":"`$INTEGER`","index$":12},{"active":true,"name":"unitid","req":true,"short":"IPEDS UnitID — the universal join key.","type":"`$INTEGER`","index$":13},{"active":true,"format":"uri","name":"url","req":true,"short":"The human-readable page for this school.","type":"`$STRING`","index$":14}],"name":"college","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{},"contract":{"id":"GET /api/v1/colleges.json","json":"{\"operationId\":\"listColleges\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"colleges\":{\"items\":{\"description\":\"One gated four-year institution (IPEDS 2023 · FREOPP 2021 · BEA 2023). Gates: real FREOPP earnings, >= 3 reported programs, hand-verified exclusions, positive 30-year NPV at resident pricing — no school outside the gate appears, and no named school carries a negative number.\",\"properties\":{\"breakeven_age\":{\"type\":[\"integer\",\"null\"]},\"city\":{\"type\":\"string\"},\"control\":{\"enum\":[\"public\",\"private-nonprofit\",\"private-forprofit\"],\"type\":\"string\"},\"freopp_program_coverage\":{\"description\":\"FREOPP-reported programs rolled into the earnings figure.\",\"type\":\"integer\"},\"median_earnings_10yr_usd\":{\"description\":\"FREOPP cohort-weighted earnings ten years after entry.\",\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"npv_30yr_nonresident_usd\":{\"description\":\"Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.\",\"type\":[\"integer\",\"null\"]},\"npv_30yr_resident_usd\":{\"description\":\"30-year projected net value at resident pricing. Positive by gate.\",\"type\":\"integer\"},\"slug\":{\"type\":\"string\"},\"state\":{\"description\":\"USPS 2-letter state code.\",\"type\":\"string\"},\"state_name\":{\"type\":\"string\"},\"total_cost_of_attendance_nonresident_usd\":{\"type\":[\"integer\",\"null\"]},\"total_cost_of_attendance_usd\":{\"type\":\"integer\"},\"unitid\":{\"description\":\"IPEDS UnitID — the universal join key.\",\"type\":\"integer\"},\"url\":{\"description\":\"The human-readable page for this school.\",\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"slug\",\"unitid\",\"name\",\"city\",\"state\",\"control\",\"npv_30yr_resident_usd\",\"url\"],\"type\":\"object\"},\"type\":\"array\"},\"count\":{\"type\":\"integer\"},\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"},\"notes\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Every gated college.\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/api/v1/colleges.json","segments":[{"lit":"api"},{"lit":"v1"},{"lit":"colleges.json"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"college","name__orig":"college","Name":"College","name_":"college","name-":"college","NAME":"COLLEGE","index$":1}, {"active":true,"entity":"college","key$":"BasicCollegeFlow","kind":"basic","name":"BasicCollegeFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"college_ref01"}}],"index$":0}]}, 'College')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['COLLEGE_ROI_TEST_COLLEGE_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'COLLEGE_ROI_TEST_COLLEGE_ENTID': idmap,
     'COLLEGE_ROI_TEST_LIVE': 'FALSE',
@@ -126,7 +118,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.COLLEGE_ROI_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['COLLEGE_ROI_TEST_COLLEGE_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new CollegeRoiSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -138,7 +136,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -151,7 +150,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.COLLEGE_ROI_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

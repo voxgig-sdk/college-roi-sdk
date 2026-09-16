@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "best_value": {
           "active": true,
@@ -67,6 +131,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /api/v1/rankings/best-value.json",
+                    "json": "{\"operationId\":\"getBestValueRanking\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"type\":\"integer\"},\"description\":{\"type\":\"string\"},\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"},\"page_url\":{\"format\":\"uri\",\"type\":\"string\"},\"states\":{\"items\":{\"properties\":{\"colleges\":{\"items\":{\"properties\":{\"city\":{\"type\":\"string\"},\"control\":{\"type\":\"string\"},\"institution\":{\"type\":\"string\"},\"npv_30yr_resident_usd\":{\"type\":\"integer\"},\"rank_in_state\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"page_url\":{\"format\":\"uri\",\"type\":\"string\"},\"state\":{\"type\":\"string\"},\"state_name\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"All 50 states + DC. NPV-positive rows only.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/rankings/best-value.json",
@@ -229,6 +299,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /api/v1/colleges.json",
+                    "json": "{\"operationId\":\"listColleges\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"colleges\":{\"items\":{\"description\":\"One gated four-year institution (IPEDS 2023 · FREOPP 2021 · BEA 2023). Gates: real FREOPP earnings, >= 3 reported programs, hand-verified exclusions, positive 30-year NPV at resident pricing — no school outside the gate appears, and no named school carries a negative number.\",\"properties\":{\"breakeven_age\":{\"type\":[\"integer\",\"null\"]},\"city\":{\"type\":\"string\"},\"control\":{\"enum\":[\"public\",\"private-nonprofit\",\"private-forprofit\"],\"type\":\"string\"},\"freopp_program_coverage\":{\"description\":\"FREOPP-reported programs rolled into the earnings figure.\",\"type\":\"integer\"},\"median_earnings_10yr_usd\":{\"description\":\"FREOPP cohort-weighted earnings ten years after entry.\",\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"npv_30yr_nonresident_usd\":{\"description\":\"Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.\",\"type\":[\"integer\",\"null\"]},\"npv_30yr_resident_usd\":{\"description\":\"30-year projected net value at resident pricing. Positive by gate.\",\"type\":\"integer\"},\"slug\":{\"type\":\"string\"},\"state\":{\"description\":\"USPS 2-letter state code.\",\"type\":\"string\"},\"state_name\":{\"type\":\"string\"},\"total_cost_of_attendance_nonresident_usd\":{\"type\":[\"integer\",\"null\"]},\"total_cost_of_attendance_usd\":{\"type\":\"integer\"},\"unitid\":{\"description\":\"IPEDS UnitID — the universal join key.\",\"type\":\"integer\"},\"url\":{\"description\":\"The human-readable page for this school.\",\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"slug\",\"unitid\",\"name\",\"city\",\"state\",\"control\",\"npv_30yr_resident_usd\",\"url\"],\"type\":\"object\"},\"type\":\"array\"},\"count\":{\"type\":\"integer\"},\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"},\"notes\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Every gated college.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/colleges.json",
@@ -271,6 +347,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /api/v1/index.json",
+                    "json": "{\"operationId\":\"getApiRoot\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"The API root document.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/index.json",
@@ -465,6 +547,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /api/v1/majors.json",
+                    "json": "{\"operationId\":\"listMajors\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"categories\":{\"type\":\"integer\"},\"count\":{\"type\":\"integer\"},\"majors\":{\"items\":{\"description\":\"One major category or CIP subfield with its full lifetime-ROI stat set (FREOPP 2021, cohort-weighted). Field averages may be negative — no institution is named.\",\"properties\":{\"ai_exposure\":{\"description\":\"le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for. NOT displacement. Category rows only; null for subfields and dropped categories.\",\"properties\":{\"acs_coverage\":{\"type\":\"number\"},\"band\":{\"enum\":[\"High\",\"Elevated\",\"Lower\"],\"type\":\"string\"},\"score_0_to_1\":{\"type\":\"number\"},\"top_occupations\":{\"items\":{\"properties\":{\"score\":{\"description\":\"AI applicability, 0–1.\",\"type\":\"number\"},\"share\":{\"description\":\"Share of the field’s graduates working here, 0–1.\",\"type\":\"number\"},\"soc\":{\"description\":\"SOC occupation code.\",\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":[\"object\",\"null\"]},\"cip_program_name\":{\"description\":\"CIP program-family name — subfields only.\",\"type\":[\"string\",\"null\"]},\"completion_adjusted_roi_usd\":{\"type\":[\"number\",\"null\"]},\"dropout_roi_usd\":{\"type\":[\"number\",\"null\"]},\"graduates\":{\"type\":\"integer\"},\"kind\":{\"enum\":[\"category\",\"subfield\"],\"type\":\"string\"},\"mean_lifetime_roi_usd\":{\"type\":\"number\"},\"median_breakeven_age\":{\"type\":[\"integer\",\"null\"]},\"median_lifetime_roi_usd\":{\"type\":\"number\"},\"name\":{\"type\":\"string\"},\"p25_roi_usd\":{\"type\":\"number\"},\"p75_roi_usd\":{\"type\":\"number\"},\"parent\":{\"description\":\"Parent category — subfields only.\",\"properties\":{\"name\":{\"type\":\"string\"},\"slug\":{\"type\":\"string\"}},\"type\":[\"object\",\"null\"]},\"pct_never_breakeven\":{\"description\":\"Share of graduates who never break even, percent.\",\"type\":\"number\"},\"programs\":{\"type\":\"integer\"},\"rank_by_worst_roi\":{\"description\":\"Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).\",\"type\":\"integer\"},\"slug\":{\"type\":\"string\"},\"url\":{\"description\":\"The human-readable page for this major.\",\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"slug\",\"kind\",\"name\",\"rank_by_worst_roi\",\"url\"],\"type\":\"object\"},\"type\":\"array\"},\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"},\"notes\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"subfields\":{\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Every major with statistics and page links.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/majors.json",
@@ -507,6 +595,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /api/v1/openapi.json",
+                    "json": "{\"operationId\":\"getOpenApiSpec\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"The OpenAPI 3.1 spec.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/openapi.json",
@@ -598,6 +692,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /api/v1/rankings/out-of-state-penalty.json",
+                    "json": "{\"operationId\":\"getOutOfStatePenaltyRanking\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"type\":\"integer\"},\"description\":{\"type\":\"string\"},\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"},\"page_url\":{\"format\":\"uri\",\"type\":\"string\"},\"rankings\":{\"items\":{\"properties\":{\"institution\":{\"type\":\"string\"},\"npv_nonresident_usd\":{\"type\":\"integer\"},\"npv_resident_usd\":{\"type\":\"integer\"},\"oos_penalty_30yr_npv_usd\":{\"type\":\"integer\"},\"rank\":{\"type\":\"integer\"},\"state\":{\"type\":\"string\"},\"tuition_in_state_usd\":{\"type\":\"integer\"},\"tuition_out_of_state_usd\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"The full ranking. Every row NPV-positive both ways.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/rankings/out-of-state-penalty.json",
@@ -909,6 +1009,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /api/v1/colleges/{slug}.json",
+                    "json": "{\"operationId\":\"getCollege\",\"parameters\":[{\"description\":\"College slug, e.g. university-of-michigan-ann-arbor.\",\"in\":\"path\",\"name\":\"slug\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"}},\"type\":\"object\"},{\"description\":\"One gated four-year institution (IPEDS 2023 · FREOPP 2021 · BEA 2023). Gates: real FREOPP earnings, >= 3 reported programs, hand-verified exclusions, positive 30-year NPV at resident pricing — no school outside the gate appears, and no named school carries a negative number.\",\"properties\":{\"breakeven_age\":{\"type\":[\"integer\",\"null\"]},\"city\":{\"type\":\"string\"},\"control\":{\"enum\":[\"public\",\"private-nonprofit\",\"private-forprofit\"],\"type\":\"string\"},\"freopp_program_coverage\":{\"description\":\"FREOPP-reported programs rolled into the earnings figure.\",\"type\":\"integer\"},\"median_earnings_10yr_usd\":{\"description\":\"FREOPP cohort-weighted earnings ten years after entry.\",\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"npv_30yr_nonresident_usd\":{\"description\":\"Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.\",\"type\":[\"integer\",\"null\"]},\"npv_30yr_resident_usd\":{\"description\":\"30-year projected net value at resident pricing. Positive by gate.\",\"type\":\"integer\"},\"slug\":{\"type\":\"string\"},\"state\":{\"description\":\"USPS 2-letter state code.\",\"type\":\"string\"},\"state_name\":{\"type\":\"string\"},\"total_cost_of_attendance_nonresident_usd\":{\"type\":[\"integer\",\"null\"]},\"total_cost_of_attendance_usd\":{\"type\":\"integer\"},\"unitid\":{\"description\":\"IPEDS UnitID — the universal join key.\",\"type\":\"integer\"},\"url\":{\"description\":\"The human-readable page for this school.\",\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"slug\",\"unitid\",\"name\",\"city\",\"state\",\"control\",\"npv_30yr_resident_usd\",\"url\"],\"type\":\"object\"}]}}},\"description\":\"The college with its meta block.\"},\"404\":{\"description\":\"Unknown slug — the school is outside the gate or not covered.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/colleges/{slug}.json",
@@ -949,6 +1055,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /api/v1/majors/{slug}.json",
+                    "json": "{\"operationId\":\"getMajor\",\"parameters\":[{\"description\":\"Major slug, e.g. philosophy-and-religious-studies or registered-nursing.\",\"in\":\"path\",\"name\":\"slug\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"}},\"type\":\"object\"},{\"description\":\"One major category or CIP subfield with its full lifetime-ROI stat set (FREOPP 2021, cohort-weighted). Field averages may be negative — no institution is named.\",\"properties\":{\"ai_exposure\":{\"description\":\"le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for. NOT displacement. Category rows only; null for subfields and dropped categories.\",\"properties\":{\"acs_coverage\":{\"type\":\"number\"},\"band\":{\"enum\":[\"High\",\"Elevated\",\"Lower\"],\"type\":\"string\"},\"score_0_to_1\":{\"type\":\"number\"},\"top_occupations\":{\"items\":{\"properties\":{\"score\":{\"description\":\"AI applicability, 0–1.\",\"type\":\"number\"},\"share\":{\"description\":\"Share of the field’s graduates working here, 0–1.\",\"type\":\"number\"},\"soc\":{\"description\":\"SOC occupation code.\",\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":[\"object\",\"null\"]},\"cip_program_name\":{\"description\":\"CIP program-family name — subfields only.\",\"type\":[\"string\",\"null\"]},\"completion_adjusted_roi_usd\":{\"type\":[\"number\",\"null\"]},\"dropout_roi_usd\":{\"type\":[\"number\",\"null\"]},\"graduates\":{\"type\":\"integer\"},\"kind\":{\"enum\":[\"category\",\"subfield\"],\"type\":\"string\"},\"mean_lifetime_roi_usd\":{\"type\":\"number\"},\"median_breakeven_age\":{\"type\":[\"integer\",\"null\"]},\"median_lifetime_roi_usd\":{\"type\":\"number\"},\"name\":{\"type\":\"string\"},\"p25_roi_usd\":{\"type\":\"number\"},\"p75_roi_usd\":{\"type\":\"number\"},\"parent\":{\"description\":\"Parent category — subfields only.\",\"properties\":{\"name\":{\"type\":\"string\"},\"slug\":{\"type\":\"string\"}},\"type\":[\"object\",\"null\"]},\"pct_never_breakeven\":{\"description\":\"Share of graduates who never break even, percent.\",\"type\":\"number\"},\"programs\":{\"type\":\"integer\"},\"rank_by_worst_roi\":{\"description\":\"Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).\",\"type\":\"integer\"},\"slug\":{\"type\":\"string\"},\"url\":{\"description\":\"The human-readable page for this major.\",\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"slug\",\"kind\",\"name\",\"rank_by_worst_roi\",\"url\"],\"type\":\"object\"}]}}},\"description\":\"The major with its meta block.\"},\"404\":{\"description\":\"Unknown slug (static file does not exist).\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1040,6 +1152,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /api/v1/rankings/best-value/{state}.json",
+                    "json": "{\"operationId\":\"getBestValueByState\",\"parameters\":[{\"description\":\"Lowercase USPS 2-letter state code (50 states + DC).\",\"in\":\"path\",\"name\":\"state\",\"required\":true,\"schema\":{\"enum\":[\"al\",\"ak\",\"az\",\"ar\",\"ca\",\"co\",\"ct\",\"de\",\"dc\",\"fl\",\"ga\",\"hi\",\"id\",\"il\",\"in\",\"ia\",\"ks\",\"ky\",\"la\",\"me\",\"md\",\"ma\",\"mi\",\"mn\",\"ms\",\"mo\",\"mt\",\"ne\",\"nv\",\"nh\",\"nj\",\"nm\",\"ny\",\"nc\",\"nd\",\"oh\",\"ok\",\"or\",\"pa\",\"ri\",\"sc\",\"sd\",\"tn\",\"tx\",\"ut\",\"vt\",\"va\",\"wa\",\"wv\",\"wi\",\"wy\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"colleges\":{\"items\":{\"properties\":{\"city\":{\"type\":\"string\"},\"control\":{\"type\":\"string\"},\"institution\":{\"type\":\"string\"},\"npv_30yr_resident_usd\":{\"type\":\"integer\"},\"rank_in_state\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"count\":{\"type\":\"integer\"},\"description\":{\"type\":\"string\"},\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"},\"page_url\":{\"format\":\"uri\",\"type\":\"string\"},\"state\":{\"type\":\"string\"},\"state_name\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Top 15 for the state, NPV-positive rows only.\"},\"404\":{\"description\":\"Not a USPS state code.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1142,6 +1260,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /api/v1/rankings/out-of-state-penalty/top-50.json",
+                    "json": "{\"operationId\":\"getOutOfStatePenaltyTop50\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"type\":\"integer\"},\"description\":{\"type\":\"string\"},\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"},\"page_url\":{\"format\":\"uri\",\"type\":\"string\"},\"rankings\":{\"items\":{\"properties\":{\"institution\":{\"type\":\"string\"},\"npv_nonresident_usd\":{\"type\":\"integer\"},\"npv_resident_usd\":{\"type\":\"integer\"},\"oos_penalty_30yr_npv_usd\":{\"type\":\"integer\"},\"rank\":{\"type\":\"integer\"},\"state\":{\"type\":\"string\"},\"tuition_in_state_usd\":{\"type\":\"integer\"},\"tuition_out_of_state_usd\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Top 50, worst-first. Same rows and order as the full ranking.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/rankings/out-of-state-penalty/top-50.json",
@@ -1252,6 +1376,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /api/v1/rankings/worst-roi-majors.json",
+                    "json": "{\"operationId\":\"getWorstRoiMajorsRanking\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"type\":\"integer\"},\"description\":{\"type\":\"string\"},\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"},\"page_url\":{\"format\":\"uri\",\"type\":\"string\"},\"rankings\":{\"items\":{\"properties\":{\"graduates\":{\"type\":\"integer\"},\"mean_lifetime_roi_usd\":{\"type\":\"number\"},\"median_breakeven_age\":{\"type\":[\"integer\",\"null\"]},\"median_lifetime_roi_usd\":{\"type\":\"number\"},\"name\":{\"type\":\"string\"},\"pct_never_breakeven\":{\"type\":\"number\"},\"rank\":{\"type\":\"integer\"},\"slug\":{\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"All 19 categories with median/mean ROI, never-break-even share, break-even age. Per-major detail at /api/v1/majors/{slug}.json.\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/v1/rankings/worst-roi-majors.json",
@@ -1284,13 +1414,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -1380,6 +1720,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -1686,6 +2122,48 @@
         "website": "https://le-teen.com/api"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -2240,6 +2718,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -2281,7 +2760,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

@@ -3,33 +3,33 @@
     "out_of_state_penalty": {
       "OUT_OF_STATE_PENALTY00": {
         "institution": "s50",
-        "npv_nonresident_usd": "s51",
-        "npv_resident_usd": "s52",
-        "oos_penalty_30yr_npv_usd": "s53",
-        "rank": "s54",
+        "npv_nonresident_usd": 81,
+        "npv_resident_usd": 82,
+        "oos_penalty_30yr_npv_usd": 83,
+        "rank": 84,
         "state": "s55",
-        "tuition_in_state_usd": "s56",
-        "tuition_out_of_state_usd": "s57"
+        "tuition_in_state_usd": 86,
+        "tuition_out_of_state_usd": 87
       },
       "OUT_OF_STATE_PENALTY01": {
         "institution": "sa0",
-        "npv_nonresident_usd": "sa1",
-        "npv_resident_usd": "sa2",
-        "oos_penalty_30yr_npv_usd": "sa3",
-        "rank": "sa4",
+        "npv_nonresident_usd": 161,
+        "npv_resident_usd": 162,
+        "oos_penalty_30yr_npv_usd": 163,
+        "rank": 164,
         "state": "sa5",
-        "tuition_in_state_usd": "sa6",
-        "tuition_out_of_state_usd": "sa7"
+        "tuition_in_state_usd": 166,
+        "tuition_out_of_state_usd": 167
       },
       "OUT_OF_STATE_PENALTY02": {
         "institution": "sf0",
-        "npv_nonresident_usd": "sf1",
-        "npv_resident_usd": "sf2",
-        "oos_penalty_30yr_npv_usd": "sf3",
-        "rank": "sf4",
+        "npv_nonresident_usd": 241,
+        "npv_resident_usd": 242,
+        "oos_penalty_30yr_npv_usd": 243,
+        "rank": 244,
         "state": "sf5",
-        "tuition_in_state_usd": "sf6",
-        "tuition_out_of_state_usd": "sf7"
+        "tuition_in_state_usd": 246,
+        "tuition_out_of_state_usd": 247
       }
     }
   },
@@ -37,13 +37,120 @@
     "out_of_state_penalty": {
       "out_of_state_penalty_ref01": {
         "institution": "s140",
-        "npv_nonresident_usd": "s141",
-        "npv_resident_usd": "s142",
-        "oos_penalty_30yr_npv_usd": "s143",
-        "rank": "s144",
+        "npv_nonresident_usd": 321,
+        "npv_resident_usd": 322,
+        "oos_penalty_30yr_npv_usd": 323,
+        "rank": 324,
         "state": "s145",
-        "tuition_in_state_usd": "s146",
-        "tuition_out_of_state_usd": "s147"
+        "tuition_in_state_usd": 326,
+        "tuition_out_of_state_usd": 327
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/rankings/out-of-state-penalty.json": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getOutOfStatePenaltyRanking",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "meta": {
+                      "description": "Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.",
+                      "properties": {
+                        "data_vintage": {
+                          "type": "string"
+                        },
+                        "doi": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "generated": {
+                          "format": "date",
+                          "type": "string"
+                        },
+                        "license": {
+                          "const": "CC-BY-4.0",
+                          "type": "string"
+                        },
+                        "source": {
+                          "const": "LE TEEN",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "source",
+                        "url",
+                        "license",
+                        "doi",
+                        "data_vintage",
+                        "generated"
+                      ],
+                      "type": "object"
+                    },
+                    "page_url": {
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "rankings": {
+                      "items": {
+                        "properties": {
+                          "institution": {
+                            "type": "string"
+                          },
+                          "npv_nonresident_usd": {
+                            "type": "integer"
+                          },
+                          "npv_resident_usd": {
+                            "type": "integer"
+                          },
+                          "oos_penalty_30yr_npv_usd": {
+                            "type": "integer"
+                          },
+                          "rank": {
+                            "type": "integer"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "tuition_in_state_usd": {
+                            "type": "integer"
+                          },
+                          "tuition_out_of_state_usd": {
+                            "type": "integer"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "title": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "The full ranking. Every row NPV-positive both ways."
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

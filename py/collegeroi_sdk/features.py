@@ -1,12 +1,18 @@
 # CollegeRoi SDK feature factory
 
 from collegeroi_sdk.feature.base_feature import CollegeRoiBaseFeature
+from collegeroi_sdk.feature.ratelimit_feature import CollegeRoiRatelimitFeature
+from collegeroi_sdk.feature.retry_feature import CollegeRoiRetryFeature
 from collegeroi_sdk.feature.test_feature import CollegeRoiTestFeature
+from collegeroi_sdk.feature.timeout_feature import CollegeRoiTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: CollegeRoiBaseFeature(),
+    "ratelimit": lambda: CollegeRoiRatelimitFeature(),
+    "retry": lambda: CollegeRoiRetryFeature(),
     "test": lambda: CollegeRoiTestFeature(),
+    "timeout": lambda: CollegeRoiTimeoutFeature(),
 }
 
 

@@ -6,7 +6,7 @@
         "cip_program_name": "sb5",
         "completion_adjusted_roi_usd": "sb6",
         "dropout_roi_usd": "sb7",
-        "graduates": "sb8",
+        "graduates": 184,
         "kind": "sb9",
         "mean_lifetime_roi_usd": 186,
         "median_breakeven_age": "sbb",
@@ -16,8 +16,8 @@
         "p75_roi_usd": 191,
         "parent": "sc0",
         "pct_never_breakeven": 193,
-        "programs": "sc2",
-        "rank_by_worst_roi": "sc3",
+        "programs": 194,
+        "rank_by_worst_roi": 195,
         "slug": "sc4",
         "url": "sc5"
       },
@@ -26,7 +26,7 @@
         "cip_program_name": "s169",
         "completion_adjusted_roi_usd": "s16a",
         "dropout_roi_usd": "s16b",
-        "graduates": "s16c",
+        "graduates": 364,
         "kind": "s16d",
         "mean_lifetime_roi_usd": 366,
         "median_breakeven_age": "s16f",
@@ -36,8 +36,8 @@
         "p75_roi_usd": 371,
         "parent": "s174",
         "pct_never_breakeven": 373,
-        "programs": "s176",
-        "rank_by_worst_roi": "s177",
+        "programs": 374,
+        "rank_by_worst_roi": 375,
         "slug": "s178",
         "url": "s179"
       },
@@ -46,7 +46,7 @@
         "cip_program_name": "s21d",
         "completion_adjusted_roi_usd": "s21e",
         "dropout_roi_usd": "s21f",
-        "graduates": "s220",
+        "graduates": 544,
         "kind": "s221",
         "mean_lifetime_roi_usd": 546,
         "median_breakeven_age": "s223",
@@ -56,8 +56,8 @@
         "p75_roi_usd": 551,
         "parent": "s228",
         "pct_never_breakeven": 553,
-        "programs": "s22a",
-        "rank_by_worst_roi": "s22b",
+        "programs": 554,
+        "rank_by_worst_roi": 555,
         "slug": "s22c",
         "url": "s22d"
       }
@@ -70,7 +70,7 @@
         "cip_program_name": "s2d1",
         "completion_adjusted_roi_usd": "s2d2",
         "dropout_roi_usd": "s2d3",
-        "graduates": "s2d4",
+        "graduates": 724,
         "kind": "s2d5",
         "mean_lifetime_roi_usd": 726,
         "median_breakeven_age": "s2d7",
@@ -80,10 +80,233 @@
         "p75_roi_usd": 731,
         "parent": "s2dc",
         "pct_never_breakeven": 733,
-        "programs": "s2de",
-        "rank_by_worst_roi": "s2df",
+        "programs": 734,
+        "rank_by_worst_roi": 735,
         "slug": "s2e0",
         "url": "s2e1"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/majors.json": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "listMajors",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "categories": {
+                      "type": "integer"
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "majors": {
+                      "items": {
+                        "description": "One major category or CIP subfield with its full lifetime-ROI stat set (FREOPP 2021, cohort-weighted). Field averages may be negative — no institution is named.",
+                        "properties": {
+                          "ai_exposure": {
+                            "description": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for. NOT displacement. Category rows only; null for subfields and dropped categories.",
+                            "properties": {
+                              "acs_coverage": {
+                                "type": "number"
+                              },
+                              "band": {
+                                "enum": [
+                                  "High",
+                                  "Elevated",
+                                  "Lower"
+                                ],
+                                "type": "string"
+                              },
+                              "score_0_to_1": {
+                                "type": "number"
+                              },
+                              "top_occupations": {
+                                "items": {
+                                  "properties": {
+                                    "score": {
+                                      "description": "AI applicability, 0–1.",
+                                      "type": "number"
+                                    },
+                                    "share": {
+                                      "description": "Share of the field’s graduates working here, 0–1.",
+                                      "type": "number"
+                                    },
+                                    "soc": {
+                                      "description": "SOC occupation code.",
+                                      "type": "string"
+                                    },
+                                    "title": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "type": "array"
+                              }
+                            },
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          },
+                          "cip_program_name": {
+                            "description": "CIP program-family name — subfields only.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "completion_adjusted_roi_usd": {
+                            "type": [
+                              "number",
+                              "null"
+                            ]
+                          },
+                          "dropout_roi_usd": {
+                            "type": [
+                              "number",
+                              "null"
+                            ]
+                          },
+                          "graduates": {
+                            "type": "integer"
+                          },
+                          "kind": {
+                            "enum": [
+                              "category",
+                              "subfield"
+                            ],
+                            "type": "string"
+                          },
+                          "mean_lifetime_roi_usd": {
+                            "type": "number"
+                          },
+                          "median_breakeven_age": {
+                            "type": [
+                              "integer",
+                              "null"
+                            ]
+                          },
+                          "median_lifetime_roi_usd": {
+                            "type": "number"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "p25_roi_usd": {
+                            "type": "number"
+                          },
+                          "p75_roi_usd": {
+                            "type": "number"
+                          },
+                          "parent": {
+                            "description": "Parent category — subfields only.",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "slug": {
+                                "type": "string"
+                              }
+                            },
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          },
+                          "pct_never_breakeven": {
+                            "description": "Share of graduates who never break even, percent.",
+                            "type": "number"
+                          },
+                          "programs": {
+                            "type": "integer"
+                          },
+                          "rank_by_worst_roi": {
+                            "description": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
+                            "type": "integer"
+                          },
+                          "slug": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "description": "The human-readable page for this major.",
+                            "format": "uri",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "slug",
+                          "kind",
+                          "name",
+                          "rank_by_worst_roi",
+                          "url"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "meta": {
+                      "description": "Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.",
+                      "properties": {
+                        "data_vintage": {
+                          "type": "string"
+                        },
+                        "doi": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "generated": {
+                          "format": "date",
+                          "type": "string"
+                        },
+                        "license": {
+                          "const": "CC-BY-4.0",
+                          "type": "string"
+                        },
+                        "source": {
+                          "const": "LE TEEN",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "source",
+                        "url",
+                        "license",
+                        "doi",
+                        "data_vintage",
+                        "generated"
+                      ],
+                      "type": "object"
+                    },
+                    "notes": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "subfields": {
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Every major with statistics and page links."
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { CollegeRoiSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('WorstRoiMajorEntity', async () => {
 
     const live = 'TRUE' === process.env.COLLEGE_ROI_TEST_LIVE
     for (const op of ['list']) {
-      if (maybeSkipControl(t, 'entityOp', 'worst_roi_major.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'worst_roi_major.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set COLLEGE_ROI_TEST_WORST_ROI_MAJOR_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"graduates","req":false,"type":"`$INTEGER`","index$":0},{"active":true,"name":"mean_lifetime_roi_usd","req":false,"type":"`$NUMBER`","index$":1},{"active":true,"name":"median_breakeven_age","req":false,"type":["`$ONE`",["`$INTEGER`","`$NULL`"]],"index$":2},{"active":true,"name":"median_lifetime_roi_usd","req":false,"type":"`$NUMBER`","index$":3},{"active":true,"name":"name","req":false,"type":"`$STRING`","index$":4},{"active":true,"name":"pct_never_breakeven","req":false,"type":"`$NUMBER`","index$":5},{"active":true,"name":"rank","req":false,"type":"`$INTEGER`","index$":6},{"active":true,"name":"slug","req":false,"type":"`$STRING`","index$":7},{"active":true,"format":"uri","name":"url","req":false,"type":"`$STRING`","index$":8}],"name":"worst_roi_major","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{},"contract":{"id":"GET /api/v1/rankings/worst-roi-majors.json","json":"{\"operationId\":\"getWorstRoiMajorsRanking\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"type\":\"integer\"},\"description\":{\"type\":\"string\"},\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"},\"page_url\":{\"format\":\"uri\",\"type\":\"string\"},\"rankings\":{\"items\":{\"properties\":{\"graduates\":{\"type\":\"integer\"},\"mean_lifetime_roi_usd\":{\"type\":\"number\"},\"median_breakeven_age\":{\"type\":[\"integer\",\"null\"]},\"median_lifetime_roi_usd\":{\"type\":\"number\"},\"name\":{\"type\":\"string\"},\"pct_never_breakeven\":{\"type\":\"number\"},\"rank\":{\"type\":\"integer\"},\"slug\":{\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"All 19 categories with median/mean ROI, never-break-even share, break-even age. Per-major detail at /api/v1/majors/{slug}.json.\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/api/v1/rankings/worst-roi-majors.json","segments":[{"lit":"api"},{"lit":"v1"},{"lit":"rankings"},{"lit":"worst-roi-majors.json"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"worst_roi_major","name__orig":"worst_roi_major","Name":"WorstRoiMajor","name_":"worst_roi_major","name-":"worst-roi-major","NAME":"WORST_ROI_MAJOR","index$":9}, {"active":true,"entity":"worst_roi_major","key$":"BasicWorstRoiMajorFlow","kind":"basic","name":"BasicWorstRoiMajorFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"worst_roi_major_ref01"}}],"index$":0}]}, 'WorstRoiMajor')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['COLLEGE_ROI_TEST_WORST_ROI_MAJOR_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'COLLEGE_ROI_TEST_WORST_ROI_MAJOR_ENTID': idmap,
     'COLLEGE_ROI_TEST_LIVE': 'FALSE',
@@ -126,7 +118,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.COLLEGE_ROI_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['COLLEGE_ROI_TEST_WORST_ROI_MAJOR_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new CollegeRoiSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -138,7 +136,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -151,7 +150,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.COLLEGE_ROI_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

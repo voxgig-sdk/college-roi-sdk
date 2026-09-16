@@ -10,6 +10,12 @@ main: kit: entity: openapi: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /api/v1/openapi.json"
+            json: "{\"operationId\":\"getOpenApiSpec\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"The OpenAPI 3.1 spec.\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/v1/openapi.json"
           segments: [

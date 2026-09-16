@@ -5,24 +5,24 @@
         "city": "s32",
         "control": "s33",
         "institution": "s34",
-        "npv_30yr_resident_usd": "s35",
-        "rank_in_state": "s36",
+        "npv_30yr_resident_usd": 53,
+        "rank_in_state": 54,
         "state": "STATE01"
       },
       "STATE01": {
         "city": "s64",
         "control": "s65",
         "institution": "s66",
-        "npv_30yr_resident_usd": "s67",
-        "rank_in_state": "s68",
+        "npv_30yr_resident_usd": 103,
+        "rank_in_state": 104,
         "state": "STATE01"
       },
       "STATE02": {
         "city": "s96",
         "control": "s97",
         "institution": "s98",
-        "npv_30yr_resident_usd": "s99",
-        "rank_in_state": "s9a",
+        "npv_30yr_resident_usd": 153,
+        "rank_in_state": 154,
         "state": "STATE01"
       }
     }
@@ -33,8 +33,178 @@
         "city": "sc8",
         "control": "sc9",
         "institution": "sca",
-        "npv_30yr_resident_usd": "scb",
-        "rank_in_state": "scc"
+        "npv_30yr_resident_usd": 203,
+        "rank_in_state": 204
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/rankings/best-value/{state}.json": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getBestValueByState",
+        "parameters": [
+          {
+            "description": "Lowercase USPS 2-letter state code (50 states + DC).",
+            "in": "path",
+            "name": "state",
+            "required": true,
+            "schema": {
+              "enum": [
+                "al",
+                "ak",
+                "az",
+                "ar",
+                "ca",
+                "co",
+                "ct",
+                "de",
+                "dc",
+                "fl",
+                "ga",
+                "hi",
+                "id",
+                "il",
+                "in",
+                "ia",
+                "ks",
+                "ky",
+                "la",
+                "me",
+                "md",
+                "ma",
+                "mi",
+                "mn",
+                "ms",
+                "mo",
+                "mt",
+                "ne",
+                "nv",
+                "nh",
+                "nj",
+                "nm",
+                "ny",
+                "nc",
+                "nd",
+                "oh",
+                "ok",
+                "or",
+                "pa",
+                "ri",
+                "sc",
+                "sd",
+                "tn",
+                "tx",
+                "ut",
+                "vt",
+                "va",
+                "wa",
+                "wv",
+                "wi",
+                "wy"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "colleges": {
+                      "items": {
+                        "properties": {
+                          "city": {
+                            "type": "string"
+                          },
+                          "control": {
+                            "type": "string"
+                          },
+                          "institution": {
+                            "type": "string"
+                          },
+                          "npv_30yr_resident_usd": {
+                            "type": "integer"
+                          },
+                          "rank_in_state": {
+                            "type": "integer"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "meta": {
+                      "description": "Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.",
+                      "properties": {
+                        "data_vintage": {
+                          "type": "string"
+                        },
+                        "doi": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "generated": {
+                          "format": "date",
+                          "type": "string"
+                        },
+                        "license": {
+                          "const": "CC-BY-4.0",
+                          "type": "string"
+                        },
+                        "source": {
+                          "const": "LE TEEN",
+                          "type": "string"
+                        },
+                        "url": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "source",
+                        "url",
+                        "license",
+                        "doi",
+                        "data_vintage",
+                        "generated"
+                      ],
+                      "type": "object"
+                    },
+                    "page_url": {
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "state": {
+                      "type": "string"
+                    },
+                    "state_name": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Top 15 for the state, NPV-positive rows only."
+          },
+          "404": {
+            "description": "Not a USPS state code."
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

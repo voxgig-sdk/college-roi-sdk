@@ -16,5 +16,28 @@
     "index": {
       "index_ref01": {}
     }
+  },
+  "requests": {
+    "GET /api/v1/index.json": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getApiRoot",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "The API root document."
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
