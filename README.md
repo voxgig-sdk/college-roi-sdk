@@ -105,12 +105,12 @@ local results, err = client:Top50():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/college-roi-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/college-roi-sdk/releases) |
-| Python | `voxgig-sdk-college-roi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/college-roi-sdk/releases) |
-| PHP | `voxgig-sdk/college-roi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/college-roi-sdk/releases) |
+| TypeScript | `@voxgig-sdk/college-roi-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/college-roi-sdk/tags) |
+| Python | `voxgig-sdk-college-roi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/college-roi-sdk/tags) |
+| PHP | `voxgig-sdk/college-roi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/college-roi-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/college-roi-sdk/go` | `go get github.com/voxgig-sdk/college-roi-sdk/go@latest` |
-| Ruby | `voxgig-sdk-college-roi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/college-roi-sdk/releases) |
-| Lua | `voxgig-sdk-college-roi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/college-roi-sdk/releases) |
+| Ruby | `voxgig-sdk-college-roi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/college-roi-sdk/tags) |
+| Lua | `voxgig-sdk-college-roi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/college-roi-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/college-roi-sdk/go-cli` | `go install github.com/voxgig-sdk/college-roi-sdk/go-cli/cmd/college-roi@latest` |
 | Go MCP server | `github.com/voxgig-sdk/college-roi-sdk/go-mcp` | `go get github.com/voxgig-sdk/college-roi-sdk/go-mcp@latest` |
 

@@ -127,36 +127,36 @@ class Config {
 
     entity: {
       
-      best_value: {
-      },
-
-      college: {
-      },
-
-      index: {
-      },
-
-      major: {
-      },
-
-      openapi: {
-      },
-
-      out_of_state_penalty: {
-      },
-
-      slug: {
-      },
-
-      state: {
-      },
-
-      top_50: {
-      },
-
-      worst_roi_major: {
-      },
-
+        best_value: {
+        },
+  
+        college: {
+        },
+  
+        index: {
+        },
+  
+        major: {
+        },
+  
+        openapi: {
+        },
+  
+        out_of_state_penalty: {
+        },
+  
+        slug: {
+        },
+  
+        state: {
+        },
+  
+        top_50: {
+        },
+  
+        worst_roi_major: {
+        },
+  
     }
   }
 
