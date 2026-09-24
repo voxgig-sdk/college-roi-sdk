@@ -19,7 +19,6 @@ import type {
   MajorListMatch,
 } from '../CollegeRoiTypes'
 
-// TODO: needs Entity superclass
 class MajorEntity extends CollegeRoiEntityBase<Major> {
 
   constructor(client: CollegeRoiSDK, entopts: any) {

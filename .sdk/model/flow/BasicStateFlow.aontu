@@ -1,0 +1,26 @@
+# BasicStateFlow
+
+main: kit: flow: BasicStateFlow:
+{
+  entity: "state",
+  kind: "basic",
+  name: "BasicStateFlow",
+  step: [
+    {
+      m: {
+        state: "state01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "state_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicStateFlow"
+}

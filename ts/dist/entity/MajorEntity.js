@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MajorEntity = void 0;
 const CollegeRoiEntityBase_1 = require("../CollegeRoiEntityBase");
-// TODO: needs Entity superclass
 class MajorEntity extends CollegeRoiEntityBase_1.CollegeRoiEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

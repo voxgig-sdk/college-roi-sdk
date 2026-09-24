@@ -20,24 +20,8 @@
   "requests": {
     "GET /api/v1/openapi.json": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getOpenApiSpec",
-        "parameters": [],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            },
-            "description": "The OpenAPI 3.1 spec."
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "openapi3"
     }
   }
 }

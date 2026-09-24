@@ -43,7 +43,7 @@ local bestvalues, err = client:BestValue():list()
 if err then error(err) end
 
 for _, item in ipairs(bestvalues) do
-  print(item["page_url"])
+  print(item)
 end
 ```
 

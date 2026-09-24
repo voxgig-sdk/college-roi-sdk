@@ -1,7 +1,7 @@
 // Typed models for the CollegeRoi SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,10 +14,6 @@ import (
 
 // BestValue is the typed data model for the best_value entity.
 type BestValue struct {
-	Colleges *[]any `json:"colleges,omitempty"`
-	PageUrl *string `json:"page_url,omitempty"`
-	State *string `json:"state,omitempty"`
-	StateName *string `json:"state_name,omitempty"`
 }
 
 // BestValueListMatch is the typed request payload for BestValue.ListTyped.
@@ -30,21 +26,6 @@ type BestValueListMatch struct {
 
 // College is the typed data model for the college entity.
 type College struct {
-	BreakevenAge *any `json:"breakeven_age,omitempty"`
-	City string `json:"city"`
-	Control string `json:"control"`
-	FreoppProgramCoverage *int `json:"freopp_program_coverage,omitempty"`
-	MedianEarnings10yrUsd *int `json:"median_earnings_10yr_usd,omitempty"`
-	Name string `json:"name"`
-	Npv30yrNonresidentUsd *any `json:"npv_30yr_nonresident_usd,omitempty"`
-	Npv30yrResidentUsd int `json:"npv_30yr_resident_usd"`
-	Slug string `json:"slug"`
-	State string `json:"state"`
-	StateName *string `json:"state_name,omitempty"`
-	TotalCostOfAttendanceNonresidentUsd *any `json:"total_cost_of_attendance_nonresident_usd,omitempty"`
-	TotalCostOfAttendanceUsd *int `json:"total_cost_of_attendance_usd,omitempty"`
-	Unitid int `json:"unitid"`
-	Url string `json:"url"`
 }
 
 // CollegeListMatch is the typed request payload for College.ListTyped.
@@ -76,24 +57,6 @@ type IndexLoadMatch struct {
 
 // Major is the typed data model for the major entity.
 type Major struct {
-	AiExposure *any `json:"ai_exposure,omitempty"`
-	CipProgramName *any `json:"cip_program_name,omitempty"`
-	CompletionAdjustedRoiUsd *any `json:"completion_adjusted_roi_usd,omitempty"`
-	DropoutRoiUsd *any `json:"dropout_roi_usd,omitempty"`
-	Graduates *int `json:"graduates,omitempty"`
-	Kind string `json:"kind"`
-	MeanLifetimeRoiUsd *float64 `json:"mean_lifetime_roi_usd,omitempty"`
-	MedianBreakevenAge *any `json:"median_breakeven_age,omitempty"`
-	MedianLifetimeRoiUsd *float64 `json:"median_lifetime_roi_usd,omitempty"`
-	Name string `json:"name"`
-	P25RoiUsd *float64 `json:"p25_roi_usd,omitempty"`
-	P75RoiUsd *float64 `json:"p75_roi_usd,omitempty"`
-	Parent *any `json:"parent,omitempty"`
-	PctNeverBreakeven *float64 `json:"pct_never_breakeven,omitempty"`
-	Programs *int `json:"programs,omitempty"`
-	RankByWorstRoi int `json:"rank_by_worst_roi"`
-	Slug string `json:"slug"`
-	Url string `json:"url"`
 }
 
 // MajorListMatch is the typed request payload for Major.ListTyped.
@@ -128,14 +91,6 @@ type OpenapiLoadMatch struct {
 
 // OutOfStatePenalty is the typed data model for the out_of_state_penalty entity.
 type OutOfStatePenalty struct {
-	Institution *string `json:"institution,omitempty"`
-	NpvNonresidentUsd *int `json:"npv_nonresident_usd,omitempty"`
-	NpvResidentUsd *int `json:"npv_resident_usd,omitempty"`
-	OosPenalty30yrNpvUsd *int `json:"oos_penalty_30yr_npv_usd,omitempty"`
-	Rank *int `json:"rank,omitempty"`
-	State *string `json:"state,omitempty"`
-	TuitionInStateUsd *int `json:"tuition_in_state_usd,omitempty"`
-	TuitionOutOfStateUsd *int `json:"tuition_out_of_state_usd,omitempty"`
 }
 
 // OutOfStatePenaltyListMatch is the typed request payload for OutOfStatePenalty.ListTyped.
@@ -152,37 +107,6 @@ type OutOfStatePenaltyListMatch struct {
 
 // Slug is the typed data model for the slug entity.
 type Slug struct {
-	AiExposure *any `json:"ai_exposure,omitempty"`
-	BreakevenAge *any `json:"breakeven_age,omitempty"`
-	CipProgramName *any `json:"cip_program_name,omitempty"`
-	City string `json:"city"`
-	CompletionAdjustedRoiUsd *any `json:"completion_adjusted_roi_usd,omitempty"`
-	Control string `json:"control"`
-	DropoutRoiUsd *any `json:"dropout_roi_usd,omitempty"`
-	FreoppProgramCoverage *int `json:"freopp_program_coverage,omitempty"`
-	Graduates *int `json:"graduates,omitempty"`
-	Kind string `json:"kind"`
-	MeanLifetimeRoiUsd *float64 `json:"mean_lifetime_roi_usd,omitempty"`
-	MedianBreakevenAge *any `json:"median_breakeven_age,omitempty"`
-	MedianEarnings10yrUsd *int `json:"median_earnings_10yr_usd,omitempty"`
-	MedianLifetimeRoiUsd *float64 `json:"median_lifetime_roi_usd,omitempty"`
-	Meta map[string]any `json:"meta"`
-	Name string `json:"name"`
-	Npv30yrNonresidentUsd *any `json:"npv_30yr_nonresident_usd,omitempty"`
-	Npv30yrResidentUsd int `json:"npv_30yr_resident_usd"`
-	P25RoiUsd *float64 `json:"p25_roi_usd,omitempty"`
-	P75RoiUsd *float64 `json:"p75_roi_usd,omitempty"`
-	Parent *any `json:"parent,omitempty"`
-	PctNeverBreakeven *float64 `json:"pct_never_breakeven,omitempty"`
-	Programs *int `json:"programs,omitempty"`
-	RankByWorstRoi int `json:"rank_by_worst_roi"`
-	Slug string `json:"slug"`
-	State string `json:"state"`
-	StateName *string `json:"state_name,omitempty"`
-	TotalCostOfAttendanceNonresidentUsd *any `json:"total_cost_of_attendance_nonresident_usd,omitempty"`
-	TotalCostOfAttendanceUsd *int `json:"total_cost_of_attendance_usd,omitempty"`
-	Unitid int `json:"unitid"`
-	Url string `json:"url"`
 }
 
 // SlugLoadMatch is the typed request payload for Slug.LoadTyped.
@@ -192,11 +116,6 @@ type SlugLoadMatch struct {
 
 // State is the typed data model for the state entity.
 type State struct {
-	City *string `json:"city,omitempty"`
-	Control *string `json:"control,omitempty"`
-	Institution *string `json:"institution,omitempty"`
-	Npv30yrResidentUsd *int `json:"npv_30yr_resident_usd,omitempty"`
-	RankInState *int `json:"rank_in_state,omitempty"`
 }
 
 // StateListMatch is the typed request payload for State.ListTyped.
@@ -206,14 +125,6 @@ type StateListMatch struct {
 
 // Top50 is the typed data model for the top_50 entity.
 type Top50 struct {
-	Institution *string `json:"institution,omitempty"`
-	NpvNonresidentUsd *int `json:"npv_nonresident_usd,omitempty"`
-	NpvResidentUsd *int `json:"npv_resident_usd,omitempty"`
-	OosPenalty30yrNpvUsd *int `json:"oos_penalty_30yr_npv_usd,omitempty"`
-	Rank *int `json:"rank,omitempty"`
-	State *string `json:"state,omitempty"`
-	TuitionInStateUsd *int `json:"tuition_in_state_usd,omitempty"`
-	TuitionOutOfStateUsd *int `json:"tuition_out_of_state_usd,omitempty"`
 }
 
 // Top50ListMatch is the typed request payload for Top50.ListTyped.
@@ -230,15 +141,6 @@ type Top50ListMatch struct {
 
 // WorstRoiMajor is the typed data model for the worst_roi_major entity.
 type WorstRoiMajor struct {
-	Graduates *int `json:"graduates,omitempty"`
-	MeanLifetimeRoiUsd *float64 `json:"mean_lifetime_roi_usd,omitempty"`
-	MedianBreakevenAge *any `json:"median_breakeven_age,omitempty"`
-	MedianLifetimeRoiUsd *float64 `json:"median_lifetime_roi_usd,omitempty"`
-	Name *string `json:"name,omitempty"`
-	PctNeverBreakeven *float64 `json:"pct_never_breakeven,omitempty"`
-	Rank *int `json:"rank,omitempty"`
-	Slug *string `json:"slug,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // WorstRoiMajorListMatch is the typed request payload for WorstRoiMajor.ListTyped.

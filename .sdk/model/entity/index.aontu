@@ -1,0 +1,45 @@
+# Entity: index
+
+main: kit: entity: index: {
+
+  alias: field: {}
+
+  name: "index"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/index.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/index.json"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "index.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

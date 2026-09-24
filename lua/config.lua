@@ -96,19 +96,23 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "colleges",
+            ["title"] = "Colleges",
             ["type"] = "`$ARRAY`",
           },
           {
-            ["format"] = "uri",
             ["name"] = "page_url",
+            ["title"] = "Page Url",
             ["type"] = "`$STRING`",
+            ["format"] = "uri",
           },
           {
             ["name"] = "state",
+            ["title"] = "State",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "state_name",
+            ["title"] = "State Name",
             ["type"] = "`$STRING`",
           },
         },
@@ -119,7 +123,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/rankings/best-value.json",
@@ -137,17 +140,19 @@ local function make_config()
                     ["lit"] = "best-value.json",
                   },
                 },
-                ["select"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "api",
                   "v1",
                   "rankings",
                   "best-value.json",
                 },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -160,6 +165,7 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "breakeven_age",
+            ["title"] = "Breakeven Age",
             ["type"] = {
               "`$ONE`",
               {
@@ -170,32 +176,37 @@ local function make_config()
           },
           {
             ["name"] = "city",
-            ["req"] = true,
+            ["title"] = "City",
             ["type"] = "`$STRING`",
+            ["req"] = true,
           },
           {
             ["name"] = "control",
-            ["req"] = true,
+            ["title"] = "Control",
             ["type"] = "`$STRING`",
+            ["req"] = true,
           },
           {
             ["name"] = "freopp_program_coverage",
-            ["short"] = "FREOPP-reported programs rolled into the earnings figure.",
+            ["title"] = "Freopp Program Coverage",
             ["type"] = "`$INTEGER`",
+            ["short"] = "FREOPP-reported programs rolled into the earnings figure.",
           },
           {
             ["name"] = "median_earnings_10yr_usd",
-            ["short"] = "FREOPP cohort-weighted earnings ten years after entry.",
+            ["title"] = "Median Earnings 10yr Usd",
             ["type"] = "`$INTEGER`",
+            ["short"] = "FREOPP cohort-weighted earnings ten years after entry.",
           },
           {
             ["name"] = "name",
-            ["req"] = true,
+            ["title"] = "Name",
             ["type"] = "`$STRING`",
+            ["req"] = true,
           },
           {
             ["name"] = "npv_30yr_nonresident_usd",
-            ["short"] = "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
+            ["title"] = "Npv 30yr Nonresident Usd",
             ["type"] = {
               "`$ONE`",
               {
@@ -203,30 +214,36 @@ local function make_config()
                 "`$NULL`",
               },
             },
+            ["short"] = "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
           },
           {
             ["name"] = "npv_30yr_resident_usd",
+            ["title"] = "Npv 30yr Resident Usd",
+            ["type"] = "`$INTEGER`",
             ["req"] = true,
             ["short"] = "30-year projected net value at resident pricing.",
-            ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "slug",
-            ["req"] = true,
+            ["title"] = "Slug",
             ["type"] = "`$STRING`",
+            ["req"] = true,
           },
           {
             ["name"] = "state",
+            ["title"] = "State",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "USPS 2-letter state code.",
-            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "state_name",
+            ["title"] = "State Name",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "total_cost_of_attendance_nonresident_usd",
+            ["title"] = "Total Cost Of Attendance Nonresident Usd",
             ["type"] = {
               "`$ONE`",
               {
@@ -237,20 +254,23 @@ local function make_config()
           },
           {
             ["name"] = "total_cost_of_attendance_usd",
+            ["title"] = "Total Cost Of Attendance Usd",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "unitid",
+            ["title"] = "Unitid",
+            ["type"] = "`$INTEGER`",
             ["req"] = true,
             ["short"] = "IPEDS UnitID — the universal join key.",
-            ["type"] = "`$INTEGER`",
           },
           {
-            ["format"] = "uri",
             ["name"] = "url",
+            ["title"] = "Url",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "The human-readable page for this school.",
-            ["type"] = "`$STRING`",
+            ["format"] = "uri",
           },
         },
         ["name"] = "college",
@@ -260,7 +280,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/colleges.json",
@@ -275,16 +294,18 @@ local function make_config()
                     ["lit"] = "colleges.json",
                   },
                 },
-                ["select"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "api",
                   "v1",
                   "colleges.json",
                 },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -302,7 +323,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/index.json",
@@ -317,16 +337,18 @@ local function make_config()
                     ["lit"] = "index.json",
                   },
                 },
-                ["select"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "api",
                   "v1",
                   "index.json",
                 },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -339,7 +361,7 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "ai_exposure",
-            ["short"] = "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
+            ["title"] = "Ai Exposure",
             ["type"] = {
               "`$ONE`",
               {
@@ -347,10 +369,11 @@ local function make_config()
                 "`$NULL`",
               },
             },
+            ["short"] = "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
           },
           {
             ["name"] = "cip_program_name",
-            ["short"] = "CIP program-family name — subfields only.",
+            ["title"] = "Cip Program Name",
             ["type"] = {
               "`$ONE`",
               {
@@ -358,9 +381,11 @@ local function make_config()
                 "`$NULL`",
               },
             },
+            ["short"] = "CIP program-family name — subfields only.",
           },
           {
             ["name"] = "completion_adjusted_roi_usd",
+            ["title"] = "Completion Adjusted Roi Usd",
             ["type"] = {
               "`$ONE`",
               {
@@ -371,6 +396,7 @@ local function make_config()
           },
           {
             ["name"] = "dropout_roi_usd",
+            ["title"] = "Dropout Roi Usd",
             ["type"] = {
               "`$ONE`",
               {
@@ -381,19 +407,23 @@ local function make_config()
           },
           {
             ["name"] = "graduates",
+            ["title"] = "Graduates",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "kind",
-            ["req"] = true,
+            ["title"] = "Kind",
             ["type"] = "`$STRING`",
+            ["req"] = true,
           },
           {
             ["name"] = "mean_lifetime_roi_usd",
+            ["title"] = "Mean Lifetime Roi Usd",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "median_breakeven_age",
+            ["title"] = "Median Breakeven Age",
             ["type"] = {
               "`$ONE`",
               {
@@ -404,24 +434,28 @@ local function make_config()
           },
           {
             ["name"] = "median_lifetime_roi_usd",
+            ["title"] = "Median Lifetime Roi Usd",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "name",
-            ["req"] = true,
+            ["title"] = "Name",
             ["type"] = "`$STRING`",
+            ["req"] = true,
           },
           {
             ["name"] = "p25_roi_usd",
+            ["title"] = "P25 Roi Usd",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "p75_roi_usd",
+            ["title"] = "P75 Roi Usd",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "parent",
-            ["short"] = "Parent category — subfields only.",
+            ["title"] = "Parent",
             ["type"] = {
               "`$ONE`",
               {
@@ -429,33 +463,39 @@ local function make_config()
                 "`$NULL`",
               },
             },
+            ["short"] = "Parent category — subfields only.",
           },
           {
             ["name"] = "pct_never_breakeven",
-            ["short"] = "Share of graduates who never break even, percent.",
+            ["title"] = "Pct Never Breakeven",
             ["type"] = "`$NUMBER`",
+            ["short"] = "Share of graduates who never break even, percent.",
           },
           {
             ["name"] = "programs",
+            ["title"] = "Programs",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "rank_by_worst_roi",
+            ["title"] = "Rank By Worst Roi",
+            ["type"] = "`$INTEGER`",
             ["req"] = true,
             ["short"] = "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
-            ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "slug",
-            ["req"] = true,
+            ["title"] = "Slug",
             ["type"] = "`$STRING`",
+            ["req"] = true,
           },
           {
-            ["format"] = "uri",
             ["name"] = "url",
+            ["title"] = "Url",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "The human-readable page for this major.",
-            ["type"] = "`$STRING`",
+            ["format"] = "uri",
           },
         },
         ["name"] = "major",
@@ -465,7 +505,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/majors.json",
@@ -480,16 +519,18 @@ local function make_config()
                     ["lit"] = "majors.json",
                   },
                 },
-                ["select"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "api",
                   "v1",
                   "majors.json",
                 },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -507,7 +548,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/openapi.json",
@@ -522,16 +562,18 @@ local function make_config()
                     ["lit"] = "openapi.json",
                   },
                 },
-                ["select"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "api",
                   "v1",
                   "openapi.json",
                 },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -544,34 +586,42 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "institution",
+            ["title"] = "Institution",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "npv_nonresident_usd",
+            ["title"] = "Npv Nonresident Usd",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "npv_resident_usd",
+            ["title"] = "Npv Resident Usd",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "oos_penalty_30yr_npv_usd",
+            ["title"] = "Oos Penalty 30yr Npv Usd",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "rank",
+            ["title"] = "Rank",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "state",
+            ["title"] = "State",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "tuition_in_state_usd",
+            ["title"] = "Tuition In State Usd",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "tuition_out_of_state_usd",
+            ["title"] = "Tuition Out Of State Usd",
             ["type"] = "`$INTEGER`",
           },
         },
@@ -582,7 +632,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/rankings/out-of-state-penalty.json",
@@ -600,17 +649,19 @@ local function make_config()
                     ["lit"] = "out-of-state-penalty.json",
                   },
                 },
-                ["select"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "api",
                   "v1",
                   "rankings",
                   "out-of-state-penalty.json",
                 },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -623,7 +674,7 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "ai_exposure",
-            ["short"] = "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
+            ["title"] = "Ai Exposure",
             ["type"] = {
               "`$ONE`",
               {
@@ -631,9 +682,11 @@ local function make_config()
                 "`$NULL`",
               },
             },
+            ["short"] = "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
           },
           {
             ["name"] = "breakeven_age",
+            ["title"] = "Breakeven Age",
             ["type"] = {
               "`$ONE`",
               {
@@ -644,7 +697,7 @@ local function make_config()
           },
           {
             ["name"] = "cip_program_name",
-            ["short"] = "CIP program-family name — subfields only.",
+            ["title"] = "Cip Program Name",
             ["type"] = {
               "`$ONE`",
               {
@@ -652,14 +705,17 @@ local function make_config()
                 "`$NULL`",
               },
             },
+            ["short"] = "CIP program-family name — subfields only.",
           },
           {
             ["name"] = "city",
-            ["req"] = true,
+            ["title"] = "City",
             ["type"] = "`$STRING`",
+            ["req"] = true,
           },
           {
             ["name"] = "completion_adjusted_roi_usd",
+            ["title"] = "Completion Adjusted Roi Usd",
             ["type"] = {
               "`$ONE`",
               {
@@ -670,11 +726,13 @@ local function make_config()
           },
           {
             ["name"] = "control",
-            ["req"] = true,
+            ["title"] = "Control",
             ["type"] = "`$STRING`",
+            ["req"] = true,
           },
           {
             ["name"] = "dropout_roi_usd",
+            ["title"] = "Dropout Roi Usd",
             ["type"] = {
               "`$ONE`",
               {
@@ -685,24 +743,29 @@ local function make_config()
           },
           {
             ["name"] = "freopp_program_coverage",
-            ["short"] = "FREOPP-reported programs rolled into the earnings figure.",
+            ["title"] = "Freopp Program Coverage",
             ["type"] = "`$INTEGER`",
+            ["short"] = "FREOPP-reported programs rolled into the earnings figure.",
           },
           {
             ["name"] = "graduates",
+            ["title"] = "Graduates",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "kind",
-            ["req"] = true,
+            ["title"] = "Kind",
             ["type"] = "`$STRING`",
+            ["req"] = true,
           },
           {
             ["name"] = "mean_lifetime_roi_usd",
+            ["title"] = "Mean Lifetime Roi Usd",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "median_breakeven_age",
+            ["title"] = "Median Breakeven Age",
             ["type"] = {
               "`$ONE`",
               {
@@ -713,27 +776,31 @@ local function make_config()
           },
           {
             ["name"] = "median_earnings_10yr_usd",
-            ["short"] = "FREOPP cohort-weighted earnings ten years after entry.",
+            ["title"] = "Median Earnings 10yr Usd",
             ["type"] = "`$INTEGER`",
+            ["short"] = "FREOPP cohort-weighted earnings ten years after entry.",
           },
           {
             ["name"] = "median_lifetime_roi_usd",
+            ["title"] = "Median Lifetime Roi Usd",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "meta",
+            ["title"] = "Meta",
+            ["type"] = "`$OBJECT`",
             ["req"] = true,
             ["short"] = "Provenance block carried by every payload.",
-            ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "name",
-            ["req"] = true,
+            ["title"] = "Name",
             ["type"] = "`$STRING`",
+            ["req"] = true,
           },
           {
             ["name"] = "npv_30yr_nonresident_usd",
-            ["short"] = "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
+            ["title"] = "Npv 30yr Nonresident Usd",
             ["type"] = {
               "`$ONE`",
               {
@@ -741,24 +808,28 @@ local function make_config()
                 "`$NULL`",
               },
             },
+            ["short"] = "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
           },
           {
             ["name"] = "npv_30yr_resident_usd",
+            ["title"] = "Npv 30yr Resident Usd",
+            ["type"] = "`$INTEGER`",
             ["req"] = true,
             ["short"] = "30-year projected net value at resident pricing.",
-            ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "p25_roi_usd",
+            ["title"] = "P25 Roi Usd",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "p75_roi_usd",
+            ["title"] = "P75 Roi Usd",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "parent",
-            ["short"] = "Parent category — subfields only.",
+            ["title"] = "Parent",
             ["type"] = {
               "`$ONE`",
               {
@@ -766,39 +837,47 @@ local function make_config()
                 "`$NULL`",
               },
             },
+            ["short"] = "Parent category — subfields only.",
           },
           {
             ["name"] = "pct_never_breakeven",
-            ["short"] = "Share of graduates who never break even, percent.",
+            ["title"] = "Pct Never Breakeven",
             ["type"] = "`$NUMBER`",
+            ["short"] = "Share of graduates who never break even, percent.",
           },
           {
             ["name"] = "programs",
+            ["title"] = "Programs",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "rank_by_worst_roi",
+            ["title"] = "Rank By Worst Roi",
+            ["type"] = "`$INTEGER`",
             ["req"] = true,
             ["short"] = "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
-            ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "slug",
-            ["req"] = true,
+            ["title"] = "Slug",
             ["type"] = "`$STRING`",
+            ["req"] = true,
           },
           {
             ["name"] = "state",
+            ["title"] = "State",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "USPS 2-letter state code.",
-            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "state_name",
+            ["title"] = "State Name",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "total_cost_of_attendance_nonresident_usd",
+            ["title"] = "Total Cost Of Attendance Nonresident Usd",
             ["type"] = {
               "`$ONE`",
               {
@@ -809,20 +888,23 @@ local function make_config()
           },
           {
             ["name"] = "total_cost_of_attendance_usd",
+            ["title"] = "Total Cost Of Attendance Usd",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "unitid",
+            ["title"] = "Unitid",
+            ["type"] = "`$INTEGER`",
             ["req"] = true,
             ["short"] = "IPEDS UnitID — the universal join key.",
-            ["type"] = "`$INTEGER`",
           },
           {
-            ["format"] = "uri",
             ["name"] = "url",
+            ["title"] = "Url",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "The human-readable page for this school.",
-            ["type"] = "`$STRING`",
+            ["format"] = "uri",
           },
         },
         ["name"] = "slug",
@@ -832,17 +914,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "slug",
-                      ["orig"] = "slug",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/colleges/{slug}.json",
@@ -860,34 +931,35 @@ local function make_config()
                     ["lit"] = "{slug}.json",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "slug",
-                  },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "api",
                   "v1",
                   "colleges",
                   "{slug}.json",
                 },
-              },
-              {
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["kind"] = "param",
                       ["name"] = "slug",
                       ["orig"] = "slug",
-                      ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
                     },
                   },
                 },
+                ["select"] = {
+                  ["exist"] = {
+                    "slug",
+                  },
+                },
+              },
+              {
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/majors/{slug}.json",
@@ -905,20 +977,32 @@ local function make_config()
                     ["lit"] = "{slug}.json",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "slug",
-                  },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "api",
                   "v1",
                   "majors",
                   "{slug}.json",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "slug",
+                      ["orig"] = "slug",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "slug",
+                  },
                 },
               },
             },
@@ -932,22 +1016,27 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "city",
+            ["title"] = "City",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "control",
+            ["title"] = "Control",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "institution",
+            ["title"] = "Institution",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "npv_30yr_resident_usd",
+            ["title"] = "Npv 30yr Resident Usd",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "rank_in_state",
+            ["title"] = "Rank In State",
             ["type"] = "`$INTEGER`",
           },
         },
@@ -958,17 +1047,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "state",
-                      ["orig"] = "state",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/rankings/best-value/{state}.json",
@@ -989,21 +1067,33 @@ local function make_config()
                     ["lit"] = "{state}.json",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "state",
-                  },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "api",
                   "v1",
                   "rankings",
                   "best-value",
                   "{state}.json",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "state",
+                      ["orig"] = "state",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "state",
+                  },
                 },
               },
             },
@@ -1017,34 +1107,42 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "institution",
+            ["title"] = "Institution",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "npv_nonresident_usd",
+            ["title"] = "Npv Nonresident Usd",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "npv_resident_usd",
+            ["title"] = "Npv Resident Usd",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "oos_penalty_30yr_npv_usd",
+            ["title"] = "Oos Penalty 30yr Npv Usd",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "rank",
+            ["title"] = "Rank",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "state",
+            ["title"] = "State",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "tuition_in_state_usd",
+            ["title"] = "Tuition In State Usd",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "tuition_out_of_state_usd",
+            ["title"] = "Tuition Out Of State Usd",
             ["type"] = "`$INTEGER`",
           },
         },
@@ -1055,7 +1153,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/rankings/out-of-state-penalty/top-50.json",
@@ -1076,11 +1173,6 @@ local function make_config()
                     ["lit"] = "top-50.json",
                   },
                 },
-                ["select"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "api",
                   "v1",
@@ -1088,6 +1180,13 @@ local function make_config()
                   "out-of-state-penalty",
                   "top-50.json",
                 },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -1100,14 +1199,17 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "graduates",
+            ["title"] = "Graduates",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "mean_lifetime_roi_usd",
+            ["title"] = "Mean Lifetime Roi Usd",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "median_breakeven_age",
+            ["title"] = "Median Breakeven Age",
             ["type"] = {
               "`$ONE`",
               {
@@ -1118,28 +1220,34 @@ local function make_config()
           },
           {
             ["name"] = "median_lifetime_roi_usd",
+            ["title"] = "Median Lifetime Roi Usd",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "name",
+            ["title"] = "Name",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "pct_never_breakeven",
+            ["title"] = "Pct Never Breakeven",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "rank",
+            ["title"] = "Rank",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "slug",
+            ["title"] = "Slug",
             ["type"] = "`$STRING`",
           },
           {
-            ["format"] = "uri",
             ["name"] = "url",
+            ["title"] = "Url",
             ["type"] = "`$STRING`",
+            ["format"] = "uri",
           },
         },
         ["name"] = "worst_roi_major",
@@ -1149,7 +1257,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/v1/rankings/worst-roi-majors.json",
@@ -1167,17 +1274,19 @@ local function make_config()
                     ["lit"] = "worst-roi-majors.json",
                   },
                 },
-                ["select"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "api",
                   "v1",
                   "rankings",
                   "worst-roi-majors.json",
                 },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },

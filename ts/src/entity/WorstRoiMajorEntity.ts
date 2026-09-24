@@ -19,7 +19,6 @@ import type {
   WorstRoiMajorListMatch,
 } from '../CollegeRoiTypes'
 
-// TODO: needs Entity superclass
 class WorstRoiMajorEntity extends CollegeRoiEntityBase<WorstRoiMajor> {
 
   constructor(client: CollegeRoiSDK, entopts: any) {

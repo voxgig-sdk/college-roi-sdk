@@ -1,0 +1,32 @@
+# BasicSlugFlow
+
+main: kit: flow: BasicSlugFlow:
+{
+  entity: "slug",
+  kind: "basic",
+  name: "BasicSlugFlow",
+  step: [
+    {
+      i: {
+        ref: "slug_ref01",
+        srcdatavar: "slug_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        slug: "slug01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-slug_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSlugFlow"
+}

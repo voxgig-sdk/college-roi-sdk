@@ -1,0 +1,22 @@
+# BasicWorstRoiMajorFlow
+
+main: kit: flow: BasicWorstRoiMajorFlow:
+{
+  entity: "worst_roi_major",
+  kind: "basic",
+  name: "BasicWorstRoiMajorFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "worst_roi_major_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWorstRoiMajorFlow"
+}

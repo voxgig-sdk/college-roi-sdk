@@ -1,0 +1,109 @@
+# Entity: worst_roi_major
+
+main: kit: entity: worst_roi_major: {
+
+  alias: field: {}
+
+  fields: {
+    graduates: {
+      h: "Graduates"
+      n: "graduates"
+      r: false
+      t: "`$INTEGER`"
+    }
+    mean_lifetime_roi_usd: {
+      h: "Mean Lifetime Roi Usd"
+      n: "mean_lifetime_roi_usd"
+      r: false
+      t: "`$NUMBER`"
+    }
+    median_breakeven_age: {
+      h: "Median Breakeven Age"
+      n: "median_breakeven_age"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    median_lifetime_roi_usd: {
+      h: "Median Lifetime Roi Usd"
+      n: "median_lifetime_roi_usd"
+      r: false
+      t: "`$NUMBER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    pct_never_breakeven: {
+      h: "Pct Never Breakeven"
+      n: "pct_never_breakeven"
+      r: false
+      t: "`$NUMBER`"
+    }
+    rank: {
+      h: "Rank"
+      n: "rank"
+      r: false
+      t: "`$INTEGER`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: false
+      t: "`$STRING`"
+    }
+    url: {
+      fo: "uri"
+      h: "Url"
+      n: "url"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "worst_roi_major"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/rankings/worst-roi-majors.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/rankings/worst-roi-majors.json"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "rankings"
+            }
+            {
+              lit: "worst-roi-majors.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

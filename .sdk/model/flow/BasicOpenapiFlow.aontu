@@ -1,0 +1,28 @@
+# BasicOpenapiFlow
+
+main: kit: flow: BasicOpenapiFlow:
+{
+  entity: "openapi",
+  kind: "basic",
+  name: "BasicOpenapiFlow",
+  step: [
+    {
+      i: {
+        ref: "openapi_ref01",
+        srcdatavar: "openapi_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-openapi_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOpenapiFlow"
+}

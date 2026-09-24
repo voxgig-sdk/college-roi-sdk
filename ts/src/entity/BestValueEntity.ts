@@ -19,7 +19,6 @@ import type {
   BestValueListMatch,
 } from '../CollegeRoiTypes'
 
-// TODO: needs Entity superclass
 class BestValueEntity extends CollegeRoiEntityBase<BestValue> {
 
   constructor(client: CollegeRoiSDK, entopts: any) {

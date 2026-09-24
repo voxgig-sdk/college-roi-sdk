@@ -19,7 +19,6 @@ import type {
   OutOfStatePenaltyListMatch,
 } from '../CollegeRoiTypes'
 
-// TODO: needs Entity superclass
 class OutOfStatePenaltyEntity extends CollegeRoiEntityBase<OutOfStatePenalty> {
 
   constructor(client: CollegeRoiSDK, entopts: any) {

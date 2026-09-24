@@ -1,0 +1,96 @@
+# Entity: out_of_state_penalty
+
+main: kit: entity: out_of_state_penalty: {
+
+  alias: field: {}
+
+  fields: {
+    institution: {
+      h: "Institution"
+      n: "institution"
+      r: false
+      t: "`$STRING`"
+    }
+    npv_nonresident_usd: {
+      h: "Npv Nonresident Usd"
+      n: "npv_nonresident_usd"
+      r: false
+      t: "`$INTEGER`"
+    }
+    npv_resident_usd: {
+      h: "Npv Resident Usd"
+      n: "npv_resident_usd"
+      r: false
+      t: "`$INTEGER`"
+    }
+    oos_penalty_30yr_npv_usd: {
+      h: "Oos Penalty 30yr Npv Usd"
+      n: "oos_penalty_30yr_npv_usd"
+      r: false
+      t: "`$INTEGER`"
+    }
+    rank: {
+      h: "Rank"
+      n: "rank"
+      r: false
+      t: "`$INTEGER`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      t: "`$STRING`"
+    }
+    tuition_in_state_usd: {
+      h: "Tuition In State Usd"
+      n: "tuition_in_state_usd"
+      r: false
+      t: "`$INTEGER`"
+    }
+    tuition_out_of_state_usd: {
+      h: "Tuition Out Of State Usd"
+      n: "tuition_out_of_state_usd"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "out_of_state_penalty"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/rankings/out-of-state-penalty.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/rankings/out-of-state-penalty.json"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "rankings"
+            }
+            {
+              lit: "out-of-state-penalty.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,161 @@
+# Entity: college
+
+main: kit: entity: college: {
+
+  alias: field: {}
+
+  fields: {
+    breakeven_age: {
+      h: "Breakeven Age"
+      n: "breakeven_age"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    city: {
+      h: "City"
+      n: "city"
+      r: true
+      t: "`$STRING`"
+    }
+    control: {
+      h: "Control"
+      n: "control"
+      r: true
+      t: "`$STRING`"
+    }
+    freopp_program_coverage: {
+      h: "Freopp Program Coverage"
+      n: "freopp_program_coverage"
+      r: false
+      sh: "FREOPP-reported programs rolled into the earnings figure."
+      t: "`$INTEGER`"
+    }
+    median_earnings_10yr_usd: {
+      h: "Median Earnings 10yr Usd"
+      n: "median_earnings_10yr_usd"
+      r: false
+      sh: "FREOPP cohort-weighted earnings ten years after entry."
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    npv_30yr_nonresident_usd: {
+      h: "Npv 30yr Nonresident Usd"
+      n: "npv_30yr_nonresident_usd"
+      r: false
+      sh: "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design."
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    npv_30yr_resident_usd: {
+      h: "Npv 30yr Resident Usd"
+      n: "npv_30yr_resident_usd"
+      r: true
+      sh: "30-year projected net value at resident pricing."
+      t: "`$INTEGER`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: true
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: true
+      sh: "USPS 2-letter state code."
+      t: "`$STRING`"
+    }
+    state_name: {
+      h: "State Name"
+      n: "state_name"
+      r: false
+      t: "`$STRING`"
+    }
+    total_cost_of_attendance_nonresident_usd: {
+      h: "Total Cost Of Attendance Nonresident Usd"
+      n: "total_cost_of_attendance_nonresident_usd"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    total_cost_of_attendance_usd: {
+      h: "Total Cost Of Attendance Usd"
+      n: "total_cost_of_attendance_usd"
+      r: false
+      t: "`$INTEGER`"
+    }
+    unitid: {
+      h: "Unitid"
+      n: "unitid"
+      r: true
+      sh: "IPEDS UnitID — the universal join key."
+      t: "`$INTEGER`"
+    }
+    url: {
+      fo: "uri"
+      h: "Url"
+      n: "url"
+      r: true
+      sh: "The human-readable page for this school."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "college"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/colleges.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/colleges.json"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "colleges.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

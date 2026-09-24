@@ -24,39 +24,109 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "best_value": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "colleges",
-              "req": false,
-              "type": "`$ARRAY`"
+          "fields": {
+            "colleges": {
+              "a": true,
+              "h": "Colleges",
+              "n": "colleges",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "page_url",
-              "req": false,
-              "type": "`$STRING`"
+            "page_url": {
+              "a": true,
+              "fo": "uri",
+              "h": "Page Url",
+              "n": "page_url",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "state",
-              "req": false,
-              "type": "`$STRING`"
+            "state": {
+              "a": true,
+              "h": "State",
+              "n": "state",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "state_name",
-              "req": false,
-              "type": "`$STRING`"
+            "state_name": {
+              "a": true,
+              "h": "State Name",
+              "n": "state_name",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "best_value",
           "op": {
             "list": {
@@ -64,18 +134,19 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/v1/rankings/best-value.json",
-                    "json": "{\"operationId\":\"getBestValueRanking\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"type\":\"integer\"},\"description\":{\"type\":\"string\"},\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"},\"page_url\":{\"format\":\"uri\",\"type\":\"string\"},\"states\":{\"items\":{\"properties\":{\"colleges\":{\"items\":{\"properties\":{\"city\":{\"type\":\"string\"},\"control\":{\"type\":\"string\"},\"institution\":{\"type\":\"string\"},\"npv_30yr_resident_usd\":{\"type\":\"integer\"},\"rank_in_state\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"page_url\":{\"format\":\"uri\",\"type\":\"string\"},\"state\":{\"type\":\"string\"},\"state_name\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"All 50 states + DC. NPV-positive rows only.\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/v1/rankings/best-value.json",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/v1/rankings/best-value.json",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -89,8 +160,7 @@
                       "lit": "best-value.json"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -107,12 +177,13 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "breakeven_age",
-              "req": false,
-              "type": [
+          "fields": {
+            "breakeven_age": {
+              "a": true,
+              "h": "Breakeven Age",
+              "n": "breakeven_age",
+              "r": false,
+              "t": [
                 "`$ONE`",
                 [
                   "`$INTEGER`",
@@ -120,44 +191,50 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "city",
-              "req": true,
-              "type": "`$STRING`"
+            "city": {
+              "a": true,
+              "h": "City",
+              "n": "city",
+              "r": true,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "control",
-              "req": true,
-              "type": "`$STRING`"
+            "control": {
+              "a": true,
+              "h": "Control",
+              "n": "control",
+              "r": true,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "freopp_program_coverage",
-              "req": false,
-              "short": "FREOPP-reported programs rolled into the earnings figure.",
-              "type": "`$INTEGER`"
+            "freopp_program_coverage": {
+              "a": true,
+              "h": "Freopp Program Coverage",
+              "n": "freopp_program_coverage",
+              "r": false,
+              "sh": "FREOPP-reported programs rolled into the earnings figure.",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "median_earnings_10yr_usd",
-              "req": false,
-              "short": "FREOPP cohort-weighted earnings ten years after entry.",
-              "type": "`$INTEGER`"
+            "median_earnings_10yr_usd": {
+              "a": true,
+              "h": "Median Earnings 10yr Usd",
+              "n": "median_earnings_10yr_usd",
+              "r": false,
+              "sh": "FREOPP cohort-weighted earnings ten years after entry.",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": true,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": true,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "npv_30yr_nonresident_usd",
-              "req": false,
-              "short": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
-              "type": [
+            "npv_30yr_nonresident_usd": {
+              "a": true,
+              "h": "Npv 30yr Nonresident Usd",
+              "n": "npv_30yr_nonresident_usd",
+              "r": false,
+              "sh": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
+              "t": [
                 "`$ONE`",
                 [
                   "`$INTEGER`",
@@ -165,37 +242,42 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "npv_30yr_resident_usd",
-              "req": true,
-              "short": "30-year projected net value at resident pricing.",
-              "type": "`$INTEGER`"
+            "npv_30yr_resident_usd": {
+              "a": true,
+              "h": "Npv 30yr Resident Usd",
+              "n": "npv_30yr_resident_usd",
+              "r": true,
+              "sh": "30-year projected net value at resident pricing.",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "slug",
-              "req": true,
-              "type": "`$STRING`"
+            "slug": {
+              "a": true,
+              "h": "Slug",
+              "n": "slug",
+              "r": true,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "state",
-              "req": true,
-              "short": "USPS 2-letter state code.",
-              "type": "`$STRING`"
+            "state": {
+              "a": true,
+              "h": "State",
+              "n": "state",
+              "r": true,
+              "sh": "USPS 2-letter state code.",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "state_name",
-              "req": false,
-              "type": "`$STRING`"
+            "state_name": {
+              "a": true,
+              "h": "State Name",
+              "n": "state_name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "total_cost_of_attendance_nonresident_usd",
-              "req": false,
-              "type": [
+            "total_cost_of_attendance_nonresident_usd": {
+              "a": true,
+              "h": "Total Cost Of Attendance Nonresident Usd",
+              "n": "total_cost_of_attendance_nonresident_usd",
+              "r": false,
+              "t": [
                 "`$ONE`",
                 [
                   "`$INTEGER`",
@@ -203,28 +285,31 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "total_cost_of_attendance_usd",
-              "req": false,
-              "type": "`$INTEGER`"
+            "total_cost_of_attendance_usd": {
+              "a": true,
+              "h": "Total Cost Of Attendance Usd",
+              "n": "total_cost_of_attendance_usd",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "unitid",
-              "req": true,
-              "short": "IPEDS UnitID — the universal join key.",
-              "type": "`$INTEGER`"
+            "unitid": {
+              "a": true,
+              "h": "Unitid",
+              "n": "unitid",
+              "r": true,
+              "sh": "IPEDS UnitID — the universal join key.",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "url",
-              "req": true,
-              "short": "The human-readable page for this school.",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "fo": "uri",
+              "h": "Url",
+              "n": "url",
+              "r": true,
+              "sh": "The human-readable page for this school.",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "college",
           "op": {
             "list": {
@@ -232,18 +317,19 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/v1/colleges.json",
-                    "json": "{\"operationId\":\"listColleges\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"colleges\":{\"items\":{\"description\":\"One gated four-year institution (IPEDS 2023 · FREOPP 2021 · BEA 2023). Gates: real FREOPP earnings, >= 3 reported programs, hand-verified exclusions, positive 30-year NPV at resident pricing — no school outside the gate appears, and no named school carries a negative number.\",\"properties\":{\"breakeven_age\":{\"type\":[\"integer\",\"null\"]},\"city\":{\"type\":\"string\"},\"control\":{\"enum\":[\"public\",\"private-nonprofit\",\"private-forprofit\"],\"type\":\"string\"},\"freopp_program_coverage\":{\"description\":\"FREOPP-reported programs rolled into the earnings figure.\",\"type\":\"integer\"},\"median_earnings_10yr_usd\":{\"description\":\"FREOPP cohort-weighted earnings ten years after entry.\",\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"npv_30yr_nonresident_usd\":{\"description\":\"Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.\",\"type\":[\"integer\",\"null\"]},\"npv_30yr_resident_usd\":{\"description\":\"30-year projected net value at resident pricing. Positive by gate.\",\"type\":\"integer\"},\"slug\":{\"type\":\"string\"},\"state\":{\"description\":\"USPS 2-letter state code.\",\"type\":\"string\"},\"state_name\":{\"type\":\"string\"},\"total_cost_of_attendance_nonresident_usd\":{\"type\":[\"integer\",\"null\"]},\"total_cost_of_attendance_usd\":{\"type\":\"integer\"},\"unitid\":{\"description\":\"IPEDS UnitID — the universal join key.\",\"type\":\"integer\"},\"url\":{\"description\":\"The human-readable page for this school.\",\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"slug\",\"unitid\",\"name\",\"city\",\"state\",\"control\",\"npv_30yr_resident_usd\",\"url\"],\"type\":\"object\"},\"type\":\"array\"},\"count\":{\"type\":\"integer\"},\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"},\"notes\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Every gated college.\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/v1/colleges.json",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/v1/colleges.json",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -254,8 +340,7 @@
                       "lit": "colleges.json"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -272,7 +357,7 @@
           "alias": {
             "field": {}
           },
-          "fields": [],
+          "fields": {},
           "name": "index",
           "op": {
             "load": {
@@ -280,18 +365,19 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/v1/index.json",
-                    "json": "{\"operationId\":\"getApiRoot\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"The API root document.\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/v1/index.json",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/v1/index.json",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -302,8 +388,7 @@
                       "lit": "index.json"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -320,13 +405,14 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "ai_exposure",
-              "req": false,
-              "short": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
-              "type": [
+          "fields": {
+            "ai_exposure": {
+              "a": true,
+              "h": "Ai Exposure",
+              "n": "ai_exposure",
+              "r": false,
+              "sh": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
+              "t": [
                 "`$ONE`",
                 [
                   "`$OBJECT`",
@@ -334,12 +420,13 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "cip_program_name",
-              "req": false,
-              "short": "CIP program-family name — subfields only.",
-              "type": [
+            "cip_program_name": {
+              "a": true,
+              "h": "Cip Program Name",
+              "n": "cip_program_name",
+              "r": false,
+              "sh": "CIP program-family name — subfields only.",
+              "t": [
                 "`$ONE`",
                 [
                   "`$STRING`",
@@ -347,11 +434,12 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "completion_adjusted_roi_usd",
-              "req": false,
-              "type": [
+            "completion_adjusted_roi_usd": {
+              "a": true,
+              "h": "Completion Adjusted Roi Usd",
+              "n": "completion_adjusted_roi_usd",
+              "r": false,
+              "t": [
                 "`$ONE`",
                 [
                   "`$NUMBER`",
@@ -359,11 +447,12 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "dropout_roi_usd",
-              "req": false,
-              "type": [
+            "dropout_roi_usd": {
+              "a": true,
+              "h": "Dropout Roi Usd",
+              "n": "dropout_roi_usd",
+              "r": false,
+              "t": [
                 "`$ONE`",
                 [
                   "`$NUMBER`",
@@ -371,29 +460,33 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "graduates",
-              "req": false,
-              "type": "`$INTEGER`"
+            "graduates": {
+              "a": true,
+              "h": "Graduates",
+              "n": "graduates",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "kind",
-              "req": true,
-              "type": "`$STRING`"
+            "kind": {
+              "a": true,
+              "h": "Kind",
+              "n": "kind",
+              "r": true,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "mean_lifetime_roi_usd",
-              "req": false,
-              "type": "`$NUMBER`"
+            "mean_lifetime_roi_usd": {
+              "a": true,
+              "h": "Mean Lifetime Roi Usd",
+              "n": "mean_lifetime_roi_usd",
+              "r": false,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "median_breakeven_age",
-              "req": false,
-              "type": [
+            "median_breakeven_age": {
+              "a": true,
+              "h": "Median Breakeven Age",
+              "n": "median_breakeven_age",
+              "r": false,
+              "t": [
                 "`$ONE`",
                 [
                   "`$INTEGER`",
@@ -401,36 +494,41 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "median_lifetime_roi_usd",
-              "req": false,
-              "type": "`$NUMBER`"
+            "median_lifetime_roi_usd": {
+              "a": true,
+              "h": "Median Lifetime Roi Usd",
+              "n": "median_lifetime_roi_usd",
+              "r": false,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": true,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": true,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "p25_roi_usd",
-              "req": false,
-              "type": "`$NUMBER`"
+            "p25_roi_usd": {
+              "a": true,
+              "h": "P25 Roi Usd",
+              "n": "p25_roi_usd",
+              "r": false,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "p75_roi_usd",
-              "req": false,
-              "type": "`$NUMBER`"
+            "p75_roi_usd": {
+              "a": true,
+              "h": "P75 Roi Usd",
+              "n": "p75_roi_usd",
+              "r": false,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "parent",
-              "req": false,
-              "short": "Parent category — subfields only.",
-              "type": [
+            "parent": {
+              "a": true,
+              "h": "Parent",
+              "n": "parent",
+              "r": false,
+              "sh": "Parent category — subfields only.",
+              "t": [
                 "`$ONE`",
                 [
                   "`$OBJECT`",
@@ -438,41 +536,46 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "pct_never_breakeven",
-              "req": false,
-              "short": "Share of graduates who never break even, percent.",
-              "type": "`$NUMBER`"
+            "pct_never_breakeven": {
+              "a": true,
+              "h": "Pct Never Breakeven",
+              "n": "pct_never_breakeven",
+              "r": false,
+              "sh": "Share of graduates who never break even, percent.",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "programs",
-              "req": false,
-              "type": "`$INTEGER`"
+            "programs": {
+              "a": true,
+              "h": "Programs",
+              "n": "programs",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "rank_by_worst_roi",
-              "req": true,
-              "short": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
-              "type": "`$INTEGER`"
+            "rank_by_worst_roi": {
+              "a": true,
+              "h": "Rank By Worst Roi",
+              "n": "rank_by_worst_roi",
+              "r": true,
+              "sh": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "slug",
-              "req": true,
-              "type": "`$STRING`"
+            "slug": {
+              "a": true,
+              "h": "Slug",
+              "n": "slug",
+              "r": true,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "url",
-              "req": true,
-              "short": "The human-readable page for this major.",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "fo": "uri",
+              "h": "Url",
+              "n": "url",
+              "r": true,
+              "sh": "The human-readable page for this major.",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "major",
           "op": {
             "list": {
@@ -480,18 +583,19 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/v1/majors.json",
-                    "json": "{\"operationId\":\"listMajors\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"categories\":{\"type\":\"integer\"},\"count\":{\"type\":\"integer\"},\"majors\":{\"items\":{\"description\":\"One major category or CIP subfield with its full lifetime-ROI stat set (FREOPP 2021, cohort-weighted). Field averages may be negative — no institution is named.\",\"properties\":{\"ai_exposure\":{\"description\":\"le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for. NOT displacement. Category rows only; null for subfields and dropped categories.\",\"properties\":{\"acs_coverage\":{\"type\":\"number\"},\"band\":{\"enum\":[\"High\",\"Elevated\",\"Lower\"],\"type\":\"string\"},\"score_0_to_1\":{\"type\":\"number\"},\"top_occupations\":{\"items\":{\"properties\":{\"score\":{\"description\":\"AI applicability, 0–1.\",\"type\":\"number\"},\"share\":{\"description\":\"Share of the field’s graduates working here, 0–1.\",\"type\":\"number\"},\"soc\":{\"description\":\"SOC occupation code.\",\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":[\"object\",\"null\"]},\"cip_program_name\":{\"description\":\"CIP program-family name — subfields only.\",\"type\":[\"string\",\"null\"]},\"completion_adjusted_roi_usd\":{\"type\":[\"number\",\"null\"]},\"dropout_roi_usd\":{\"type\":[\"number\",\"null\"]},\"graduates\":{\"type\":\"integer\"},\"kind\":{\"enum\":[\"category\",\"subfield\"],\"type\":\"string\"},\"mean_lifetime_roi_usd\":{\"type\":\"number\"},\"median_breakeven_age\":{\"type\":[\"integer\",\"null\"]},\"median_lifetime_roi_usd\":{\"type\":\"number\"},\"name\":{\"type\":\"string\"},\"p25_roi_usd\":{\"type\":\"number\"},\"p75_roi_usd\":{\"type\":\"number\"},\"parent\":{\"description\":\"Parent category — subfields only.\",\"properties\":{\"name\":{\"type\":\"string\"},\"slug\":{\"type\":\"string\"}},\"type\":[\"object\",\"null\"]},\"pct_never_breakeven\":{\"description\":\"Share of graduates who never break even, percent.\",\"type\":\"number\"},\"programs\":{\"type\":\"integer\"},\"rank_by_worst_roi\":{\"description\":\"Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).\",\"type\":\"integer\"},\"slug\":{\"type\":\"string\"},\"url\":{\"description\":\"The human-readable page for this major.\",\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"slug\",\"kind\",\"name\",\"rank_by_worst_roi\",\"url\"],\"type\":\"object\"},\"type\":\"array\"},\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"},\"notes\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"subfields\":{\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Every major with statistics and page links.\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/v1/majors.json",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/v1/majors.json",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -502,8 +606,7 @@
                       "lit": "majors.json"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -520,7 +623,7 @@
           "alias": {
             "field": {}
           },
-          "fields": [],
+          "fields": {},
           "name": "openapi",
           "op": {
             "load": {
@@ -528,18 +631,19 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/v1/openapi.json",
-                    "json": "{\"operationId\":\"getOpenApiSpec\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"The OpenAPI 3.1 spec.\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/v1/openapi.json",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/v1/openapi.json",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -550,8 +654,7 @@
                       "lit": "openapi.json"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -568,56 +671,64 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "institution",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "institution": {
+              "a": true,
+              "h": "Institution",
+              "n": "institution",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "npv_nonresident_usd",
-              "req": false,
-              "type": "`$INTEGER`"
+            "npv_nonresident_usd": {
+              "a": true,
+              "h": "Npv Nonresident Usd",
+              "n": "npv_nonresident_usd",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "npv_resident_usd",
-              "req": false,
-              "type": "`$INTEGER`"
+            "npv_resident_usd": {
+              "a": true,
+              "h": "Npv Resident Usd",
+              "n": "npv_resident_usd",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "oos_penalty_30yr_npv_usd",
-              "req": false,
-              "type": "`$INTEGER`"
+            "oos_penalty_30yr_npv_usd": {
+              "a": true,
+              "h": "Oos Penalty 30yr Npv Usd",
+              "n": "oos_penalty_30yr_npv_usd",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "rank",
-              "req": false,
-              "type": "`$INTEGER`"
+            "rank": {
+              "a": true,
+              "h": "Rank",
+              "n": "rank",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "state",
-              "req": false,
-              "type": "`$STRING`"
+            "state": {
+              "a": true,
+              "h": "State",
+              "n": "state",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "tuition_in_state_usd",
-              "req": false,
-              "type": "`$INTEGER`"
+            "tuition_in_state_usd": {
+              "a": true,
+              "h": "Tuition In State Usd",
+              "n": "tuition_in_state_usd",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "tuition_out_of_state_usd",
-              "req": false,
-              "type": "`$INTEGER`"
+            "tuition_out_of_state_usd": {
+              "a": true,
+              "h": "Tuition Out Of State Usd",
+              "n": "tuition_out_of_state_usd",
+              "r": false,
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "name": "out_of_state_penalty",
           "op": {
             "list": {
@@ -625,18 +736,19 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/v1/rankings/out-of-state-penalty.json",
-                    "json": "{\"operationId\":\"getOutOfStatePenaltyRanking\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"type\":\"integer\"},\"description\":{\"type\":\"string\"},\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"},\"page_url\":{\"format\":\"uri\",\"type\":\"string\"},\"rankings\":{\"items\":{\"properties\":{\"institution\":{\"type\":\"string\"},\"npv_nonresident_usd\":{\"type\":\"integer\"},\"npv_resident_usd\":{\"type\":\"integer\"},\"oos_penalty_30yr_npv_usd\":{\"type\":\"integer\"},\"rank\":{\"type\":\"integer\"},\"state\":{\"type\":\"string\"},\"tuition_in_state_usd\":{\"type\":\"integer\"},\"tuition_out_of_state_usd\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"The full ranking. Every row NPV-positive both ways.\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/v1/rankings/out-of-state-penalty.json",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/v1/rankings/out-of-state-penalty.json",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -650,8 +762,7 @@
                       "lit": "out-of-state-penalty.json"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -668,13 +779,14 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "ai_exposure",
-              "req": false,
-              "short": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
-              "type": [
+          "fields": {
+            "ai_exposure": {
+              "a": true,
+              "h": "Ai Exposure",
+              "n": "ai_exposure",
+              "r": false,
+              "sh": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
+              "t": [
                 "`$ONE`",
                 [
                   "`$OBJECT`",
@@ -682,11 +794,12 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "breakeven_age",
-              "req": false,
-              "type": [
+            "breakeven_age": {
+              "a": true,
+              "h": "Breakeven Age",
+              "n": "breakeven_age",
+              "r": false,
+              "t": [
                 "`$ONE`",
                 [
                   "`$INTEGER`",
@@ -694,12 +807,13 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "cip_program_name",
-              "req": false,
-              "short": "CIP program-family name — subfields only.",
-              "type": [
+            "cip_program_name": {
+              "a": true,
+              "h": "Cip Program Name",
+              "n": "cip_program_name",
+              "r": false,
+              "sh": "CIP program-family name — subfields only.",
+              "t": [
                 "`$ONE`",
                 [
                   "`$STRING`",
@@ -707,17 +821,19 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "city",
-              "req": true,
-              "type": "`$STRING`"
+            "city": {
+              "a": true,
+              "h": "City",
+              "n": "city",
+              "r": true,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "completion_adjusted_roi_usd",
-              "req": false,
-              "type": [
+            "completion_adjusted_roi_usd": {
+              "a": true,
+              "h": "Completion Adjusted Roi Usd",
+              "n": "completion_adjusted_roi_usd",
+              "r": false,
+              "t": [
                 "`$ONE`",
                 [
                   "`$NUMBER`",
@@ -725,17 +841,19 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "control",
-              "req": true,
-              "type": "`$STRING`"
+            "control": {
+              "a": true,
+              "h": "Control",
+              "n": "control",
+              "r": true,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "dropout_roi_usd",
-              "req": false,
-              "type": [
+            "dropout_roi_usd": {
+              "a": true,
+              "h": "Dropout Roi Usd",
+              "n": "dropout_roi_usd",
+              "r": false,
+              "t": [
                 "`$ONE`",
                 [
                   "`$NUMBER`",
@@ -743,36 +861,41 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "freopp_program_coverage",
-              "req": false,
-              "short": "FREOPP-reported programs rolled into the earnings figure.",
-              "type": "`$INTEGER`"
+            "freopp_program_coverage": {
+              "a": true,
+              "h": "Freopp Program Coverage",
+              "n": "freopp_program_coverage",
+              "r": false,
+              "sh": "FREOPP-reported programs rolled into the earnings figure.",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "graduates",
-              "req": false,
-              "type": "`$INTEGER`"
+            "graduates": {
+              "a": true,
+              "h": "Graduates",
+              "n": "graduates",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "kind",
-              "req": true,
-              "type": "`$STRING`"
+            "kind": {
+              "a": true,
+              "h": "Kind",
+              "n": "kind",
+              "r": true,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "mean_lifetime_roi_usd",
-              "req": false,
-              "type": "`$NUMBER`"
+            "mean_lifetime_roi_usd": {
+              "a": true,
+              "h": "Mean Lifetime Roi Usd",
+              "n": "mean_lifetime_roi_usd",
+              "r": false,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "median_breakeven_age",
-              "req": false,
-              "type": [
+            "median_breakeven_age": {
+              "a": true,
+              "h": "Median Breakeven Age",
+              "n": "median_breakeven_age",
+              "r": false,
+              "t": [
                 "`$ONE`",
                 [
                   "`$INTEGER`",
@@ -780,38 +903,43 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "median_earnings_10yr_usd",
-              "req": false,
-              "short": "FREOPP cohort-weighted earnings ten years after entry.",
-              "type": "`$INTEGER`"
+            "median_earnings_10yr_usd": {
+              "a": true,
+              "h": "Median Earnings 10yr Usd",
+              "n": "median_earnings_10yr_usd",
+              "r": false,
+              "sh": "FREOPP cohort-weighted earnings ten years after entry.",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "median_lifetime_roi_usd",
-              "req": false,
-              "type": "`$NUMBER`"
+            "median_lifetime_roi_usd": {
+              "a": true,
+              "h": "Median Lifetime Roi Usd",
+              "n": "median_lifetime_roi_usd",
+              "r": false,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "meta",
-              "req": true,
-              "short": "Provenance block carried by every payload.",
-              "type": "`$OBJECT`"
+            "meta": {
+              "a": true,
+              "h": "Meta",
+              "n": "meta",
+              "r": true,
+              "sh": "Provenance block carried by every payload.",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": true,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": true,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "npv_30yr_nonresident_usd",
-              "req": false,
-              "short": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
-              "type": [
+            "npv_30yr_nonresident_usd": {
+              "a": true,
+              "h": "Npv 30yr Nonresident Usd",
+              "n": "npv_30yr_nonresident_usd",
+              "r": false,
+              "sh": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
+              "t": [
                 "`$ONE`",
                 [
                   "`$INTEGER`",
@@ -819,31 +947,35 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "npv_30yr_resident_usd",
-              "req": true,
-              "short": "30-year projected net value at resident pricing.",
-              "type": "`$INTEGER`"
+            "npv_30yr_resident_usd": {
+              "a": true,
+              "h": "Npv 30yr Resident Usd",
+              "n": "npv_30yr_resident_usd",
+              "r": true,
+              "sh": "30-year projected net value at resident pricing.",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "p25_roi_usd",
-              "req": false,
-              "type": "`$NUMBER`"
+            "p25_roi_usd": {
+              "a": true,
+              "h": "P25 Roi Usd",
+              "n": "p25_roi_usd",
+              "r": false,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "p75_roi_usd",
-              "req": false,
-              "type": "`$NUMBER`"
+            "p75_roi_usd": {
+              "a": true,
+              "h": "P75 Roi Usd",
+              "n": "p75_roi_usd",
+              "r": false,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "parent",
-              "req": false,
-              "short": "Parent category — subfields only.",
-              "type": [
+            "parent": {
+              "a": true,
+              "h": "Parent",
+              "n": "parent",
+              "r": false,
+              "sh": "Parent category — subfields only.",
+              "t": [
                 "`$ONE`",
                 [
                   "`$OBJECT`",
@@ -851,50 +983,57 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "pct_never_breakeven",
-              "req": false,
-              "short": "Share of graduates who never break even, percent.",
-              "type": "`$NUMBER`"
+            "pct_never_breakeven": {
+              "a": true,
+              "h": "Pct Never Breakeven",
+              "n": "pct_never_breakeven",
+              "r": false,
+              "sh": "Share of graduates who never break even, percent.",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "programs",
-              "req": false,
-              "type": "`$INTEGER`"
+            "programs": {
+              "a": true,
+              "h": "Programs",
+              "n": "programs",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "rank_by_worst_roi",
-              "req": true,
-              "short": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
-              "type": "`$INTEGER`"
+            "rank_by_worst_roi": {
+              "a": true,
+              "h": "Rank By Worst Roi",
+              "n": "rank_by_worst_roi",
+              "r": true,
+              "sh": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "slug",
-              "req": true,
-              "type": "`$STRING`"
+            "slug": {
+              "a": true,
+              "h": "Slug",
+              "n": "slug",
+              "r": true,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "state",
-              "req": true,
-              "short": "USPS 2-letter state code.",
-              "type": "`$STRING`"
+            "state": {
+              "a": true,
+              "h": "State",
+              "n": "state",
+              "r": true,
+              "sh": "USPS 2-letter state code.",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "state_name",
-              "req": false,
-              "type": "`$STRING`"
+            "state_name": {
+              "a": true,
+              "h": "State Name",
+              "n": "state_name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "total_cost_of_attendance_nonresident_usd",
-              "req": false,
-              "type": [
+            "total_cost_of_attendance_nonresident_usd": {
+              "a": true,
+              "h": "Total Cost Of Attendance Nonresident Usd",
+              "n": "total_cost_of_attendance_nonresident_usd",
+              "r": false,
+              "t": [
                 "`$ONE`",
                 [
                   "`$INTEGER`",
@@ -902,28 +1041,31 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "total_cost_of_attendance_usd",
-              "req": false,
-              "type": "`$INTEGER`"
+            "total_cost_of_attendance_usd": {
+              "a": true,
+              "h": "Total Cost Of Attendance Usd",
+              "n": "total_cost_of_attendance_usd",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "unitid",
-              "req": true,
-              "short": "IPEDS UnitID — the universal join key.",
-              "type": "`$INTEGER`"
+            "unitid": {
+              "a": true,
+              "h": "Unitid",
+              "n": "unitid",
+              "r": true,
+              "sh": "IPEDS UnitID — the universal join key.",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "url",
-              "req": true,
-              "short": "The human-readable page for this school.",
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "fo": "uri",
+              "h": "Url",
+              "n": "url",
+              "r": true,
+              "sh": "The human-readable page for this school.",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "slug",
           "op": {
             "load": {
@@ -931,29 +1073,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/v1/colleges/{slug}.json",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "slug",
-                        "orig": "slug",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "slug",
+                        "or": "slug",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/v1/colleges/{slug}.json",
-                    "json": "{\"operationId\":\"getCollege\",\"parameters\":[{\"description\":\"College slug, e.g. university-of-michigan-ann-arbor.\",\"in\":\"path\",\"name\":\"slug\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"}},\"type\":\"object\"},{\"description\":\"One gated four-year institution (IPEDS 2023 · FREOPP 2021 · BEA 2023). Gates: real FREOPP earnings, >= 3 reported programs, hand-verified exclusions, positive 30-year NPV at resident pricing — no school outside the gate appears, and no named school carries a negative number.\",\"properties\":{\"breakeven_age\":{\"type\":[\"integer\",\"null\"]},\"city\":{\"type\":\"string\"},\"control\":{\"enum\":[\"public\",\"private-nonprofit\",\"private-forprofit\"],\"type\":\"string\"},\"freopp_program_coverage\":{\"description\":\"FREOPP-reported programs rolled into the earnings figure.\",\"type\":\"integer\"},\"median_earnings_10yr_usd\":{\"description\":\"FREOPP cohort-weighted earnings ten years after entry.\",\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"npv_30yr_nonresident_usd\":{\"description\":\"Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.\",\"type\":[\"integer\",\"null\"]},\"npv_30yr_resident_usd\":{\"description\":\"30-year projected net value at resident pricing. Positive by gate.\",\"type\":\"integer\"},\"slug\":{\"type\":\"string\"},\"state\":{\"description\":\"USPS 2-letter state code.\",\"type\":\"string\"},\"state_name\":{\"type\":\"string\"},\"total_cost_of_attendance_nonresident_usd\":{\"type\":[\"integer\",\"null\"]},\"total_cost_of_attendance_usd\":{\"type\":\"integer\"},\"unitid\":{\"description\":\"IPEDS UnitID — the universal join key.\",\"type\":\"integer\"},\"url\":{\"description\":\"The human-readable page for this school.\",\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"slug\",\"unitid\",\"name\",\"city\",\"state\",\"control\",\"npv_30yr_resident_usd\",\"url\"],\"type\":\"object\"}]}}},\"description\":\"The college with its meta block.\"},\"404\":{\"description\":\"Unknown slug — the school is outside the gate or not covered.\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/v1/colleges/{slug}.json",
+                  "q": {
+                    "exist": [
+                      "slug"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/v1/colleges/{slug}.json",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -967,40 +1114,40 @@
                       "lit": "{slug}.json"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "slug"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/v1/majors/{slug}.json",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "slug",
-                        "orig": "slug",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "slug",
+                        "or": "slug",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/v1/majors/{slug}.json",
-                    "json": "{\"operationId\":\"getMajor\",\"parameters\":[{\"description\":\"Major slug, e.g. philosophy-and-religious-studies or registered-nursing.\",\"in\":\"path\",\"name\":\"slug\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"}},\"type\":\"object\"},{\"description\":\"One major category or CIP subfield with its full lifetime-ROI stat set (FREOPP 2021, cohort-weighted). Field averages may be negative — no institution is named.\",\"properties\":{\"ai_exposure\":{\"description\":\"le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for. NOT displacement. Category rows only; null for subfields and dropped categories.\",\"properties\":{\"acs_coverage\":{\"type\":\"number\"},\"band\":{\"enum\":[\"High\",\"Elevated\",\"Lower\"],\"type\":\"string\"},\"score_0_to_1\":{\"type\":\"number\"},\"top_occupations\":{\"items\":{\"properties\":{\"score\":{\"description\":\"AI applicability, 0–1.\",\"type\":\"number\"},\"share\":{\"description\":\"Share of the field’s graduates working here, 0–1.\",\"type\":\"number\"},\"soc\":{\"description\":\"SOC occupation code.\",\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":[\"object\",\"null\"]},\"cip_program_name\":{\"description\":\"CIP program-family name — subfields only.\",\"type\":[\"string\",\"null\"]},\"completion_adjusted_roi_usd\":{\"type\":[\"number\",\"null\"]},\"dropout_roi_usd\":{\"type\":[\"number\",\"null\"]},\"graduates\":{\"type\":\"integer\"},\"kind\":{\"enum\":[\"category\",\"subfield\"],\"type\":\"string\"},\"mean_lifetime_roi_usd\":{\"type\":\"number\"},\"median_breakeven_age\":{\"type\":[\"integer\",\"null\"]},\"median_lifetime_roi_usd\":{\"type\":\"number\"},\"name\":{\"type\":\"string\"},\"p25_roi_usd\":{\"type\":\"number\"},\"p75_roi_usd\":{\"type\":\"number\"},\"parent\":{\"description\":\"Parent category — subfields only.\",\"properties\":{\"name\":{\"type\":\"string\"},\"slug\":{\"type\":\"string\"}},\"type\":[\"object\",\"null\"]},\"pct_never_breakeven\":{\"description\":\"Share of graduates who never break even, percent.\",\"type\":\"number\"},\"programs\":{\"type\":\"integer\"},\"rank_by_worst_roi\":{\"description\":\"Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).\",\"type\":\"integer\"},\"slug\":{\"type\":\"string\"},\"url\":{\"description\":\"The human-readable page for this major.\",\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"slug\",\"kind\",\"name\",\"rank_by_worst_roi\",\"url\"],\"type\":\"object\"}]}}},\"description\":\"The major with its meta block.\"},\"404\":{\"description\":\"Unknown slug (static file does not exist).\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/v1/majors/{slug}.json",
+                  "q": {
+                    "exist": [
+                      "slug"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/v1/majors/{slug}.json",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -1014,12 +1161,7 @@
                       "lit": "{slug}.json"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "slug"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1036,38 +1178,43 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "city",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "city": {
+              "a": true,
+              "h": "City",
+              "n": "city",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "control",
-              "req": false,
-              "type": "`$STRING`"
+            "control": {
+              "a": true,
+              "h": "Control",
+              "n": "control",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "institution",
-              "req": false,
-              "type": "`$STRING`"
+            "institution": {
+              "a": true,
+              "h": "Institution",
+              "n": "institution",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "npv_30yr_resident_usd",
-              "req": false,
-              "type": "`$INTEGER`"
+            "npv_30yr_resident_usd": {
+              "a": true,
+              "h": "Npv 30yr Resident Usd",
+              "n": "npv_30yr_resident_usd",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "rank_in_state",
-              "req": false,
-              "type": "`$INTEGER`"
+            "rank_in_state": {
+              "a": true,
+              "h": "Rank In State",
+              "n": "rank_in_state",
+              "r": false,
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "name": "state",
           "op": {
             "list": {
@@ -1075,29 +1222,34 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/v1/rankings/best-value/{state}.json",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "state",
-                        "orig": "state",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "param",
+                        "n": "state",
+                        "or": "state",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/v1/rankings/best-value/{state}.json",
-                    "json": "{\"operationId\":\"getBestValueByState\",\"parameters\":[{\"description\":\"Lowercase USPS 2-letter state code (50 states + DC).\",\"in\":\"path\",\"name\":\"state\",\"required\":true,\"schema\":{\"enum\":[\"al\",\"ak\",\"az\",\"ar\",\"ca\",\"co\",\"ct\",\"de\",\"dc\",\"fl\",\"ga\",\"hi\",\"id\",\"il\",\"in\",\"ia\",\"ks\",\"ky\",\"la\",\"me\",\"md\",\"ma\",\"mi\",\"mn\",\"ms\",\"mo\",\"mt\",\"ne\",\"nv\",\"nh\",\"nj\",\"nm\",\"ny\",\"nc\",\"nd\",\"oh\",\"ok\",\"or\",\"pa\",\"ri\",\"sc\",\"sd\",\"tn\",\"tx\",\"ut\",\"vt\",\"va\",\"wa\",\"wv\",\"wi\",\"wy\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"colleges\":{\"items\":{\"properties\":{\"city\":{\"type\":\"string\"},\"control\":{\"type\":\"string\"},\"institution\":{\"type\":\"string\"},\"npv_30yr_resident_usd\":{\"type\":\"integer\"},\"rank_in_state\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"count\":{\"type\":\"integer\"},\"description\":{\"type\":\"string\"},\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"},\"page_url\":{\"format\":\"uri\",\"type\":\"string\"},\"state\":{\"type\":\"string\"},\"state_name\":{\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Top 15 for the state, NPV-positive rows only.\"},\"404\":{\"description\":\"Not a USPS state code.\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/v1/rankings/best-value/{state}.json",
+                  "q": {
+                    "exist": [
+                      "state"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/v1/rankings/best-value/{state}.json",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -1114,12 +1266,7 @@
                       "lit": "{state}.json"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "state"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1136,56 +1283,64 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "institution",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "institution": {
+              "a": true,
+              "h": "Institution",
+              "n": "institution",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "npv_nonresident_usd",
-              "req": false,
-              "type": "`$INTEGER`"
+            "npv_nonresident_usd": {
+              "a": true,
+              "h": "Npv Nonresident Usd",
+              "n": "npv_nonresident_usd",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "npv_resident_usd",
-              "req": false,
-              "type": "`$INTEGER`"
+            "npv_resident_usd": {
+              "a": true,
+              "h": "Npv Resident Usd",
+              "n": "npv_resident_usd",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "oos_penalty_30yr_npv_usd",
-              "req": false,
-              "type": "`$INTEGER`"
+            "oos_penalty_30yr_npv_usd": {
+              "a": true,
+              "h": "Oos Penalty 30yr Npv Usd",
+              "n": "oos_penalty_30yr_npv_usd",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "rank",
-              "req": false,
-              "type": "`$INTEGER`"
+            "rank": {
+              "a": true,
+              "h": "Rank",
+              "n": "rank",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "state",
-              "req": false,
-              "type": "`$STRING`"
+            "state": {
+              "a": true,
+              "h": "State",
+              "n": "state",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "tuition_in_state_usd",
-              "req": false,
-              "type": "`$INTEGER`"
+            "tuition_in_state_usd": {
+              "a": true,
+              "h": "Tuition In State Usd",
+              "n": "tuition_in_state_usd",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "tuition_out_of_state_usd",
-              "req": false,
-              "type": "`$INTEGER`"
+            "tuition_out_of_state_usd": {
+              "a": true,
+              "h": "Tuition Out Of State Usd",
+              "n": "tuition_out_of_state_usd",
+              "r": false,
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "name": "top_50",
           "op": {
             "list": {
@@ -1193,18 +1348,19 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/v1/rankings/out-of-state-penalty/top-50.json",
-                    "json": "{\"operationId\":\"getOutOfStatePenaltyTop50\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"type\":\"integer\"},\"description\":{\"type\":\"string\"},\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"},\"page_url\":{\"format\":\"uri\",\"type\":\"string\"},\"rankings\":{\"items\":{\"properties\":{\"institution\":{\"type\":\"string\"},\"npv_nonresident_usd\":{\"type\":\"integer\"},\"npv_resident_usd\":{\"type\":\"integer\"},\"oos_penalty_30yr_npv_usd\":{\"type\":\"integer\"},\"rank\":{\"type\":\"integer\"},\"state\":{\"type\":\"string\"},\"tuition_in_state_usd\":{\"type\":\"integer\"},\"tuition_out_of_state_usd\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Top 50, worst-first. Same rows and order as the full ranking.\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/v1/rankings/out-of-state-penalty/top-50.json",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/v1/rankings/out-of-state-penalty/top-50.json",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -1221,8 +1377,7 @@
                       "lit": "top-50.json"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1239,24 +1394,27 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "graduates",
-              "req": false,
-              "type": "`$INTEGER`"
+          "fields": {
+            "graduates": {
+              "a": true,
+              "h": "Graduates",
+              "n": "graduates",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "mean_lifetime_roi_usd",
-              "req": false,
-              "type": "`$NUMBER`"
+            "mean_lifetime_roi_usd": {
+              "a": true,
+              "h": "Mean Lifetime Roi Usd",
+              "n": "mean_lifetime_roi_usd",
+              "r": false,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "median_breakeven_age",
-              "req": false,
-              "type": [
+            "median_breakeven_age": {
+              "a": true,
+              "h": "Median Breakeven Age",
+              "n": "median_breakeven_age",
+              "r": false,
+              "t": [
                 "`$ONE`",
                 [
                   "`$INTEGER`",
@@ -1264,44 +1422,50 @@
                 ]
               ]
             },
-            {
-              "active": true,
-              "name": "median_lifetime_roi_usd",
-              "req": false,
-              "type": "`$NUMBER`"
+            "median_lifetime_roi_usd": {
+              "a": true,
+              "h": "Median Lifetime Roi Usd",
+              "n": "median_lifetime_roi_usd",
+              "r": false,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "pct_never_breakeven",
-              "req": false,
-              "type": "`$NUMBER`"
+            "pct_never_breakeven": {
+              "a": true,
+              "h": "Pct Never Breakeven",
+              "n": "pct_never_breakeven",
+              "r": false,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "rank",
-              "req": false,
-              "type": "`$INTEGER`"
+            "rank": {
+              "a": true,
+              "h": "Rank",
+              "n": "rank",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "slug",
-              "req": false,
-              "type": "`$STRING`"
+            "slug": {
+              "a": true,
+              "h": "Slug",
+              "n": "slug",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "url",
-              "req": false,
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "fo": "uri",
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "worst_roi_major",
           "op": {
             "list": {
@@ -1309,18 +1473,19 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/v1/rankings/worst-roi-majors.json",
-                    "json": "{\"operationId\":\"getWorstRoiMajorsRanking\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"type\":\"integer\"},\"description\":{\"type\":\"string\"},\"meta\":{\"description\":\"Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.\",\"properties\":{\"data_vintage\":{\"type\":\"string\"},\"doi\":{\"format\":\"uri\",\"type\":\"string\"},\"generated\":{\"format\":\"date\",\"type\":\"string\"},\"license\":{\"const\":\"CC-BY-4.0\",\"type\":\"string\"},\"source\":{\"const\":\"LE TEEN\",\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"required\":[\"source\",\"url\",\"license\",\"doi\",\"data_vintage\",\"generated\"],\"type\":\"object\"},\"page_url\":{\"format\":\"uri\",\"type\":\"string\"},\"rankings\":{\"items\":{\"properties\":{\"graduates\":{\"type\":\"integer\"},\"mean_lifetime_roi_usd\":{\"type\":\"number\"},\"median_breakeven_age\":{\"type\":[\"integer\",\"null\"]},\"median_lifetime_roi_usd\":{\"type\":\"number\"},\"name\":{\"type\":\"string\"},\"pct_never_breakeven\":{\"type\":\"number\"},\"rank\":{\"type\":\"integer\"},\"slug\":{\"type\":\"string\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"All 19 categories with median/mean ROI, never-break-even share, break-even age. Per-major detail at /api/v1/majors/{slug}.json.\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/v1/rankings/worst-roi-majors.json",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/v1/rankings/worst-roi-majors.json",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -1334,8 +1499,7 @@
                       "lit": "worst-roi-majors.json"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1764,13 +1928,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1790,13 +1954,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1816,17 +1980,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "index_ref01",
                 "srcdatavar": "index_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1846,13 +2010,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1872,17 +2036,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "openapi_ref01",
                 "srcdatavar": "openapi_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1902,13 +2066,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1928,19 +2092,19 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "slug_ref01",
                 "srcdatavar": "slug_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "slug": "slug01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1960,15 +2124,15 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {
                 "state": "state01"
               },
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1988,13 +2152,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -2014,13 +2178,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {

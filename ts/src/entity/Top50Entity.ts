@@ -19,7 +19,6 @@ import type {
   Top50ListMatch,
 } from '../CollegeRoiTypes'
 
-// TODO: needs Entity superclass
 class Top50Entity extends CollegeRoiEntityBase<Top50> {
 
   constructor(client: CollegeRoiSDK, entopts: any) {

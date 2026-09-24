@@ -1,0 +1,22 @@
+# BasicCollegeFlow
+
+main: kit: flow: BasicCollegeFlow:
+{
+  entity: "college",
+  kind: "basic",
+  name: "BasicCollegeFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "college_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCollegeFlow"
+}

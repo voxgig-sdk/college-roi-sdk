@@ -100,19 +100,23 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "colleges",
+						"title": "Colleges",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "page_url",
+						"title": "Page Url",
 						"type": "`$STRING`",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "state",
+						"title": "State",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "state_name",
+						"title": "State Name",
 						"type": "`$STRING`",
 					},
 				},
@@ -123,7 +127,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/rankings/best-value.json",
@@ -141,17 +144,19 @@ func MakeConfig() map[string]any {
 										"lit": "best-value.json",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
 									"rankings",
 									"best-value.json",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -164,6 +169,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "breakeven_age",
+						"title": "Breakeven Age",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -174,32 +180,37 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "city",
-						"req": true,
+						"title": "City",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "control",
-						"req": true,
+						"title": "Control",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "freopp_program_coverage",
-						"short": "FREOPP-reported programs rolled into the earnings figure.",
+						"title": "Freopp Program Coverage",
 						"type": "`$INTEGER`",
+						"short": "FREOPP-reported programs rolled into the earnings figure.",
 					},
 					map[string]any{
 						"name": "median_earnings_10yr_usd",
-						"short": "FREOPP cohort-weighted earnings ten years after entry.",
+						"title": "Median Earnings 10yr Usd",
 						"type": "`$INTEGER`",
+						"short": "FREOPP cohort-weighted earnings ten years after entry.",
 					},
 					map[string]any{
 						"name": "name",
-						"req": true,
+						"title": "Name",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "npv_30yr_nonresident_usd",
-						"short": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
+						"title": "Npv 30yr Nonresident Usd",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -207,30 +218,36 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
+						"short": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
 					},
 					map[string]any{
 						"name": "npv_30yr_resident_usd",
+						"title": "Npv 30yr Resident Usd",
+						"type": "`$INTEGER`",
 						"req": true,
 						"short": "30-year projected net value at resident pricing.",
-						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "slug",
-						"req": true,
+						"title": "Slug",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "state",
+						"title": "State",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "USPS 2-letter state code.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "state_name",
+						"title": "State Name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "total_cost_of_attendance_nonresident_usd",
+						"title": "Total Cost Of Attendance Nonresident Usd",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -241,20 +258,23 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "total_cost_of_attendance_usd",
+						"title": "Total Cost Of Attendance Usd",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "unitid",
+						"title": "Unitid",
+						"type": "`$INTEGER`",
 						"req": true,
 						"short": "IPEDS UnitID — the universal join key.",
-						"type": "`$INTEGER`",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "url",
+						"title": "Url",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The human-readable page for this school.",
-						"type": "`$STRING`",
+						"format": "uri",
 					},
 				},
 				"name": "college",
@@ -264,7 +284,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/colleges.json",
@@ -279,16 +298,18 @@ func MakeConfig() map[string]any {
 										"lit": "colleges.json",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
 									"colleges.json",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -306,7 +327,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/index.json",
@@ -321,16 +341,18 @@ func MakeConfig() map[string]any {
 										"lit": "index.json",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
 									"index.json",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -343,7 +365,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "ai_exposure",
-						"short": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
+						"title": "Ai Exposure",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -351,10 +373,11 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
+						"short": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
 					},
 					map[string]any{
 						"name": "cip_program_name",
-						"short": "CIP program-family name — subfields only.",
+						"title": "Cip Program Name",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -362,9 +385,11 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
+						"short": "CIP program-family name — subfields only.",
 					},
 					map[string]any{
 						"name": "completion_adjusted_roi_usd",
+						"title": "Completion Adjusted Roi Usd",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -375,6 +400,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "dropout_roi_usd",
+						"title": "Dropout Roi Usd",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -385,19 +411,23 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "graduates",
+						"title": "Graduates",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "kind",
-						"req": true,
+						"title": "Kind",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "mean_lifetime_roi_usd",
+						"title": "Mean Lifetime Roi Usd",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "median_breakeven_age",
+						"title": "Median Breakeven Age",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -408,24 +438,28 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "median_lifetime_roi_usd",
+						"title": "Median Lifetime Roi Usd",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "name",
-						"req": true,
+						"title": "Name",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "p25_roi_usd",
+						"title": "P25 Roi Usd",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "p75_roi_usd",
+						"title": "P75 Roi Usd",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "parent",
-						"short": "Parent category — subfields only.",
+						"title": "Parent",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -433,33 +467,39 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
+						"short": "Parent category — subfields only.",
 					},
 					map[string]any{
 						"name": "pct_never_breakeven",
-						"short": "Share of graduates who never break even, percent.",
+						"title": "Pct Never Breakeven",
 						"type": "`$NUMBER`",
+						"short": "Share of graduates who never break even, percent.",
 					},
 					map[string]any{
 						"name": "programs",
+						"title": "Programs",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "rank_by_worst_roi",
+						"title": "Rank By Worst Roi",
+						"type": "`$INTEGER`",
 						"req": true,
 						"short": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
-						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "slug",
-						"req": true,
+						"title": "Slug",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "url",
+						"title": "Url",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The human-readable page for this major.",
-						"type": "`$STRING`",
+						"format": "uri",
 					},
 				},
 				"name": "major",
@@ -469,7 +509,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/majors.json",
@@ -484,16 +523,18 @@ func MakeConfig() map[string]any {
 										"lit": "majors.json",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
 									"majors.json",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -511,7 +552,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/openapi.json",
@@ -526,16 +566,18 @@ func MakeConfig() map[string]any {
 										"lit": "openapi.json",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
 									"openapi.json",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -548,34 +590,42 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "institution",
+						"title": "Institution",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "npv_nonresident_usd",
+						"title": "Npv Nonresident Usd",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "npv_resident_usd",
+						"title": "Npv Resident Usd",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "oos_penalty_30yr_npv_usd",
+						"title": "Oos Penalty 30yr Npv Usd",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "rank",
+						"title": "Rank",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "state",
+						"title": "State",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tuition_in_state_usd",
+						"title": "Tuition In State Usd",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "tuition_out_of_state_usd",
+						"title": "Tuition Out Of State Usd",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -586,7 +636,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/rankings/out-of-state-penalty.json",
@@ -604,17 +653,19 @@ func MakeConfig() map[string]any {
 										"lit": "out-of-state-penalty.json",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
 									"rankings",
 									"out-of-state-penalty.json",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -627,7 +678,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "ai_exposure",
-						"short": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
+						"title": "Ai Exposure",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -635,9 +686,11 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
+						"short": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.",
 					},
 					map[string]any{
 						"name": "breakeven_age",
+						"title": "Breakeven Age",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -648,7 +701,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "cip_program_name",
-						"short": "CIP program-family name — subfields only.",
+						"title": "Cip Program Name",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -656,14 +709,17 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
+						"short": "CIP program-family name — subfields only.",
 					},
 					map[string]any{
 						"name": "city",
-						"req": true,
+						"title": "City",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "completion_adjusted_roi_usd",
+						"title": "Completion Adjusted Roi Usd",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -674,11 +730,13 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "control",
-						"req": true,
+						"title": "Control",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "dropout_roi_usd",
+						"title": "Dropout Roi Usd",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -689,24 +747,29 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "freopp_program_coverage",
-						"short": "FREOPP-reported programs rolled into the earnings figure.",
+						"title": "Freopp Program Coverage",
 						"type": "`$INTEGER`",
+						"short": "FREOPP-reported programs rolled into the earnings figure.",
 					},
 					map[string]any{
 						"name": "graduates",
+						"title": "Graduates",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "kind",
-						"req": true,
+						"title": "Kind",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "mean_lifetime_roi_usd",
+						"title": "Mean Lifetime Roi Usd",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "median_breakeven_age",
+						"title": "Median Breakeven Age",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -717,27 +780,31 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "median_earnings_10yr_usd",
-						"short": "FREOPP cohort-weighted earnings ten years after entry.",
+						"title": "Median Earnings 10yr Usd",
 						"type": "`$INTEGER`",
+						"short": "FREOPP cohort-weighted earnings ten years after entry.",
 					},
 					map[string]any{
 						"name": "median_lifetime_roi_usd",
+						"title": "Median Lifetime Roi Usd",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "meta",
+						"title": "Meta",
+						"type": "`$OBJECT`",
 						"req": true,
 						"short": "Provenance block carried by every payload.",
-						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "name",
-						"req": true,
+						"title": "Name",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "npv_30yr_nonresident_usd",
-						"short": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
+						"title": "Npv 30yr Nonresident Usd",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -745,24 +812,28 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
+						"short": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
 					},
 					map[string]any{
 						"name": "npv_30yr_resident_usd",
+						"title": "Npv 30yr Resident Usd",
+						"type": "`$INTEGER`",
 						"req": true,
 						"short": "30-year projected net value at resident pricing.",
-						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "p25_roi_usd",
+						"title": "P25 Roi Usd",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "p75_roi_usd",
+						"title": "P75 Roi Usd",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "parent",
-						"short": "Parent category — subfields only.",
+						"title": "Parent",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -770,39 +841,47 @@ func MakeConfig() map[string]any {
 								"`$NULL`",
 							},
 						},
+						"short": "Parent category — subfields only.",
 					},
 					map[string]any{
 						"name": "pct_never_breakeven",
-						"short": "Share of graduates who never break even, percent.",
+						"title": "Pct Never Breakeven",
 						"type": "`$NUMBER`",
+						"short": "Share of graduates who never break even, percent.",
 					},
 					map[string]any{
 						"name": "programs",
+						"title": "Programs",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "rank_by_worst_roi",
+						"title": "Rank By Worst Roi",
+						"type": "`$INTEGER`",
 						"req": true,
 						"short": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
-						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "slug",
-						"req": true,
+						"title": "Slug",
 						"type": "`$STRING`",
+						"req": true,
 					},
 					map[string]any{
 						"name": "state",
+						"title": "State",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "USPS 2-letter state code.",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "state_name",
+						"title": "State Name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "total_cost_of_attendance_nonresident_usd",
+						"title": "Total Cost Of Attendance Nonresident Usd",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -813,20 +892,23 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "total_cost_of_attendance_usd",
+						"title": "Total Cost Of Attendance Usd",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "unitid",
+						"title": "Unitid",
+						"type": "`$INTEGER`",
 						"req": true,
 						"short": "IPEDS UnitID — the universal join key.",
-						"type": "`$INTEGER`",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "url",
+						"title": "Url",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "The human-readable page for this school.",
-						"type": "`$STRING`",
+						"format": "uri",
 					},
 				},
 				"name": "slug",
@@ -836,17 +918,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "slug",
-											"orig": "slug",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/colleges/{slug}.json",
@@ -864,34 +935,35 @@ func MakeConfig() map[string]any {
 										"lit": "{slug}.json",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
 									"colleges",
 									"{slug}.json",
 								},
-							},
-							map[string]any{
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
 								"args": map[string]any{
 									"params": []any{
 										map[string]any{
-											"kind": "param",
 											"name": "slug",
 											"orig": "slug",
-											"reqd": true,
 											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
 										},
 									},
 								},
+								"select": map[string]any{
+									"exist": []any{
+										"slug",
+									},
+								},
+							},
+							map[string]any{
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/majors/{slug}.json",
@@ -909,20 +981,32 @@ func MakeConfig() map[string]any {
 										"lit": "{slug}.json",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"slug",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
 									"majors",
 									"{slug}.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "slug",
+											"orig": "slug",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"slug",
+									},
 								},
 							},
 						},
@@ -936,22 +1020,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "city",
+						"title": "City",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "control",
+						"title": "Control",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "institution",
+						"title": "Institution",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "npv_30yr_resident_usd",
+						"title": "Npv 30yr Resident Usd",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "rank_in_state",
+						"title": "Rank In State",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -962,17 +1051,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "state",
-											"orig": "state",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/rankings/best-value/{state}.json",
@@ -993,21 +1071,33 @@ func MakeConfig() map[string]any {
 										"lit": "{state}.json",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"state",
-									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
 									"rankings",
 									"best-value",
 									"{state}.json",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "state",
+											"orig": "state",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"state",
+									},
 								},
 							},
 						},
@@ -1021,34 +1111,42 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "institution",
+						"title": "Institution",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "npv_nonresident_usd",
+						"title": "Npv Nonresident Usd",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "npv_resident_usd",
+						"title": "Npv Resident Usd",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "oos_penalty_30yr_npv_usd",
+						"title": "Oos Penalty 30yr Npv Usd",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "rank",
+						"title": "Rank",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "state",
+						"title": "State",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tuition_in_state_usd",
+						"title": "Tuition In State Usd",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "tuition_out_of_state_usd",
+						"title": "Tuition Out Of State Usd",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -1059,7 +1157,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/rankings/out-of-state-penalty/top-50.json",
@@ -1080,11 +1177,6 @@ func MakeConfig() map[string]any {
 										"lit": "top-50.json",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
@@ -1092,6 +1184,13 @@ func MakeConfig() map[string]any {
 									"out-of-state-penalty",
 									"top-50.json",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -1104,14 +1203,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "graduates",
+						"title": "Graduates",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "mean_lifetime_roi_usd",
+						"title": "Mean Lifetime Roi Usd",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "median_breakeven_age",
+						"title": "Median Breakeven Age",
 						"type": []any{
 							"`$ONE`",
 							[]any{
@@ -1122,28 +1224,34 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "median_lifetime_roi_usd",
+						"title": "Median Lifetime Roi Usd",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "pct_never_breakeven",
+						"title": "Pct Never Breakeven",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "rank",
+						"title": "Rank",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "slug",
+						"title": "Slug",
 						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "url",
+						"title": "Url",
 						"type": "`$STRING`",
+						"format": "uri",
 					},
 				},
 				"name": "worst_roi_major",
@@ -1153,7 +1261,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/api/v1/rankings/worst-roi-majors.json",
@@ -1171,17 +1278,19 @@ func MakeConfig() map[string]any {
 										"lit": "worst-roi-majors.json",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"v1",
 									"rankings",
 									"worst-roi-majors.json",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},

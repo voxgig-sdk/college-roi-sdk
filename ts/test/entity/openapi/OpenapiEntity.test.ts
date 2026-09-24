@@ -25,10 +25,6 @@ import {
 } from '../../utility'
 
 
-// AFTER the imports on purpose: TypeScript hoists `import` above any
-// statement in the emitted CommonJS, so a loader placed above them would
-// run only after every imported module had already been evaluated - and
-// anything reading process.env at module scope would miss these values.
 loadEnvLocal(__dirname + '/../../../.env.local')
 
 
@@ -55,7 +51,7 @@ describe('OpenapiEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[],"name":"openapi","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{},"contract":{"id":"GET /api/v1/openapi.json","json":"{\"operationId\":\"getOpenApiSpec\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"The OpenAPI 3.1 spec.\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/api/v1/openapi.json","segments":[{"lit":"api"},{"lit":"v1"},{"lit":"openapi.json"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"openapi","name__orig":"openapi","Name":"Openapi","name_":"openapi","name-":"openapi","NAME":"OPENAPI","index$":4}, {"active":true,"entity":"openapi","key$":"BasicOpenapiFlow","kind":"basic","name":"BasicOpenapiFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"openapi_ref01","srcdatavar":"openapi_ref01_data","suffix":"_dt0"},"match":{},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-openapi_ref01"}}],"index$":0}]}, 'Openapi')
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"openapi","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/openapi.json","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/openapi.json","q":{},"r":{},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"openapi.json"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"openapi","name__orig":"openapi","Name":"Openapi","name_":"openapi","name-":"openapi","NAME":"OPENAPI","index$":4}, {"active":true,"entity":"openapi","key$":"BasicOpenapiFlow","kind":"basic","name":"BasicOpenapiFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"openapi_ref01","srcdatavar":"openapi_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-openapi_ref01"}}],"index$":0}]}, 'Openapi', {"GET /api/v1/openapi.json":{"protocol":"http","operationId":"getOpenApiSpec","responses":{"200":{"description":"The OpenAPI 3.1 spec.","content":{"application/json":{"schema":{"type":"object"}}}}},"parameters":[],"securitySource":"unspecified"}})
     }
     const client = setup.client
     const struct = setup.struct

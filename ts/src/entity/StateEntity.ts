@@ -19,7 +19,6 @@ import type {
   StateListMatch,
 } from '../CollegeRoiTypes'
 
-// TODO: needs Entity superclass
 class StateEntity extends CollegeRoiEntityBase<State> {
 
   constructor(client: CollegeRoiSDK, entopts: any) {

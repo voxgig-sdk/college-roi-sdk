@@ -1,0 +1,45 @@
+# Entity: openapi
+
+main: kit: entity: openapi: {
+
+  alias: field: {}
+
+  name: "openapi"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/openapi.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/openapi.json"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "openapi.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

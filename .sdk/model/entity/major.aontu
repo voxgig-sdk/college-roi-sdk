@@ -1,0 +1,196 @@
+# Entity: major
+
+main: kit: entity: major: {
+
+  alias: field: {}
+
+  fields: {
+    ai_exposure: {
+      h: "Ai Exposure"
+      n: "ai_exposure"
+      r: false
+      sh: "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    cip_program_name: {
+      h: "Cip Program Name"
+      n: "cip_program_name"
+      r: false
+      sh: "CIP program-family name — subfields only."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    completion_adjusted_roi_usd: {
+      h: "Completion Adjusted Roi Usd"
+      n: "completion_adjusted_roi_usd"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$NUMBER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    dropout_roi_usd: {
+      h: "Dropout Roi Usd"
+      n: "dropout_roi_usd"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$NUMBER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    graduates: {
+      h: "Graduates"
+      n: "graduates"
+      r: false
+      t: "`$INTEGER`"
+    }
+    kind: {
+      h: "Kind"
+      n: "kind"
+      r: true
+      t: "`$STRING`"
+    }
+    mean_lifetime_roi_usd: {
+      h: "Mean Lifetime Roi Usd"
+      n: "mean_lifetime_roi_usd"
+      r: false
+      t: "`$NUMBER`"
+    }
+    median_breakeven_age: {
+      h: "Median Breakeven Age"
+      n: "median_breakeven_age"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    median_lifetime_roi_usd: {
+      h: "Median Lifetime Roi Usd"
+      n: "median_lifetime_roi_usd"
+      r: false
+      t: "`$NUMBER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    p25_roi_usd: {
+      h: "P25 Roi Usd"
+      n: "p25_roi_usd"
+      r: false
+      t: "`$NUMBER`"
+    }
+    p75_roi_usd: {
+      h: "P75 Roi Usd"
+      n: "p75_roi_usd"
+      r: false
+      t: "`$NUMBER`"
+    }
+    parent: {
+      h: "Parent"
+      n: "parent"
+      r: false
+      sh: "Parent category — subfields only."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    pct_never_breakeven: {
+      h: "Pct Never Breakeven"
+      n: "pct_never_breakeven"
+      r: false
+      sh: "Share of graduates who never break even, percent."
+      t: "`$NUMBER`"
+    }
+    programs: {
+      h: "Programs"
+      n: "programs"
+      r: false
+      t: "`$INTEGER`"
+    }
+    rank_by_worst_roi: {
+      h: "Rank By Worst Roi"
+      n: "rank_by_worst_roi"
+      r: true
+      sh: "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields)."
+      t: "`$INTEGER`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: true
+      t: "`$STRING`"
+    }
+    url: {
+      fo: "uri"
+      h: "Url"
+      n: "url"
+      r: true
+      sh: "The human-readable page for this major."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "major"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/majors.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/majors.json"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "majors.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,73 @@
+# Entity: best_value
+
+main: kit: entity: best_value: {
+
+  alias: field: {}
+
+  fields: {
+    colleges: {
+      h: "Colleges"
+      n: "colleges"
+      r: false
+      t: "`$ARRAY`"
+    }
+    page_url: {
+      fo: "uri"
+      h: "Page Url"
+      n: "page_url"
+      r: false
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      t: "`$STRING`"
+    }
+    state_name: {
+      h: "State Name"
+      n: "state_name"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "best_value"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/rankings/best-value.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/rankings/best-value.json"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "rankings"
+            }
+            {
+              lit: "best-value.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

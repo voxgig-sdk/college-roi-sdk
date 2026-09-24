@@ -1,0 +1,97 @@
+# Entity: state
+
+main: kit: entity: state: {
+
+  alias: field: {}
+
+  fields: {
+    city: {
+      h: "City"
+      n: "city"
+      r: false
+      t: "`$STRING`"
+    }
+    control: {
+      h: "Control"
+      n: "control"
+      r: false
+      t: "`$STRING`"
+    }
+    institution: {
+      h: "Institution"
+      n: "institution"
+      r: false
+      t: "`$STRING`"
+    }
+    npv_30yr_resident_usd: {
+      h: "Npv 30yr Resident Usd"
+      n: "npv_30yr_resident_usd"
+      r: false
+      t: "`$INTEGER`"
+    }
+    rank_in_state: {
+      h: "Rank In State"
+      n: "rank_in_state"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "state"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/rankings/best-value/{state}.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "state"
+                or: "state"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/rankings/best-value/{state}.json"
+          q: {
+            exist: [
+              "state"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "rankings"
+            }
+            {
+              lit: "best-value"
+            }
+            {
+              lit: "{state}.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
