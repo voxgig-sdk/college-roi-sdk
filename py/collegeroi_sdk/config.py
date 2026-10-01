@@ -178,7 +178,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.states`",
                 },
                 "args": {},
                 "select": {},
@@ -331,7 +331,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.colleges`",
                 },
                 "args": {},
                 "select": {},
@@ -687,7 +687,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.rankings`",
                 },
                 "args": {},
                 "select": {},
@@ -1106,7 +1106,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.colleges`",
                 },
                 "args": {
                   "params": [
@@ -1212,7 +1212,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.rankings`",
                 },
                 "args": {},
                 "select": {},
@@ -1312,7 +1312,7 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.rankings`",
                 },
                 "args": {},
                 "select": {},

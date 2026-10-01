@@ -61,7 +61,7 @@ main: kit: entity: best_value: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.states`"
           }
         }
       ]

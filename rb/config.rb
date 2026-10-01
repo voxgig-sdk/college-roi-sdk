@@ -161,7 +161,7 @@ module CollegeRoiConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.states`",
                   },
                   "args" => {},
                   "select" => {},
@@ -314,7 +314,7 @@ module CollegeRoiConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.colleges`",
                   },
                   "args" => {},
                   "select" => {},
@@ -670,7 +670,7 @@ module CollegeRoiConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.rankings`",
                   },
                   "args" => {},
                   "select" => {},
@@ -1089,7 +1089,7 @@ module CollegeRoiConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.colleges`",
                   },
                   "args" => {
                     "params" => [
@@ -1195,7 +1195,7 @@ module CollegeRoiConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.rankings`",
                   },
                   "args" => {},
                   "select" => {},
@@ -1295,7 +1295,7 @@ module CollegeRoiConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.rankings`",
                   },
                   "args" => {},
                   "select" => {},

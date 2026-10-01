@@ -97,7 +97,7 @@ main: kit: entity: worst_roi_major: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.rankings`"
           }
         }
       ]

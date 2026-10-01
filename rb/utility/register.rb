@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 CollegeRoiUtility.registrar = ->(u) {
   u.clean = CollegeRoiUtilities::Clean
+  u.clean_add = CollegeRoiUtilities::CleanAdd
+  u.clean_explain = CollegeRoiUtilities::CleanExplain
   u.done = CollegeRoiUtilities::Done
   u.make_error = CollegeRoiUtilities::MakeError
   u.feature_add = CollegeRoiUtilities::FeatureAdd

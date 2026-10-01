@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 CollegeRoiUtility::setRegistrar(function (CollegeRoiUtility $u): void {
     $u->clean = [CollegeRoiClean::class, 'call'];
+    $u->clean_add = [CollegeRoiClean::class, 'add'];
+    $u->clean_explain = [CollegeRoiDone::class, 'clean_explain'];
     $u->done = [CollegeRoiDone::class, 'call'];
     $u->make_error = [CollegeRoiMakeError::class, 'call'];
     $u->feature_add = [CollegeRoiFeatureAdd::class, 'call'];

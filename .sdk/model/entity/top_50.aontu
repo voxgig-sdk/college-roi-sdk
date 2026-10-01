@@ -87,7 +87,7 @@ main: kit: entity: top_50: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.rankings`"
           }
         }
       ]

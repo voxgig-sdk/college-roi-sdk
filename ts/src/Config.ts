@@ -212,7 +212,7 @@ class Config {
               "rename": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.states`"
               },
               "args": {},
               "select": {}
@@ -365,7 +365,7 @@ class Config {
               "rename": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.colleges`"
               },
               "args": {},
               "select": {}
@@ -721,7 +721,7 @@ class Config {
               "rename": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.rankings`"
               },
               "args": {},
               "select": {}
@@ -1140,7 +1140,7 @@ class Config {
               "rename": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.colleges`"
               },
               "args": {
                 "params": [
@@ -1246,7 +1246,7 @@ class Config {
               "rename": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.rankings`"
               },
               "args": {},
               "select": {}
@@ -1346,7 +1346,7 @@ class Config {
               "rename": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.rankings`"
               },
               "args": {},
               "select": {}

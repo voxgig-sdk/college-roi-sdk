@@ -85,7 +85,7 @@ main: kit: entity: state: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.colleges`"
           }
         }
       ]

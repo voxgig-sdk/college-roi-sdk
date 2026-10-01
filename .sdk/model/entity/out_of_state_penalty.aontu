@@ -84,7 +84,7 @@ main: kit: entity: out_of_state_penalty: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.rankings`"
           }
         }
       ]

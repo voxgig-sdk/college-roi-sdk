@@ -153,7 +153,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.states`",
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
@@ -306,7 +306,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.colleges`",
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
@@ -662,7 +662,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.rankings`",
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
@@ -1081,7 +1081,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.colleges`",
 								},
 								"args": map[string]any{
 									"params": []any{
@@ -1187,7 +1187,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.rankings`",
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
@@ -1287,7 +1287,7 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.rankings`",
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},

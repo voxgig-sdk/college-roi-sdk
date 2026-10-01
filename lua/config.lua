@@ -149,7 +149,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.states`",
                 },
                 ["args"] = {},
                 ["select"] = {},
@@ -302,7 +302,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.colleges`",
                 },
                 ["args"] = {},
                 ["select"] = {},
@@ -658,7 +658,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.rankings`",
                 },
                 ["args"] = {},
                 ["select"] = {},
@@ -1077,7 +1077,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.colleges`",
                 },
                 ["args"] = {
                   ["params"] = {
@@ -1183,7 +1183,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.rankings`",
                 },
                 ["args"] = {},
                 ["select"] = {},
@@ -1283,7 +1283,7 @@ local function make_config()
                 ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.rankings`",
                 },
                 ["args"] = {},
                 ["select"] = {},
