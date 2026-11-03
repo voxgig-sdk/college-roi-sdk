@@ -290,6 +290,10 @@ main: kit: entity: slug: {
               "slug"
             ]
           }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"
@@ -332,6 +336,10 @@ main: kit: entity: slug: {
             exist: [
               "slug"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

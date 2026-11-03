@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/college-roi-sdk/releases)), or
+GitHub release tag (`rb/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/college-roi-sdk/tags)), or
 from a clone:
 
 ```bash
@@ -43,10 +43,11 @@ client = CollegeRoiSDK.new
 
 ```ruby
 begin
-  # list returns an Array of BestValue records — iterate directly.
+  # list returns an Array of BestValue entities, one per record; data_get reads the record.
   bestvalues = client.BestValue.list
   bestvalues.each do |item|
-    puts "#{item["colleges"]}"
+    record = item.data_get
+    puts "#{record["colleges"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -128,10 +129,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = CollegeRoiSDK.test
 
-# Entity ops return the ENTITY (raises on error);
-# call data_get for the mock record.
-top50 = client.Top50.list()
-puts top50
+# list returns an Array of Top50 entities, one per mock record (raises on
+# error); data_get reads each record.
+top50s = client.Top50.list()
+top50s.each { |item| puts item.data_get }
 ```
 
 ### Use a custom fetch function
@@ -224,8 +225,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria, and return it. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all), one per record. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -235,9 +236,10 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the result data directly. On failure they
-raise a `CollegeRoiError` (a `StandardError` subclass), so wrap
-calls in `begin`/`rescue` where you need to handle errors.
+Entity operations return the entity, and `list` an `Array` of entities, one
+per record; an entity's `data_get` reads its record. On failure they raise a
+`CollegeRoiError` (a `StandardError` subclass), so wrap calls in
+`begin`/`rescue` where you need to handle errors.
 
 The `direct` escape hatch is the exception: it never raises and instead
 returns a result `Hash` with these keys:
@@ -467,8 +469,9 @@ Create an instance: `best_value = client.BestValue`
 #### Example: List
 
 ```ruby
-# list returns an Array of BestValue records (raises on error).
+# list returns an Array of BestValue entities, one per record (raises on error).
 best_values = client.BestValue.list
+best_values.each { |item| puts item.data_get }
 ```
 
 
@@ -505,8 +508,9 @@ Create an instance: `college = client.College`
 #### Example: List
 
 ```ruby
-# list returns an Array of College records (raises on error).
+# list returns an Array of College entities, one per record (raises on error).
 colleges = client.College.list
+colleges.each { |item| puts item.data_get }
 ```
 
 
@@ -564,8 +568,9 @@ Create an instance: `major = client.Major`
 #### Example: List
 
 ```ruby
-# list returns an Array of Major records (raises on error).
+# list returns an Array of Major entities, one per record (raises on error).
 majors = client.Major.list
+majors.each { |item| puts item.data_get }
 ```
 
 
@@ -613,8 +618,9 @@ Create an instance: `out_of_state_penalty = client.OutOfStatePenalty`
 #### Example: List
 
 ```ruby
-# list returns an Array of OutOfStatePenalty records (raises on error).
+# list returns an Array of OutOfStatePenalty entities, one per record (raises on error).
 out_of_state_penaltys = client.OutOfStatePenalty.list
+out_of_state_penaltys.each { |item| puts item.data_get }
 ```
 
 
@@ -695,8 +701,9 @@ Create an instance: `state = client.State`
 #### Example: List
 
 ```ruby
-# list returns an Array of State records (raises on error).
-states = client.State.list
+# list returns an Array of State entities, one per record (raises on error).
+states = client.State.list({ "state" => "example" })
+states.each { |item| puts item.data_get }
 ```
 
 
@@ -726,8 +733,9 @@ Create an instance: `top_50 = client.Top50`
 #### Example: List
 
 ```ruby
-# list returns an Array of Top50 records (raises on error).
+# list returns an Array of Top50 entities, one per record (raises on error).
 top_50s = client.Top50.list
+top_50s.each { |item| puts item.data_get }
 ```
 
 
@@ -758,8 +766,9 @@ Create an instance: `worst_roi_major = client.WorstRoiMajor`
 #### Example: List
 
 ```ruby
-# list returns an Array of WorstRoiMajor records (raises on error).
+# list returns an Array of WorstRoiMajor entities, one per record (raises on error).
 worst_roi_majors = client.WorstRoiMajor.list
+worst_roi_majors.each { |item| puts item.data_get }
 ```
 
 ## Features

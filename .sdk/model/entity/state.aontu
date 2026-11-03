@@ -66,6 +66,10 @@ main: kit: entity: state: {
               "state"
             ]
           }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"

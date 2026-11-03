@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { CollegeRoiSDK, BaseFeature, stdutil } from '../../..'
+import { CollegeRoiSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('OutOfStatePenaltyEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('out_of_state_penalty hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of CollegeRoiSDK.test(offline).OutOfStatePenalty().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of CollegeRoiSDK.test(offline).OutOfStatePenalty()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = CollegeRoiSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.OutOfStatePenalty().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of CollegeRoiSDK.test().OutOfStatePenalty().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new CollegeRoiSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.OutOfStatePenalty().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.OutOfStatePenalty().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = CollegeRoiSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.OutOfStatePenalty().list({"institution":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COLLEGE_ROI_TEST_LIVE
@@ -51,7 +109,7 @@ describe('OutOfStatePenaltyEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"institution":{"a":true,"h":"Institution","n":"institution","r":false,"t":"`$STRING`","key$":"institution","index$":0},"npv_nonresident_usd":{"a":true,"h":"Npv Nonresident Usd","n":"npv_nonresident_usd","r":false,"t":"`$INTEGER`","key$":"npv_nonresident_usd","index$":1},"npv_resident_usd":{"a":true,"h":"Npv Resident Usd","n":"npv_resident_usd","r":false,"t":"`$INTEGER`","key$":"npv_resident_usd","index$":2},"oos_penalty_30yr_npv_usd":{"a":true,"h":"Oos Penalty 30yr Npv Usd","n":"oos_penalty_30yr_npv_usd","r":false,"t":"`$INTEGER`","key$":"oos_penalty_30yr_npv_usd","index$":3},"rank":{"a":true,"h":"Rank","n":"rank","r":false,"t":"`$INTEGER`","key$":"rank","index$":4},"state":{"a":true,"h":"State","n":"state","r":false,"t":"`$STRING`","key$":"state","index$":5},"tuition_in_state_usd":{"a":true,"h":"Tuition In State Usd","n":"tuition_in_state_usd","r":false,"t":"`$INTEGER`","key$":"tuition_in_state_usd","index$":6},"tuition_out_of_state_usd":{"a":true,"h":"Tuition Out Of State Usd","n":"tuition_out_of_state_usd","r":false,"t":"`$INTEGER`","key$":"tuition_out_of_state_usd","index$":7}},"name":"out_of_state_penalty","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/rankings/out-of-state-penalty.json","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/rankings/out-of-state-penalty.json","q":{},"r":{},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"rankings"},{"lit":"out-of-state-penalty.json"}],"t":{"req":"`reqdata`","res":"`body.rankings`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"out_of_state_penalty","name__orig":"out_of_state_penalty","Name":"OutOfStatePenalty","name_":"out_of_state_penalty","name-":"out-of-state-penalty","NAME":"OUT_OF_STATE_PENALTY","index$":5}, {"active":true,"entity":"out_of_state_penalty","key$":"BasicOutOfStatePenaltyFlow","kind":"basic","name":"BasicOutOfStatePenaltyFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"out_of_state_penalty_ref01"}}],"index$":0}]}, 'OutOfStatePenalty', {"GET /api/v1/rankings/out-of-state-penalty.json":{"protocol":"http","parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"institution":{"a":true,"h":"Institution","n":"institution","r":false,"t":"`$STRING`","key$":"institution","index$":0},"npv_nonresident_usd":{"a":true,"h":"Npv Nonresident Usd","n":"npv_nonresident_usd","r":false,"t":"`$INTEGER`","key$":"npv_nonresident_usd","index$":1},"npv_resident_usd":{"a":true,"h":"Npv Resident Usd","n":"npv_resident_usd","r":false,"t":"`$INTEGER`","key$":"npv_resident_usd","index$":2},"oos_penalty_30yr_npv_usd":{"a":true,"h":"Oos Penalty 30yr Npv Usd","n":"oos_penalty_30yr_npv_usd","r":false,"t":"`$INTEGER`","key$":"oos_penalty_30yr_npv_usd","index$":3},"rank":{"a":true,"h":"Rank","n":"rank","r":false,"t":"`$INTEGER`","key$":"rank","index$":4},"state":{"a":true,"h":"State","n":"state","r":false,"t":"`$STRING`","key$":"state","index$":5},"tuition_in_state_usd":{"a":true,"h":"Tuition In State Usd","n":"tuition_in_state_usd","r":false,"t":"`$INTEGER`","key$":"tuition_in_state_usd","index$":6},"tuition_out_of_state_usd":{"a":true,"h":"Tuition Out Of State Usd","n":"tuition_out_of_state_usd","r":false,"t":"`$INTEGER`","key$":"tuition_out_of_state_usd","index$":7}},"name":"out_of_state_penalty","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/rankings/out-of-state-penalty.json","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/rankings/out-of-state-penalty.json","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"rankings"},{"lit":"out-of-state-penalty.json"}],"t":{"req":"`reqdata`","res":"`body.rankings`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"out_of_state_penalty","name__orig":"out_of_state_penalty","Name":"OutOfStatePenalty","name_":"out_of_state_penalty","name-":"out-of-state-penalty","NAME":"OUT_OF_STATE_PENALTY","index$":5}, {"active":true,"entity":"out_of_state_penalty","key$":"BasicOutOfStatePenaltyFlow","kind":"basic","name":"BasicOutOfStatePenaltyFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"out_of_state_penalty_ref01"}}],"index$":0}]}, 'OutOfStatePenalty', {"GET /api/v1/rankings/out-of-state-penalty.json":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +130,12 @@ describe('OutOfStatePenaltyEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

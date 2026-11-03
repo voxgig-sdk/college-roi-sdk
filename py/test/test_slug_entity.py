@@ -9,9 +9,19 @@ import pytest
 from collegeroi_sdk.utility.voxgig_struct import voxgig_struct as vs
 from collegeroi_sdk import CollegeRoiSDK
 from collegeroi_sdk.core import helpers
+from collegeroi_sdk.config import shared_config
+from collegeroi_sdk.feature.base_feature import CollegeRoiBaseFeature
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
+
+
+
+# main.kit.test.live.strict is true (the default is true): a live
+# request that fails, or a live test missing an input it needs,
+# fails the test.
+# An account with no record for a test to read skips it either way.
+LIVE_STRICT = True
 
 
 class TestSlugEntity:
@@ -20,6 +30,15 @@ class TestSlugEntity:
         testsdk = CollegeRoiSDK.test(None, None)
         ent = testsdk.Slug(None)
         assert ent is not None
+
+    def test_should_refuse_an_invalid_request(self):
+        if "validate" not in (shared_config().get("feature") or {}):
+            pytest.skip("feature not present in this SDK: validate")
+        client = CollegeRoiSDK.test(
+            None, {"feature": {"validate": {"active": True}}})
+        with pytest.raises(Exception) as err:
+            client.Slug(None).load({"slug": 1}, None)
+        assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
         setup = _slug_basic_setup(None)
@@ -32,11 +51,10 @@ class TestSlugEntity:
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
-        # The basic flow consumes synthetic IDs from the fixture. In live mode
-        # without an *_ENTID env override, those IDs hit the live API and 4xx.
-        if setup.get("synthetic_only"):
-            pytest.skip("live entity test uses synthetic IDs from fixture — "
-                        "set COLLEGE_ROI_TEST_SLUG_ENTID JSON to run live")
+        if setup["live"]:
+            for _live_key in ["slug01"]:
+                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
+                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COLLEGE_ROI_TEST_SLUG_ENTID")
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -49,6 +67,10 @@ class TestSlugEntity:
         # LOAD
         slug_ref01_ent = client.Slug(None)
         slug_ref01_match_dt0 = {}
+        slug_ref01_match_dt0["slug"] = setup["idmap"].get("slug") or setup["idmap"].get("slug01")
+        if not setup["live"]:
+            if isinstance(slug_ref01_data.get("slug"), (str, int, float)):
+                slug_ref01_match_dt0["slug"] = slug_ref01_data["slug"]
         slug_ref01_data_dt0_loaded = slug_ref01_ent.load(slug_ref01_match_dt0, None)
         assert slug_ref01_data_dt0_loaded is not None
 
@@ -58,7 +80,7 @@ def _slug_basic_setup(extra):
     runner.load_env_local()
 
     entity_data_file = os.path.join(_TEST_DIR, "../../.sdk/test/entity/slug/SlugTestData.json")
-    with open(entity_data_file, "r") as f:
+    with open(entity_data_file, "r", encoding="utf-8") as f:
         entity_data_source = f.read()
 
     entity_data = json.loads(entity_data_source)
@@ -79,9 +101,8 @@ def _slug_basic_setup(extra):
         }
     )
 
-    # Detect ENTID env override before envOverride consumes it. When live
-    # mode is on without a real override, the basic test runs against synthetic
-    # IDs from the fixture and 4xx's. We surface this so the test can skip.
+    # Whether *_ENTID supplied the idmap, read before env_override consumes
+    # it: without it, the ids a live flow binds are the fixture's synthetic ones.
     _entid_env_raw = os.environ.get(
         "COLLEGE_ROI_TEST_SLUG_ENTID")
     _idmap_overridden = _entid_env_raw is not None and _entid_env_raw.strip().startswith("{")

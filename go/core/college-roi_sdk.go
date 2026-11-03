@@ -146,6 +146,14 @@ func (sdk *CollegeRoiSDK) Prepare(fetchargs map[string]any) (map[string]any, err
 	if method == "" {
 		method = "GET"
 	}
+	method = strings.ToUpper(method)
+
+	allowMethodVal := vs.GetPath(options, []any{"allow", "method"})
+	if !Allowed(allowMethodVal, method) {
+		allowMethod, _ := allowMethodVal.(string)
+		return nil, ctx.MakeError("spec_method_allow",
+			"Method \""+method+"\" not allowed by SDK option allow.method value: \""+allowMethod+"\"")
+	}
 
 	params := ToMapAny(vs.GetProp(fetchargs, "params"))
 	if params == nil {
@@ -205,8 +213,7 @@ func (sdk *CollegeRoiSDK) Direct(fetchargs map[string]any) (map[string]any, erro
 
 // Is this raw-access op permitted by the SDK's allow.op option?
 func (sdk *CollegeRoiSDK) opAllowed(op string) bool {
-	allowOp, _ := vs.GetPath(sdk.options, []any{"allow", "op"}).(string)
-	return strings.Contains(allowOp, op)
+	return Allowed(vs.GetPath(sdk.options, []any{"allow", "op"}), op)
 }
 
 func (sdk *CollegeRoiSDK) opDenied(op string) map[string]any {
@@ -278,20 +285,34 @@ func (sdk *CollegeRoiSDK) rawRequest(fetchargs map[string]any) (map[string]any, 
 		noBody := status == 204 || status == 304 || contentLength == "0"
 
 		var jsonData any
+		var bodyErr error
 		if !noBody {
 			if jf := vs.GetProp(fm, "json"); jf != nil {
 				if f, ok := jf.(func() any); ok {
 					jsonData = f()
 				}
 			}
+			if unreadable, _ := vs.GetProp(fm, "unreadable").(bool); unreadable {
+				var failed error
+				if status < 200 || status >= 300 {
+					failed = ctx.MakeError("request_status",
+						fmt.Sprintf("request: %d: %v", status, vs.GetProp(fm, "statusText")))
+				}
+				bodyErr = UnreadableBody(ctx, status, headers, vs.GetProp(fm, "body"),
+					fetchdef["headers"], failed)
+			}
 		}
 
-		return map[string]any{
-			"ok":      status >= 200 && status < 300,
+		out := map[string]any{
+			"ok":      bodyErr == nil && status >= 200 && status < 300,
 			"status":  status,
 			"headers": headers,
 			"data":    jsonData,
-		}, nil
+		}
+		if bodyErr != nil {
+			out["err"] = sdk.cleanErr(ctx, bodyErr)
+		}
+		return out, nil
 	}
 
 	return map[string]any{"ok": false, "err": ctx.MakeError("direct_invalid", "invalid response type")}, nil
@@ -354,7 +375,7 @@ func (sdk *CollegeRoiSDK) Graphql(
 // BestValue returns a BestValue entity bound to this client.
 // Idiomatic usage: client.BestValue(nil).List(nil, nil) or
 // client.BestValue(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CollegeRoiSDK) BestValue(data map[string]any) CollegeRoiEntity {
+func (sdk *CollegeRoiSDK) BestValue(data map[string]any) CollegeRoiEntityBase {
 	return NewBestValueEntityFunc(sdk, data)
 }
 
@@ -362,7 +383,7 @@ func (sdk *CollegeRoiSDK) BestValue(data map[string]any) CollegeRoiEntity {
 // College returns a College entity bound to this client.
 // Idiomatic usage: client.College(nil).List(nil, nil) or
 // client.College(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CollegeRoiSDK) College(data map[string]any) CollegeRoiEntity {
+func (sdk *CollegeRoiSDK) College(data map[string]any) CollegeRoiEntityBase {
 	return NewCollegeEntityFunc(sdk, data)
 }
 
@@ -370,7 +391,7 @@ func (sdk *CollegeRoiSDK) College(data map[string]any) CollegeRoiEntity {
 // Index returns a Index entity bound to this client.
 // Idiomatic usage: client.Index(nil).List(nil, nil) or
 // client.Index(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CollegeRoiSDK) Index(data map[string]any) CollegeRoiEntity {
+func (sdk *CollegeRoiSDK) Index(data map[string]any) CollegeRoiEntityBase {
 	return NewIndexEntityFunc(sdk, data)
 }
 
@@ -378,7 +399,7 @@ func (sdk *CollegeRoiSDK) Index(data map[string]any) CollegeRoiEntity {
 // Major returns a Major entity bound to this client.
 // Idiomatic usage: client.Major(nil).List(nil, nil) or
 // client.Major(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CollegeRoiSDK) Major(data map[string]any) CollegeRoiEntity {
+func (sdk *CollegeRoiSDK) Major(data map[string]any) CollegeRoiEntityBase {
 	return NewMajorEntityFunc(sdk, data)
 }
 
@@ -386,7 +407,7 @@ func (sdk *CollegeRoiSDK) Major(data map[string]any) CollegeRoiEntity {
 // Openapi returns a Openapi entity bound to this client.
 // Idiomatic usage: client.Openapi(nil).List(nil, nil) or
 // client.Openapi(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CollegeRoiSDK) Openapi(data map[string]any) CollegeRoiEntity {
+func (sdk *CollegeRoiSDK) Openapi(data map[string]any) CollegeRoiEntityBase {
 	return NewOpenapiEntityFunc(sdk, data)
 }
 
@@ -394,7 +415,7 @@ func (sdk *CollegeRoiSDK) Openapi(data map[string]any) CollegeRoiEntity {
 // OutOfStatePenalty returns a OutOfStatePenalty entity bound to this client.
 // Idiomatic usage: client.OutOfStatePenalty(nil).List(nil, nil) or
 // client.OutOfStatePenalty(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CollegeRoiSDK) OutOfStatePenalty(data map[string]any) CollegeRoiEntity {
+func (sdk *CollegeRoiSDK) OutOfStatePenalty(data map[string]any) CollegeRoiEntityBase {
 	return NewOutOfStatePenaltyEntityFunc(sdk, data)
 }
 
@@ -402,7 +423,7 @@ func (sdk *CollegeRoiSDK) OutOfStatePenalty(data map[string]any) CollegeRoiEntit
 // Slug returns a Slug entity bound to this client.
 // Idiomatic usage: client.Slug(nil).List(nil, nil) or
 // client.Slug(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CollegeRoiSDK) Slug(data map[string]any) CollegeRoiEntity {
+func (sdk *CollegeRoiSDK) Slug(data map[string]any) CollegeRoiEntityBase {
 	return NewSlugEntityFunc(sdk, data)
 }
 
@@ -410,7 +431,7 @@ func (sdk *CollegeRoiSDK) Slug(data map[string]any) CollegeRoiEntity {
 // State returns a State entity bound to this client.
 // Idiomatic usage: client.State(nil).List(nil, nil) or
 // client.State(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CollegeRoiSDK) State(data map[string]any) CollegeRoiEntity {
+func (sdk *CollegeRoiSDK) State(data map[string]any) CollegeRoiEntityBase {
 	return NewStateEntityFunc(sdk, data)
 }
 
@@ -418,7 +439,7 @@ func (sdk *CollegeRoiSDK) State(data map[string]any) CollegeRoiEntity {
 // Top50 returns a Top50 entity bound to this client.
 // Idiomatic usage: client.Top50(nil).List(nil, nil) or
 // client.Top50(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CollegeRoiSDK) Top50(data map[string]any) CollegeRoiEntity {
+func (sdk *CollegeRoiSDK) Top50(data map[string]any) CollegeRoiEntityBase {
 	return NewTop50EntityFunc(sdk, data)
 }
 
@@ -426,7 +447,7 @@ func (sdk *CollegeRoiSDK) Top50(data map[string]any) CollegeRoiEntity {
 // WorstRoiMajor returns a WorstRoiMajor entity bound to this client.
 // Idiomatic usage: client.WorstRoiMajor(nil).List(nil, nil) or
 // client.WorstRoiMajor(nil).Load(map[string]any{"id": ...}, nil).
-func (sdk *CollegeRoiSDK) WorstRoiMajor(data map[string]any) CollegeRoiEntity {
+func (sdk *CollegeRoiSDK) WorstRoiMajor(data map[string]any) CollegeRoiEntityBase {
 	return NewWorstRoiMajorEntityFunc(sdk, data)
 }
 

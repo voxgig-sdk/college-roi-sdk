@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.College();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('college hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.CollegeRoiSDK.test(offline).College().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.CollegeRoiSDK.test(offline).College()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.CollegeRoiSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.College().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.CollegeRoiSDK.test().College().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.CollegeRoiSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.College().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.College().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.CollegeRoiSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.College().list({ "breakeven_age": "x" }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.COLLEGE_ROI_TEST_LIVE;
         for (const op of ['list']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "breakeven_age": { "a": true, "h": "Breakeven Age", "n": "breakeven_age", "r": false, "t": ["`$ONE`", ["`$INTEGER`", "`$NULL`"]], "key$": "breakeven_age", "index$": 0 }, "city": { "a": true, "h": "City", "n": "city", "r": true, "t": "`$STRING`", "key$": "city", "index$": 1 }, "control": { "a": true, "h": "Control", "n": "control", "r": true, "t": "`$STRING`", "key$": "control", "index$": 2 }, "freopp_program_coverage": { "a": true, "h": "Freopp Program Coverage", "n": "freopp_program_coverage", "r": false, "sh": "FREOPP-reported programs rolled into the earnings figure.", "t": "`$INTEGER`", "key$": "freopp_program_coverage", "index$": 3 }, "median_earnings_10yr_usd": { "a": true, "h": "Median Earnings 10yr Usd", "n": "median_earnings_10yr_usd", "r": false, "sh": "FREOPP cohort-weighted earnings ten years after entry.", "t": "`$INTEGER`", "key$": "median_earnings_10yr_usd", "index$": 4 }, "name": { "a": true, "h": "Name", "n": "name", "r": true, "t": "`$STRING`", "key$": "name", "index$": 5 }, "npv_30yr_nonresident_usd": { "a": true, "h": "Npv 30yr Nonresident Usd", "n": "npv_30yr_nonresident_usd", "r": false, "sh": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.", "t": ["`$ONE`", ["`$INTEGER`", "`$NULL`"]], "key$": "npv_30yr_nonresident_usd", "index$": 6 }, "npv_30yr_resident_usd": { "a": true, "h": "Npv 30yr Resident Usd", "n": "npv_30yr_resident_usd", "r": true, "sh": "30-year projected net value at resident pricing.", "t": "`$INTEGER`", "key$": "npv_30yr_resident_usd", "index$": 7 }, "slug": { "a": true, "h": "Slug", "n": "slug", "r": true, "t": "`$STRING`", "key$": "slug", "index$": 8 }, "state": { "a": true, "h": "State", "n": "state", "r": true, "sh": "USPS 2-letter state code.", "t": "`$STRING`", "key$": "state", "index$": 9 }, "state_name": { "a": true, "h": "State Name", "n": "state_name", "r": false, "t": "`$STRING`", "key$": "state_name", "index$": 10 }, "total_cost_of_attendance_nonresident_usd": { "a": true, "h": "Total Cost Of Attendance Nonresident Usd", "n": "total_cost_of_attendance_nonresident_usd", "r": false, "t": ["`$ONE`", ["`$INTEGER`", "`$NULL`"]], "key$": "total_cost_of_attendance_nonresident_usd", "index$": 11 }, "total_cost_of_attendance_usd": { "a": true, "h": "Total Cost Of Attendance Usd", "n": "total_cost_of_attendance_usd", "r": false, "t": "`$INTEGER`", "key$": "total_cost_of_attendance_usd", "index$": 12 }, "unitid": { "a": true, "h": "Unitid", "n": "unitid", "r": true, "sh": "IPEDS UnitID — the universal join key.", "t": "`$INTEGER`", "key$": "unitid", "index$": 13 }, "url": { "a": true, "fo": "uri", "h": "Url", "n": "url", "r": true, "sh": "The human-readable page for this school.", "t": "`$STRING`", "key$": "url", "index$": 14 } }, "name": "college", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /api/v1/colleges.json", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/api/v1/colleges.json", "q": {}, "r": {}, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "colleges.json" }], "t": { "req": "`reqdata`", "res": "`body.colleges`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "college", "name__orig": "college", "Name": "College", "name_": "college", "name-": "college", "NAME": "COLLEGE", "index$": 1 }, { "active": true, "entity": "college", "key$": "BasicCollegeFlow", "kind": "basic", "name": "BasicCollegeFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "college_ref01" } }], "index$": 0 }] }, 'College', { "GET /api/v1/colleges.json": { "protocol": "http", "parameters": [] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "breakeven_age": { "a": true, "h": "Breakeven Age", "n": "breakeven_age", "r": false, "t": ["`$ONE`", ["`$INTEGER`", "`$NULL`"]], "key$": "breakeven_age", "index$": 0 }, "city": { "a": true, "h": "City", "n": "city", "r": true, "t": "`$STRING`", "key$": "city", "index$": 1 }, "control": { "a": true, "h": "Control", "n": "control", "r": true, "t": "`$STRING`", "key$": "control", "index$": 2 }, "freopp_program_coverage": { "a": true, "h": "Freopp Program Coverage", "n": "freopp_program_coverage", "r": false, "sh": "FREOPP-reported programs rolled into the earnings figure.", "t": "`$INTEGER`", "key$": "freopp_program_coverage", "index$": 3 }, "median_earnings_10yr_usd": { "a": true, "h": "Median Earnings 10yr Usd", "n": "median_earnings_10yr_usd", "r": false, "sh": "FREOPP cohort-weighted earnings ten years after entry.", "t": "`$INTEGER`", "key$": "median_earnings_10yr_usd", "index$": 4 }, "name": { "a": true, "h": "Name", "n": "name", "r": true, "t": "`$STRING`", "key$": "name", "index$": 5 }, "npv_30yr_nonresident_usd": { "a": true, "h": "Npv 30yr Nonresident Usd", "n": "npv_30yr_nonresident_usd", "r": false, "sh": "Non-resident 30-year NPV — public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.", "t": ["`$ONE`", ["`$INTEGER`", "`$NULL`"]], "key$": "npv_30yr_nonresident_usd", "index$": 6 }, "npv_30yr_resident_usd": { "a": true, "h": "Npv 30yr Resident Usd", "n": "npv_30yr_resident_usd", "r": true, "sh": "30-year projected net value at resident pricing.", "t": "`$INTEGER`", "key$": "npv_30yr_resident_usd", "index$": 7 }, "slug": { "a": true, "h": "Slug", "n": "slug", "r": true, "t": "`$STRING`", "key$": "slug", "index$": 8 }, "state": { "a": true, "h": "State", "n": "state", "r": true, "sh": "USPS 2-letter state code.", "t": "`$STRING`", "key$": "state", "index$": 9 }, "state_name": { "a": true, "h": "State Name", "n": "state_name", "r": false, "t": "`$STRING`", "key$": "state_name", "index$": 10 }, "total_cost_of_attendance_nonresident_usd": { "a": true, "h": "Total Cost Of Attendance Nonresident Usd", "n": "total_cost_of_attendance_nonresident_usd", "r": false, "t": ["`$ONE`", ["`$INTEGER`", "`$NULL`"]], "key$": "total_cost_of_attendance_nonresident_usd", "index$": 11 }, "total_cost_of_attendance_usd": { "a": true, "h": "Total Cost Of Attendance Usd", "n": "total_cost_of_attendance_usd", "r": false, "t": "`$INTEGER`", "key$": "total_cost_of_attendance_usd", "index$": 12 }, "unitid": { "a": true, "h": "Unitid", "n": "unitid", "r": true, "sh": "IPEDS UnitID — the universal join key.", "t": "`$INTEGER`", "key$": "unitid", "index$": 13 }, "url": { "a": true, "fo": "uri", "h": "Url", "n": "url", "r": true, "sh": "The human-readable page for this school.", "t": "`$STRING`", "key$": "url", "index$": 14 } }, "name": "college", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /api/v1/colleges.json", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/api/v1/colleges.json", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "colleges.json" }], "t": { "req": "`reqdata`", "res": "`body.colleges`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "college", "name__orig": "college", "Name": "College", "name_": "college", "name-": "college", "NAME": "COLLEGE", "index$": 1 }, { "active": true, "entity": "college", "key$": "BasicCollegeFlow", "kind": "basic", "name": "BasicCollegeFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "college_ref01" } }], "index$": 0 }] }, 'College', { "GET /api/v1/colleges.json": { "protocol": "http", "parameters": [] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -75,6 +122,11 @@ const utility_1 = require("../../utility");
         const college_ref01_list = (await college_ref01_ent.list(college_ref01_match)).map((e) => e.data());
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

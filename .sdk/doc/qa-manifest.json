@@ -3,5 +3,32 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "30-year projected net value at resident pricing. Positive by gate.",
+      "All 19 categories with median/mean ROI, never-break-even share, break-even age. Per-major detail at /api/v1/majors/&#123;slug&#125;.json",
+      "All 50 states + DC. NPV-positive rows only",
+      "CIP program-family name, subfields only.",
+      "Every gated college",
+      "Every major with statistics and page links",
+      "FREOPP cohort-weighted earnings ten years after entry.",
+      "FREOPP-reported programs rolled into the earnings figure.",
+      "Non-resident 30-year NPV, public schools with a real out-of-state premium only, and only when ALSO positive; null otherwise by design.",
+      "Parent category, subfields only.",
+      "Provenance block carried by every payload. `generated` is the build-time page-review stamp (static files); `data_vintage` names the upstream survey years.",
+      "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).",
+      "Share of graduates who never break even, percent.",
+      "Static, read-only JSON: 30-year NPV for U.S. colleges (positive-NPV envelope), lifetime ROI for every bachelor&#39;s major category and subfield, and the standing rankings. No auth, no rate limit beyond CDN sanity. Free to use with attribution, cite LE TEEN, le-teen.com (and FREOPP/IPEDS/BEA as the upstream sources). Dataset DOI: https://doi.org/10.5281/zenodo.21351602. Methodology: https://le-teen.com/methodology.",
+      "The API root document",
+      "The OpenAPI 3.1 spec",
+      "The college with its meta block.",
+      "The full ranking. Every row NPV-positive both ways",
+      "The major with its meta block",
+      "Top 15 for the state, NPV-positive rows only",
+      "Top 50, worst-first. Same rows and order as the full ranking",
+      "USPS 2-letter state code.",
+      "le-teen-derived AI applicability (exposure), how much of the field’s occupations AI is already used for. NOT displacement. Category rows only; null for subfields and dropped categories."
+    ]
+  }
 }

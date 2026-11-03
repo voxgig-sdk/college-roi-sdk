@@ -171,6 +171,10 @@ main: kit: entity: major: {
           }
           m: "GET"
           o: "/api/v1/majors.json"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"

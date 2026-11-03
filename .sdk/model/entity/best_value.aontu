@@ -45,6 +45,10 @@ main: kit: entity: best_value: {
           }
           m: "GET"
           o: "/api/v1/rankings/best-value.json"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"

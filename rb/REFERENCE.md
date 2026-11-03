@@ -138,10 +138,11 @@ best_value = client.BestValue
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.BestValue.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -204,10 +205,11 @@ college = client.College
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.College.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -250,7 +252,7 @@ index = client.Index
 
 #### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
 result = client.Index.load()
@@ -319,10 +321,11 @@ major = client.Major
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Major.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -365,7 +368,7 @@ openapi = client.Openapi
 
 #### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
 result = client.Openapi.load()
@@ -424,10 +427,11 @@ out_of_state_penalty = client.OutOfStatePenalty
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.OutOfStatePenalty.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -506,7 +510,7 @@ slug = client.Slug
 
 #### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
 result = client.Slug.load({ "slug" => "slug" })
@@ -562,10 +566,11 @@ state = client.State
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
-results = client.State.list
+results = client.State.list({ "state" => "example" })
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -621,10 +626,11 @@ top_50 = client.Top50
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Top50.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -681,10 +687,11 @@ worst_roi_major = client.WorstRoiMajor
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.WorstRoiMajor.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -874,6 +881,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

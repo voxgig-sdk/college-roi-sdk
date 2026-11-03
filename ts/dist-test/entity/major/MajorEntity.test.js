@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Major();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('major hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.CollegeRoiSDK.test(offline).Major().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.CollegeRoiSDK.test(offline).Major()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.CollegeRoiSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.Major().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.CollegeRoiSDK.test().Major().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.CollegeRoiSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.Major().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.Major().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.CollegeRoiSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Major().list({ "cip_program_name": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.COLLEGE_ROI_TEST_LIVE;
         for (const op of ['list']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "ai_exposure": { "a": true, "h": "Ai Exposure", "n": "ai_exposure", "r": false, "sh": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.", "t": ["`$ONE`", ["`$OBJECT`", "`$NULL`"]], "key$": "ai_exposure", "index$": 0 }, "cip_program_name": { "a": true, "h": "Cip Program Name", "n": "cip_program_name", "r": false, "sh": "CIP program-family name — subfields only.", "t": ["`$ONE`", ["`$STRING`", "`$NULL`"]], "key$": "cip_program_name", "index$": 1 }, "completion_adjusted_roi_usd": { "a": true, "h": "Completion Adjusted Roi Usd", "n": "completion_adjusted_roi_usd", "r": false, "t": ["`$ONE`", ["`$NUMBER`", "`$NULL`"]], "key$": "completion_adjusted_roi_usd", "index$": 2 }, "dropout_roi_usd": { "a": true, "h": "Dropout Roi Usd", "n": "dropout_roi_usd", "r": false, "t": ["`$ONE`", ["`$NUMBER`", "`$NULL`"]], "key$": "dropout_roi_usd", "index$": 3 }, "graduates": { "a": true, "h": "Graduates", "n": "graduates", "r": false, "t": "`$INTEGER`", "key$": "graduates", "index$": 4 }, "kind": { "a": true, "h": "Kind", "n": "kind", "r": true, "t": "`$STRING`", "key$": "kind", "index$": 5 }, "mean_lifetime_roi_usd": { "a": true, "h": "Mean Lifetime Roi Usd", "n": "mean_lifetime_roi_usd", "r": false, "t": "`$NUMBER`", "key$": "mean_lifetime_roi_usd", "index$": 6 }, "median_breakeven_age": { "a": true, "h": "Median Breakeven Age", "n": "median_breakeven_age", "r": false, "t": ["`$ONE`", ["`$INTEGER`", "`$NULL`"]], "key$": "median_breakeven_age", "index$": 7 }, "median_lifetime_roi_usd": { "a": true, "h": "Median Lifetime Roi Usd", "n": "median_lifetime_roi_usd", "r": false, "t": "`$NUMBER`", "key$": "median_lifetime_roi_usd", "index$": 8 }, "name": { "a": true, "h": "Name", "n": "name", "r": true, "t": "`$STRING`", "key$": "name", "index$": 9 }, "p25_roi_usd": { "a": true, "h": "P25 Roi Usd", "n": "p25_roi_usd", "r": false, "t": "`$NUMBER`", "key$": "p25_roi_usd", "index$": 10 }, "p75_roi_usd": { "a": true, "h": "P75 Roi Usd", "n": "p75_roi_usd", "r": false, "t": "`$NUMBER`", "key$": "p75_roi_usd", "index$": 11 }, "parent": { "a": true, "h": "Parent", "n": "parent", "r": false, "sh": "Parent category — subfields only.", "t": ["`$ONE`", ["`$OBJECT`", "`$NULL`"]], "key$": "parent", "index$": 12 }, "pct_never_breakeven": { "a": true, "h": "Pct Never Breakeven", "n": "pct_never_breakeven", "r": false, "sh": "Share of graduates who never break even, percent.", "t": "`$NUMBER`", "key$": "pct_never_breakeven", "index$": 13 }, "programs": { "a": true, "h": "Programs", "n": "programs", "r": false, "t": "`$INTEGER`", "key$": "programs", "index$": 14 }, "rank_by_worst_roi": { "a": true, "h": "Rank By Worst Roi", "n": "rank_by_worst_roi", "r": true, "sh": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).", "t": "`$INTEGER`", "key$": "rank_by_worst_roi", "index$": 15 }, "slug": { "a": true, "h": "Slug", "n": "slug", "r": true, "t": "`$STRING`", "key$": "slug", "index$": 16 }, "url": { "a": true, "fo": "uri", "h": "Url", "n": "url", "r": true, "sh": "The human-readable page for this major.", "t": "`$STRING`", "key$": "url", "index$": 17 } }, "name": "major", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /api/v1/majors.json", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/api/v1/majors.json", "q": {}, "r": {}, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "majors.json" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "major", "name__orig": "major", "Name": "Major", "name_": "major", "name-": "major", "NAME": "MAJOR", "index$": 3 }, { "active": true, "entity": "major", "key$": "BasicMajorFlow", "kind": "basic", "name": "BasicMajorFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "major_ref01" } }], "index$": 0 }] }, 'Major', { "GET /api/v1/majors.json": { "protocol": "http", "parameters": [] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "ai_exposure": { "a": true, "h": "Ai Exposure", "n": "ai_exposure", "r": false, "sh": "le-teen-derived AI applicability (exposure) — how much of the field’s occupations AI is already used for.", "t": ["`$ONE`", ["`$OBJECT`", "`$NULL`"]], "key$": "ai_exposure", "index$": 0 }, "cip_program_name": { "a": true, "h": "Cip Program Name", "n": "cip_program_name", "r": false, "sh": "CIP program-family name — subfields only.", "t": ["`$ONE`", ["`$STRING`", "`$NULL`"]], "key$": "cip_program_name", "index$": 1 }, "completion_adjusted_roi_usd": { "a": true, "h": "Completion Adjusted Roi Usd", "n": "completion_adjusted_roi_usd", "r": false, "t": ["`$ONE`", ["`$NUMBER`", "`$NULL`"]], "key$": "completion_adjusted_roi_usd", "index$": 2 }, "dropout_roi_usd": { "a": true, "h": "Dropout Roi Usd", "n": "dropout_roi_usd", "r": false, "t": ["`$ONE`", ["`$NUMBER`", "`$NULL`"]], "key$": "dropout_roi_usd", "index$": 3 }, "graduates": { "a": true, "h": "Graduates", "n": "graduates", "r": false, "t": "`$INTEGER`", "key$": "graduates", "index$": 4 }, "kind": { "a": true, "h": "Kind", "n": "kind", "r": true, "t": "`$STRING`", "key$": "kind", "index$": 5 }, "mean_lifetime_roi_usd": { "a": true, "h": "Mean Lifetime Roi Usd", "n": "mean_lifetime_roi_usd", "r": false, "t": "`$NUMBER`", "key$": "mean_lifetime_roi_usd", "index$": 6 }, "median_breakeven_age": { "a": true, "h": "Median Breakeven Age", "n": "median_breakeven_age", "r": false, "t": ["`$ONE`", ["`$INTEGER`", "`$NULL`"]], "key$": "median_breakeven_age", "index$": 7 }, "median_lifetime_roi_usd": { "a": true, "h": "Median Lifetime Roi Usd", "n": "median_lifetime_roi_usd", "r": false, "t": "`$NUMBER`", "key$": "median_lifetime_roi_usd", "index$": 8 }, "name": { "a": true, "h": "Name", "n": "name", "r": true, "t": "`$STRING`", "key$": "name", "index$": 9 }, "p25_roi_usd": { "a": true, "h": "P25 Roi Usd", "n": "p25_roi_usd", "r": false, "t": "`$NUMBER`", "key$": "p25_roi_usd", "index$": 10 }, "p75_roi_usd": { "a": true, "h": "P75 Roi Usd", "n": "p75_roi_usd", "r": false, "t": "`$NUMBER`", "key$": "p75_roi_usd", "index$": 11 }, "parent": { "a": true, "h": "Parent", "n": "parent", "r": false, "sh": "Parent category — subfields only.", "t": ["`$ONE`", ["`$OBJECT`", "`$NULL`"]], "key$": "parent", "index$": 12 }, "pct_never_breakeven": { "a": true, "h": "Pct Never Breakeven", "n": "pct_never_breakeven", "r": false, "sh": "Share of graduates who never break even, percent.", "t": "`$NUMBER`", "key$": "pct_never_breakeven", "index$": 13 }, "programs": { "a": true, "h": "Programs", "n": "programs", "r": false, "t": "`$INTEGER`", "key$": "programs", "index$": 14 }, "rank_by_worst_roi": { "a": true, "h": "Rank By Worst Roi", "n": "rank_by_worst_roi", "r": true, "sh": "Rank within its own ring (1 = worst ROI of the 19 categories, or of the 115 subfields).", "t": "`$INTEGER`", "key$": "rank_by_worst_roi", "index$": 15 }, "slug": { "a": true, "h": "Slug", "n": "slug", "r": true, "t": "`$STRING`", "key$": "slug", "index$": 16 }, "url": { "a": true, "fo": "uri", "h": "Url", "n": "url", "r": true, "sh": "The human-readable page for this major.", "t": "`$STRING`", "key$": "url", "index$": 17 } }, "name": "major", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /api/v1/majors.json", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/api/v1/majors.json", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "majors.json" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "major", "name__orig": "major", "Name": "Major", "name_": "major", "name-": "major", "NAME": "MAJOR", "index$": 3 }, { "active": true, "entity": "major", "key$": "BasicMajorFlow", "kind": "basic", "name": "BasicMajorFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "major_ref01" } }], "index$": 0 }] }, 'Major', { "GET /api/v1/majors.json": { "protocol": "http", "parameters": [] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -75,6 +122,11 @@ const utility_1 = require("../../utility");
         const major_ref01_list = (await major_ref01_ent.list(major_ref01_match)).map((e) => e.data());
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

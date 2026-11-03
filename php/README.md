@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/college-roi-sdk/releases)), or
+GitHub release tag (`php/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/college-roi-sdk/tags)), or
 from a clone as a Composer path repository:
 
 ```bash
@@ -230,8 +230,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
+| `load` | `($reqmatch, $ctrl): mixed` | Load a single entity by match criteria, and return it. |
+| `list` | `(?array $reqmatch = null, $ctrl): mixed` | List entities matching the criteria (call with no argument to list all), one per record. |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -241,9 +241,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
-ops, a `list` for `list`) and throw on error. Wrap calls in
-`try`/`catch` to handle failures.
+Entity operations return the entity, and `list` an `array` of entities, one
+per record; an entity's `data_get()` reads its record (an `array`). They
+throw on error, so wrap calls in `try`/`catch` to handle failures.
 
 The `direct()` escape hatch never throws — it returns a result `array`
 you branch on via `$result["ok"]`:
@@ -474,7 +474,7 @@ Create an instance: `$best_value = $client->BestValue();`
 #### Example: List
 
 ```php
-// list() returns an array of BestValue records (throws on error).
+// list() returns an array of BestValue entities, one per record (throws on error).
 $best_values = $client->BestValue()->list();
 ```
 
@@ -512,7 +512,7 @@ Create an instance: `$college = $client->College();`
 #### Example: List
 
 ```php
-// list() returns an array of College records (throws on error).
+// list() returns an array of College entities, one per record (throws on error).
 $colleges = $client->College()->list();
 ```
 
@@ -571,7 +571,7 @@ Create an instance: `$major = $client->Major();`
 #### Example: List
 
 ```php
-// list() returns an array of Major records (throws on error).
+// list() returns an array of Major entities, one per record (throws on error).
 $majors = $client->Major()->list();
 ```
 
@@ -620,7 +620,7 @@ Create an instance: `$out_of_state_penalty = $client->OutOfStatePenalty();`
 #### Example: List
 
 ```php
-// list() returns an array of OutOfStatePenalty records (throws on error).
+// list() returns an array of OutOfStatePenalty entities, one per record (throws on error).
 $out_of_state_penaltys = $client->OutOfStatePenalty()->list();
 ```
 
@@ -702,8 +702,8 @@ Create an instance: `$state = $client->State();`
 #### Example: List
 
 ```php
-// list() returns an array of State records (throws on error).
-$states = $client->State()->list();
+// list() returns an array of State entities, one per record (throws on error).
+$states = $client->State()->list(["state" => "example"]);
 ```
 
 
@@ -733,7 +733,7 @@ Create an instance: `$top_50 = $client->Top50();`
 #### Example: List
 
 ```php
-// list() returns an array of Top50 records (throws on error).
+// list() returns an array of Top50 entities, one per record (throws on error).
 $top_50s = $client->Top50()->list();
 ```
 
@@ -765,7 +765,7 @@ Create an instance: `$worst_roi_major = $client->WorstRoiMajor();`
 #### Example: List
 
 ```php
-// list() returns an array of WorstRoiMajor records (throws on error).
+// list() returns an array of WorstRoiMajor entities, one per record (throws on error).
 $worst_roi_majors = $client->WorstRoiMajor()->list();
 ```
 

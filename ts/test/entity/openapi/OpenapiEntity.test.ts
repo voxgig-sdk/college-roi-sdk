@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { CollegeRoiSDK, BaseFeature, stdutil } from '../../..'
+import { CollegeRoiSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,8 @@ describe('OpenapiEntity', async () => {
   })
 
 
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COLLEGE_ROI_TEST_LIVE
@@ -51,7 +53,7 @@ describe('OpenapiEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"openapi","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/openapi.json","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/openapi.json","q":{},"r":{},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"openapi.json"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"openapi","name__orig":"openapi","Name":"Openapi","name_":"openapi","name-":"openapi","NAME":"OPENAPI","index$":4}, {"active":true,"entity":"openapi","key$":"BasicOpenapiFlow","kind":"basic","name":"BasicOpenapiFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"openapi_ref01","srcdatavar":"openapi_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-openapi_ref01"}}],"index$":0}]}, 'Openapi', {"GET /api/v1/openapi.json":{"protocol":"http","parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"openapi","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/openapi.json","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/openapi.json","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"openapi.json"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"openapi","name__orig":"openapi","Name":"Openapi","name_":"openapi","name-":"openapi","NAME":"OPENAPI","index$":4}, {"active":true,"entity":"openapi","key$":"BasicOpenapiFlow","kind":"basic","name":"BasicOpenapiFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"openapi_ref01","srcdatavar":"openapi_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-openapi_ref01"}}],"index$":0}]}, 'Openapi', {"GET /api/v1/openapi.json":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +74,12 @@ describe('OpenapiEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

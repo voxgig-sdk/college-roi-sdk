@@ -81,6 +81,10 @@ main: kit: entity: worst_roi_major: {
           }
           m: "GET"
           o: "/api/v1/rankings/worst-roi-majors.json"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"

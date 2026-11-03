@@ -17,17 +17,22 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {
             "meta": {
-                "data_vintage": "x",
-                "doi": "x",
-                "generated": "2026-01-01",
-                "license": "x",
                 "source": "x",
-                "url": "x"
+                "url": "x",
+                "license": "x",
+                "doi": "x",
+                "data_vintage": "x",
+                "generated": "2026-01-01"
             },
             "title": "x",
             "description": "x",
@@ -35,18 +40,18 @@ const PLAN = [
             "count": 1,
             "states": [
                 {
+                    "state": "x",
+                    "state_name": "x",
+                    "page_url": "x",
                     "colleges": [
                         {
+                            "rank_in_state": 1,
+                            "institution": "x",
                             "city": "x",
                             "control": "x",
-                            "institution": "x",
-                            "npv_30yr_resident_usd": 1,
-                            "rank_in_state": 1
+                            "npv_30yr_resident_usd": 1
                         }
-                    ],
-                    "page_url": "x",
-                    "state": "x",
-                    "state_name": "x"
+                    ]
                 }
             ]
         },
@@ -61,17 +66,22 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {
             "meta": {
-                "data_vintage": "x",
-                "doi": "x",
-                "generated": "2026-01-01",
-                "license": "x",
                 "source": "x",
-                "url": "x"
+                "url": "x",
+                "license": "x",
+                "doi": "x",
+                "data_vintage": "x",
+                "generated": "2026-01-01"
             },
             "count": 1,
             "notes": [
@@ -79,20 +89,20 @@ const PLAN = [
             ],
             "colleges": [
                 {
-                    "breakeven_age": 1,
-                    "city": "x",
-                    "control": "public",
-                    "freopp_program_coverage": 1,
-                    "median_earnings_10yr_usd": 1,
-                    "name": "x",
-                    "npv_30yr_nonresident_usd": 1,
-                    "npv_30yr_resident_usd": 1,
                     "slug": "x",
+                    "unitid": 1,
+                    "name": "x",
+                    "city": "x",
                     "state": "x",
                     "state_name": "x",
-                    "total_cost_of_attendance_nonresident_usd": 1,
+                    "control": "public",
+                    "npv_30yr_resident_usd": 1,
+                    "npv_30yr_nonresident_usd": 1,
                     "total_cost_of_attendance_usd": 1,
-                    "unitid": 1,
+                    "total_cost_of_attendance_nonresident_usd": 1,
+                    "median_earnings_10yr_usd": 1,
+                    "breakeven_age": 1,
+                    "freopp_program_coverage": 1,
                     "url": "x"
                 }
             ]
@@ -108,7 +118,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {},
@@ -123,17 +138,22 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {
             "meta": {
-                "data_vintage": "x",
-                "doi": "x",
-                "generated": "2026-01-01",
-                "license": "x",
                 "source": "x",
-                "url": "x"
+                "url": "x",
+                "license": "x",
+                "doi": "x",
+                "data_vintage": "x",
+                "generated": "2026-01-01"
             },
             "count": 1,
             "categories": 1,
@@ -143,39 +163,39 @@ const PLAN = [
             ],
             "majors": [
                 {
-                    "ai_exposure": {
-                        "acs_coverage": 1,
-                        "band": "High",
-                        "score_0_to_1": 1,
-                        "top_occupations": [
-                            {
-                                "score": 1,
-                                "share": 1,
-                                "soc": "x",
-                                "title": "x"
-                            }
-                        ]
-                    },
+                    "slug": "x",
+                    "kind": "category",
+                    "name": "x",
                     "cip_program_name": "x",
+                    "parent": {
+                        "slug": "x",
+                        "name": "x"
+                    },
+                    "rank_by_worst_roi": 1,
+                    "url": "x",
+                    "mean_lifetime_roi_usd": 1,
+                    "median_lifetime_roi_usd": 1,
+                    "p25_roi_usd": 1,
+                    "p75_roi_usd": 1,
+                    "pct_never_breakeven": 1,
+                    "median_breakeven_age": 1,
                     "completion_adjusted_roi_usd": 1,
                     "dropout_roi_usd": 1,
                     "graduates": 1,
-                    "kind": "category",
-                    "mean_lifetime_roi_usd": 1,
-                    "median_breakeven_age": 1,
-                    "median_lifetime_roi_usd": 1,
-                    "name": "x",
-                    "p25_roi_usd": 1,
-                    "p75_roi_usd": 1,
-                    "parent": {
-                        "name": "x",
-                        "slug": "x"
-                    },
-                    "pct_never_breakeven": 1,
                     "programs": 1,
-                    "rank_by_worst_roi": 1,
-                    "slug": "x",
-                    "url": "x"
+                    "ai_exposure": {
+                        "score_0_to_1": 1,
+                        "band": "High",
+                        "acs_coverage": 1,
+                        "top_occupations": [
+                            {
+                                "soc": "x",
+                                "title": "x",
+                                "score": 1,
+                                "share": 1
+                            }
+                        ]
+                    }
                 }
             ]
         },
@@ -190,7 +210,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {},
@@ -205,17 +230,22 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {
             "meta": {
-                "data_vintage": "x",
-                "doi": "x",
-                "generated": "2026-01-01",
-                "license": "x",
                 "source": "x",
-                "url": "x"
+                "url": "x",
+                "license": "x",
+                "doi": "x",
+                "data_vintage": "x",
+                "generated": "2026-01-01"
             },
             "title": "x",
             "description": "x",
@@ -223,12 +253,12 @@ const PLAN = [
             "count": 1,
             "rankings": [
                 {
-                    "institution": "x",
-                    "npv_nonresident_usd": 1,
-                    "npv_resident_usd": 1,
-                    "oos_penalty_30yr_npv_usd": 1,
                     "rank": 1,
+                    "institution": "x",
                     "state": "x",
+                    "oos_penalty_30yr_npv_usd": 1,
+                    "npv_resident_usd": 1,
+                    "npv_nonresident_usd": 1,
                     "tuition_in_state_usd": 1,
                     "tuition_out_of_state_usd": 1
                 }
@@ -251,17 +281,22 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {
             "meta": {
-                "data_vintage": "x",
-                "doi": "x",
-                "generated": "2026-01-01",
-                "license": "x",
                 "source": "x",
-                "url": "x"
+                "url": "x",
+                "license": "x",
+                "doi": "x",
+                "data_vintage": "x",
+                "generated": "2026-01-01"
             },
             "title": "x",
             "description": "x",
@@ -271,11 +306,11 @@ const PLAN = [
             "count": 1,
             "colleges": [
                 {
+                    "rank_in_state": 1,
+                    "institution": "x",
                     "city": "x",
                     "control": "x",
-                    "institution": "x",
-                    "npv_30yr_resident_usd": 1,
-                    "rank_in_state": 1
+                    "npv_30yr_resident_usd": 1
                 }
             ]
         },
@@ -290,17 +325,22 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {
             "meta": {
-                "data_vintage": "x",
-                "doi": "x",
-                "generated": "2026-01-01",
-                "license": "x",
                 "source": "x",
-                "url": "x"
+                "url": "x",
+                "license": "x",
+                "doi": "x",
+                "data_vintage": "x",
+                "generated": "2026-01-01"
             },
             "title": "x",
             "description": "x",
@@ -308,12 +348,12 @@ const PLAN = [
             "count": 1,
             "rankings": [
                 {
-                    "institution": "x",
-                    "npv_nonresident_usd": 1,
-                    "npv_resident_usd": 1,
-                    "oos_penalty_30yr_npv_usd": 1,
                     "rank": 1,
+                    "institution": "x",
                     "state": "x",
+                    "oos_penalty_30yr_npv_usd": 1,
+                    "npv_resident_usd": 1,
+                    "npv_nonresident_usd": 1,
                     "tuition_in_state_usd": 1,
                     "tuition_out_of_state_usd": 1
                 }
@@ -330,17 +370,22 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {
             "meta": {
-                "data_vintage": "x",
-                "doi": "x",
-                "generated": "2026-01-01",
-                "license": "x",
                 "source": "x",
-                "url": "x"
+                "url": "x",
+                "license": "x",
+                "doi": "x",
+                "data_vintage": "x",
+                "generated": "2026-01-01"
             },
             "title": "x",
             "description": "x",
@@ -348,14 +393,14 @@ const PLAN = [
             "count": 1,
             "rankings": [
                 {
-                    "graduates": 1,
-                    "mean_lifetime_roi_usd": 1,
-                    "median_breakeven_age": 1,
-                    "median_lifetime_roi_usd": 1,
-                    "name": "x",
-                    "pct_never_breakeven": 1,
                     "rank": 1,
                     "slug": "x",
+                    "name": "x",
+                    "median_lifetime_roi_usd": 1,
+                    "mean_lifetime_roi_usd": 1,
+                    "pct_never_breakeven": 1,
+                    "median_breakeven_age": 1,
+                    "graduates": 1,
                     "url": "x"
                 }
             ]

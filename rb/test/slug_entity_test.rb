@@ -6,10 +6,28 @@ require_relative "../CollegeRoi_sdk"
 require_relative "runner"
 
 class SlugEntityTest < Minitest::Test
+  # main.kit.test.live.strict is true (the default is true): a live
+  # request that fails, or a live test missing an input it needs,
+  # fails the test.
+  # An account with no record for a test to read skips it either way.
+  LIVE_STRICT = true
+
   def test_create_instance
     testsdk = CollegeRoiSDK.test(nil, nil)
     ent = testsdk.Slug(nil)
     assert !ent.nil?
+  end
+
+  def test_validate
+    cfg = CollegeRoiConfig.shared_config
+    unless cfg["feature"].is_a?(Hash) && cfg["feature"].key?("validate")
+      skip("feature not present in this SDK: validate")
+    end
+    client = CollegeRoiSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
+    err = assert_raises(StandardError) do
+      client.Slug(nil).load({ "slug" => 1 }, nil)
+    end
+    assert_equal "validate_failed", err.code
   end
 
   def test_basic_flow
@@ -23,11 +41,12 @@ class SlugEntityTest < Minitest::Test
         return
       end
     end
-    # The basic flow consumes synthetic IDs from the fixture. In live mode
-    # without an *_ENTID env override, those IDs hit the live API and 4xx.
-    if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set COLLEGE_ROI_TEST_SLUG_ENTID JSON to run live"
-      return
+    if setup[:live]
+      ["slug01"].each do |_live_key|
+        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
+          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COLLEGE_ROI_TEST_SLUG_ENTID")
+        end
+      end
     end
     client = setup[:client]
 
@@ -42,6 +61,11 @@ class SlugEntityTest < Minitest::Test
     # LOAD
     slug_ref01_ent = client.Slug(nil)
     slug_ref01_match_dt0 = {}
+    slug_ref01_match_dt0["slug"] = setup[:idmap]["slug"] || setup[:idmap]["slug01"]
+    unless setup[:live]
+      own = slug_ref01_data["slug"]
+      slug_ref01_match_dt0["slug"] = own if [String, Numeric, TrueClass, FalseClass].any? { |c| own.is_a?(c) }
+    end
     slug_ref01_data_dt0_loaded = slug_ref01_ent.load(slug_ref01_match_dt0, nil)
     assert !slug_ref01_data_dt0_loaded.nil?
 
@@ -52,7 +76,7 @@ def slug_basic_setup(extra)
   Runner.load_env_local
 
   entity_data_file = File.join(__dir__, "..", "..", ".sdk", "test", "entity", "slug", "SlugTestData.json")
-  entity_data_source = File.read(entity_data_file)
+  entity_data_source = File.read(entity_data_file, encoding: "UTF-8")
   entity_data = JSON.parse(entity_data_source)
 
   options = {}
@@ -71,9 +95,8 @@ def slug_basic_setup(extra)
     }
   )
 
-  # Detect ENTID env override before envOverride consumes it. When live
-  # mode is on without a real override, the basic test runs against synthetic
-  # IDs from the fixture and 4xx's. Surface this so the test can skip.
+  # Whether *_ENTID supplied the idmap, read before env_override consumes
+  # it: without it, the ids a live flow binds are the fixture's synthetic ones.
   entid_env_raw = ENV["COLLEGE_ROI_TEST_SLUG_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 

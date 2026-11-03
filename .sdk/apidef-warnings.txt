@@ -1,0 +1,11 @@
+{
+  point: "warning"
+  note: "Points GET /api/v1/colleges/{slug}.json and GET /api/v1/majors/{slug}.json on entity=slug op=load have the same selector (exist: slug), so only GET /api/v1/colleges/{slug}.json is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "slug"
+  op: "load"
+  points: [
+    "GET /api/v1/colleges/{slug}.json"
+    "GET /api/v1/majors/{slug}.json"
+  ]
+
+}

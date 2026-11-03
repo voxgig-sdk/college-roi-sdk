@@ -17,6 +17,10 @@ main: kit: entity: index: {
           }
           m: "GET"
           o: "/api/v1/index.json"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"

@@ -16,7 +16,7 @@ go get github.com/voxgig-sdk/college-roi-sdk/go@latest
 ```
 
 The Go module proxy resolves the version from the `go/vX.Y.Z` GitHub
-release tag — see [Releases](https://github.com/voxgig-sdk/college-roi-sdk/releases) for the available versions.
+release tag — see [Tags](https://github.com/voxgig-sdk/college-roi-sdk/tags) for the available versions.
 
 To vendor from a local checkout instead, clone this repo alongside your
 project and add a `replace` directive pointing at the checked-out
@@ -35,9 +35,10 @@ loading a specific record.
 ### Quickstart
 
 A complete program: create a client, then call the entity operations.
-Each operation returns `(value, error)` — the value is the data itself
-(there is no `{ok, data}` wrapper), so check `err` and use the value
-directly.
+Each operation returns `(value, error)` — the value is the entity, and for
+`List` a `[]any` of entities, one per record (there is no `{ok, data}`
+wrapper), so check `err` and read a record through the entity's
+`Data()`.
 
 ```go
 package main
@@ -50,13 +51,13 @@ import (
 func main() {
     client := sdk.New()
 
-    // List bestValue records — the value is the array of records itself.
+    // List bestValue records — the value is a []any of entities, one per record.
     bestValues, err := client.BestValue(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
     for _, item := range bestValues.([]any) {
-        fmt.Println(item)
+        fmt.Println(item.(sdk.Entity).Data())
     }
 }
 ```
@@ -137,13 +138,16 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-top50, err := client.Top50(nil).List(
+top50s, err := client.Top50(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(top50) // the returned mock data
+// A []any of entities, one per mock record.
+for _, item := range top50s.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 ### Use a custom fetch function
@@ -220,25 +224,25 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
-| `BestValue` | `(data map[string]any) CollegeRoiEntity` | Create a BestValue entity instance. |
-| `College` | `(data map[string]any) CollegeRoiEntity` | Create a College entity instance. |
-| `Index` | `(data map[string]any) CollegeRoiEntity` | Create an Index entity instance. |
-| `Major` | `(data map[string]any) CollegeRoiEntity` | Create a Major entity instance. |
-| `Openapi` | `(data map[string]any) CollegeRoiEntity` | Create an Openapi entity instance. |
-| `OutOfStatePenalty` | `(data map[string]any) CollegeRoiEntity` | Create an OutOfStatePenalty entity instance. |
-| `Slug` | `(data map[string]any) CollegeRoiEntity` | Create a Slug entity instance. |
-| `State` | `(data map[string]any) CollegeRoiEntity` | Create a State entity instance. |
-| `Top50` | `(data map[string]any) CollegeRoiEntity` | Create a Top50 entity instance. |
-| `WorstRoiMajor` | `(data map[string]any) CollegeRoiEntity` | Create a WorstRoiMajor entity instance. |
+| `BestValue` | `(data map[string]any) CollegeRoiEntityBase` | Create a BestValue entity instance. |
+| `College` | `(data map[string]any) CollegeRoiEntityBase` | Create a College entity instance. |
+| `Index` | `(data map[string]any) CollegeRoiEntityBase` | Create an Index entity instance. |
+| `Major` | `(data map[string]any) CollegeRoiEntityBase` | Create a Major entity instance. |
+| `Openapi` | `(data map[string]any) CollegeRoiEntityBase` | Create an Openapi entity instance. |
+| `OutOfStatePenalty` | `(data map[string]any) CollegeRoiEntityBase` | Create an OutOfStatePenalty entity instance. |
+| `Slug` | `(data map[string]any) CollegeRoiEntityBase` | Create a Slug entity instance. |
+| `State` | `(data map[string]any) CollegeRoiEntityBase` | Create a State entity instance. |
+| `Top50` | `(data map[string]any) CollegeRoiEntityBase` | Create a Top50 entity instance. |
+| `WorstRoiMajor` | `(data map[string]any) CollegeRoiEntityBase` | Create a WorstRoiMajor entity instance. |
 
-### Entity interface (CollegeRoiEntity)
+### Entity interface (CollegeRoiEntityBase)
 
-All entities implement the `CollegeRoiEntity` interface.
+All entities implement the `CollegeRoiEntityBase` interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
-| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
+| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria, and return it. |
+| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria, one per record. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -246,21 +250,21 @@ All entities implement the `CollegeRoiEntity` interface.
 
 ### Result shape
 
-Entity operations return `(value, error)`. The `value` is the
-operation's data **directly** — there is no wrapper:
+Entity operations return `(value, error)`. The `value` is the entity
+itself — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` | the entity record (`map[string]any`) |
-| `List` | a `[]any` of entity records |
+| `Load` | the entity, whose `Data()` reads its record (`map[string]any`) |
+| `List` | a `[]any` of entities, one per record |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    bestValue, err := client.BestValue(nil).List(map[string]any{/* fields */}, nil)
+    bestValue, err := client.BestValue(nil).List(nil, nil)
     if err != nil { /* handle */ }
-    // bestValue is the returned record
+    // bestValue is a []any of entities, one per record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -486,7 +490,10 @@ bestValues, err := client.BestValue(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(bestValues) // the array of records
+// A []any of entities, one per record.
+for _, item := range bestValues.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -527,7 +534,10 @@ colleges, err := client.College(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(colleges) // the array of records
+// A []any of entities, one per record.
+for _, item := range colleges.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -548,7 +558,7 @@ index, err := client.Index(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(index) // the loaded record
+fmt.Println(index.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -592,7 +602,10 @@ majors, err := client.Major(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(majors) // the array of records
+// A []any of entities, one per record.
+for _, item := range majors.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -613,7 +626,7 @@ openapi, err := client.Openapi(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(openapi) // the loaded record
+fmt.Println(openapi.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -647,7 +660,10 @@ outOfStatePenaltys, err := client.OutOfStatePenalty(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(outOfStatePenaltys) // the array of records
+// A []any of entities, one per record.
+for _, item := range outOfStatePenaltys.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -704,7 +720,7 @@ slug, err := client.Slug(nil).Load(map[string]any{"slug": "slug"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(slug) // the loaded record
+fmt.Println(slug.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -731,11 +747,14 @@ Create an instance: `state := client.State(nil)`
 #### Example: List
 
 ```go
-states, err := client.State(nil).List(nil, nil)
+states, err := client.State(nil).List(map[string]any{"state": "example"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(states) // the array of records
+// A []any of entities, one per record.
+for _, item := range states.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -769,7 +788,10 @@ top50s, err := client.Top50(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(top50s) // the array of records
+// A []any of entities, one per record.
+for _, item := range top50s.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 
@@ -804,7 +826,10 @@ worstRoiMajors, err := client.WorstRoiMajor(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(worstRoiMajors) // the array of records
+// A []any of entities, one per record.
+for _, item := range worstRoiMajors.([]any) {
+    fmt.Println(item.(sdk.Entity).Data())
+}
 ```
 
 ## Features
@@ -941,7 +966,9 @@ The Go SDK uses `map[string]any` throughout rather than typed structs.
 This mirrors the dynamic nature of the API and keeps the SDK
 flexible — no code generation is needed when the API schema changes.
 
-Use `core.ToMapAny()` to safely cast results and nested data.
+An operation returns the entity, and its `Data()` returns the record. Use
+`core.ToMapAny()` to safely cast that record, or data nested in it, to
+`map[string]any`: it returns `nil` for anything else, an entity included.
 
 ### Package structure
 

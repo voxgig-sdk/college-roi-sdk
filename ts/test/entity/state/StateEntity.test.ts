@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { CollegeRoiSDK, BaseFeature, stdutil } from '../../..'
+import { CollegeRoiSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,18 @@ describe('StateEntity', async () => {
   })
 
 
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = CollegeRoiSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.State().list({"state":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COLLEGE_ROI_TEST_LIVE
@@ -51,7 +63,7 @@ describe('StateEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"city":{"a":true,"h":"City","n":"city","r":false,"t":"`$STRING`","key$":"city","index$":0},"control":{"a":true,"h":"Control","n":"control","r":false,"t":"`$STRING`","key$":"control","index$":1},"institution":{"a":true,"h":"Institution","n":"institution","r":false,"t":"`$STRING`","key$":"institution","index$":2},"npv_30yr_resident_usd":{"a":true,"h":"Npv 30yr Resident Usd","n":"npv_30yr_resident_usd","r":false,"t":"`$INTEGER`","key$":"npv_30yr_resident_usd","index$":3},"rank_in_state":{"a":true,"h":"Rank In State","n":"rank_in_state","r":false,"t":"`$INTEGER`","key$":"rank_in_state","index$":4}},"name":"state","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/rankings/best-value/{state}.json","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"state","or":"state","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/api/v1/rankings/best-value/{state}.json","q":{"exist":["state"]},"r":{},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"rankings"},{"lit":"best-value"},{"lit":"{state}.json"}],"t":{"req":"`reqdata`","res":"`body.colleges`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"state","name__orig":"state","Name":"State","name_":"state","name-":"state","NAME":"STATE","index$":7}, {"active":true,"entity":"state","key$":"BasicStateFlow","kind":"basic","name":"BasicStateFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{"state":"state01"},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"state_ref01"}}],"index$":0}]}, 'State', {"GET /api/v1/rankings/best-value/{state}.json":{"protocol":"http","parameters":[{"name":"state","in":"path","required":true,"description":"Lowercase USPS 2-letter state code (50 states + DC).","schema":{"type":"string","enum":["al","ak","az","ar","ca","co","ct","de","dc","fl","ga","hi","id","il","in","ia","ks","ky","la","me","md","ma","mi","mn","ms","mo","mt","ne","nv","nh","nj","nm","ny","nc","nd","oh","ok","or","pa","ri","sc","sd","tn","tx","ut","vt","va","wa","wv","wi","wy"]},"index$":0}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"city":{"a":true,"h":"City","n":"city","r":false,"t":"`$STRING`","key$":"city","index$":0},"control":{"a":true,"h":"Control","n":"control","r":false,"t":"`$STRING`","key$":"control","index$":1},"institution":{"a":true,"h":"Institution","n":"institution","r":false,"t":"`$STRING`","key$":"institution","index$":2},"npv_30yr_resident_usd":{"a":true,"h":"Npv 30yr Resident Usd","n":"npv_30yr_resident_usd","r":false,"t":"`$INTEGER`","key$":"npv_30yr_resident_usd","index$":3},"rank_in_state":{"a":true,"h":"Rank In State","n":"rank_in_state","r":false,"t":"`$INTEGER`","key$":"rank_in_state","index$":4}},"name":"state","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/rankings/best-value/{state}.json","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"state","or":"state","r":true,"t":"`$STRING`","index$":0,"ex":"al"}]},"k":"http","m":"GET","o":"/api/v1/rankings/best-value/{state}.json","q":{"exist":["state"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"rankings"},{"lit":"best-value"},{"lit":"{state}.json"}],"t":{"req":"`reqdata`","res":"`body.colleges`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"state","name__orig":"state","Name":"State","name_":"state","name-":"state","NAME":"STATE","index$":7}, {"active":true,"entity":"state","key$":"BasicStateFlow","kind":"basic","name":"BasicStateFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{"state":"state01"},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"state_ref01"}}],"index$":0}]}, 'State', {"GET /api/v1/rankings/best-value/{state}.json":{"protocol":"http","parameters":[{"name":"state","in":"path","required":true,"description":"Lowercase USPS 2-letter state code (50 states + DC).","schema":{"type":"string","enum":["al","ak","az","ar","ca","co","ct","de","dc","fl","ga","hi","id","il","in","ia","ks","ky","la","me","md","ma","mi","mn","ms","mo","mt","ne","nv","nh","nj","nm","ny","nc","nd","oh","ok","or","pa","ri","sc","sd","tn","tx","ut","vt","va","wa","wv","wi","wy"]},"index$":0}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -73,6 +85,12 @@ describe('StateEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

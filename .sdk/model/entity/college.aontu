@@ -136,6 +136,10 @@ main: kit: entity: college: {
           }
           m: "GET"
           o: "/api/v1/colleges.json"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"

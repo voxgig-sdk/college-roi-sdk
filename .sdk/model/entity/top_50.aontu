@@ -68,6 +68,10 @@ main: kit: entity: top_50: {
           }
           m: "GET"
           o: "/api/v1/rankings/out-of-state-penalty/top-50.json"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"

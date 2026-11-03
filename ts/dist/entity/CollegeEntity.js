@@ -80,9 +80,12 @@ class CollegeEntity extends CollegeRoiEntityBase_1.CollegeRoiEntityBase {
         catch (err) {
             // What a hook throws here must not escape the cleaning below.
             try {
-                fres = featureHook(ctx, 'PreUnexpected');
-                if (fres instanceof Promise) {
-                    await fres;
+                // Once per operation: makeError fires it for its own error.
+                if (!ctx.unexpectedFired) {
+                    fres = featureHook(ctx, 'PreUnexpected');
+                    if (fres instanceof Promise) {
+                        await fres;
+                    }
                 }
             }
             catch (hookerr) {
@@ -94,7 +97,7 @@ class CollegeEntity extends CollegeRoiEntityBase_1.CollegeRoiEntityBase {
             }
             else {
                 // Off-happy-path (throw disabled): typed as any so the method's
-                // Promise<College[]> return stays clean under strict null checks.
+                // Promise<CollegeEntity[]> return stays clean under strict null checks.
                 return undefined;
             }
         }

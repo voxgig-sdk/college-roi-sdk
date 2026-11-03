@@ -13,7 +13,12 @@ type Context = core.Context
 type Utility = core.Utility
 type Feature = core.Feature
 type Entity = core.Entity
-type CollegeRoiEntity = core.CollegeRoiEntity
+type CollegeRoiEntityBase = core.CollegeRoiEntityBase
+
+// Deprecated: use CollegeRoiEntityBase.
+type CollegeRoiEntity = core.CollegeRoiEntityBase
+
+type StreamItem = core.StreamItem
 type FetcherFunc = core.FetcherFunc
 type Spec = core.Spec
 type Result = core.Result
@@ -41,34 +46,34 @@ func init() {
 	core.NewTimeoutFeatureFunc = func() core.Feature {
 		return feature.NewTimeoutFeature()
 	}
-	core.NewBestValueEntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntity {
+	core.NewBestValueEntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntityBase {
 		return entity.NewBestValueEntity(client, entopts)
 	}
-	core.NewCollegeEntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntity {
+	core.NewCollegeEntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntityBase {
 		return entity.NewCollegeEntity(client, entopts)
 	}
-	core.NewIndexEntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntity {
+	core.NewIndexEntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntityBase {
 		return entity.NewIndexEntity(client, entopts)
 	}
-	core.NewMajorEntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntity {
+	core.NewMajorEntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntityBase {
 		return entity.NewMajorEntity(client, entopts)
 	}
-	core.NewOpenapiEntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntity {
+	core.NewOpenapiEntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntityBase {
 		return entity.NewOpenapiEntity(client, entopts)
 	}
-	core.NewOutOfStatePenaltyEntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntity {
+	core.NewOutOfStatePenaltyEntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntityBase {
 		return entity.NewOutOfStatePenaltyEntity(client, entopts)
 	}
-	core.NewSlugEntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntity {
+	core.NewSlugEntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntityBase {
 		return entity.NewSlugEntity(client, entopts)
 	}
-	core.NewStateEntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntity {
+	core.NewStateEntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntityBase {
 		return entity.NewStateEntity(client, entopts)
 	}
-	core.NewTop50EntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntity {
+	core.NewTop50EntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntityBase {
 		return entity.NewTop50Entity(client, entopts)
 	}
-	core.NewWorstRoiMajorEntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntity {
+	core.NewWorstRoiMajorEntityFunc = func(client *core.CollegeRoiSDK, entopts map[string]any) core.CollegeRoiEntityBase {
 		return entity.NewWorstRoiMajorEntity(client, entopts)
 	}
 }

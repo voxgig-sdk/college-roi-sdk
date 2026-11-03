@@ -68,6 +68,10 @@ main: kit: entity: out_of_state_penalty: {
           }
           m: "GET"
           o: "/api/v1/rankings/out-of-state-penalty.json"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"
